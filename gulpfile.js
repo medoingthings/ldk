@@ -1,18 +1,24 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass')
+var gulpconfig = require('./gulpconfig')
+
+/**
+ * Modules
+ */
 var autoprefixer = require('gulp-autoprefixer');
+var sass = require('gulp-sass')
+
+/**
+ * Gulp Tasks
+ */
+gulp.task('default', ['sass']);
 
 gulp.task('sass', function () {
-    gulp.src('./src/*.scss')
+    gulp.src(gulpconfig.sass.files)
         .pipe(sass())
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(gulp.dest('./www/css'));
+        .pipe(autoprefixer(gulpconfig.autoprefixer))
+        .pipe(gulp.dest(gulpconfig.css.dest));
 });
 
-gulp.task('default', function() {
-  // place code for your default task here
+gulp.task('watch', function() {
+  gulp.watch(gulpconfig.sass.modules, ['sass']);
 });
-
