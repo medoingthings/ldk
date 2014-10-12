@@ -1,0 +1,23 @@
+{
+  "name": "Leadership in digitaler Kommunikation",
+  "version": "0.0.0",
+  "authors": [
+    "Mark Rickert <mark@medoingthings.com>"
+  ],
+  "description": "Relaunch-Projekt",
+  "main": "?",
+  "license": "MIT",
+  "homepage": "http://www.leadership-digitale-kommunikation.de",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "normalize-scss": "~3.0.1",
+    "neat": "1.5.1"
+  }
+}
