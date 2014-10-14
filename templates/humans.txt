@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Duc Nguyen -- Designer -- <twitter>
+    Mark Rickert -- Concept Development, Front-End Development -- @medoingthings
+    Michael Weingartner -- Project Management, Concept Development -- <twitter>
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, SASS
+    jQuery, Modernizr
+    Craft (CMS)
