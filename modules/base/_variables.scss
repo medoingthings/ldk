@@ -1,20 +1,3 @@
-/*
- * Neat Settings
- * Variables for the grid framework Neat
- *
- * Docs: http://neat.bourbon.io/docs/
- */
-
-$border-box-sizing: false;
-
-$grid-columns     : 12;
-$gutter           : em(20);
-$max-width        : em(1280);
-$column           : em(60);
-
-$visual-grid      : false; // enable for debugging
-$visual-grid-index: front;
-
 // Breakpoint config
 // must stay in sync with js/_config.js
 $BP_SMARTPHONE_MIN : 0;
@@ -28,7 +11,8 @@ $BP_WIDESCREEN_MAX : 1500;
 
 // Default colors
 $colors-default:
-    #fff; // 1 | white | primary #1
+    #fff, // 1 | white | primary #1
+    #000; // 1 | black | primary #2
 
 // Scheme colors
 $colors-scheme:
@@ -65,4 +49,4 @@ $line-height-default:
     1;   // 6
 
 $font-size-base: 4;  // nth from size-default <int>
-$em-base       : 24; // 24px
+$em-base       : 18; // 18px

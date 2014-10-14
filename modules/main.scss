@@ -5,6 +5,7 @@
 // Custom variables and functions
 @import "base/variables";
 @import "helper/functions";
+@import "base/neat-settings";
 
 // Neat Grid System - might break if mixin is used that requires Bourbon
 @import "../bower_components/neat/app/assets/stylesheets/neat";
@@ -23,3 +24,7 @@
 
 // Global styles
 @import "base/base";
+@import "layout/lyt-ldk";
+@import "layout/lyt-head";
+@import "navigation/nav-main";
+@import "typography/typ";

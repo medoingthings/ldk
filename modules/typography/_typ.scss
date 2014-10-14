@@ -1,0 +1,16 @@
+/**
+ * Typography
+ */
+
+body {
+    font-family: $font-family-default;
+    font-size: $em-base / 16 * 1em; // 30px
+    line-height: lineHeight($font-size-base);
+    font-weight: 300;
+    color: color(2, $colors-default);
+    -webkit-font-smoothing: antialiased;
+}
+
+p {
+    margin-bottom: em(20); // Implement baseline grid
+}

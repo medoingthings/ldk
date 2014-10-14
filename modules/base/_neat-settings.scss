@@ -1,0 +1,16 @@
+/*
+ * Neat Settings
+ * Variables for the grid framework Neat
+ *
+ * Docs: http://neat.bourbon.io/docs/
+ */
+
+$border-box-sizing: false;
+
+$grid-columns     : 12;
+$gutter           : em(20);
+$max-width        : em(1280);
+$column           : em(60);
+
+$visual-grid      : false; // enable for debugging
+$visual-grid-index: front;

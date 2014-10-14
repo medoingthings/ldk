@@ -23,11 +23,12 @@
 }
 
 %container {
+    @extend %clearfix;
+    @include outer-container;
+
     width: 100%;
-    max-width: em($BP_WIDESCREEN_MAX);
     margin: 0 auto;
     padding: 0 em(40);
-    @extend %clearfix;
 }
 
 @include breakpoint(false, $BP_SMARTPHONE_MAX) {
