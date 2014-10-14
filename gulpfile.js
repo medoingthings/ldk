@@ -5,6 +5,7 @@ var gulpconfig = require('./gulpconfig')
  * Modules
  */
 var autoprefixer = require('gulp-autoprefixer');
+var livereload = require('gulp-livereload');
 var sass = require('gulp-sass')
 
 /**
@@ -20,5 +21,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(gulpconfig.sass.modules, ['sass']);
+    livereload.listen();
+    gulp.watch(gulpconfig.sass.modules, ['sass'])
+        .on('change', livereload.changed);
 });
