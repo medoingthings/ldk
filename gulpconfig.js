@@ -10,7 +10,6 @@ module.exports = {
         dest: './www/css'
     },
     sass: {
-        mainfiles: 'src/*.scss',
-        modules: 'src/modules/**/*.scss'
+        modules: 'modules/**/*.scss'
     }
 }

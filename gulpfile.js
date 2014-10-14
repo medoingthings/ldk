@@ -13,7 +13,7 @@ var sass = require('gulp-sass')
 gulp.task('default', ['sass']);
 
 gulp.task('sass', function () {
-    gulp.src(gulpconfig.sass.mainfiles)
+    gulp.src(gulpconfig.sass.modules)
         .pipe(sass())
         .pipe(autoprefixer(gulpconfig.autoprefixer))
         .pipe(gulp.dest(gulpconfig.css.dest));
