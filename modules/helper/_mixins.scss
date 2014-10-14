@@ -1,0 +1,51 @@
+/**
+ * Mixins
+ *
+ - breakpoint
+ - clearfix
+ - link-style
+ - link-unstyle
+ */
+
+
+/**
+ * Very simple breakpoints
+ *
+ * @param {Number} $min-width
+ * @param {Number} $max-width
+ */
+
+@mixin breakpoint ($min-width: false, $max-width: false) {
+
+    $query : "";
+
+    @if $min-width != false {
+        $query : $query + "(min-width:" + $min-width / 16 + "em)";
+
+        @if $max-width != false {
+            $query : $query + " and ";
+        }
+    }
+
+    @if $max-width != false {
+        $query : $query + "(max-width:" + $max-width / 16 + "em)";
+    }
+
+    @media #{$query} {
+        @content;
+    }
+
+}
+
+
+/**
+ * Clearfix
+ */
+
+@mixin clearfix {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+}

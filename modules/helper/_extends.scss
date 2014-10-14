@@ -1,0 +1,37 @@
+/*
+ * Extend Utilities
+ * these placeholders are used via @extend through SASS for DRY developement
+ * instead of repeating the lines of code over and over again, just extend like this:
+ * "@extend %e_pie-clearfix"
+ */
+
+%clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+%is-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+%container {
+    width: 100%;
+    max-width: em($BP_WIDESCREEN_MAX);
+    margin: 0 auto;
+    padding: 0 em(40);
+    @extend %clearfix;
+}
+
+@include breakpoint(false, $BP_SMARTPHONE_MAX) {
+    %container {
+        padding: 0 em(20);
+    }
+}

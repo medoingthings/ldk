@@ -1,0 +1,68 @@
+/*
+ * Neat Settings
+ * Variables for the grid framework Neat
+ *
+ * Docs: http://neat.bourbon.io/docs/
+ */
+
+$border-box-sizing: false;
+
+$grid-columns     : 12;
+$gutter           : em(20);
+$max-width        : em(1280);
+$column           : em(60);
+
+$visual-grid      : false; // enable for debugging
+$visual-grid-index: front;
+
+// Breakpoint config
+// must stay in sync with js/_config.js
+$BP_SMARTPHONE_MIN : 0;
+$BP_SMARTPHONE_MAX : 449;
+$BP_TABLET_MIN     : 450;
+$BP_TABLET_MAX     : 780;
+$BP_DESKTOP_MIN    : 781;
+$BP_DESKTOP_MAX    : 1199;
+$BP_WIDESCREEN_MIN : 1200;
+$BP_WIDESCREEN_MAX : 1500;
+
+// Default colors
+$colors-default:
+    #fff; // 1 | white | primary #1
+
+// Scheme colors
+$colors-scheme:
+    #FEC52E, // 1  | orange light
+    #FD9025, // 2  | orange dark
+    #715CE5, // 3  | blue light
+    #0D169D, // 4  | blue dark
+    #50C121, // 5  | green dark
+    #9BD046, // 6  | green light
+    #FB4743, // 7  | red dark
+    #F677B6, // 8  | red light
+    #1894DD, // 9  | aqua dark
+    #6FDEFD; // 10 | aqua light
+
+// Typography
+$font-family-default: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-default: "Frutiger Light Condensed", Helvetica, Arial, sans-serif;
+
+$size-default:
+    70, // 1 | h1
+    50, // 2 | h2
+    30, // 3 | h3
+    24, // 4 | p
+    18, // 5 | ?
+    12; // 6 | ?
+
+// maps to $size-default keys
+$line-height-default:
+    1.2, // 1
+    1.2, // 2
+    1.7, // 3
+    1.7, // 4
+    1,   // 5
+    1;   // 6
+
+$font-size-base: 4;  // nth from size-default <int>
+$em-base       : 24; // 24px
