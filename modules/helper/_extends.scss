@@ -28,7 +28,6 @@
 
     width: 100%;
     margin: 0 auto;
-    padding: 0 em(40);
 }
 
 @include breakpoint(false, $BP_SMARTPHONE_MAX) {
