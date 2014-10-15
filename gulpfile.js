@@ -15,7 +15,7 @@ gulp.task('default', ['sass']);
 
 gulp.task('sass', function () {
     gulp.src(gulpconfig.sass.modules)
-        .pipe(sass())
+        .pipe(sass({errLogToConsole: true}))
         .pipe(autoprefixer(gulpconfig.autoprefixer))
         .pipe(gulp.dest(gulpconfig.css.dest));
 });
