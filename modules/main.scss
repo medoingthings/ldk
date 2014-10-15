@@ -23,8 +23,9 @@
 @import "bower_components/normalize-scss/normalize";
 
 // Global styles
+@import "typography/typ-types";
+@import "typography/typ";
 @import "base/base";
 @import "layout/lyt-ldk";
 @import "layout/lyt-head";
 @import "navigation/nav-main";
-@import "typography/typ";

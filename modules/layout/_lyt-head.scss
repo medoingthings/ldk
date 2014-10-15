@@ -3,4 +3,34 @@
  */
 .lyt-head-w {
     @extend %container;
+    background: color(1);
+}
+
+.lyt-head--home-f {
+    width: em(50);
+    height: em(50);
+    margin: 0;
+    float: left;
+    background: color(7, $colors-scheme);
+}
+
+.lyt-head--home-h {
+    display: inline-block;
+    float: left;
+    margin-left: em(20);
+    color: color(2);
+
+    ._h3, ._h2 {
+        display: block;
+    }
+
+    ._h3 {
+        @extend %typ-type--1;
+    }
+
+    ._h2 {
+        @extend %typ-type--2;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
 }

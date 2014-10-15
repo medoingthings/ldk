@@ -11,21 +11,22 @@ $BP_WIDESCREEN_MAX : 1500;
 
 // Default colors
 $colors-default:
-    #fff, // 1 | white | primary #1
-    #000; // 1 | black | primary #2
+    #fff,    // 1 | white | primary #1
+    #030303, // 2 | black | primary #2
+    #e7e7e7; // 3 | gray
 
 // Scheme colors
 $colors-scheme:
-    #FEC52E, // 1  | orange light
-    #FD9025, // 2  | orange dark
-    #715CE5, // 3  | blue light
-    #0D169D, // 4  | blue dark
-    #50C121, // 5  | green dark
-    #9BD046, // 6  | green light
-    #FB4743, // 7  | red dark
-    #F677B6, // 8  | red light
-    #1894DD, // 9  | aqua dark
-    #6FDEFD; // 10 | aqua light
+    #fec52e, // 1  | orange light
+    #fd9025, // 2  | orange dark
+    #715ce5, // 3  | blue light
+    #0d169d, // 4  | blue dark
+    #50c121, // 5  | green dark
+    #9bd046, // 6  | green light
+    #fb4743, // 7  | red dark
+    #f677b6, // 8  | red light
+    #1894dd, // 9  | aqua dark
+    #6fdefd; // 10 | aqua light
 
 // Typography
 $font-family-default: "Helvetica Neue", Helvetica, Arial, sans-serif;
