@@ -6,6 +6,7 @@ var gulpconfig = require('./gulpconfig')
  */
 var autoprefixer = require('gulp-autoprefixer');
 var livereload = require('gulp-livereload');
+var modernizr = require('gulp-modernizr');
 var sass = require('gulp-sass')
 
 /**
@@ -18,6 +19,12 @@ gulp.task('sass', function () {
         .pipe(sass({errLogToConsole: true}))
         .pipe(autoprefixer(gulpconfig.autoprefixer))
         .pipe(gulp.dest(gulpconfig.css.dest));
+});
+
+gulp.task('modernizr', function() {
+  gulp.src(gulpconfig.sass.modules)
+    .pipe(modernizr(gulpconfig.modernizr.settings))
+    .pipe(gulp.dest(gulpconfig.js.dest))
 });
 
 gulp.task('watch', function() {
