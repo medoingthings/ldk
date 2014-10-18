@@ -1,0 +1,25 @@
+/**
+ * Layout Skeleton
+ */
+
+.lyt-footer-w {
+    @extend %clearfix;
+    @extend %container;
+    display: table;
+    background-color: color(1);
+    padding: em(50);
+}
+
+.lyt-footer-i {
+    display: table-cell;
+    vertical-align: middle;
+
+    &:first-child {
+        width: 100%;
+    }
+
+    img {
+        width: auto;
+        height: em(50);
+    }
+}
