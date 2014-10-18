@@ -15,8 +15,6 @@
     transition: transform 0.2s ease;
 
     &:link,
-    &:active,
-    &:hover,
     &:visited {
         color: color(1);
         text-decoration: none;

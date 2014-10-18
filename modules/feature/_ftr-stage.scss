@@ -9,9 +9,6 @@
 }
 
 .ftr-stage-p {
-    height: 0;
-    padding-top: 100% / 24 * 9;
-
     img {
         display: block;
         width: 100%;
@@ -20,42 +17,85 @@
 }
 
 .ftr-stage-c {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding-top: em(50);
-
-    &:before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-        margin-right: -0.25em;
-    }
+    padding: em(50) 0;
+    background-color: color(1);
 }
 
 .ftr-stage-t {
-    display: inline-block;
-    vertical-align: middle;
     width: 85%;
     padding-left: em(80);
 
     h1 {
         @extend %txt-type--3;
         text-transform: uppercase;
-        color: color(1);
     }
 
     p {
         width: 50%;
-        background-color: rgba(color(2), 0.75);
-        color: color(1);
         padding: em(10) em(20);
         margin-left: em(-20);
     }
 }
 
+// Different text position on bigger screens
 @include breakpoint(1100) {
+    .ftr-stage-p {
+        height: 0;
+        padding-top: 100% / 24 * 9;
+    }
 
+    .ftr-stage-c {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        padding-bottom: 0;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em;
+        }
+    }
+
+    .ftr-stage-t {
+        display: inline-block;
+        vertical-align: middle;
+
+        h1 {
+            color: color(1);
+        }
+
+        p {
+            background-color: rgba(color(2), 0.75);
+            color: color(1);
+        }
+    }
+}
+
+// Special case: the button has to be black on smaller devices
+@include breakpoint(false, 1099) {
+    .ftr-stage-c .btn-outline {
+        &:link,
+        &:visited {
+            color: color(2);
+        }
+
+        &,
+        &:before,
+        &:after {
+            border-color: color(2);
+        }
+    }
+}
+
+// IE8 doesn’t support media queries, so help him out here
+.lt-ie9 .ftr-stage-c {
+    .btn-outline {
+        color: color(2);
+        border-color: color(2);
+    }
 }

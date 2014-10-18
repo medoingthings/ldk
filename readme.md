@@ -8,6 +8,7 @@
 .lyt-f = layout figure
 .lyt-p = layout picture
 .lyt-h = layout headline
+.lyt-t = layout text
 
 .lyt-head--home-f = layout figure im Subnamespace "home"
 
