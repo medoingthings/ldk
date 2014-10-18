@@ -6,6 +6,7 @@
     position: relative;
     height: em(50);
     background: color(1);
+    z-index: 1;
 }
 
 .lyt-head--home-f {
@@ -120,6 +121,8 @@ $lyt-head--logo-shape-home:
     (2,1);
 
 .lyt-head--logo-i {
+    @extend %composited-layer;
+    @include lyt-head--logo-generator($lyt-head--logo-shape-ldk);
     display: block;
     position: absolute;
     width: em(4);
@@ -127,9 +130,6 @@ $lyt-head--logo-shape-home:
     border-radius: em(2);
     background-color: color(1);
     transition: transform 0.3s ease;
-    backface-visibility: hidden;
-
-    @include lyt-head--logo-generator($lyt-head--logo-shape-ldk);
 
     .lyt-head--home-a:hover & {
         @include lyt-head--logo-generator($lyt-head--logo-shape-home);

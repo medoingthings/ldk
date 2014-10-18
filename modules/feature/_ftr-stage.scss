@@ -1,0 +1,61 @@
+/**
+ * Feature content in a big stage
+ */
+
+.ftr-stage-w {
+    @extend %container;
+    position: relative;
+    z-index: 0;
+}
+
+.ftr-stage-p {
+    height: 0;
+    padding-top: 100% / 24 * 9;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.ftr-stage-c {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: em(50);
+
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em;
+    }
+}
+
+.ftr-stage-t {
+    display: inline-block;
+    vertical-align: middle;
+    width: 85%;
+    padding-left: em(80);
+
+    h1 {
+        @extend %txt-type--3;
+        text-transform: uppercase;
+        color: color(1);
+    }
+
+    p {
+        width: 50%;
+        background-color: rgba(color(2), 0.75);
+        color: color(1);
+        padding: em(10) em(20);
+        margin-left: em(-20);
+    }
+}
+
+@include breakpoint(1100) {
+
+}

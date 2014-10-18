@@ -34,6 +34,10 @@
     clip: rect(0 0 0 0);
 }
 
+%composited-layer {
+    backface-visibility: hidden;
+}
+
 %container {
     @extend %clearfix;
     @include outer-container;

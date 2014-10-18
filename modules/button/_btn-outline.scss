@@ -1,0 +1,66 @@
+/**
+ * Buttons
+ */
+
+.btn-outline {
+    @extend %txt-type--6;
+    @extend %composited-layer;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: em(20) em(30);
+    overflow: hidden;
+    text-transform: uppercase;
+    border: 2px solid color(1);
+    transition: transform 0.2s ease;
+
+    &:link,
+    &:active,
+    &:hover,
+    &:visited {
+        color: color(1);
+        text-decoration: none;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 120%;
+        height: 150%;
+        border: 4px solid color(1);
+        backface-visibility: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    &:before {
+        top: 0;
+        left: 0;
+        transform: translate(-4px, -4px);
+    }
+
+    &:after {
+        bottom: 0;
+        right: 0;
+        transform: translate(4px, 4px);
+    }
+
+    &:hover,
+    &:focus {
+        &:before,
+        &:after {
+            transform: translate(0, 0);
+        }
+    }
+
+    &:active {
+        &:before {
+            transform: translate(-2px, -2px);
+        }
+
+        &:after {
+            transform: translate(2px, 2px);
+        }
+    }
+}
