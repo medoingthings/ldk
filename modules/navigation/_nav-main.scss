@@ -1,0 +1,41 @@
+/**
+ * Main navigation in the header
+ */
+
+.nav-main-w {
+    position: absolute;
+    top: em(50);
+    left: em(50)
+}
+
+.nav-main-l {
+    @extend %unstyle-list;
+}
+
+.nav-main-i {
+    @extend %unstyle-list-item;
+
+    display: block;
+}
+
+.nav-main-i {
+    float: left;
+}
+
+.nav-main-a {
+    @extend %txt-type--7;
+    display: block;
+    padding: em(18, size(7)) em(32, size(7));
+    text-decoration: none;
+    text-transform: uppercase;
+    color: color(1);
+    background-color: color(2);
+}
+
+/**
+ * Level 2
+ */
+
+.nav-main--l2-l {
+    display: none;
+}
