@@ -3,9 +3,7 @@
  */
 
 .lyt-footer-w {
-    @extend %clearfix;
     @extend %container;
-    display: table;
     background-color: color(1);
     padding: em(50);
 }
