@@ -11,6 +11,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+h3 {
+    margin: 0;
+}
+
 p {
     margin-bottom: em(20); // Implement baseline grid
 }

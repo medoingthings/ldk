@@ -1,0 +1,31 @@
+/**
+ * Quicklink section
+ */
+
+.lyt-quicklinks-w {
+    @extend %container;
+    margin-bottom: em(20);
+    padding: em(60) em(50);
+    background-color: color(2);
+}
+
+.lyt-quicklinks-c {
+    @include span-columns(2.5);
+}
+
+.lyt-quicklinks-h {
+    @extend %txt-type--6;
+    margin-bottom: em(20, size(6));
+    text-transform: uppercase;
+    color: color(1);
+}
+
+.lyt-quicklinks-l {
+    @extend %unstyle-list;
+}
+
+.lyt-quicklinks-a {
+    @extend %txt-type--7;
+    text-decoration: none;
+    color: color(1);
+}
