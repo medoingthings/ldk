@@ -3,34 +3,140 @@
  */
 .lyt-head-w {
     @extend %container;
+    position: relative;
+    height: em(50);
     background: color(1);
 }
 
 .lyt-head--home-f {
-    width: em(50);
     height: em(50);
     margin: 0;
-    float: left;
-    background: color(7, $colors-scheme);
+
+    &._logo-left {
+        float: left;
+        width: em(50);
+        background: color(7, $colors-scheme);
+    }
+
+    &._logo-right {
+        float: right;
+
+        img {
+            width: auto;
+            height: 100%;
+        }
+    }
 }
 
-.lyt-head--home-h {
+.lyt-head--home-a {
+    @extend %clearfix;
     display: inline-block;
     float: left;
-    margin-left: em(20);
-    color: color(2);
+}
 
-    ._h3, ._h2 {
-        display: block;
+/**
+ * Logo
+ */
+
+/**
+ * Positions dots on a grid
+ *
+ * @param {integer} $top Vertical postition on the grid
+ * @param {integer} $left Horizontal position on the grid
+ */
+@mixin lyt-head--logo-grid ($top, $left) {
+    $margin-top: 7;
+    $margin-left: 9;
+    $gutter: 1;
+    $width: 4;
+    $height: 4;
+    $position-top: em($top * $width + $top * $gutter + $margin-top);
+    $position-left: em($left * $width + $left * $gutter + $margin-left);
+
+    transform: translateX($position-left) translateY($position-top);
+}
+
+/**
+ * Generates a shape by positioning small dots on a grid
+ *
+ * @param {list} $shape [(top, left), (top, left), ...]
+ */
+@mixin lyt-head--logo-generator ($shape) {
+    $index: 1;
+
+    @each $coords in $shape {
+
+        &:nth-child(#{$index}) {
+            $top: nth($coords, 1);
+            $left: nth($coords, 2);
+
+            @include lyt-head--logo-grid($top, $left);
+        }
+
+        $index: $index + 1;
+    }
+}
+
+// LDK shape
+$lyt-head--logo-shape-ldk:
+    (0,0),
+    (1,0),
+    (2,0),
+    (2,1),
+    (2,2),
+    (0,4),
+    (1,4),
+    (2,4),
+    (0,5),
+    (2,5),
+    (1,6),
+    (2,6),
+    (4,0),
+    (5,0),
+    (6,0),
+    (5,1),
+    (4,2),
+    (6,2);
+
+// House shape
+$lyt-head--logo-shape-home:
+    (5,1),
+    (5,5),
+    (4,1),
+    (4,5),
+    (2,5),
+    (1,2),
+    (2,4),
+    (5,2),
+    (5,3),
+    (5,4),
+    (0,3),
+    (3,1),
+    (3,5),
+    (1,3),
+    (2,2),
+    (2,3),
+    (1,4),
+    (2,1);
+
+.lyt-head--logo-i {
+    display: block;
+    position: absolute;
+    width: em(4);
+    height: em(4);
+    border-radius: em(2);
+    background-color: color(1);
+    transition: transform 0.3s ease;
+    backface-visibility: hidden;
+
+    @include lyt-head--logo-generator($lyt-head--logo-shape-ldk);
+
+    .lyt-head--home-a:hover & {
+        @include lyt-head--logo-generator($lyt-head--logo-shape-home);
     }
 
-    ._h3 {
-        @extend %typ-type--1;
-    }
-
-    ._h2 {
-        @extend %typ-type--2;
-        line-height: 1.2;
-        text-transform: uppercase;
+    // IE doesn’t support css transforms
+    .lt-ie9 & {
+        display: none;
     }
 }
