@@ -1,0 +1,26 @@
+/**
+ * Typography
+ */
+.txt-ldk-h {
+    display: inline-block;
+    color: color(2);
+
+    .lyt-head-w & {
+        float: left;
+        margin: em(8) 0 0 em(32);
+    }
+
+    ._label, ._title {
+        display: block;
+    }
+
+    ._label {
+        @extend %txt-type--7;
+    }
+
+    ._title {
+        @extend %txt-type--6;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+}

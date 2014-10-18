@@ -33,12 +33,13 @@ $font-family-default: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-default: "Frutiger Light Condensed", Helvetica, Arial, sans-serif;
 
 $size-default:
-    70, // 1 | h1
-    50, // 2 | h2
-    30, // 3 | h3
-    24, // 4 | p
-    18, // 5 | ?
-    12; // 6 | ?
+    150, // 1 | ?
+    102, // 2 | ?
+    50,  // 3 | ?
+    24,  // 4 | ?
+    22,  // 5 | p
+    16,  // 6 | ?
+    14;  // 7 | ?
 
 // maps to $size-default keys
 $line-height-default:
@@ -47,7 +48,8 @@ $line-height-default:
     1.7, // 3
     1.7, // 4
     1,   // 5
-    1;   // 6
+    1,   // 6
+    1;   // 7
 
-$font-size-base: 4;  // nth from size-default <int>
-$em-base       : 18; // 18px
+$font-size-base: 5;  // nth from size-default <int>
+$em-base       : 22; // 22px
