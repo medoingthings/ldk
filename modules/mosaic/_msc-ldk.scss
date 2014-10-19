@@ -1,0 +1,95 @@
+/**
+ * Mosaic of all LDK courses
+ */
+
+.msc-ldk-w {
+    @extend %container;
+    margin-bottom: em(20);
+}
+
+.msc-ldk-l {
+    @extend %unstyle-list;
+    @include shift(1);
+}
+
+.msc-ldk-i {
+    @extend %unstyle-list-item;
+    @include span-columns(2);
+
+    &._k1 {
+        background-color: color(1, $colors-scheme);
+    }
+
+    &._k2 {
+        background-color: color(2, $colors-scheme);
+    }
+
+    &._m1 {
+        background-color: color(3, $colors-scheme);
+    }
+
+    &._m2 {
+        background-color: color(4, $colors-scheme);
+    }
+
+    &._g1 {
+        background-color: color(5, $colors-scheme);
+    }
+
+    &._g2 {
+        background-color: color(6, $colors-scheme);
+    }
+
+    &._l1 {
+        background-color: color(7, $colors-scheme);
+    }
+
+    &._l2 {
+        @include shift(2);
+        clear: both;
+        background-color: color(8, $colors-scheme);
+    }
+
+    &._p1 {
+        @include shift(4);
+        clear: both;
+        background-color: color(9, $colors-scheme);
+    }
+
+    &._p2 {
+        background-color: color(10, $colors-scheme);
+    }
+}
+
+.msc-ldk-a {
+    display: block;
+    height: em(200);
+    padding: em(10);
+
+    &:link,
+    &:visited {
+        color: color(1);
+        text-decoration: none;
+    }
+
+    span {
+        display: block;
+    }
+
+    ._id {
+        @extend %txt-type--2;
+        font-weight: bold;
+        line-height: 1;
+        margin-left: -0.07em;
+    }
+
+    ._title,
+    ._prof {
+        @extend %txt-type--6;
+        text-transform: uppercase;
+    }
+
+    ._title {
+        font-weight: bold;
+    }
+}
