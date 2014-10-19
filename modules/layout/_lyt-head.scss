@@ -14,7 +14,8 @@
     margin: 0;
 
     &._logo-left {
-        float: left;
+        position: absolute;
+        top: em(50);
         width: em(50);
         background: color(7, $colors-scheme);
     }
@@ -138,5 +139,16 @@ $lyt-head--logo-shape-home:
     // IE doesn’t support css transforms
     .lt-ie9 & {
         display: none;
+    }
+}
+
+@include breakpoint($BP_DESKTOP_MIN) {
+    .lyt-head--home-f._logo-left {
+        position: static;
+        float: left;
+    }
+
+    .lyt-head-w .txt-ldk-h {
+        margin-left: em(32);
     }
 }
