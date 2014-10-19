@@ -15,3 +15,7 @@ body {
 body {
     background-color: color(3);
 }
+
+.no-js picture img[srcset] {
+    display: none;
+}
