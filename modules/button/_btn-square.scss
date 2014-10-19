@@ -6,8 +6,8 @@
     @extend %txt-type--6;
     position: relative;
     display: inline-block;
-    min-height: em(30);
-    padding: em(4) 0 0 em(40);
+    min-height: em(40);
+    padding: em(8) 0 0 em(50);
 
     &:link,
     &:visited {
@@ -25,13 +25,13 @@
 
     &:before {
         content: '+';
-        width: em(30, 1.6em);
-        height: em(30, 1.6em);
+        width: em(40, 1.6em);
+        height: em(40, 1.6em);
         display: inline-block;
         vertical-align: middle;
         color: color(1);
         z-index: 1;
-        line-height: 0.65;
+        line-height: 0.9;
         font-size: 1.6em;
         text-align: center;
         font-weight: bold;
@@ -39,8 +39,8 @@
 
     &:after {
         content: '';
-        width: em(30);
-        height: em(30);
+        width: em(40);
+        height: em(40);
         background-color: color(2);
     }
 }

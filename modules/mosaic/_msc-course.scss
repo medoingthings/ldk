@@ -59,12 +59,14 @@
 
     ._date {
         @extend %txt-type--3;
+        margin-bottom: em(10, size(3));
         display: block;
         font-weight: bold;
     }
 
     ._subtitle {
         @extend %txt-type--6;
+        margin-bottom: em(10, size(6));
         display: block;
         text-transform: uppercase;
     }
@@ -73,7 +75,6 @@
         @extend %txt-type--6;
         font-weight: bold;
         text-transform: uppercase;
-
     }
 
     p {
@@ -82,8 +83,15 @@
 }
 
 .msc-course-c {
-    &._highlight h2 {
-        @extend %txt-type--3;
+    &._highlight {
+        h2 {
+            @extend %txt-type--3;
+            margin-bottom: em(10, size(3));
+        }
+
+        ._subtitle {
+            margin-bottom: 0;
+        }
     }
 }
 
