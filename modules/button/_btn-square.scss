@@ -1,0 +1,46 @@
+/**
+ * Button with a square holding an icon
+ */
+
+.btn-square {
+    @extend %txt-type--6;
+    position: relative;
+    display: inline-block;
+    min-height: em(30);
+    padding: em(4) 0 0 em(40);
+
+    &:link,
+    &:visited {
+        color: color(2);
+        text-decoration: none;
+    }
+
+    &:before,
+    &:after {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &:before {
+        content: '+';
+        width: em(30, 1.6em);
+        height: em(30, 1.6em);
+        display: inline-block;
+        vertical-align: middle;
+        color: color(1);
+        z-index: 1;
+        line-height: 0.65;
+        font-size: 1.6em;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    &:after {
+        content: '';
+        width: em(30);
+        height: em(30);
+        background-color: color(2);
+    }
+}

@@ -1,0 +1,124 @@
+/**
+ * Mosaic of courses
+ */
+
+.msc-course-w {
+    @extend %container;
+    margin-bottom: em(20);
+}
+
+.msc-course-c {
+    @include span-columns(3);
+    position: relative;
+    height: 0;
+    padding-top: 25%;
+    background-color: color(1);
+
+    &._wide {
+        @include span-columns(6);
+    }
+
+    &._shift {
+        @include shift(3);
+    }
+
+    &._image-left {
+        .msc-course-t {
+            left: 50%
+        }
+
+        .msc-course-p {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: auto;
+        }
+    }
+
+    &._leadership-2._highlight {
+        background-color: color(3, $colors-scheme);
+    }
+
+    &._leadership-2 {
+        background-color: lighten(color(3, $colors-scheme), 10%);
+    }
+}
+
+.msc-course-t {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: em(30) em(20);
+
+    .btn-square {
+        position: absolute;
+        bottom: em(20);
+    }
+
+    ._date {
+        @extend %txt-type--3;
+        display: block;
+        font-weight: bold;
+    }
+
+    ._subtitle {
+        @extend %txt-type--6;
+        display: block;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        @extend %txt-type--6;
+        font-weight: bold;
+        text-transform: uppercase;
+
+    }
+
+    p {
+        @extend %txt-type--6;
+    }
+}
+
+.msc-course-c {
+    &._highlight h2 {
+        @extend %txt-type--3;
+    }
+}
+
+
+
+@include breakpoint (false, 1050) {
+    .msc-course-c {
+        &._text {
+            width: 50%;
+        }
+
+        &._shift {
+            margin-left: 0;
+        }
+    }
+}
+
+@include breakpoint (791, 880) {
+    .msc-course-c {
+        width: 50%;
+    }
+}
+
+@include breakpoint (false, 790) {
+
+    // High specifity to overwrite double class styles
+    .msc-course-c.msc-course-c {
+        width: 100%;
+        height: auto;
+        padding-top: 0;
+        min-height: em(180);
+
+    }
+
+    .msc-course-t {
+        position: static;
+    }
+}

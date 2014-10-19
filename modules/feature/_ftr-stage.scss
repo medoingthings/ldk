@@ -5,6 +5,7 @@
 .ftr-stage-w {
     @extend %container;
     position: relative;
+    margin-bottom: em(20);
     z-index: 0;
 }
 
