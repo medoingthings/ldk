@@ -9,7 +9,7 @@
 
 # THANKS
 
-    <name>
+    Pixel & Tonic for providing an education license for the wonderful Craft CMS
 
 # TECHNOLOGY COLOPHON
 
