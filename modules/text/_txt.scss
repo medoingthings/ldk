@@ -20,3 +20,16 @@ h3 {
 p {
     margin-bottom: em(20); // Implement baseline grid
 }
+
+@include breakpoint ($BP_DESKTOP_MIN, $BP_WIDESCREEN_MIN) {
+    body {
+        font-size: 1.25em;
+    }
+}
+
+
+@include breakpoint (false, $BP_TABLET_MAX) {
+    body {
+        font-size: 1.125em;
+    }
+}
