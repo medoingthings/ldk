@@ -7,10 +7,14 @@ module.exports = {
         cascade: false
     },
     css: {
-        dest: './www/css'
+        dest: './www/dist/css'
     },
     js: {
-        dest: 'www/js',
+        dest: 'www/dist/js'
+    },
+    templates: {
+        src: 'templates/**/*.html',
+        dest: 'www/craft/templates'
     },
     modernizr: {
         settings: {

@@ -27,8 +27,13 @@ gulp.task('modernizr', function() {
     .pipe(gulp.dest(gulpconfig.js.dest))
 });
 
+gulp.task('templates', function() {
+  gulp.src(gulpconfig.templates.src)
+    .pipe(gulp.dest(gulpconfig.templates.dest))
+});
+
 gulp.task('watch', function() {
     livereload.listen();
-    gulp.watch(gulpconfig.sass.modules, ['sass'])
+    gulp.watch([gulpconfig.sass.modules, gulpconfig.templates.src], ['sass', 'templates'])
         .on('change', livereload.changed);
 });
