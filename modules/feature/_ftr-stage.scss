@@ -20,6 +20,10 @@
 .ftr-stage-c {
     padding: em(50) 0;
     background-color: color(1);
+
+    &._text-short .ftr-stage-t {
+        width: 60%;
+    }
 }
 
 .ftr-stage-t {
@@ -28,6 +32,12 @@
 
     h1 {
         @extend %txt-type--3;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        @extend %txt-type--4;
+        margin-bottom: baselineMargin(size(4), lineHeight(4), 1);
         text-transform: uppercase;
     }
 
@@ -44,6 +54,10 @@
         height: 0;
         padding-top: 100% / 24 * 9;
 
+        &._aspect-3to1 {
+            padding-top: 100% / 3 * 1;
+        }
+
         picture {
             position: absolute;
             top: 0;
@@ -59,6 +73,7 @@
         height: 100%;
         background-color: transparent;
         padding-bottom: 0;
+        color: color(2);
 
         &:before {
             content: '';
@@ -67,43 +82,39 @@
             vertical-align: middle;
             margin-right: -0.25em;
         }
+
+        &._text-bright {
+            color: color(1);
+
+            p {
+                background-color: rgba(color(2), 0.75);
+            }
+
+            .btn-outline {
+                &:link,
+                &:visited {
+                    color: color(1);
+                }
+
+                &,
+                &:before,
+                &:after {
+                    border-color: color(1);
+                }
+            }
+        }
     }
 
     .ftr-stage-t {
         display: inline-block;
         vertical-align: middle;
-
-        h1 {
-            color: color(1);
-        }
-
-        p {
-            background-color: rgba(color(2), 0.75);
-            color: color(1);
-        }
     }
 }
 
-// Special case: the button has to be black on smaller devices
-@include breakpoint(false, 1099) {
-    .ftr-stage-c .btn-outline {
-        &:link,
-        &:visited {
-            color: color(2);
+@include breakpoint(false, 800) {
+    .ftr-stage-c._text-short {
+        .ftr-stage-t{
+            width: 90%;
         }
-
-        &,
-        &:before,
-        &:after {
-            border-color: color(2);
-        }
-    }
-}
-
-// IE8 doesn’t support media queries, so help him out here
-.lt-ie9 .ftr-stage-c {
-    .btn-outline {
-        color: color(2);
-        border-color: color(2);
     }
 }

@@ -2,6 +2,8 @@
  * Mosaic of all LDK courses
  */
 
+$msc-ldk--dimension: 200;
+
 .msc-ldk-w {
     @extend %container;
     margin-bottom: em(20);
@@ -9,12 +11,15 @@
 
 .msc-ldk-l {
     @extend %unstyle-list;
-    @include shift(1);
+    margin-left: em($msc-ldk--dimension / 2);
 }
 
 .msc-ldk-i {
     @extend %unstyle-list-item;
-    @include span-columns(2);
+    display: block;
+    float: left;
+    width: em($msc-ldk--dimension);
+    height: em($msc-ldk--dimension);
 
     &._k1 {
         background-color: color(1, $colors-scheme);
@@ -45,14 +50,14 @@
     }
 
     &._l2 {
-        @include shift(2);
         clear: both;
+        margin-left: em(1 * $msc-ldk--dimension);
         background-color: color(8, $colors-scheme);
     }
 
     &._p1 {
-        @include shift(4);
         clear: both;
+        margin-left: em(2 * $msc-ldk--dimension);
         background-color: color(9, $colors-scheme);
     }
 
@@ -63,8 +68,8 @@
 
 .msc-ldk-a {
     display: block;
-    height: em(200);
-    padding: em(10);
+    height: 100%;
+    padding: em(10) 0 em(10) em(14);
 
     &:link,
     &:visited {

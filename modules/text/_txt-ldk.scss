@@ -16,6 +16,7 @@
 
     ._label {
         @extend %txt-type--7;
+        margin-bottom: em(4, size(7));
     }
 
     ._title {
