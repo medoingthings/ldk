@@ -12,23 +12,23 @@
  */
 
 /**
- * baselineMargin($font-size, $line-height[, $offset])
+ * baselineMargin($font-index[, $offset, $split])
  * Returns a margin in em considering the baseline grid
  *
- * @param  {String} $font-size Font size in em
- * @param  {Number} $line-height
+ * @param  {String} $font-index Font index within $size-default and $line-height-default
  * @param  {Number} $offset Make n times more room, based on baseline grid
+ * @param  {Number} $split Percentage (0 to 1) of the result, to split between top and bottom value
  * @return {String} Margin in em, based on baseline grid
  */
 
-@function baselineMargin($font-size, $line-height, $offset: 0) {
+@function baselineMargin($font-index, $offset: 0, $split: 1) {
 
     // convertig em font size back to pixels for better calculating
-    $this-height: $font-size * $em-base;
+    $this-height: size($font-index) * $em-base;
     $this-height: stripUnit($this-height);
 
     // total height in px without unit
-    $this-height: $this-height * $line-height;
+    $this-height: $this-height * lineHeight($font-index);
 
     // calculate baseline height (see variables.scss for $em-base)
     $base-height: $em-base;
@@ -40,7 +40,7 @@
     $difference: abs($this-height - $base-height);
 
     // return in ems, add given offset
-    @return em($difference + $offset * $base-height, $font-size);
+    @return em($difference + $offset * $base-height, size($font-index)) * $split;
 }
 
 

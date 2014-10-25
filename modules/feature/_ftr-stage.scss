@@ -37,7 +37,7 @@
 
     h2 {
         @extend %txt-type--4;
-        margin-bottom: baselineMargin(size(4), lineHeight(4), 1);
+        margin-bottom: baselineMargin(4, 1);
         text-transform: uppercase;
     }
 
