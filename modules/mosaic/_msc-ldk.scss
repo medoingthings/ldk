@@ -7,6 +7,10 @@ $msc-ldk--dimension: 200;
 .msc-ldk-w {
     @extend %container;
     margin-bottom: em(20);
+
+    .lyt-label-h {
+        min-width: em($msc-ldk--dimension, size(7));
+    }
 }
 
 .msc-ldk-l {
