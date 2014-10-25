@@ -78,14 +78,13 @@
         }
     }
 
-    .ftr-stage-c {
+    .ftr-stage-p + .ftr-stage-c {
         position: absolute;
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: transparent;
         padding-bottom: 0;
-        color: color(2);
+        background-color: transparent;
 
         &:before {
             content: '';
@@ -94,6 +93,15 @@
             vertical-align: middle;
             margin-right: -0.25em;
         }
+
+        .ftr-stage-t {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    .ftr-stage-c {
+        color: color(2);
 
         &._text-bright {
             color: color(1);
@@ -118,9 +126,6 @@
     }
 
     .ftr-stage-t {
-        display: inline-block;
-        vertical-align: middle;
-
         > strong {
             background-color: rgba(color(2), 0.75);
         }
