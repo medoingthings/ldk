@@ -1,0 +1,18 @@
+/**
+ * Gallery opened within a rich text
+ */
+
+.rtf-gallery-w {
+    @extend %clearfix;
+    clear: both;
+    background-color: color(1);
+}
+
+.rtf-gallery-a {
+    @include span-columns(3);
+}
+
+.rtf-gallery-p {
+    display: block;
+    max-width: 100%;
+}

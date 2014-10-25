@@ -11,6 +11,11 @@ $msc-ldk--dimension: 200;
 
 .msc-ldk-l {
     @extend %unstyle-list;
+
+    // make this it’s own layer to prevent rendering side effects with composited layers
+    position: relative;
+    z-index: 1;
+
     margin-left: em($msc-ldk--dimension / 2);
 }
 
@@ -67,14 +72,25 @@ $msc-ldk--dimension: 200;
 }
 
 .msc-ldk-a {
+    @extend %composited-layer;
     display: block;
     height: 100%;
     padding: em(10) 0 em(10) em(14);
+    transition: transform 0.1s ease;
 
     &:link,
     &:visited {
         color: color(1);
         text-decoration: none;
+    }
+
+    &:focus,
+    &:hover {
+        transform: scale(0.95);
+    }
+
+    &:active {
+        transform: scale(0.9);
     }
 
     span {

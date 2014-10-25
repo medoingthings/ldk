@@ -1,0 +1,73 @@
+/**
+ * Tags for richtext documents
+ */
+
+.rtf-tags-w {
+    @extend %container;
+    margin-bottom: em(10);
+}
+
+.rtf-tags-l {
+    @extend %unstyle-list;
+    @extend %clearfix;
+    margin-left: em(110);
+}
+
+.rtf-tags-i {
+    @extend %unstyle-list-item;
+    display: inline-block;
+    float: left;
+    margin-bottom: em(10);
+}
+
+.rtf-tags-h {
+    font-weight: normal;
+    margin-left: em(40);
+    float: left;
+}
+
+.rtf-tags-h,
+.rtf-tags-a {
+    @extend %txt-type--7;
+    display: inline-block;
+    padding: em(10, size(7)) em(20, size(7));
+    margin-right: em(10, size(7));
+    text-transform: uppercase;
+}
+
+.rtf-tags-a {
+    position: relative;
+    display: block;
+    background-color: color(1);
+    overflow: hidden;
+    transition: transform 0.1s ease;
+
+    &:link,
+    &:visited {
+        color: color(2);
+        text-decoration: none;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &:focus:after,
+    &:hover:after {
+        transform-origin: -50% 0;
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: em(20, size(7));
+        height: em(20, size(7));
+        background-color: color(2);
+        transform: rotate(45deg);
+        transform-origin: -100% 0;
+        transition: transform-origin 0.2s ease-out;
+    }
+}

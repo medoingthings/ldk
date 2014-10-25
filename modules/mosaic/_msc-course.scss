@@ -43,6 +43,14 @@
     &._leadership-2 {
         background-color: lighten(color(3, $colors-scheme), 10%);
     }
+
+    &.gestaltung-2._highlight {
+        background-color: color(6, $colors-scheme);
+    }
+
+    &._gestaltung-2 {
+        background-color: lighten(color(6, $colors-scheme), 10%);
+    }
 }
 
 .msc-course-t {

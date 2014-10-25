@@ -1,0 +1,99 @@
+/**
+ * Rich Text
+ */
+
+.rtf-w {
+    @extend %container;
+    margin-bottom: em(20);
+    background-color: color(1);
+
+    &._g2 {
+        .rtf-badge-h {
+            background-color: color(6, $colors-scheme);
+        }
+
+        a:link {
+            color: color(6, $colors-scheme);
+        }
+
+        a:visited {
+            color: darken(color(6, $colors-scheme), 20%);
+        }
+
+        ._highlight {
+            background-color: color(6, $colors-scheme);
+        }
+    }
+
+    h3 {
+        @extend %txt-type--4;
+        text-transform: uppercase;
+    }
+
+    p {
+        @extend %txt-type--5;
+        margin-bottom: baselineMargin(5, 1);
+    }
+
+    ul {
+        @extend %unstyle-list;
+    }
+
+    li {
+        @extend %unstyle-list-item;
+        position: relative;
+        padding-left: em(12);
+
+        &:before {
+            content: '·';
+            position: absolute;
+            color: color(2);
+            left: 0;
+        }
+    }
+
+    a {
+        &:link,
+        &:visited {
+            text-decoration: none;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.rtf-c {
+    @extend %clearfix;
+    padding: em(100) em(145) em(80) em(145);
+    clear: both;
+
+    &._has-sidebar {
+        @include span-columns(9);
+    }
+
+    .rtf-badge-p + & {
+        padding-left: em(220);
+    }
+}
+
+.rtf-c--sidebar-w {
+    @include span-columns(3);
+    margin: em(100) 0 0;
+    padding-right: em(20);
+
+    dt {
+        @extend %txt-type--7;
+        text-transform: uppercase;
+        margin-top: baselineMargin(7, 0, 0.6);
+        margin-bottom: baselineMargin(7, 0, 0.4);
+    }
+
+    dd {
+        @extend %txt-type--5;
+        margin: 0;
+        padding-bottom: baselineMargin(5, 1);
+        color: color(4);
+    }
+}

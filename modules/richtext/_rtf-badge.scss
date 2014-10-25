@@ -1,0 +1,26 @@
+/**
+ * Badges that can be next to content
+ */
+
+%rtf-badge {
+    @extend %txt-type--3;
+    position: absolute;
+    top: em(100, size(3));
+    left: 0;
+    display: block;
+}
+
+.rtf-badge-h {
+    @extend %rtf-badge;
+    width: em(100, size(3));
+    height: em(100, size(3));
+    padding: em(6, size(3));
+    color: color(1);
+    background-color: color(3);
+}
+
+.rtf-badge-p {
+    @extend %rtf-badge;
+    width: em(200, size(3));
+    height: em(200, size(3));
+}

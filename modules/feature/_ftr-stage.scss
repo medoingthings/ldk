@@ -33,12 +33,23 @@
     h1 {
         @extend %txt-type--3;
         text-transform: uppercase;
+
+        &._xl {
+            @extend %txt-type--2;
+        }
     }
 
     h2 {
         @extend %txt-type--4;
         margin-bottom: baselineMargin(4, 1);
         text-transform: uppercase;
+    }
+
+    > strong {
+        @extend %txt-type--5;
+        padding: em(10, size(5));
+        text-transform: uppercase;
+        background-color: rgba(color(2), 0.75);
     }
 
     p {
