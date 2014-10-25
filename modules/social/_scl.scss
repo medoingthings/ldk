@@ -2,6 +2,10 @@
  * Social Media Links
  */
 
+.scl-w {
+    @extend %container;
+}
+
 .scl-a {
     @extend %composited-layer;
     position: relative;
