@@ -4,6 +4,7 @@
 
 .btn-square {
     @extend %txt-type--6;
+    @include icon(plus);
     position: relative;
     display: inline-block;
     min-height: em(40);
@@ -15,6 +16,18 @@
         text-decoration: none;
     }
 
+    &:focus,
+    &:hover {
+        &:before {
+            color: color(2);
+        }
+
+        &:after {
+            border: 4px solid color(2);
+            background-color: transparent;
+        }
+    }
+
     &:before,
     &:after {
         display: block;
@@ -24,15 +37,12 @@
     }
 
     &:before {
-        content: '+';
-        width: em(40, 1.6em);
-        height: em(40, 1.6em);
-        display: inline-block;
-        vertical-align: middle;
+        display: block;
+        font-size: 1.5em;
+        top: em(8, size(4));
+        left: em(7, size(4));
         color: color(1);
         z-index: 1;
-        line-height: 0.9;
-        font-size: 1.6em;
         text-align: center;
         font-weight: bold;
     }
