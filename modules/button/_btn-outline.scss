@@ -15,6 +15,20 @@
     border: 2px solid color(2);
     transition: transform 0.2s ease;
 
+    &._call-to-action {
+        background-color: color(2);
+
+        &:link,
+        &:visited {
+            color: color(1);
+        }
+
+        &:before,
+        &:after {
+            border-color: color(1);
+        }
+    }
+
     &:link,
     &:visited {
         color: color(2);
