@@ -2,13 +2,8 @@
  * Button with a square holding an icon
  */
 
-.btn-square {
-    @extend %txt-type--6;
-    @include icon(plus);
+%btn-square-icon {
     position: relative;
-    display: inline-block;
-    min-height: em(40);
-    padding: em(8) 0 0 em(50);
 
     &:link,
     &:visited {
@@ -32,15 +27,12 @@
     &:after {
         display: block;
         position: absolute;
-        top: 0;
-        left: 0;
     }
 
     &:before {
         display: block;
         font-size: 1.5em;
         top: em(8, size(4));
-        left: em(7, size(4));
         color: color(1);
         z-index: 1;
         text-align: center;
@@ -48,9 +40,44 @@
     }
 
     &:after {
+        top: 0;
         content: '';
         width: em(40);
         height: em(40);
         background-color: color(2);
     }
+}
+
+%btn-square-left {
+    padding-left: em(50);
+
+    &:before {
+        left: em(7, size(4));
+    }
+
+    &:after {
+        left: 0;
+    }
+}
+
+%btn-square-right {
+    padding-right: em(50);
+
+    &:before {
+        right: em(7, size(4));
+    }
+
+    &:after {
+        right: 0;
+    }
+}
+
+.btn-square {
+    @extend %txt-type--6;
+    @extend %btn-square-icon;
+    @extend %btn-square-left;
+    @include icon(plus);
+    display: inline-block;
+    min-height: em(40);
+    padding-top: em(8);
 }

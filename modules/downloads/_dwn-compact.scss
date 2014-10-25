@@ -1,0 +1,35 @@
+/**
+ * Downloads in the content area
+ */
+.dwn-compact-l {
+    @extend %unstyle-list;
+}
+
+.dwn-compact-i {
+    @extend %unstyle-list-item;
+    border-top: 1px solid color(4);
+
+    &:first-child {
+        border-top: 0;
+    }
+}
+
+.dwn-compact-a {
+    @include icon(download);
+    @extend %btn-square-icon;
+    @extend %btn-square-right;
+    display: block;
+    margin-top: em(14);
+    margin-bottom: em(14);
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &:after,
+    &:before {
+        font-size: 0.9em;
+    }
+
+    &:before {
+        right: 0.35em;
+    }
+}
