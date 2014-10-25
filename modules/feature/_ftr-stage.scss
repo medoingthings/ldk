@@ -32,6 +32,7 @@
 
     h1 {
         @extend %txt-type--3;
+        margin-bottom: baselineMargin(3);
         text-transform: uppercase;
 
         &._xl {
@@ -49,12 +50,12 @@
         @extend %txt-type--5;
         padding: em(10, size(5));
         text-transform: uppercase;
-        background-color: rgba(color(2), 0.75);
     }
 
     p {
         width: 50%;
         padding: em(10) em(20);
+        margin-bottom: em(20);
         margin-left: em(-20);
     }
 }
@@ -119,6 +120,10 @@
     .ftr-stage-t {
         display: inline-block;
         vertical-align: middle;
+
+        > strong {
+            background-color: rgba(color(2), 0.75);
+        }
     }
 }
 
