@@ -4,6 +4,7 @@
 
 .nav-main-w {
     position: absolute;
+    z-index: 1;
     top: em(50);
     left: em(50)
 }
@@ -14,28 +15,92 @@
 
 .nav-main-i {
     @extend %unstyle-list-item;
-
     display: block;
-}
-
-.nav-main-i {
     float: left;
 }
 
-.nav-main-a {
+%nav-main-a {
     @extend %txt-type--7;
+    position: relative;
     display: block;
     padding: em(18, size(7)) em(32, size(7));
-    text-decoration: none;
+    font-weight: bold;
     text-transform: uppercase;
-    color: color(1);
+    overflow: hidden;
+
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+.nav-main-a {
+    @extend %nav-main-a;
     background-color: color(2);
+
+    &:link,
+    &:visited {
+        color: color(1);
+    }
+
+    &:hover,
+    &:focus {
+        background-color: color(1);
+        color: color(2);
+    }
+}
+
+/**
+ * Hover state Level 1
+ */
+
+.nav-main-i {
+    &:hover {
+        .nav-main-a {
+            background-color: color(1);
+            color: color(2);
+        }
+
+        .nav-main--l2-l {
+            @extend %nav-main--l2--show;
+        }
+    }
 }
 
 /**
  * Level 2
  */
 
+%nav-main--l2--hide {
+    z-index: -1;
+    visibility: hidden;
+}
+
+%nav-main--l2--show {
+    z-index: 1;
+    visibility: visible;
+}
+
 .nav-main--l2-l {
-    display: none;
+    @extend %nav-main--l2--hide;
+    @extend %unstyle-list;
+    position: absolute;
+    background-color: color(1);
+}
+
+.nav-main--l2-i {
+    @extend %unstyle-list-item;
+}
+
+.nav-main--l2-a {
+    @extend %nav-main-a;
+
+    &:link,
+    &:visited {
+        color: color(2);
+    }
+
+    &:hover {
+        background-color: color(3);
+    }
 }
