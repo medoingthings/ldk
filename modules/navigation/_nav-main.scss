@@ -43,6 +43,7 @@
         color: color(1);
     }
 
+    .nav-main-i._is-active &,
     &:hover,
     &:focus {
         background-color: color(1);
@@ -100,6 +101,7 @@
         color: color(2);
     }
 
+    .nav-main--l2-i._is-active &,
     &:hover {
         background-color: color(3);
     }
