@@ -91,6 +91,15 @@
 
 .nav-main--l2-i {
     @extend %unstyle-list-item;
+    @extend %clearfix;
+
+    &._has-login {
+        padding: em(20);
+
+        button {
+            float: right;
+        }
+    }
 }
 
 .nav-main--l2-a {

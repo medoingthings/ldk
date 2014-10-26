@@ -1,0 +1,13 @@
+/**
+ * Form styles
+ */
+
+.frm-c {
+    input {
+        padding: em(10);
+        border: 2px solid color(2);
+        margin-bottom: em(10);
+        border-radius: 0;
+        -webkit-appearance: none;
+    }
+}
