@@ -3,14 +3,14 @@
  */
 
 .rtf-tags-w {
-    @extend %container;
-    margin-bottom: em(10);
+    @extend %clearfix;
 }
 
 .rtf-tags-l {
     @extend %unstyle-list;
     @extend %clearfix;
-    margin-left: em(110);
+    margin-left: em(80);
+    margin-bottom: em(10);
 }
 
 .rtf-tags-i {
@@ -20,12 +20,6 @@
     margin-bottom: em(10);
 }
 
-.rtf-tags-h {
-    font-weight: normal;
-    margin-left: em(40);
-    float: left;
-}
-
 .rtf-tags-h,
 .rtf-tags-a {
     @extend %txt-type--7;
@@ -33,6 +27,12 @@
     padding: em(10, size(7)) em(20, size(7));
     margin-right: em(10, size(7));
     text-transform: uppercase;
+}
+
+.rtf-tags-h {
+    float: left;
+    padding-left: 0;
+    font-weight: normal;
 }
 
 .rtf-tags-a {

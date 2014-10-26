@@ -2,10 +2,6 @@
  * Social Media Links
  */
 
-.scl-w {
-    @extend %container;
-}
-
 .scl-a {
     @extend %composited-layer;
     position: relative;
@@ -28,16 +24,20 @@
         opacity: 1;
     }
 
+    &:before {
+        font-size: 2.8em;
+    }
+
     &.facebook {
-        @include icon(facebook, 2em);
+        @include icon(facebook);
     }
 
     &.twitter {
-        @include icon(twitter, 2em);
+        @include icon(twitter);
     }
 
     &.linkedin {
-        @include icon(linkedin, 2em);
+        @include icon(linkedin);
     }
 
     span {

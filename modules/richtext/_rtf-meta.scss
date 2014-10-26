@@ -1,0 +1,19 @@
+/**
+ * Meta section for richtext pages
+ */
+
+.rtf-meta-w {
+    @extend %container;
+    padding: em(16) em(40);
+
+    .scl-w {
+        display: inline-block;
+        float: right;
+    }
+
+    .rtf-tags-w {
+        display: inline-block;
+        float: left;
+    }
+}
+
