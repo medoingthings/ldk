@@ -7,10 +7,10 @@ module.exports = {
         cascade: false
     },
     css: {
-        dest: './www/dist/css'
+        dest: './www/public/dist/css'
     },
     js: {
-        dest: 'www/dist/js'
+        dest: 'www/public/dist/js'
     },
     templates: {
         src: 'templates/**/*.html',
