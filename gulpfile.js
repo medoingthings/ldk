@@ -10,16 +10,20 @@ var modernizr = require('gulp-modernizr');
 var sass = require('gulp-sass')
 
 /**
- * Gulp Tasks
+ * Gulp Build Tasks
  */
+
 gulp.task('default', ['sass']);
 gulp.task('build', ['sass', 'templates', 'assets']);
 
-gulp.task('sass', function () {
-    gulp.src(gulpconfig.sass.modules)
-        .pipe(sass({errLogToConsole: true}))
-        .pipe(autoprefixer(gulpconfig.autoprefixer))
-        .pipe(gulp.dest(gulpconfig.css.dest));
+/**
+ * Gulp Tasks
+ * @return {[type]} [description]
+ */
+
+gulp.task('assets', function() {
+  gulp.src(gulpconfig.assets.src)
+    .pipe(gulp.dest(gulpconfig.assets.dest))
 });
 
 gulp.task('js', function() {
@@ -33,14 +37,16 @@ gulp.task('modernizr', function() {
     .pipe(gulp.dest(gulpconfig.js.dest))
 });
 
+gulp.task('sass', function () {
+    gulp.src(gulpconfig.sass.modules)
+        .pipe(sass({errLogToConsole: true}))
+        .pipe(autoprefixer(gulpconfig.autoprefixer))
+        .pipe(gulp.dest(gulpconfig.css.dest));
+});
+
 gulp.task('templates', function() {
   gulp.src(gulpconfig.templates.src)
     .pipe(gulp.dest(gulpconfig.templates.dest))
-});
-
-gulp.task('assets', function() {
-  gulp.src(gulpconfig.assets.src)
-    .pipe(gulp.dest(gulpconfig.assets.dest))
 });
 
 gulp.task('watch', function() {
