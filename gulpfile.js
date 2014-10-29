@@ -13,6 +13,7 @@ var sass = require('gulp-sass')
  * Gulp Tasks
  */
 gulp.task('default', ['sass']);
+gulp.task('build', ['sass', 'templates']);
 
 gulp.task('sass', function () {
     gulp.src(gulpconfig.sass.modules)
