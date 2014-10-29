@@ -13,7 +13,7 @@ var sass = require('gulp-sass')
  * Gulp Tasks
  */
 gulp.task('default', ['sass']);
-gulp.task('build', ['sass', 'templates']);
+gulp.task('build', ['sass', 'templates', 'assets']);
 
 gulp.task('sass', function () {
     gulp.src(gulpconfig.sass.modules)
@@ -31,6 +31,11 @@ gulp.task('modernizr', function() {
 gulp.task('templates', function() {
   gulp.src(gulpconfig.templates.src)
     .pipe(gulp.dest(gulpconfig.templates.dest))
+});
+
+gulp.task('assets', function() {
+  gulp.src(gulpconfig.assets.src)
+    .pipe(gulp.dest(gulpconfig.assets.dest))
 });
 
 gulp.task('watch', function() {

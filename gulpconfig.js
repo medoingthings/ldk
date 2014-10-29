@@ -6,6 +6,10 @@ module.exports = {
         browsers: ['last 2 versions'],
         cascade: false
     },
+    assets: {
+        src: 'assets/**/*.*',
+        dest: './www/public/assets'
+    },
     css: {
         dest: './www/public/dist/css'
     },
