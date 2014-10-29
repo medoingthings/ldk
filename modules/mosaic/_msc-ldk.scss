@@ -120,11 +120,13 @@ $msc-ldk--dimension: 200;
 }
 
 @include breakpoint (1100) {
-    &._horizontal {
-        .msc-ldk-i {
-            &:nth-child(6) {
-                clear: both;
-                margin-left: em(2 * $msc-ldk--dimension);
+    .msc-ldk-l {
+        &._horizontal {
+            .msc-ldk-i {
+                &:nth-child(6) {
+                    clear: both;
+                    margin-left: em(2 * $msc-ldk--dimension);
+                }
             }
         }
     }
