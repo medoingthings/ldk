@@ -14,6 +14,7 @@ module.exports = {
         dest: './www/public/dist/css'
     },
     js: {
+        src: ['bower_components/picturefill/dist/picturefill.min.js'],
         dest: 'www/public/dist/js'
     },
     templates: {

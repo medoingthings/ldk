@@ -22,6 +22,11 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(gulpconfig.css.dest));
 });
 
+gulp.task('js', function() {
+  gulp.src(gulpconfig.js.src)
+    .pipe(gulp.dest(gulpconfig.js.dest))
+});
+
 gulp.task('modernizr', function() {
   gulp.src(gulpconfig.sass.modules)
     .pipe(modernizr(gulpconfig.modernizr.settings))
