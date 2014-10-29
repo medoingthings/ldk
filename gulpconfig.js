@@ -10,6 +10,9 @@ module.exports = {
         browsers: ['last 2 versions'],
         cascade: false
     },
+    clean: {
+        src: ['www/public/dist/**', 'www/public/assets/**']
+    },
     css: {
         dest: './www/public/dist/css'
     },

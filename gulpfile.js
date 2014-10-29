@@ -5,16 +5,17 @@ var gulpconfig = require('./gulpconfig')
  * Modules
  */
 var autoprefixer = require('gulp-autoprefixer');
-var livereload = require('gulp-livereload');
-var modernizr = require('gulp-modernizr');
-var sass = require('gulp-sass')
+var del          = require('del');
+var livereload   = require('gulp-livereload');
+var modernizr    = require('gulp-modernizr');
+var sass         = require('gulp-sass')
 
 /**
  * Gulp Build Tasks
  */
 
 gulp.task('default', ['sass']);
-gulp.task('build', ['sass', 'templates', 'assets']);
+gulp.task('build', ['modernizr', 'sass', 'assets', 'js', 'templates']);
 
 /**
  * Gulp Tasks
@@ -24,6 +25,10 @@ gulp.task('build', ['sass', 'templates', 'assets']);
 gulp.task('assets', function() {
   gulp.src(gulpconfig.assets.src)
     .pipe(gulp.dest(gulpconfig.assets.dest))
+});
+
+gulp.task('clean', function (callback) {
+  del(gulpconfig.clean.src, callback);
 });
 
 gulp.task('js', function() {
