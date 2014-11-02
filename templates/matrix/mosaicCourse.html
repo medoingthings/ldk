@@ -1,0 +1,72 @@
+<section class="msc-course-w lyt-label-w">
+    <b class="lyt-label-h">Aktuell</b>
+
+    {% for block in entry.mosaicCourse.type('date') %}
+
+        {% set dateModel  = block.entryDate.first() %}
+        {% set dateStart  = dateModel.timeFrameStart|date("M d") %}
+        {% set dateEnd    = dateModel.timeFrameStop|date("M d")|default('') %}
+        {% set dateEnd    = dateEnd != dateEnd ? ' – ' ~ dateEnd : null %}
+        {% set courseId   = dateModel.courseCategory.first().slug %}
+        {% set image      = dateModel.image.first() %}
+        {% set buttonText = block.buttonText|default(defaultStringButtonDate.label) %}
+
+        <div class="msc-course-c{{ block.highlight == '1' ? ' _' ~ courseId }}{{ image ? ' _image-left' }}{{ image and block.style != 'wide' ? ' _wide' }}{{ block.style != '0' ? ' _' ~ block.style }}">
+
+            {% if image %}
+                <div class="msc-course-p">
+                    {% include 'utilities/picturefill' with {
+                        imageModel: image,
+                        imageSet: [
+                            ['mosaicCourseL', '500px', '1.5x'],
+                            ['mosaicCourseM'],
+                            ['mosaicCourseM', 'noscript']
+                        ]
+                    } %}
+                </div>
+            {% endif %}
+
+
+            <div class="msc-course-t">
+                <span class="_date">
+                    {{ dateStart }}
+                    {{ dateEnd ? dateEnd }}
+
+                </span>
+                <span class="_subtitle">
+                    {{ dateModel.subtitle }}
+                </span>
+                <h2>{{ dateModel.title }}</h2>
+                <a href="{{ dateModel.url }}" class="btn-square">{{ buttonText }}</a>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for block in entry.mosaicCourse.type('text') %}
+        {% set entryModel = block.entryTeaser.first() %}
+        {% set entryId    = entryModel.courseCategory.first().id|default() %}
+        {% set image      = entryModel.image.first() %}
+        {% set buttonText = block.buttonText|default(defaultStringButton.label) %}
+
+        <div class="msc-course-c _text{{ block.highlight == '1' ? ' _' ~ entryId }}{{ image ? ' _image-left' }}{{ image and block.style != 'wide' ? ' _wide' }}{{ block.style != '0' ? ' _' ~ block.style }}">
+            <div class="msc-course-t">
+                <h2>Schnuppertage für Interessierte</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, debitis dolorum consequuntur ad hic, earum nihil sint est, tempora aliquam voluptate atque sequi maxime, distinctio!
+                </p>
+                <a href="{{ entryModel.url }}" class="btn-square">{{ buttonText }}</a>
+            </div>
+        </div>
+    {% endfor %}
+
+{#     <div class="msc-course-c _leadership-2 _highlight _wide _shift">
+        <div class="msc-course-t">
+            <span class="_subtitle">Laufendes Modul</span>
+            <h2>Leadership I</h2>
+            <span class="_subtitle">17.01. - 20.09.</span>
+            <a href="#" class="btn-square">Leadership I Modulbeschreibung</a>
+        </div>
+    </div>
+#}
+</section>
+

@@ -1,0 +1,35 @@
+
+<picture>
+
+    {% set noscriptImageUrl = '' %}
+    {% set defaultImageUrl  = '' %}
+    {% set altText          = imageModel.altText ? imageModel.altText : imageModel.title %}
+
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+
+    {% for item in imageSet %}
+        {% set imageUrl = imageModel.getUrl(attribute(item, 0)) %}
+        {% set view     = attribute(item, 1)|default(null) %}
+        {% set retina   = attribute(item, 2)|default(null) %}
+
+        {% if view == 'noscript' %}
+            {% set noscriptImageUrl = imageUrl %}
+        {% elseif imageUrl and view %}
+            <source srcset="{{ imageUrl }}{{ retina ? ' ' ~ retina }}" media="(min-width: {{ view }}">
+        {% else %}
+            {% set defaultImageUrl = imageUrl %}
+        {% endif %}
+    {% endfor %}
+
+    <!--[if IE 9]></video><![endif]-->
+
+    {% if defaultImageUrl != '' %}
+        <img srcset="{{ noscriptImageUrl }}" alt="{{ altText }}">
+    {% endif %}
+
+    {% if noscriptImageUrl != '' %}
+    <noscript>
+        <img src="{{ defaultImageUrl }}" alt="{{ altText }}">
+    </noscript>
+    {% endif %}
+</picture>

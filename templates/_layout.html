@@ -1,0 +1,96 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de_de"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+        <link rel="home" href="{{ siteUrl }}" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/dist/css/main.css">
+        <script src="/dist/js/modernizr.js"></script>
+        <script src="/dist/js/picturefill.min.js"></script>
+
+        <link rel="shortcut icon" href="../../assets/images/favicon.ico"/>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <section class="lyt-ldk-w">
+
+        {% include 'header' %}
+
+        <article class="lyt-ldk-c">
+            {% block content %}
+                This shouldn’t be visible
+            {% endblock %}
+        </article>
+
+        <section class="lyt-quicklinks-w">
+
+            <div class="lyt-quicklinks-c">
+                <h3 class="lyt-quicklinks-h">Studiengang</h3>
+                <ul class="lyt-quicklinks-l">
+                    <li><a href="#" class="lyt-quicklinks-a">LDK-Story</a></li>
+                    <li><a href="#" class="lyt-quicklinks-a">Inhalte</a></li>
+                    <li><a href="#" class="lyt-quicklinks-a">Lehrende</a></li>
+                    <li><a href="#" class="lyt-quicklinks-a">Termine</a></li>
+                </ul>
+            </div>
+
+            <div class="lyt-quicklinks-c">
+                <h3 class="lyt-quicklinks-h">Bewerbung</h3>
+                <ul class="lyt-quicklinks-l">
+                    <li><a href="#" class="lyt-quicklinks-a">Verfahren</a></li>
+                    <li><a href="#" class="lyt-quicklinks-a">Kosten</a></li>
+                    <li><a href="#" class="lyt-quicklinks-a">Ansprechpartner</a></li>
+                    <li><a href="#" class="lyt-quicklinks-a">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="lyt-quicklinks-c">
+                <h3 class="lyt-quicklinks-h">Über uns</h3>
+                <ul class="lyt-quicklinks-l">
+                    <li><a href="#" class="lyt-quicklinks-a">Ansprechpartner</a></li>
+                    <li><a href="#" class="lyt-quicklinks-a">Orte</a></li>
+                    <li><a href="#" class="lyt-quicklinks-a">News</a></li>
+                    <li><a href="#" class="lyt-quicklinks-a">Satzung</a></li>
+                </ul>
+            </div>
+
+        </section>
+
+        <footer class="lyt-footer-w">
+            <span class="lyt-footer-i txt-ldk-h">
+                <span class="_label">Masterstudiengang</span>
+                <strong class="_title">Leadership in digitaler Kommunikation</strong>
+            </span>
+            <a href="http://www.ziw.udk-berlin.de/" class="lyt-footer-i">
+                <img src="../assets/images/layout/udk-berlin-career-college-logo.png" width="200" height="50" alt="Berlin Career College">
+            </a>
+            <a href="http://www.unisg.ch/" class="lyt-footer-i">
+                <img src="../assets/images/layout/universitaet-st-gallen-logo.svg" width="204" height="50" alt="Universität St. Gallen">
+            </a>
+        </footer>
+
+    </section>
+
+</body>
+</html>
