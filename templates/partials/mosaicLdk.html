@@ -1,0 +1,21 @@
+{% if entry.mosaicLdk %}
+
+    <section class="msc-ldk-w">
+        <ul class="msc-ldk-l _center">
+            {% for item in entry.mosaicLdk if entry.mosaicLdk|length  %}
+                {% set entryModel = item.courseEntry.first() %}
+                {% set prof       = entryModel.courseMaster.first() %}
+
+                <li class="msc-ldk-i _{{ item.slug }}"><a href="#" class="msc-ldk-a">
+                    <span class="_id">{{ item.courseShortname }}</span>
+                    <span class="_title">{{ item }}</span>
+
+                    {% if prof %}
+                        <span class="_prof">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.lastName }}</span>
+                    {% endif %}
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+{% endif %}
