@@ -1,79 +1,101 @@
 <section class="msc-course-w lyt-label-w">
     <b class="lyt-label-h">Aktuell</b>
 
-    {% for block in entry.mosaicCourse.type('course') %}
-        {% set courseCollection = craft.entries.descendantOf(27).type('modulePage').order('courseStartDate') %}
+    {% for block in entry.mosaicCourse %}
 
-        {# Select the course that is happening right now #}
-        {% for course in courseCollection if (course.courseStartDate < now and course.courseEndDate > now) %}
-            <div class="msc-course-c _{{ course.slug }} _highlight _wide">
-                <div class="msc-course-t">
-                    <span class="_subtitle">{{ defaultStringCurrentCourse.label}}</span>
-                    <h2><a href="{{ course.url }}">{{ course.title }}</a></h2>
-                    <span class="_subtitle">{{ course.courseStartDate|date('d.M') }} – {{ course.courseEndDate|date('d.M') }}</span>
-                    <a href="{{ course.url }}" class="btn-square">{{ course.title }} Modulbeschreibung</a>
-                </div>
-            </div>
+        {% set styleClasses = '' %}
+        {% set entryModel   = '' %}
+        {% set image        = '' %}
 
+        {% if block.type != 'course' %}
+            {% set entryModel = block.entry.first() %}
+            {% set image      = entryModel.image.first() %}
+        {% endif %}
+
+        {% for style in block.style %}
+            {% set styleClasses = styleClasses ~ ' _' ~ style %}
         {% endfor %}
 
-    {% endfor %}
+        {% if image != '' %}
+            {% set styleClasses = styleClasses ~ ' _image-left _wide' %}
+        {% endif %}
 
-    {% for block in entry.mosaicCourse.type('date') if block.entryDate.first() %}
+        {% if block.type == 'course' %}
 
-        {% set dateModel  = block.entryDate.first() %}
-        {% set dateStart  = dateModel.timeFrameStart|date("M d") %}
-        {% set dateEnd    = dateModel.timeFrameStop|date("M d")|default('') %}
-        {% set dateEnd    = dateEnd != dateEnd ? ' – ' ~ dateEnd : null %}
-        {% set courseId   = dateModel.courseCategory.first().slug %}
-        {% set image      = dateModel.image.first() %}
-        {% set buttonText = block.buttonText|default(defaultStringButtonDate.label) %}
+            {% set courseCollection = craft.entries.descendantOf(27).type('modulePage').order('courseStartDate') %}
 
-        <div class="msc-course-c{{ block.highlight == '1' ? ' _' ~ courseId }}{{ image ? ' _image-left' }}{{ image and block.style != 'wide' ? ' _wide' }}{{ block.style != '0' ? ' _' ~ block.style }}">
-
-            {% if image %}
-                <div class="msc-course-p">
-                    {% include 'utilities/picturefill' with {
-                        imageModel: image,
-                        imageSet: [
-                            ['mosaicCourseL', '500px', '1.5x'],
-                            ['mosaicCourseM'],
-                            ['mosaicCourseM', 'noscript']
-                        ]
-                    } %}
+            {# Select the course that is happening right now #}
+            {% for course in courseCollection if (course.courseStartDate < now and course.courseEndDate > now) %}
+                <div class="msc-course-c _{{ course.slug }}{{ styleClasses }}">
+                    <div class="msc-course-t">
+                        <span class="_subtitle">{{ defaultStringCurrentCourse.label}}</span>
+                        <h2><a href="{{ course.url }}">{{ course.title }}</a></h2>
+                        <span class="_subtitle">{{ course.courseStartDate|date('d.M') }} – {{ course.courseEndDate|date('d.M') }}</span>
+                        <a href="{{ course.url }}" class="btn-square">{{ defaultStringButtonCourse.label }}</a>
+                    </div>
                 </div>
-            {% endif %}
+
+            {% endfor %}
+
+        {% endif %}
+
+        {% if block.type == 'date' %}
+
+            {% set dateStart  = entryModel.timeFrameStart|date("M d") %}
+            {% set dateEnd    = entryModel.timeFrameStop|date("M d")|default('') %}
+            {% set dateEnd    = dateEnd != dateEnd ? ' – ' ~ dateEnd : null %}
+            {% set courseId   = entryModel.courseCategory.first().slug %}
+            {% set buttonText = block.buttonText|default(defaultStringButtonDate.label) %}
+
+            <div class="msc-course-c {{ '_' ~ courseId }}{{ styleClasses }}">
+
+                {% if image %}
+                    <div class="msc-course-p">
+                        {% include 'utilities/picturefill' with {
+                            imageModel: image,
+                            imageSet: [
+                                ['mosaicCourseL', '500px', '1.5x'],
+                                ['mosaicCourseM'],
+                                ['mosaicCourseM', 'noscript']
+                            ]
+                        } %}
+                    </div>
+                {% endif %}
 
 
-            <div class="msc-course-t">
-                <span class="_date">
-                    {{ dateStart }}
-                    {{ dateEnd ? dateEnd }}
+                <div class="msc-course-t">
+                    <span class="_date">
+                        {{ dateStart }}
+                        {{ dateEnd ? dateEnd }}
 
-                </span>
-                <span class="_subtitle">
-                    {{ dateModel.subtitle }}
-                </span>
-                <h2><a href="{{ dateModel.url }}">{{ dateModel.title }}</a></h2>
-                <a href="{{ dateModel.url }}" class="btn-square">{{ buttonText }}</a>
+                    </span>
+                    <span class="_subtitle">
+                        {{ entryModel.subtitle }}
+                    </span>
+                    <h2><a href="{{ entryModel.url }}">{{ entryModel.title }}</a></h2>
+                    <a href="{{ entryModel.url }}" class="btn-square">{{ buttonText }}</a>
+                </div>
             </div>
-        </div>
-    {% endfor %}
 
-    {% for block in entry.mosaicCourse.type('text') if block.entryTeaser.first() %}
-        {% set entryModel = block.entryTeaser.first() %}
-        {% set entryId    = entryModel.courseCategory.first().id|default() %}
-        {% set image      = entryModel.image.first() %}
-        {% set buttonText = block.buttonText|default(defaultStringButton.label) %}
 
-        <div class="msc-course-c _text{{ block.highlight == '1' ? ' _' ~ entryId }}{{ image ? ' _image-left' }}{{ image and block.style != 'wide' ? ' _wide' }}{{ block.style != '0' ? ' _' ~ block.style }}">
-            <div class="msc-course-t">
-                <h2><a href="{{ entryModel.url }}">{{ block.headline }}</a></h2>
+        {% endif %}
 
-                <p>{{ block.shortText }}</p>
-                <a href="{{ entryModel.url }}" class="btn-square">{{ buttonText }}</a>
+        {% if block.type == 'text' %}
+
+            {% set entryId    = entryModel.courseCategory.first().slug|default('') %}
+            {% set buttonText = block.buttonText|default(defaultStringButton.label) %}
+
+            <div class="msc-course-c _text {{ '_' ~ entryId }}{{ styleClasses }}">
+                <div class="msc-course-t">
+                    <h2><a href="{{ entryModel.url }}">{{ block.headline }}</a></h2>
+
+                    <p>{{ block.shortText }}</p>
+                    <a href="{{ entryModel.url }}" class="btn-square">{{ buttonText }}</a>
+                </div>
             </div>
-        </div>
+
+        {% endif %}
+
     {% endfor %}
 
 </section>
