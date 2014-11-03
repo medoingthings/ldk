@@ -24,10 +24,6 @@
         @include span-columns(6);
     }
 
-    &._shift {
-        @include shift(3);
-    }
-
     &._image-left {
         .msc-course-t {
             left: 50%
@@ -181,16 +177,16 @@
     }
 }
 
-
+@include breakpoint (1051) {
+    .msc-course-c:first-of-type {
+        // @include shift(3);
+    }
+}
 
 @include breakpoint (false, 1050) {
     .msc-course-c {
         &._text {
             width: 50%;
-        }
-
-        &._shift {
-            margin-left: 0;
         }
     }
 }
