@@ -1,13 +1,19 @@
-<section class="msc-course-w lyt-label-w">
-    <b class="lyt-label-h">Aktuell</b>
+{% set labelModel = entry.mosaicCourse.type('sectionLabel').first() %}
+{% set labelTitle = labelModel|length ? labelModel.label %}
 
-    {% for block in entry.mosaicCourse %}
+<section class="msc-course-w{{ labelTitle ? ' lyt-label-w' }}">
+
+    {% if labelTitle %}
+        <b class="lyt-label-h">{{ labelTitle }}</b>
+    {% endif %}
+
+    {% for block in entry.mosaicCourse if block.type != 'sectionLabel' %}
 
         {% set styleClasses = '' %}
         {% set entryModel   = '' %}
         {% set image        = '' %}
 
-        {% if block.type != 'course' %}
+        {% if block.type == 'date' or block.type == 'text' %}
             {% set entryModel = block.entry.first() %}
             {% set image      = entryModel.image.first() %}
         {% endif %}
