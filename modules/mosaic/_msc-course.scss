@@ -38,6 +38,14 @@
         }
     }
 
+    &._emphasize {
+        background-color: color(3);
+    }
+
+    &._highlight {
+        background-color: color(4);
+    }
+
     &._leadership-1 {
         &._highlight {
             background-color: color(7, $colors-scheme);
@@ -185,7 +193,7 @@
 }
 
 .msc-course-c {
-    &._highlight {
+    &._wide._highlight {
         h2 {
             @extend %txt-type--3;
             margin-bottom: em(10, size(3));
