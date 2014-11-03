@@ -38,84 +38,104 @@
         }
     }
 
-    &._leadership-1._highlight {
-        background-color: color(7, $colors-scheme);
-    }
-
     &._leadership-1 {
-        background-color: lighten(color(7, $colors-scheme), 10%);
-    }
+        &._highlight {
+            background-color: color(7, $colors-scheme);
+        }
 
-    &._leadership-2._highlight {
-        background-color: color(8, $colors-scheme);
+        &._emphasize {
+            background-color: lighten(color(7, $colors-scheme), 10%);
+        }
     }
 
     &._leadership-2 {
-        background-color: lighten(color(8, $colors-scheme), 10%);
+        &._highlight {
+            background-color: color(8, $colors-scheme);
+        }
+
+        &._emphasize {
+            background-color: lighten(color(8, $colors-scheme), 10%);
+        }
     }
 
-    &.gestaltung-1._highlight {
-        background-color: color(5, $colors-scheme);
-    }
+    &.gestaltung-1 {
+        &._highlight {
+            background-color: color(5, $colors-scheme);
+        }
 
-    &._gestaltung-1 {
-        background-color: lighten(color(5, $colors-scheme), 10%);
-    }
-
-    &._gestaltung-2._highlight {
-        background-color: color(6, $colors-scheme);
+        &._emphasize {
+            background-color: lighten(color(5, $colors-scheme), 10%);
+        }
     }
 
     &._gestaltung-2 {
-        background-color: lighten(color(6, $colors-scheme), 10%);
-    }
+        &._highlight {
+            background-color: color(6, $colors-scheme);
+        }
 
-    &._management-1._highlight {
-        background-color: color(3, $colors-scheme);
+        &._emphasize {
+            background-color: lighten(color(6, $colors-scheme), 10%);
+        }
     }
 
     &._management-1 {
-        background-color: lighten(color(3, $colors-scheme), 10%);
-    }
+        &._highlight {
+            background-color: color(3, $colors-scheme);
+        }
 
-    &._management-2._highlight {
-        background-color: color(4, $colors-scheme);
+        &._emphasize {
+            background-color: lighten(color(3, $colors-scheme), 10%);
+        }
     }
 
     &._management-2 {
-        background-color: lighten(color(4, $colors-scheme), 10%);
-    }
+        &._highlight {
+            background-color: color(4, $colors-scheme);
+        }
 
-    &._projekt-1._highlight {
-        background-color: color(9, $colors-scheme);
+        &._emphasize {
+            background-color: lighten(color(4, $colors-scheme), 10%);
+        }
     }
 
     &._projekt-1 {
-        background-color: lighten(color(9, $colors-scheme), 10%);
-    }
+        &._highlight {
+            background-color: color(9, $colors-scheme);
+        }
 
-    &._projekt-2._highlight {
-        background-color: color(10, $colors-scheme);
+        &._emphasize {
+            background-color: lighten(color(9, $colors-scheme), 10%);
+        }
     }
 
     &._projekt-2 {
-        background-color: lighten(color(10, $colors-scheme), 10%);
-    }
+        &._highlight {
+            background-color: color(10, $colors-scheme);
+        }
 
-    &._kommunikation-1._highlight {
-        background-color: color(1, $colors-scheme);
+        &._emphasize {
+            background-color: lighten(color(10, $colors-scheme), 10%);
+        }
     }
 
     &._kommunikation-1 {
-        background-color: lighten(color(1, $colors-scheme), 10%);
-    }
+        &._highlight {
+            background-color: color(1, $colors-scheme);
+        }
 
-    &._kommunikation-2._highlight {
-        background-color: color(2, $colors-scheme);
+        &._emphasize {
+            background-color: lighten(color(1, $colors-scheme), 10%);
+        }
     }
 
     &._kommunikation-2 {
-        background-color: lighten(color(2, $colors-scheme), 10%);
+        &._highlight {
+            background-color: color(2, $colors-scheme);
+        }
+
+        &._emphasize {
+            background-color: lighten(color(2, $colors-scheme), 10%);
+        }
     }
 }
 
@@ -179,7 +199,7 @@
 
 @include breakpoint (1051) {
     .msc-course-c:first-of-type {
-        // @include shift(3);
+        @include shift(3);
     }
 }
 
