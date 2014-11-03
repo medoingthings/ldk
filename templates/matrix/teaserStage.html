@@ -1,0 +1,34 @@
+<figure class="ftr-stage-w lyt-label-w">
+    <b class="lyt-label-h">Studiengangsteam</b>
+
+    {% for block in entry.teaserStage %}
+
+        <div class="ftr-stage-p _aspect-3to1">
+            {% set backgroundImage = block.backgroundImage.first() %}
+            {% set buttonText      = block.buttonText|default(defaultStringButton.label) %}
+            {% if backgroundImage | length %}
+
+                <div class="ftr-stage-p">
+                    {% include 'utilities/picturefill' with {
+                        imageModel: backgroundImage,
+                        imageSet: [
+                            ['teaserStageL', '1200px', '1.5x'],
+                            ['teaserStageM', '1000px'],
+                            ['teaserStageS', '800px'],
+                            ['teaserStageM', 'noscript'],
+                            ['teaserStageS']
+                        ]
+                    } %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="ftr-stage-c _text-short">
+            <div class="ftr-stage-t">
+                <h2>{{ block.headline }}</h2>
+                <a href="#" class="btn-outline">{{ buttonText }}</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+</figure>
