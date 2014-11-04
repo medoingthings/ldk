@@ -206,7 +206,7 @@
 }
 
 @include breakpoint (1051) {
-    .msc-course-c:first-of-type {
+    .msc-course-c._shift {
         @include shift(3);
     }
 }
