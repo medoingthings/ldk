@@ -1,9 +1,10 @@
+{% set sectionLabel = sectionLabel|default('') %}
 {% set classes      = classes|default('') %}
-{% set classes      = sectionLabel is defined ? classes ~ ' lyt-label-w' : classes %}
+{% set classes      = sectionLabel ? classes ~ ' lyt-label-w' : classes %}
 
 <section class="{{ classes }}">
 
-    {% if sectionLabel is defined %}
+    {% if sectionLabel %}
         <b class="lyt-label-h">{{ sectionLabel }}</b>
     {% endif %}
 
