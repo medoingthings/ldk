@@ -1,0 +1,13 @@
+<div class="ftr-stage-c _text-short">
+    <div class="ftr-stage-t">
+        <ul class="dwn-compact-l">
+
+            {% for download in block.downloads %}
+                <li class="dwn-compact-i">
+                    <a href="{{ download.url }}" class="dwn-compact-a">{{ download }} <b>({{ download.extension }}, {{ download.size|filesize }})</b></a>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
