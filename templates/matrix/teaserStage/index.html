@@ -1,0 +1,5 @@
+{% for block in entry.teaserStage if block.type != 'sectionLabel' %}
+
+    {% include 'matrix/teaserStage/' ~ block.type %}
+
+{% endfor %}

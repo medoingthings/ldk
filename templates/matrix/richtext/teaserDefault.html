@@ -1,19 +1,9 @@
 {% embed "helper/sectionContainer.html" with {classes: 'ftr-stage-w', sectionLabel: block.sectionLabel} %}
 
     {% block content %}
-        <div class="ftr-stage-c _text-short">
-            <div class="ftr-stage-t">
-                {% if block.headline %}
-                    <h2>{{ block.headline }}</h2>
-                {% endif %}
 
-                {% if block.shortText %}
-                    {{ block.shortText }}
-                {% endif %}
+        {% include 'matrix/teaserStage/teaserDefaultUtil' %}
 
-                <a href="block.entry.url" class="btn-outline">{{ block.buttonText|default(defaultStringButton.label)}}</a>
-            </div>
-        </div>
     {% endblock %}
 
 {% endembed %}

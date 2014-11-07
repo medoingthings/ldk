@@ -1,8 +1,7 @@
-<article class="rtf-w _g2{{ entry.sectionLabel ? ' lyt-label-w' }}">
-    {% if entry.sectionLabel %}
-        <b class="lyt-label-h">{{ entry.sectionLabel}}</b>
-    {% endif %}
+{% embed "helper/sectionContainer.html" with {classes: 'rtf-w'} %}
 
-    <div class="rtf-c">{{ entry.introduction }}</div>
+    {% block content %}
+        <div class="rtf-c">{{ entry.introduction }}</div>
+    {% endblock %}
 
-</article>
+{% endembed %}

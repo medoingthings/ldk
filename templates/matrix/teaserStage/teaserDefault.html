@@ -1,0 +1,11 @@
+{% embed "helper/sectionContainer.html" with {classes: 'ftr-stage-w', sectionLabel: entry.teaserStage.type('sectionLabel').first().label} %}
+
+    {% block content %}
+
+        {% for block in entry.teaserStage if block.type != 'sectionLabel' %}
+            {% include 'matrix/teaserStage/teaserDefaultUtil' %}
+        {% endfor %}
+
+    {% endblock %}
+
+{% endembed %}
