@@ -1,0 +1,5 @@
+{% for block in entry.richtext %}
+
+    {% include 'matrix/richtext/' ~ block.type %}
+
+{% endfor %}

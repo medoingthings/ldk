@@ -1,0 +1,10 @@
+{% embed "helper/sectionContainer.html" with {classes: 'rtf-w', sectionLabel: block.sectionLabel} %}
+
+    {% block content %}
+        <div class="rtf-c">
+            {{ block.richtext }}
+        </div>
+    {% endblock %}
+
+{% endembed %}
+

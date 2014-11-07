@@ -1,0 +1,14 @@
+{% set classes      = classes|default('') %}
+{% set classes      = sectionLabel is defined ? classes ~ ' lyt-label-w' : classes %}
+
+<section class="{{ classes }}">
+
+    {% if sectionLabel is defined %}
+        <b class="lyt-label-h">{{ sectionLabel }}</b>
+    {% endif %}
+
+    {% block content %}
+        You shouldn’t see this
+    {% endblock %}
+
+</section>
