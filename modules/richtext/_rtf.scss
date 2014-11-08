@@ -108,14 +108,14 @@
 .rtf-c {
     @extend %clearfix;
     padding: em(100) em(145) em(80) em(145);
-    clear: both;
 
     &._has-sidebar {
         @include span-columns(9);
     }
 
-    .rtf-badge-p + & {
-        padding-left: em(220);
+    .rtf-badge-w + & {
+        margin-left: em(240);
+        padding-left: 0;
     }
 }
 

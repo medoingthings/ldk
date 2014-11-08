@@ -1,0 +1,35 @@
+{% set classNameCourse = entry.courseCategory.first() ? ' _' ~ entry.courseCategory.first().slug : '' %}
+{% set classNameStyle  = '' %}
+
+{% for style in block.style %}
+    {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
+{% endfor %}
+
+{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ classNameCourse ~ classNameStyle, sectionLabel: block.sectionLabel} %}
+
+    {% block content %}
+        <div class="rtf-badge-w">
+
+            {% for asset in block.assets %}
+
+                <div class="rtf-badge-p">
+                    {% include 'utilities/picturefill' with {
+                        imageModel: asset,
+                        imageSet: [
+                            ['richtextSidebarImageM', '400px', '1.5x'],
+                            ['richtextSidebarImageS', 'noscript'],
+                            ['richtextSidebarImageS']
+                        ]
+                    } %}
+                </div>
+
+            {% endfor %}
+
+        </div>
+        <div class="rtf-c">
+            {{ block.richtext }}
+        </div>
+    {% endblock %}
+
+{% endembed %}
+
