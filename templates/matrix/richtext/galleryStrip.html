@@ -1,0 +1,28 @@
+{% set classNameStyle  = '' %}
+
+{% for style in block.style %}
+    {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
+{% endfor %}
+
+{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ classNameStyle, sectionLabel: block.sectionLabel} %}
+
+    {% block content %}
+
+        <div class="rtf-gallery-w">
+            {% for image in block.image %}
+                <a href="{{ image.url }}" class="rtf-gallery-a">
+                    {% include 'utilities/picturefill' with {
+                        imageModel: image,
+                        imageSet: [
+                            ['galleryStripM', '500px', '1.5x'],
+                            ['galleryStripS', 'noscript'],
+                            ['galleryStripS']
+                        ]
+                    } %}
+                </a>
+            {% endfor %}
+        </div>
+    {% endblock %}
+
+{% endembed %}
+

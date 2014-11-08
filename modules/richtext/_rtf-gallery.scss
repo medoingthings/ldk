@@ -10,9 +10,22 @@
 
 .rtf-gallery-a {
     @include span-columns(3);
-}
+    position: relative;
+    height: 0;
+    padding-top: 25%;
 
-.rtf-gallery-p {
-    display: block;
-    max-width: 100%;
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        max-width: 100%;
+        transition: filter 0.3s ease;
+        filter: grayscale(100%) brightness(105%);
+    }
+
+    &:hover img,
+    &:focus img {
+        filter: grayscale(0%);
+    }
 }

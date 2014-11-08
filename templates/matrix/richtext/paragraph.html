@@ -1,4 +1,11 @@
-{% embed "helper/sectionContainer.html" with {classes: 'rtf-w', sectionLabel: block.sectionLabel} %}
+{% set classNameCourse = entry.courseCategory.first() ? ' _' ~ entry.courseCategory.first().slug : '' %}
+{% set classNameStyle  = '' %}
+
+{% for style in block.style %}
+    {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
+{% endfor %}
+
+{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ classNameCourse ~ classNameStyle, sectionLabel: block.sectionLabel} %}
 
     {% block content %}
         <div class="rtf-c">

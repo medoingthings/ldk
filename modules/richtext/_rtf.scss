@@ -4,7 +4,7 @@
 
 @mixin rtf--course-color-scheme ($color) {
     .rtf-badge-h,
-    ._highlight {
+    &._highlight {
         background-color: $color;
     }
 
@@ -20,8 +20,11 @@
 .rtf-w {
     @extend %container;
     position: relative;
-    margin-bottom: em(20);
     background-color: color(1);
+
+    &:not(._merge-with-next) {
+        margin-bottom: em(20);
+    }
 
     &._leadership-1 {
         @include rtf--course-color-scheme(color(7, $colors-scheme));
