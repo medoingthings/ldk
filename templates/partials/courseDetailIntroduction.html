@@ -1,6 +1,6 @@
 {% set courseClassName = entry.courseCategory.first() ? ' _' ~ entry.courseCategory.first().slug : '' %}
 
-{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ courseClassName} %}
+{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ courseClassName, sectionLabel: defaultStringCourseDetail.label} %}
 
     {% block content %}
 
