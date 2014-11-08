@@ -16,46 +16,70 @@
                 </ul>
             </dd>
 
-            {% if entry.courseMaster %}
-                <dt>Modulverantwortlicher</dt>
+            {% if entry.courseMaster|length %}
+                <dt>{{ craft.fields.getFieldbyHandle('courseMaster') }}</dt>
                 <dd>
 
                     {% for prof in entry.courseMaster %}
                         <a href="prof.url">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.firstName }} {{ prof.lastName }}</a><br>
 
                         {% if prof.profession %}
-                            {{ prof.profession }}
+                            {{ prof.profession }}<br>
                         {% endif %}
                     {% endfor %}
 
                 </dd>
             {% endif %}
 
-            <dt>Lehrende</dt>
-            <dd>
-                <a href="#">Prof. Kora Kimpel</a><br>
-                <a href="#">Andreas Kraft</a>
-            </dd>
+            {% if entry.courseTeacher|length %}
+                <dt>{{ craft.fields.getFieldbyHandle('courseTeacher') }}</dt>
+                <dd>
 
-            <dt>Zeitraum</dt>
-            <dd>
-                15.08.2014 - 30.09.2014
-            </dd>
+                    {% for teacher in entry.courseTeacher %}
+                        <a href="teacher.url">{{ teacher.degree ? teacher.degree ~ ' ' }}{{ teacher.firstName }} {{ teacher.lastName }}</a><br>
 
-            <dt>Kontaktzeit</dt>
-            <dd>
-                22.08.2014 - 24.08.2014<br>
-                05.09.2014 - 07.09.2014<br>
-                19.09.2014 - 21.09.2014
-            </dd>
+                        {% if teacher.profession %}
+                            {{ teacher.profession }}<br>
+                        {% endif %}
+                    {% endfor %}
 
-            <dt>Veranstaltungsort</dt>
-            <dd>
-                Universität der Künste Berlin<br>
-                Berlin Career College<br>
-                Bundesallee 1-12<br>
-                10719 Berlin
-            </dd>
+                </dd>
+            {% endif %}
+
+
+            {% if entry.courseStartDate and entry.courseEndDate %}
+                <dt>Zeitraum</dt>
+                <dd>
+                    {{ entry.courseStartDate|date('d.m.Y') }} – {{ entry.courseEndDate|date('d.m.Y') }}
+                </dd>
+            {% endif %}
+
+            {% if entry.courseDates|length %}
+                <dt>{{ craft.fields.getFieldbyHandle('courseDates') }}</dt>
+                <dd>
+                    {% for date in entry.courseDates %}
+                        {{ date.timeFrameStart|date('d.m.Y') }}{{ date.timeFrameEnd ? ' – ' ~ date.timeFrameEnd|date('d.m.Y') }}<br>
+                    {% endfor %}
+                </dd>
+            {% endif %}
+
+            {% if entry.venue|length %}
+                <dt>{{ craft.fields.getFieldbyHandle('venue') }}</dt>
+                <dd>
+
+                    {% for venue in entry.venue %}
+                        {% if venue.googleMapsUrl %}
+                            <a href="{{ venue.googleMapsUrl }}" target="_blank">{{ venue.title }}</a><br>
+                        {% else %}
+                            {{ venue.title }}
+                        {% endif %}
+
+                        {{ venue.street ? venue.street }}<br>
+                        {{ venue.zipcode ? venue.zipcode}} {{ venue.city ? venue.city}}
+                    {% endfor %}
+
+                </dd>
+            {% endif %}
         </dl>
     {% endblock %}
 
