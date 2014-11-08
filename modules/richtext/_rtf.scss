@@ -2,27 +2,64 @@
  * Rich Text
  */
 
+@mixin rtf--course-color-scheme ($color) {
+    .rtf-badge-h,
+    ._highlight {
+        background-color: $color;
+    }
+
+    a:link {
+        color: $color;
+    }
+
+    a:visited {
+        color: darken($color, 20%);
+    }
+}
+
 .rtf-w {
     @extend %container;
     margin-bottom: em(20);
     background-color: color(1);
 
-    &._g2 {
-        .rtf-badge-h {
-            background-color: color(6, $colors-scheme);
-        }
+    &._leadership-1 {
+        @include rtf--course-color-scheme(color(7, $colors-scheme));
+    }
 
-        a:link {
-            color: color(6, $colors-scheme);
-        }
+    &._leadership-2 {
+        @include rtf--course-color-scheme(color(8, $colors-scheme));
+    }
 
-        a:visited {
-            color: darken(color(6, $colors-scheme), 20%);
-        }
+    &.management-1 {
+        @include rtf--course-color-scheme(color(3, $colors-scheme));
+    }
 
-        ._highlight {
-            background-color: color(6, $colors-scheme);
-        }
+    &.management-2 {
+        @include rtf--course-color-scheme(color(4, $colors-scheme));
+    }
+
+    &.projekt-1 {
+        @include rtf--course-color-scheme(color(9, $colors-scheme));
+    }
+
+    &.projekt-2 {
+        @include rtf--course-color-scheme(color(10, $colors-scheme));
+    }
+
+    &.gestaltung-1 {
+        @include rtf--course-color-scheme(color(5, $colors-scheme));
+    }
+
+    &.gestaltung-2 {
+        @include rtf--course-color-scheme(color(6, $colors-scheme));
+    }
+
+    &.kommunikation-1 {
+        @include rtf--course-color-scheme(color(1, $colors-scheme));
+    }
+
+    &.kommunikation-2 {
+        @include rtf--course-color-scheme(color(2, $colors-scheme));
     }
 
     h3 {

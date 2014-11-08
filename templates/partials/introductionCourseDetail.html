@@ -1,0 +1,62 @@
+{% set courseClassName = entry.courseCategory.first() ? ' _' ~ entry.courseCategory.first().slug : '' %}
+
+{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ courseClassName} %}
+
+    {% block content %}
+        <div class="rtf-c _has-sidebar">{{ entry.introduction }}</div>
+
+        <dl class="rtf-c--sidebar-w">
+            <dt>Themengebiete</dt>
+            <dd>
+                <ul>
+                    <li>Erfolgskriterien von Design</li>
+                    <li>Gestaltung mit Technologien</li>
+                    <li>Designprozesse</li>
+                    <li>Digitale Produkte</li>
+                </ul>
+            </dd>
+
+            {% if entry.courseMaster %}
+                <dt>Modulverantwortlicher</dt>
+                <dd>
+
+                    {% for prof in entry.courseMaster %}
+                        <a href="prof.url">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.firstName }} {{ prof.lastName }}</a><br>
+
+                        {% if prof.profession %}
+                            {{ prof.profession }}
+                        {% endif %}
+                    {% endfor %}
+
+                </dd>
+            {% endif %}
+
+            <dt>Lehrende</dt>
+            <dd>
+                <a href="#">Prof. Kora Kimpel</a><br>
+                <a href="#">Andreas Kraft</a>
+            </dd>
+
+            <dt>Zeitraum</dt>
+            <dd>
+                15.08.2014 - 30.09.2014
+            </dd>
+
+            <dt>Kontaktzeit</dt>
+            <dd>
+                22.08.2014 - 24.08.2014<br>
+                05.09.2014 - 07.09.2014<br>
+                19.09.2014 - 21.09.2014
+            </dd>
+
+            <dt>Veranstaltungsort</dt>
+            <dd>
+                Universität der Künste Berlin<br>
+                Berlin Career College<br>
+                Bundesallee 1-12<br>
+                10719 Berlin
+            </dd>
+        </dl>
+    {% endblock %}
+
+{% endembed %}
