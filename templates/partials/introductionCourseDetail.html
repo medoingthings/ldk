@@ -12,15 +12,11 @@
         <div class="rtf-c _has-sidebar">{{ entry.introduction }}</div>
 
         <dl class="rtf-c--sidebar-w">
-            <dt>Themengebiete</dt>
-            <dd>
-                <ul>
-                    <li>Erfolgskriterien von Design</li>
-                    <li>Gestaltung mit Technologien</li>
-                    <li>Designprozesse</li>
-                    <li>Digitale Produkte</li>
-                </ul>
-            </dd>
+
+            {% if entry.courseTopics %}
+                <dt>{{ craft.fields.getFieldbyHandle('courseTopics') }}</dt>
+                <dd>{{ entry.courseTopics }}</dd>
+            {% endif %}
 
             {% if entry.courseMaster|length %}
                 <dt>{{ craft.fields.getFieldbyHandle('courseMaster') }}</dt>
