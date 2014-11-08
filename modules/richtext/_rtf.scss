@@ -19,6 +19,7 @@
 
 .rtf-w {
     @extend %container;
+    position: relative;
     margin-bottom: em(20);
     background-color: color(1);
 
