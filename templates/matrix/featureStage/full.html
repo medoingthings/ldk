@@ -1,45 +1,17 @@
-{% embed "helper/sectionContainer.html" with {classes: 'ftr-stage-w'} %}
+<div class="ftr-stage-i">
 
-    {% block content %}
+    {% include 'matrix/featureStage/imageUtil' %}
 
-        {% for block in entry.featureStage.type('full') %}
+    <div class="ftr-stage-c{{ block.style ? ' _' ~ block.style }}">
+        <div class="ftr-stage-t">
+            <h1>{{ block.headline }}</h1>
+            {{ block.shortText }}
 
-            <div class="ftr-stage-i">
+            {% set buttonTarget = block.entryTeaser.first() %}
 
-                {% set backgroundImage = block.backgroundImage.first() %}
-
-                {% if backgroundImage | length %}
-                    <div class="ftr-stage-p">
-                        {% include 'utilities/picturefill' with {
-                            imageModel: backgroundImage,
-                            imageSet: [
-                                ['featureStageL', '1200px', '1.5x'],
-                                ['featureStageM', '1000px'],
-                                ['featureStageS', '800px'],
-                                ['featureStageM', 'noscript'],
-                                ['featureStageS']
-                            ]
-                        } %}
-                    </div>
-                {% endif %}
-
-                <div class="ftr-stage-c _text-bright">
-                    <div class="ftr-stage-t">
-                        <h1>{{ block.headline }}</h1>
-                        {{ block.shortText }}
-
-                        {% set buttonTarget = block.entryTeaser.first() %}
-
-                        {% if buttonTarget %}
-                            <a href="{{ buttonTarget.uri }}" class="btn-outline">{{ block.buttonTitle }}</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-
-        {% endfor %}
-
-
-    {% endblock %}
-
-{% endembed %}
+            {% if buttonTarget %}
+                <a href="{{ buttonTarget.uri }}" class="btn-outline">{{ block.buttonTitle }}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

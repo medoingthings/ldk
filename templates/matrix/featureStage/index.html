@@ -1,5 +1,12 @@
-{% for block in entry.featureStage %}
+{% embed "helper/sectionContainer.html" with {classes: 'ftr-stage-w'} %}
 
-    {% include 'matrix/featureStage/' ~ block.type %}
+    {% block content %}
+        {% for block in entry.featureStage %}
 
-{% endfor %}
+            {% include 'matrix/featureStage/' ~ block.type %}
+
+        {% endfor %}
+
+    {% endblock %}
+
+{% endembed %}

@@ -1,0 +1,15 @@
+<div class="ftr-stage-i">
+
+    {% include 'matrix/featureStage/imageUtil' %}
+
+    <div class="ftr-stage-c{{ block.style ? ' _' ~ block.style }}">
+        <div class="ftr-stage-t">
+
+            {% if block.subheadline %}
+                <h2>{{ block.subheadline }}</h2>
+            {% endif %}
+
+            <h1>{{ block.headline ? block.headline : entry.title }}</h1>
+        </div>
+    </div>
+</div>

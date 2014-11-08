@@ -1,0 +1,18 @@
+{% set backgroundImage = block.backgroundImage.first() %}
+
+{% if backgroundImage | length %}
+
+    <div class="ftr-stage-p">
+        {% include 'utilities/picturefill' with {
+            imageModel: backgroundImage,
+            imageSet: [
+                ['featureStageL', '1200px', '1.5x'],
+                ['featureStageM', '1000px'],
+                ['featureStageS', '800px'],
+                ['featureStageM', 'noscript'],
+                ['featureStageS']
+            ]
+        } %}
+    </div>
+
+{% endif %}
