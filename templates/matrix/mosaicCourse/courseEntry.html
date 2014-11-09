@@ -1,0 +1,10 @@
+{% set courseModel  = block.course.first().courseEntry.first() %}
+{% set courseMaster = courseModel.courseMaster.first() %}
+
+<div class="msc-course-c _{{ courseModel.slug }}{{ styleClasses }}">
+    <div class="msc-course-t">
+        <h2><a href="{{ courseModel.url }}">{{ courseModel.title }}</a></h2>
+        <span class="_subtitle">{{ courseMaster.degree ? courseMaster.degree ~ ' ' }}{{ courseModel.courseMaster.first().lastName }}</span>
+        <a href="{{ courseModel.url }}" class="btn-square">{{ defaultStringButtonCourse.label }}</a>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{% set entryModel   = '' %}
+
+{% set courseCollection = craft.entries.descendantOf(50).type('courseDetail').order('courseStartDate') %}
+
+{# Select the course that is happening right now #}
+{% for course in courseCollection if (course.courseStartDate < now and course.courseEndDate > now) %}
+    <div class="msc-course-c _{{ course.slug }}{{ styleClasses }}">
+        <div class="msc-course-t">
+            <span class="_subtitle">{{ defaultStringCurrentCourse.label}}</span>
+            <h2><a href="{{ course.url }}">{{ course.title }}</a></h2>
+            <span class="_subtitle">{{ course.courseStartDate|date('d. M') }} – {{ course.courseEndDate|date('d.M') }}</span>
+            <a href="{{ course.url }}" class="btn-square">{{ defaultStringButtonCourse.label }}</a>
+        </div>
+    </div>
+
+{% endfor %}

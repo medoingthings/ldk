@@ -1,0 +1,38 @@
+{% set entryModel   = block.entry.first() %}
+{% set teaserImage  = entryModel.teaserImage.first() %}
+{% set styleClasses = teaserImage|length ? styleClasses ~ ' _image-left _wide' : styleClasses %}
+{% set dateStart    = entryModel.timeFrameStart|date("M d") %}
+{% set dateEnd      = entryModel.timeFrameStop|date("M d")|default('') %}
+{% set dateEnd      = dateEnd != dateEnd ? ' – ' ~ dateEnd : null %}
+{% set courseId     = entryModel.courseCategory.first().slug %}
+{% set buttonText   = block.buttonText|default(defaultStringButtonDate.label) %}
+
+<div class="msc-course-c {{ '_' ~ courseId }}{{ styleClasses }}">
+
+    {% if teaserImage %}
+        <div class="msc-course-p">
+            {% include 'utilities/picturefill' with {
+                imageModel: teaserImage,
+                imageSet: [
+                    ['mosaicCourseL', '500px', '1.5x'],
+                    ['mosaicCourseM'],
+                    ['mosaicCourseM', 'noscript']
+                ]
+            } %}
+        </div>
+    {% endif %}
+
+
+    <div class="msc-course-t">
+        <span class="_date">
+            {{ dateStart }}
+            {{ dateEnd ? dateEnd }}
+
+        </span>
+        <span class="_subtitle">
+            {{ entryModel.subtitle }}
+        </span>
+        <h2><a href="{{ entryModel.url }}">{{ entryModel.title }}</a></h2>
+        <a href="{{ entryModel.url }}" class="btn-square">{{ buttonText }}</a>
+    </div>
+</div>

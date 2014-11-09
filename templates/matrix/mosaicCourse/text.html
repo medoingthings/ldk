@@ -1,0 +1,12 @@
+{% set entryModel = block.entry.first() %}
+{% set entryId    = entryModel.courseCategory.first().slug|default('') %}
+{% set buttonText = block.buttonText|default(defaultStringButton.label) %}
+
+<div class="msc-course-c _text {{ '_' ~ entryId }}{{ styleClasses }}">
+    <div class="msc-course-t">
+        <h2><a href="{{ entryModel.url }}">{{ block.headline }}</a></h2>
+
+        <p>{{ block.shortText }}</p>
+        <a href="{{ entryModel.url }}" class="btn-square">{{ buttonText }}</a>
+    </div>
+</div>
