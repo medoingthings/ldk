@@ -10,6 +10,10 @@
             {% endif %}
 
             <h1>{{ block.headline ? block.headline : entry.title }}</h1>
+
+            {% if block.shareButtons | length and block.shareButtons[0] == '1' %}
+                {% include 'partials/shareButtons' %}
+            {% endif %}
         </div>
     </div>
 </div>
