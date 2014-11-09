@@ -4,7 +4,11 @@
 <div class="msc-course-c _{{ courseModel.slug }}{{ styleClasses }}">
     <div class="msc-course-t">
         <h2><a href="{{ courseModel.url }}">{{ courseModel.title }}</a></h2>
-        <span class="_subtitle">{{ courseMaster.degree ? courseMaster.degree ~ ' ' }}{{ courseModel.courseMaster.first().lastName }}</span>
+
+        {% if courseMaster | length %}
+            <span class="_subtitle">{{ courseMaster.degree ? courseMaster.degree ~ ' ' }}{{ courseModel.courseMaster.first().lastName }}</span>
+        {% endif %}
+
         <a href="{{ courseModel.url }}" class="btn-square">{{ defaultStringButtonCourse.label }}</a>
     </div>
 </div>
