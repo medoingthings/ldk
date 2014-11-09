@@ -2,7 +2,7 @@
 
     {% include 'matrix/featureStage/imageUtil' %}
 
-    <div class="ftr-stage-c{{ block.style ? ' _' ~ block.style }}">
+    <div class="ftr-stage-c{{ block.style != '' ? ' _' ~ block.style }}">
         <div class="ftr-stage-t">
             <h1>{{ block.headline }}</h1>
             {{ block.shortText }}
