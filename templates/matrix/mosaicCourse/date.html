@@ -1,11 +1,11 @@
-{% set entryModel   = block.entry.first() %}
+{% set entryModel   = entryModel is defined ? entryModel : block.entry.first() %}
 {% set teaserImage  = entryModel.teaserImage.first() %}
 {% set styleClasses = teaserImage|length ? styleClasses ~ ' _image-left _wide' : styleClasses %}
 {% set dateStart    = entryModel.timeFrameStart|date("M d") %}
 {% set dateEnd      = entryModel.timeFrameStop|date("M d")|default('') %}
 {% set dateEnd      = dateEnd != dateEnd ? ' – ' ~ dateEnd : null %}
 {% set courseId     = entryModel.courseCategory.first().slug %}
-{% set buttonText   = block.buttonText|default(defaultStringButtonDate.label) %}
+{% set buttonText   = buttonText is defined ? buttonText : block.buttonText|default(defaultStringButtonDate.label) %}
 
 <div class="msc-course-c {{ '_' ~ courseId }}{{ styleClasses }}">
 

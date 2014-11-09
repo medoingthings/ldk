@@ -1,0 +1,16 @@
+{% embed "helper/sectionContainer.html" with {classes: 'msc-course-w', sectionLabel: block.sectionLabel} %}
+
+    {% block content %}
+
+        {% for block in block.entries %}
+
+            {% if block.type == 'dates' %}
+                {% include 'matrix/mosaicCourse/date' with {entryModel: block, styleClasses: '', buttonText: defaultStringButtonDate.label} %}
+            {% else %}
+                {% include 'matrix/mosaicCourse/text' with {entryModel: block, headline: block.title, shortText: block.teaserText, styleClasses: '', buttonText: defaultStringButton.label} %}
+            {% endif %}
+
+        {% endfor %}
+    {% endblock %}
+
+{% endembed %}
