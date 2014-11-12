@@ -1,18 +1,18 @@
 /**
- * Mosaic of courses
+ * Mosaic of tiles
  */
 
-.msc-course-w {
+.msc-tiles-w {
     @extend %container;
     margin-bottom: em(20);
 }
 
-.msc-course-p img {
+.msc-tiles-p img {
     width: 100%;
     height: auto;
 }
 
-.msc-course-c {
+.msc-tiles-c {
     @include span-columns(3);
     @extend %clearfix;
     position: relative;
@@ -25,11 +25,11 @@
     }
 
     &._image-left {
-        .msc-course-t {
+        .msc-tiles-t {
             left: 50%
         }
 
-        .msc-course-p {
+        .msc-tiles-p {
             position: absolute;
             top: 0;
             left: 0;
@@ -147,7 +147,7 @@
     }
 }
 
-.msc-course-t {
+.msc-tiles-t {
     position: absolute;
     top: 0;
     left: 0;
@@ -193,7 +193,7 @@
     }
 }
 
-.msc-course-c {
+.msc-tiles-c {
     &._wide._highlight {
         h2 {
             @extend %txt-type--3;
@@ -207,13 +207,13 @@
 }
 
 @include breakpoint (1051) {
-    .msc-course-c._shift {
+    .msc-tiles-c._shift {
         @include shift(3);
     }
 }
 
 @include breakpoint (false, 1050) {
-    .msc-course-c {
+    .msc-tiles-c {
         &._text {
             width: 50%;
         }
@@ -221,7 +221,7 @@
 }
 
 @include breakpoint (791, 880) {
-    .msc-course-c {
+    .msc-tiles-c {
         width: 50%;
     }
 }
@@ -229,21 +229,21 @@
 @include breakpoint (false, 790) {
 
     // High specifity to overwrite double class styles
-    .msc-course-c.msc-course-c {
+    .msc-tiles-c.msc-tiles-c {
         width: 100%;
         height: auto;
         padding-top: 0;
         min-height: em(180);
     }
 
-    .msc-course-c._image-left .msc-course-p {
+    .msc-tiles-c._image-left .msc-tiles-p {
         position: static;
         float: left;
         width: 40%;
         margin-right: em(20);
     }
 
-    .msc-course-t {
+    .msc-tiles-t {
         position: static;
     }
 }

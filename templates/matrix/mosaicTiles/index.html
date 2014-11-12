@@ -1,10 +1,10 @@
-{% set sectionLabelModel = entry.mosaicCourse.type('sectionLabel').first() %}
+{% set sectionLabelModel = entry.mosaicTiles.type('sectionLabel').first() %}
 {% set sectionLabel      = sectionLabelModel|length ? sectionLabelModel.label %}
 
-{% embed "helper/sectionContainer.html" with {classes: 'msc-course-w', sectionLabel: sectionLabel} %}
+{% embed "helper/sectionContainer.html" with {classes: 'msc-tiles-w', sectionLabel: sectionLabel} %}
 
     {% block content %}
-        {% for block in entry.mosaicCourse if block.type != 'sectionLabel' %}
+        {% for block in entry.mosaicTiles if block.type != 'sectionLabel' %}
 
             {% set styleClasses = '' %}
 
@@ -12,7 +12,7 @@
                 {% set styleClasses = styleClasses ~ ' _' ~ style %}
             {% endfor %}
 
-            {% include 'matrix/mosaicCourse/' ~ block.type %}
+            {% include 'matrix/mosaicTiles/' ~ block.type %}
 
         {% endfor %}
 

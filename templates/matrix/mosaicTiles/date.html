@@ -7,10 +7,10 @@
 {% set courseId     = entryModel.courseCategory.first().slug %}
 {% set buttonText   = buttonText is defined ? buttonText : block.buttonText|default(defaultStringButtonDate.label) %}
 
-<div class="msc-course-c {{ '_' ~ courseId }}{{ styleClasses }}">
+<div class="msc-tiles-c {{ '_' ~ courseId }}{{ styleClasses }}">
 
     {% if teaserImage %}
-        <div class="msc-course-p">
+        <div class="msc-tiles-p">
             {% include 'utilities/picturefill' with {
                 imageModel: teaserImage,
                 imageSet: [
@@ -23,7 +23,7 @@
     {% endif %}
 
 
-    <div class="msc-course-t">
+    <div class="msc-tiles-t">
         <span class="_date">
             {{ dateStart }}
             {{ dateEnd ? dateEnd }}

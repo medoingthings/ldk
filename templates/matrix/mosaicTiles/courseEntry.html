@@ -1,8 +1,8 @@
 {% set courseModel  = block.course.first().courseEntry.first() %}
 {% set courseMaster = courseModel.courseMaster.first() %}
 
-<div class="msc-course-c _{{ courseModel.slug }}{{ styleClasses }}">
-    <div class="msc-course-t">
+<div class="msc-tiles-c _{{ courseModel.slug }}{{ styleClasses }}">
+    <div class="msc-tiles-t">
         <h2><a href="{{ courseModel.url }}">{{ courseModel.title }}</a></h2>
 
         {% if courseMaster | length %}

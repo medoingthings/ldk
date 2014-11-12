@@ -4,8 +4,8 @@
 {% set shortText  = shortText is defined ? shortText : block.shortText %}
 {% set headline   = headline is defined ? headline : block.headline %}
 
-<div class="msc-course-c _text {{ '_' ~ entryId }}{{ styleClasses }}">
-    <div class="msc-course-t">
+<div class="msc-tiles-c _text {{ '_' ~ entryId }}{{ styleClasses }}">
+    <div class="msc-tiles-t">
         <h2><a href="{{ entryModel.url }}">{{ headline }}</a></h2>
 
         <p>{{ shortText }}</p>
