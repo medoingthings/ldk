@@ -1,7 +1,7 @@
 {% set classNameStyle  = '' %}
 
 {% for style in block.style %}
-    {% set classNameStyle = classNameStyle != '' ? classNameStyle ~ ' _' ~ style %}
+    {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
 {% endfor %}
 
 <div class="ftr-stage-i">

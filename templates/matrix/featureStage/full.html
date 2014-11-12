@@ -1,8 +1,15 @@
+{% set classNameStyle  = '' %}
+
+{% for style in block.style %}
+    {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
+{% endfor %}
+
+
 <div class="ftr-stage-i">
 
     {% include 'matrix/featureStage/imageUtil' %}
 
-    <div class="ftr-stage-c{{ block.style != '' ? ' _' ~ block.style }}">
+    <div class="ftr-stage-c{{ classNameStyle }}">
         <div class="ftr-stage-t">
             <h1>{{ block.headline }}</h1>
             {{ block.shortText }}
