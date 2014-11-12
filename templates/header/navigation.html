@@ -5,12 +5,18 @@
 
         {% for level1 in navigationLevel1 %}
 
+            {% set isCampus = level1.slug == 'campus' %}
+
             <li class="nav-main-i{{ level1.isParentOf(entry) or level1.id == entry.id ? ' _is-active' }}">
                 <a href="{{ level1.url }}" class="nav-main-a">{{ level1 }}</a>
 
+                {% if level1.slug == 'campus' and not craft.session.isLoggedIn %}
+                    {% include 'header/navigationLoginForm' %}
+                {% endif %}
+
                 {% set navigationLevel2 = level1.getDescendants(1) %}
 
-                {% if navigationLevel2|length %}
+                {% if (navigationLevel2|length and not isCampus) or (navigationLevel2|length and isCampus and craft.session.isLoggedIn)  %}
 
                     <ul class="nav-main--l2-l">
 
@@ -19,6 +25,12 @@
                                 <a href="{{ level2.url }}" class="nav-main--l2-a">{{ level2 }}</a>
                             </li>
                         {% endfor %}
+
+                        {% if isCampus and craft.session.isLoggedIn %}
+                            <li class="nav-main--l2-i">
+                                <a href="{{ logoutUrl }}" class="nav-main--l2-a">Logout</a>
+                            </li>
+                        {% endif %}
 
                     </ul>
 
