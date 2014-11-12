@@ -1,0 +1,4 @@
+{% if currentUser.can('accessCp') %}
+    <a href="{{ cpUrl() }}">Control Panel</a>
+    <h1>Campus Access</h1>
+{% endif %}
