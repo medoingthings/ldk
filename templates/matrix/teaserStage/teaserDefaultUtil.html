@@ -3,18 +3,16 @@
 {% if backgroundImage | length %}
 
     <div class="ftr-stage-p _aspect-3to1">
-        <div class="ftr-stage-p">
-            {% include 'utilities/picturefill' with {
-                imageModel: backgroundImage,
-                imageSet: [
-                    ['teaserStageL', '1200px', '1.5x'],
-                    ['teaserStageM', '1000px'],
-                    ['teaserStageS', '800px'],
-                    ['teaserStageM', 'noscript'],
-                    ['teaserStageS']
-                ]
-            } %}
-        </div>
+        {% include 'utilities/picturefill' with {
+            imageModel: backgroundImage,
+            imageSet: [
+                ['teaserStageL', '1200px', '1.5x'],
+                ['teaserStageM', '1000px'],
+                ['teaserStageS', '800px'],
+                ['teaserStageM', 'noscript'],
+                ['teaserStageS']
+            ]
+        } %}
     </div>
 
 {% endif %}
