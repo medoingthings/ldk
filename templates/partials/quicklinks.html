@@ -1,0 +1,23 @@
+{% if quicklinkModel is defined and quicklinkModel|length %}
+    <section class="lyt-quicklinks-w">
+
+        {# Iterate over the linkBlocks and highlight the first  #}
+        {% for linkBlock in quicklinkModel %}
+
+            <div class="lyt-quicklinks-c">
+                <a href="{{ linkBlock.links.first.url }}" class="lyt-quicklinks-h">{{ linkBlock.links.first }}</a>
+
+                <ul class="lyt-quicklinks-l">
+
+                    {# Exclude the first item since it is already shown above #}
+                    {% for link in linkBlock.links if link.id != linkBlock.links[0].id %}
+                        <li><a href="{{ link.url }}" class="lyt-quicklinks-a">{{ link }}</a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+        {% endfor %}
+
+    </section>
+{% endif %}

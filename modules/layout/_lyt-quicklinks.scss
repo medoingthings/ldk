@@ -16,8 +16,15 @@
 .lyt-quicklinks-h {
     @extend %txt-type--6;
     margin-bottom: em(20, size(6));
+    font-weight: bold;
     text-transform: uppercase;
-    color: color(1);
+
+    &,
+    &:link,
+    &:visited {
+        color: color(1);
+        text-decoration: none;
+    }
 }
 
 .lyt-quicklinks-l {
