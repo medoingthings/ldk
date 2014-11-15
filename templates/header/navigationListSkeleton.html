@@ -1,18 +1,27 @@
-{% set depth    = depth is defined ? depth : false %}
+{% set depth       = depth is defined ? depth : false %}
+{% set segmentList = craft.request.segments %}
 
 {% for level1 in navigationModel.level(1) %}
 
-    <li class="nav-main-i{{ level1.isParentOf(entry) or level1.id == entry.id ? ' _is-active' }}">
+    {% set level1Segment = segmentList[0]|default('') %}
+
+    <li class="nav-main-i{{ level1.slug == level1Segment or level1.id == entry.id ? ' _is-active' }}">
         <a href="{{ level1.url }}" class="nav-main-a">{{ level1 }}</a>
 
-        {% if (navigationModel.level(2)|length and (depth == false or depth >= 2))  %}
+        {% set level2Model = level1.getDescendants(1) %}
+
+        {% if (level2Model|length and (depth == false or depth >= 2))  %}
 
             <ul class="nav-main--l2-l">
 
-                {% for level2 in navigationModel.level(2) %}
-                    <li class="nav-main--l2-i{{ level2.isParentOf(entry) or level2.id == entry.id ? ' _is-active' }}">
+                {% for level2 in level2Model %}
+
+                    {% set level2Segment = segmentList[1]|default('') %}
+
+                    <li class="nav-main--l2-i{{ level2.slug == level2Segment or level2.id == entry.id ? ' _is-active' }}">
                         <a href="{{ level2.url }}" class="nav-main--l2-a">{{ level2 }}</a>
                     </li>
+
                 {% endfor %}
 
                 {% block level2Append %}{% endblock %}
