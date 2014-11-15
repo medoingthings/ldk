@@ -3,7 +3,9 @@
  */
 
 .frm-c {
-    input {
+    input[type=text],
+    input[type=password],
+    input[type=email] {
         padding: em(10);
         border: 2px solid color(2);
         margin-bottom: em(10);
