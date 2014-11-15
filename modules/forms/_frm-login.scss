@@ -1,0 +1,10 @@
+/**
+ * Form styles
+ */
+
+.frm-login-w {
+    @extend %container;
+    position: relative;
+    background-color: color(1);
+    padding: em(20);
+}

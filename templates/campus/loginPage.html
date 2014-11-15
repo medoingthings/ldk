@@ -1,0 +1,36 @@
+{% extends '_layout' %}
+
+{% set entry = craft.entries('loginPage').first %}
+
+{% block content %}
+    {% include 'matrix/titleStage/index' %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'frm-login-w', sectionLabel: 'Login'} %}
+        {% block content %}
+                <form method="post" accept-charset="UTF-8" class="frm-c">
+                    {{ getCsrfInput() }}
+                    <input type="hidden" name="action" value="users/login">
+
+                    <h3><label for="loginName">E-Mail-Adresse</label></h3>
+                    <input id="loginName" type="email" name="loginName"
+                        value="{{ craft.session.rememberedUsername }}">
+
+                    <h3><label for="password">Passwort</label></h3>
+                    <input id="password" type="password" name="password">
+
+                    <label>
+                        <input type="checkbox" name="rememberMe" value="1">
+                        Remember me
+                    </label>
+
+                    <button class="btn-outline" type="submit">Login</button>
+                    <p><a href="{{ url('forgotpassword') }}">Forget your password?</a></p>
+
+                    {% if errorMessage is defined %}
+                        <p>{{ errorMessage }}</p>
+                    {% endif %}
+                </form>
+
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

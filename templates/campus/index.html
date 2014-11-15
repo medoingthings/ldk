@@ -1,4 +1,5 @@
-{% if currentUser.can('accessCp') %}
-    <a href="{{ cpUrl() }}">Control Panel</a>
-    <h1>Campus Access</h1>
-{% endif %}
+{% requireLogin %}
+
+{% block content %}
+    {% include 'campus/_types/' ~ entry.type %}
+{% endblock %}
