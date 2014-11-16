@@ -69,11 +69,21 @@
     h2 {
         @extend %txt-type--3;
         text-transform: uppercase;
+        margin-bottom: baselineMargin(3);
+
+        + h3 {
+            margin-top: -0.5em;
+        }
     }
 
     h3 {
         @extend %txt-type--4;
         text-transform: uppercase;
+        margin-bottom: baselineMargin(4, 1);
+
+        + h2 {
+            margin-top: -0.5em;
+        }
     }
 
     p {
