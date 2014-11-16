@@ -1,0 +1,9 @@
+.sch-results-w {
+    @extend %container;
+    padding: em(100) em(50) em(40);
+    background-color: color(1);
+
+    input[type=search] {
+        width: 80%;
+    }
+}

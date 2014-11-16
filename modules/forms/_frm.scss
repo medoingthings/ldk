@@ -4,12 +4,19 @@
 
 .frm-c {
     input[type=text],
+    input[type=search],
     input[type=password],
     input[type=email] {
-        padding: em(10);
+        @extend %txt-type--6;
+        display: inline-block;
+        padding: em(20) em(30);
         border: 2px solid color(2);
         margin-bottom: em(10);
         border-radius: 0;
         -webkit-appearance: none;
+    }
+
+    input[type=search] {
+        text-transform: uppercase;
     }
 }

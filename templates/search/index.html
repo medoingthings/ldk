@@ -1,0 +1,53 @@
+{% extends '_layout' %}
+
+{% set entry   = craft.entries.section('search').first %}
+{% set query   = craft.request.getParam('q') %}
+{% set results = craft.entries.search(query).order('score') %}
+
+{% block content %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'sch-results-w'} %}
+
+        {% block content %}
+            {% include 'search/searchInput.html' %}
+        {% endblock %}
+
+    {% endembed %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'msc-tiles-w', sectionLabel: 'Suchergebnisse (' ~ results|length ~ ')'} %}
+        {% block content %}
+            {% if results|length %}
+
+                {% for entry in results %}
+
+                    {% if entry.type == 'dates' %}
+
+                        {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: ''} %}
+
+                    {% elseif (entry.type == 'courseDetail') %}
+
+                        {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ' _highlight _wide'} %}
+
+                    {% else %}
+
+                        {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ''} %}
+
+                    {% endif %}
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="msc-tiles-c _text _wide">
+                    <div class="msc-tiles-t">
+                        <h2>Leider gab es keine Treffer zu “{{ query }}”</h2>
+                        <p>Versuchen Sie es bitte mit einem anderen Suchbegriff.</p>
+                    </div>
+                </div>
+
+            {% endif %}
+
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}

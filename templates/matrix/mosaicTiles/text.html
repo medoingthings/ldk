@@ -1,8 +1,8 @@
 {% set entryModel = entryModel is defined ? entryModel : block.entry.first() %}
 {% set entryId    = entryModel.courseCategory.first().slug|default('') %}
 {% set buttonText = buttonText is defined ? buttonText : block.buttonText|default(defaultStringButton.label) %}
-{% set shortText  = shortText is defined ? shortText : block.shortText %}
-{% set headline   = headline is defined ? headline : block.headline %}
+{% set shortText  = shortText is defined ? shortText : block.shortText|default(entryModel.teaserText) %}
+{% set headline   = headline is defined ? headline : block.headline|default(entryModel.title) %}
 
 <div class="msc-tiles-c _text {{ '_' ~ entryId }}{{ styleClasses }}">
     <div class="msc-tiles-t">
