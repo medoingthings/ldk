@@ -1,0 +1,17 @@
+/**
+ * Special form styles for the contact form
+ */
+
+.frm-contact-w {
+    width: 80%;
+
+    input,
+    textarea {
+        width: 100%;
+    }
+
+    button {
+        padding-left: em(100);
+        padding-right: em(100);
+    }
+}

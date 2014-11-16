@@ -19,6 +19,7 @@
     &._call-to-action {
         background-color: color(2);
 
+        &,
         &:link,
         &:visited {
             color: color(1);

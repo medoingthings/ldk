@@ -7,16 +7,68 @@
     input[type=search],
     input[type=password],
     input[type=email] {
-        @extend %txt-type--6;
         display: inline-block;
+        height: em(50, size(6));
+    }
+
+    input[type=text],
+    input[type=search],
+    input[type=password],
+    input[type=email],
+    textarea {
+        @extend %txt-type--6;
         padding: em(20) em(30);
-        border: 2px solid color(2);
+        border: 1px solid color(2);
         margin-bottom: em(10);
         border-radius: 0;
         -webkit-appearance: none;
+
+        &._has-error {
+            border-color: color(11, $colors-scheme);
+        }
     }
 
     input[type=search] {
         text-transform: uppercase;
     }
+
+    textarea {
+        display: block;
+    }
+}
+
+.frm-i {
+    position: relative;
+    margin-bottom: em(20);
+}
+
+.frm--error-w {
+    @extend %txt-type--5;
+    position: absolute;
+    height: em(50, size(5));
+    top: 0;
+    right: 0;
+    transform: translateX(110%);
+    background-color: color(11, $colors-scheme);
+    display: inline-block;
+    padding: em(7, size(5)) em(30, size(5));
+
+    // CSS3 arrow
+    &:after {
+        content: " ";
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        height: 0;
+        width: 0;
+        border: solid transparent;
+        border-right-color: color(11, $colors-scheme);
+        border-width: em(10);
+        margin-top: em(-10);
+        pointer-events: none;
+    }
+}
+
+.frm--error-t {
+    color: color(1);
 }

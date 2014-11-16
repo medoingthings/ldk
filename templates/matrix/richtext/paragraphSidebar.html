@@ -8,28 +8,37 @@
 {% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ classNameCourse ~ classNameStyle, sectionLabel: block.sectionLabel} %}
 
     {% block content %}
-        <div class="rtf-badge-w">
 
-            {% for asset in block.assets %}
+        {% if block.assets|length %}
+            <div class="rtf-badge-w">
 
-                <div class="rtf-badge-p">
-                    {% include 'utilities/picturefill' with {
-                        imageModel: asset,
-                        imageSet: [
-                            ['richtextSidebarImageM', '400px', '1.5x'],
-                            ['richtextSidebarImageS', 'noscript'],
-                            ['richtextSidebarImageS']
-                        ]
-                    } %}
-                </div>
+                {% for asset in block.assets %}
 
-            {% endfor %}
+                    <div class="rtf-badge-p">
+                        {% include 'utilities/picturefill' with {
+                            imageModel: asset,
+                            imageSet: [
+                                ['richtextSidebarImageM', '400px', '1.5x'],
+                                ['richtextSidebarImageS', 'noscript'],
+                                ['richtextSidebarImageS']
+                            ]
+                        } %}
+                    </div>
 
-        </div>
+                {% endfor %}
+
+            </div>
+        {% endif %}
+
         <div class="rtf-c">
             {{ block.richtext }}
+
+            {# Used by richtext/contactForm fragment #}
+            {% if contactForm is defined and contactForm == true %}
+                {% include 'partials/contactForm' with {subject: block.subject} %}
+            {% endif %}
         </div>
+
     {% endblock %}
 
 {% endembed %}
-
