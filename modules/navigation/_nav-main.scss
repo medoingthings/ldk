@@ -27,6 +27,7 @@
     font-weight: bold;
     text-transform: uppercase;
     overflow: hidden;
+    max-height: em(50, size(7));
 
     &:link,
     &:visited {
@@ -66,6 +67,26 @@
             @extend %nav-main--l2--show;
         }
     }
+}
+
+/**
+ * Search item in first level navigation
+ */
+.nav-main--search-a {
+    @include icon(search);
+    padding-left: em(26, size(7));
+    padding-right: em(26, size(7));
+
+    &:before {
+        display: block;
+        color: inherit;
+        font-size: 1.1em;
+        width: 1em; // Prevent flicker on iconfont loading
+    }
+}
+
+.nav-main--search-t {
+    @extend %is-visually-hidden;
 }
 
 /**
