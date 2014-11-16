@@ -8,7 +8,6 @@
     input[type=password],
     input[type=email] {
         display: inline-block;
-        height: em(50, size(6));
     }
 
     input[type=text],
@@ -29,6 +28,8 @@
     }
 
     input[type=search] {
+        box-sizing: border-box;
+        border-width: 2px;
         text-transform: uppercase;
     }
 
