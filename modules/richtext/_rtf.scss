@@ -106,7 +106,7 @@
         padding-left: em(12);
 
         &:before {
-            content: '·';
+            content: '\b7'; // middot
             position: absolute;
             color: color(2);
             left: 0;
