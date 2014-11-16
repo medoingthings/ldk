@@ -169,16 +169,16 @@
     }
 
     ._subtitle {
-        @extend %txt-type--6;
+        @extend %txt-type--5;
         display: block;
         text-transform: uppercase;
     }
 
     h2 {
-        @extend %txt-type--6;
+        @extend %txt-type--5;
         font-weight: bold;
         text-transform: uppercase;
-        margin-bottom: em(20);
+        margin-bottom: em(20, size(5));
 
         :link,
         :visited {
