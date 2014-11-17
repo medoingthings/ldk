@@ -80,4 +80,8 @@
     display: inline-block;
     min-height: em(40);
     padding-top: em(8);
+
+    &:before {
+        text-indent: 1px; // Compensate the slight misplacement within the font
+    }
 }
