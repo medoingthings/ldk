@@ -5,6 +5,7 @@ var gulpconfig = require('./gulpconfig')
  * Modules
  */
 var autoprefixer = require('gulp-autoprefixer');
+var browserify   = require('gulp-browserify');
 var del          = require('del');
 var livereload   = require('gulp-livereload');
 var modernizr    = require('gulp-modernizr');
@@ -36,6 +37,12 @@ gulp.task('copy', function() {
     .pipe(gulp.dest(gulpconfig.copy.js.dest))
 });
 
+gulp.task('javascript', function() {
+    gulp.src('modules/app.js')
+        .pipe(browserify())
+        .pipe(gulp.dest(gulpconfig.js.dest))
+});
+
 gulp.task('modernizr', function() {
   gulp.src(gulpconfig.sass.modules)
     .pipe(modernizr(gulpconfig.modernizr.settings))
@@ -56,6 +63,6 @@ gulp.task('templates', function() {
 
 gulp.task('watch', function() {
     livereload.listen();
-    gulp.watch([gulpconfig.sass.modules, gulpconfig.templates.src], ['sass', 'templates'])
+    gulp.watch([gulpconfig.sass.modules, gulpconfig.templates.src, gulpconfig.js.src], ['sass', 'templates', 'javascript'])
         .on('change', livereload.changed);
 });
