@@ -15,7 +15,7 @@ var sass         = require('gulp-sass')
  */
 
 gulp.task('default', ['sass']);
-gulp.task('build', ['modernizr', 'sass', 'assets', 'js', 'templates']);
+gulp.task('build', ['modernizr', 'sass', 'assets', 'copy', 'templates']);
 
 /**
  * Gulp Tasks
@@ -31,9 +31,9 @@ gulp.task('clean', function (callback) {
   del(gulpconfig.clean.src, callback);
 });
 
-gulp.task('js', function() {
-  gulp.src(gulpconfig.js.src)
-    .pipe(gulp.dest(gulpconfig.js.dest))
+gulp.task('copy', function() {
+  gulp.src(gulpconfig.copy.js.src)
+    .pipe(gulp.dest(gulpconfig.copy.js.dest))
 });
 
 gulp.task('modernizr', function() {
