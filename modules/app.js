@@ -1,0 +1,3 @@
+/**
+ * Initialize scripts via browserify
+ */

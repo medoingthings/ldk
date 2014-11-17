@@ -13,11 +13,17 @@ module.exports = {
     clean: {
         src: ['www/public/dist/**', 'www/public/assets/**']
     },
+    copy: {
+        js: {
+            src: ['bower_components/picturefill/dist/picturefill.min.js'],
+            dest: 'www/public/dist/js'
+        }
+    },
     css: {
         dest: './www/public/dist/css'
     },
     js: {
-        src: ['bower_components/picturefill/dist/picturefill.min.js'],
+        src: 'modules/**/*.js',
         dest: 'www/public/dist/js'
     },
     modernizr: {

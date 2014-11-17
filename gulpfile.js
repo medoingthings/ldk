@@ -5,6 +5,7 @@ var gulpconfig = require('./gulpconfig')
  * Modules
  */
 var autoprefixer = require('gulp-autoprefixer');
+var browserify   = require('gulp-browserify');
 var del          = require('del');
 var livereload   = require('gulp-livereload');
 var modernizr    = require('gulp-modernizr');
@@ -15,7 +16,7 @@ var sass         = require('gulp-sass')
  */
 
 gulp.task('default', ['sass']);
-gulp.task('build', ['modernizr', 'sass', 'assets', 'js', 'templates']);
+gulp.task('build', ['modernizr', 'sass', 'assets', 'copy', 'templates']);
 
 /**
  * Gulp Tasks
@@ -31,9 +32,15 @@ gulp.task('clean', function (callback) {
   del(gulpconfig.clean.src, callback);
 });
 
-gulp.task('js', function() {
-  gulp.src(gulpconfig.js.src)
-    .pipe(gulp.dest(gulpconfig.js.dest))
+gulp.task('copy', function() {
+  gulp.src(gulpconfig.copy.js.src)
+    .pipe(gulp.dest(gulpconfig.copy.js.dest))
+});
+
+gulp.task('javascript', function() {
+    gulp.src('modules/app.js')
+        .pipe(browserify())
+        .pipe(gulp.dest(gulpconfig.js.dest))
 });
 
 gulp.task('modernizr', function() {
@@ -56,6 +63,6 @@ gulp.task('templates', function() {
 
 gulp.task('watch', function() {
     livereload.listen();
-    gulp.watch([gulpconfig.sass.modules, gulpconfig.templates.src], ['sass', 'templates'])
+    gulp.watch([gulpconfig.sass.modules, gulpconfig.templates.src, gulpconfig.js.src], ['sass', 'templates', 'javascript'])
         .on('change', livereload.changed);
 });
