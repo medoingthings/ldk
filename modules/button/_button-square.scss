@@ -2,7 +2,7 @@
  * Button with a square holding an icon
  */
 
-%btn-square-icon {
+%button-square__icon {
     position: relative;
 
     &:link,
@@ -48,7 +48,7 @@
     }
 }
 
-%btn-square-left {
+%button-square--left {
     padding-left: em(50);
 
     &:before {
@@ -60,7 +60,7 @@
     }
 }
 
-%btn-square-right {
+%button-square--right {
     padding-right: em(50);
 
     &:before {
@@ -72,10 +72,10 @@
     }
 }
 
-.btn-square {
-    @extend %txt-type--6;
-    @extend %btn-square-icon;
-    @extend %btn-square-left;
+.button-square {
+    @extend %text-type--6;
+    @extend %button-square__icon;
+    @extend %button-square--left;
     @include icon(plus);
     display: inline-block;
     min-height: em(40);

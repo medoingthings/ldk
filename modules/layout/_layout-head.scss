@@ -1,7 +1,7 @@
 /**
  * Header
  */
-.lyt-head-w {
+.layout-head__wrapper {
     @extend %container;
     position: relative;
     height: em(50);
@@ -9,7 +9,7 @@
     z-index: 1;
 }
 
-.lyt-head--home-f {
+.layout-head__home__figure {
     height: em(50);
     margin: 0;
 
@@ -30,7 +30,7 @@
     }
 }
 
-.lyt-head--home-a {
+.layout-head__home__link {
     @extend %clearfix;
     display: inline-block;
     float: left;
@@ -46,7 +46,7 @@
  * @param {integer} $top Vertical postition on the grid
  * @param {integer} $left Horizontal position on the grid
  */
-@mixin lyt-head--logo-grid ($top, $left) {
+@mixin layout-head--logo-grid ($top, $left) {
     $margin-top: 7;
     $margin-left: 9;
     $gutter: 1;
@@ -63,7 +63,7 @@
  *
  * @param {list} $shape [(top, left), (top, left), ...]
  */
-@mixin lyt-head--logo-generator ($shape) {
+@mixin layout-head--logo-generator ($shape) {
     $index: 1;
 
     @each $coords in $shape {
@@ -72,7 +72,7 @@
             $top: nth($coords, 1);
             $left: nth($coords, 2);
 
-            @include lyt-head--logo-grid($top, $left);
+            @include layout-head--logo-grid($top, $left);
         }
 
         $index: $index + 1;
@@ -80,7 +80,7 @@
 }
 
 // LDK shape
-$lyt-head--logo-shape-ldk:
+$layout-head--logo-shape-ldk:
     (0,0),
     (1,0),
     (2,0),
@@ -101,7 +101,7 @@ $lyt-head--logo-shape-ldk:
     (6,2);
 
 // House shape
-$lyt-head--logo-shape-home:
+$layout-head--logo-shape-home:
     (5,1),
     (5,5),
     (4,1),
@@ -121,9 +121,9 @@ $lyt-head--logo-shape-home:
     (1,4),
     (2,1);
 
-.lyt-head--logo-i {
+.layout-head__logo__item {
     @extend %composited-layer;
-    @include lyt-head--logo-generator($lyt-head--logo-shape-ldk);
+    @include layout-head--logo-generator($layout-head--logo-shape-ldk);
     display: block;
     position: absolute;
     width: em(4);
@@ -132,8 +132,8 @@ $lyt-head--logo-shape-home:
     background-color: color(1);
     transition: transform 0.3s ease;
 
-    .lyt-head--home-a:hover & {
-        @include lyt-head--logo-generator($lyt-head--logo-shape-home);
+    .layout-head__home__link:hover & {
+        @include layout-head--logo-generator($layout-head--logo-shape-home);
     }
 
     // IE doesn’t support css transforms
@@ -143,12 +143,12 @@ $lyt-head--logo-shape-home:
 }
 
 @include breakpoint($BP_DESKTOP_MIN) {
-    .lyt-head--home-f._logo-left {
+    .layout-head__home__figure._logo-left {
         position: static;
         float: left;
     }
 
-    .lyt-head-w .txt-ldk-h {
+    .layout-head__wrapper .text-ldk__headline {
         margin-left: em(32);
     }
 }

@@ -5,16 +5,16 @@
     {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
 {% endfor %}
 
-{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ classNameCourse ~ classNameStyle, sectionLabel: block.sectionLabel} %}
+{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper' ~ classNameCourse ~ classNameStyle, sectionLabel: block.sectionLabel} %}
 
     {% block content %}
 
         {% if block.assets|length %}
-            <div class="rtf-badge-w">
+            <div class="richtext-badge__wrapper">
 
                 {% for asset in block.assets %}
 
-                    <div class="rtf-badge-p">
+                    <div class="richtext-badge__image">
                         {% include 'utilities/picturefill' with {
                             imageModel: asset,
                             imageSet: [
@@ -30,7 +30,7 @@
             </div>
         {% endif %}
 
-        <div class="rtf-c">
+        <div class="richtext__content">
             {{ block.richtext }}
 
             {# Used by richtext/contactForm fragment #}

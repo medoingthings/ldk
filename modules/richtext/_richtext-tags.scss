@@ -2,40 +2,40 @@
  * Tags for richtext documents
  */
 
-.rtf-tags-w {
+.richtext-tags__wrapper {
     @extend %clearfix;
 }
 
-.rtf-tags-l {
+.richtext-tags__list {
     @extend %unstyle-list;
     @extend %clearfix;
     margin-left: em(80);
     margin-bottom: em(10);
 }
 
-.rtf-tags-i {
+.richtext-tags__item {
     @extend %unstyle-list-item;
     display: inline-block;
     float: left;
     margin-bottom: em(10);
 }
 
-.rtf-tags-h,
-.rtf-tags-a {
-    @extend %txt-type--7;
+.richtext-tags__headline,
+.richtext-tags__link {
+    @extend %text-type--7;
     display: inline-block;
     padding: em(10, size(7)) em(20, size(7));
     margin-right: em(10, size(7));
     text-transform: uppercase;
 }
 
-.rtf-tags-h {
+.richtext-tags__headline {
     float: left;
     padding-left: 0;
     font-weight: normal;
 }
 
-.rtf-tags-a {
+.richtext-tags__link {
     position: relative;
     display: block;
     background-color: color(1);

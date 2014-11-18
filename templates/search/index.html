@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    {% embed "helper/sectionContainer.html" with {classes: 'sch-results-w'} %}
+    {% embed "helper/sectionContainer.html" with {classes: 'search-results__wrapper'} %}
 
         {% block content %}
             {% include 'search/searchInput.html' %}
@@ -14,7 +14,7 @@
 
     {% endembed %}
 
-    {% embed "helper/sectionContainer.html" with {classes: 'msc-tiles-w', sectionLabel: 'Suchergebnisse (' ~ results|length ~ ')'} %}
+    {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: 'Suchergebnisse (' ~ results|length ~ ')'} %}
         {% block content %}
             {% if results|length %}
 
@@ -38,8 +38,8 @@
 
             {% else %}
 
-                <div class="msc-tiles-c _text _wide">
-                    <div class="msc-tiles-t">
+                <div class="mosaic-tiles__content _text _wide">
+                    <div class="mosaic-tiles__text">
                         <h2>Leider gab es keine Treffer zu “{{ query }}”</h2>
                         <p>Versuchen Sie es bitte mit einem anderen Suchbegriff.</p>
                     </div>

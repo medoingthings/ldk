@@ -2,13 +2,13 @@
  * Layout Skeleton
  */
 
-.lyt-footer-w {
+.layout-footer__wrapper {
     @extend %container;
     background-color: color(1);
     padding: em(50);
 }
 
-.lyt-footer-i {
+.layout-footer__item {
     display: table-cell;
     vertical-align: middle;
     text-decoration: none;

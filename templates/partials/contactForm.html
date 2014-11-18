@@ -1,9 +1,9 @@
 {% macro errorList(errors) %}
 
     {% if errors %}
-        <div class="frm--error-w">
+        <div class="form--error__wrapper">
             {% for error in errors %}
-                <span class="frm--error-t">{{ error }}</span>
+                <span class="form--error__text">{{ error }}</span>
             {% endfor %}
         </div>
     {% endif %}
@@ -13,34 +13,34 @@
 {% from _self import errorList %}
 {% set subject = message is defined and message.subject != '' ? message.subject : prefilledSubject %}
 
-<section class="frm-contact-w">
+<section class="form-contact__wrapper">
 
-    <form method="post" action="" accept-charset="UTF-8" class="frm-c">
+    <form method="post" action="" accept-charset="UTF-8" class="form__content">
         {{ getCsrfInput() }}
         <input type="hidden" name="action" value="contactForm/sendMessage">
         <input type="hidden" name="redirect" value="{{ craft.entries.section('contactFormSuccess').first.url }}">
 
         <h3><label for="fromEmail">Ihre E-Mail-Adresse *</label></h3>
-        <div class="frm-i">
+        <div class="form__item">
             <input id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}"{{ message is defined and message.getErrors('fromEmail')|length ? ' class="_has-error"' }}>
             {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
         </div>
 
         <h3><label for="subject">Betreff</label></h3>
 
-        <div class="frm-i">
+        <div class="form__item">
             <input id="subject" type="text" name="subject" value="{{ subject }}"{{ message is defined and message.getErrors('subject')|length ? ' class="_has-error"' }}>
             {{ message is defined and message ? errorList(message.getErrors('subject')) }}
         </div>
 
         <h3><label for="message">Ihre Nachricht *</label></h3>
 
-        <div class="frm-i">
+        <div class="form__item">
             <textarea rows="10" cols="40" id="message" name="message"{{ message is defined and message.getErrors('message')|length ? ' class="_has-error"' }}>{% if message is defined %}{{ message.message }}{% endif %}</textarea>
 
             {{ message is defined and message ? errorList(message.getErrors('message')) }}
         </div>
 
-        <button type="submit" class="btn-outline _call-to-action">Senden</button>
+        <button type="submit" class="button-outline _call-to-action">Senden</button>
 </form>
 </section>

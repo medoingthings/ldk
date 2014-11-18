@@ -2,8 +2,8 @@
  * Buttons
  */
 
-.btn-outline {
-    @extend %txt-type--6;
+.button-outline {
+    @extend %text-type--6;
     @extend %composited-layer;
     position: relative;
     z-index: 1;

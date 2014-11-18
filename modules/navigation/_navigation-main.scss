@@ -2,25 +2,25 @@
  * Main navigation in the header
  */
 
-.nav-main-w {
+.navigation-main__wrapper {
     position: absolute;
     z-index: 1;
     top: em(50);
     left: em(50)
 }
 
-.nav-main-l {
+.navigation-main__list {
     @extend %unstyle-list;
 }
 
-.nav-main-i {
+.navigation-main__item {
     @extend %unstyle-list-item;
     display: block;
     float: left;
 }
 
-%nav-main-a {
-    @extend %txt-type--7;
+%navigation-main__link {
+    @extend %text-type--7;
     position: relative;
     display: block;
     padding: em(18, size(7)) em(32, size(7));
@@ -35,8 +35,8 @@
     }
 }
 
-.nav-main-a {
-    @extend %nav-main-a;
+.navigation-main__link {
+    @extend %navigation-main__link;
     background-color: color(2);
 
     &:link,
@@ -44,7 +44,7 @@
         color: color(1);
     }
 
-    .nav-main-i._is-active &,
+    .navigation-main__item._is-active &,
     &:hover,
     &:focus {
         background-color: color(1);
@@ -56,23 +56,23 @@
  * Hover state Level 1
  */
 
-.nav-main-i {
+.navigation-main__item {
     &:hover {
-        .nav-main-a {
+        .navigation-main__link {
             background-color: color(1);
             color: color(2);
         }
 
-        .nav-main--l2-l {
-            @extend %nav-main--l2--show;
+        .navigation-main__l2__list {
+            @extend %navigation-main__l2--show;
         }
     }
 }
 
 /**
- * Search item in first level navigation
+ * Search item in first level navigationigation
  */
-.nav-main--search-a {
+.navigation-main__search__link {
     @include icon(search);
     padding-left: em(26, size(7));
     padding-right: em(26, size(7));
@@ -85,7 +85,7 @@
     }
 }
 
-.nav-main--search-t {
+.navigation-main__search__text {
     @extend %is-visually-hidden;
 }
 
@@ -93,30 +93,30 @@
  * Level 2
  */
 
-%nav-main--l2--hide {
+%navigation-main__l2--hide {
     z-index: -1;
     visibility: hidden;
 }
 
-%nav-main--l2--show {
+%navigation-main__l2--show {
     z-index: 1;
     visibility: visible;
 }
 
-.nav-main--l2-l {
-    @extend %nav-main--l2--hide;
+.navigation-main__l2__list {
+    @extend %navigation-main__l2--hide;
     @extend %unstyle-list;
     position: absolute;
     background-color: color(1);
 }
 
-.nav-main--l2-i {
+.navigation-main__l2__item {
     @extend %unstyle-list-item;
     @extend %clearfix;
 }
 
-.nav-main--l2-a {
-    @extend %nav-main-a;
+.navigation-main__l2__link {
+    @extend %navigation-main__link;
     white-space: nowrap;
 
     &:link,
@@ -124,7 +124,7 @@
         color: color(2);
     }
 
-    .nav-main--l2-i._is-active &,
+    .navigation-main__l2__item._is-active &,
     &:hover {
         background-color: color(3);
     }

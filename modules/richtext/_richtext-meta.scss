@@ -2,16 +2,16 @@
  * Meta section for richtext pages
  */
 
-.rtf-meta-w {
+.richtext-meta__wrapper {
     @extend %container;
     padding: em(16) em(40);
 
-    .scl-w {
+    .social__wrapper {
         display: inline-block;
         float: right;
     }
 
-    .rtf-tags-w {
+    .richtext-tags_wrapper {
         display: inline-block;
         float: left;
     }

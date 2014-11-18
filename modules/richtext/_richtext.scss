@@ -2,8 +2,8 @@
  * Rich Text
  */
 
-@mixin rtf--course-color-scheme ($color) {
-    .rtf-badge-h,
+@mixin richtext-color-scheme ($color) {
+    .richtext-badge__headline,
     &._highlight {
         background-color: $color;
     }
@@ -17,7 +17,7 @@
     }
 }
 
-.rtf-w {
+.richtext__wrapper {
     @extend %container;
     position: relative;
     background-color: color(1);
@@ -27,47 +27,47 @@
     }
 
     &._leadership-1 {
-        @include rtf--course-color-scheme(color(7, $colors-scheme));
+        @include richtext-color-scheme(color(7, $colors-scheme));
     }
 
     &._leadership-2 {
-        @include rtf--course-color-scheme(color(8, $colors-scheme));
+        @include richtext-color-scheme(color(8, $colors-scheme));
     }
 
     &._management-1 {
-        @include rtf--course-color-scheme(color(3, $colors-scheme));
+        @include richtext-color-scheme(color(3, $colors-scheme));
     }
 
     &._management-2 {
-        @include rtf--course-color-scheme(color(4, $colors-scheme));
+        @include richtext-color-scheme(color(4, $colors-scheme));
     }
 
     &._projekt-1 {
-        @include rtf--course-color-scheme(color(9, $colors-scheme));
+        @include richtext-color-scheme(color(9, $colors-scheme));
     }
 
     &._projekt-2 {
-        @include rtf--course-color-scheme(color(10, $colors-scheme));
+        @include richtext-color-scheme(color(10, $colors-scheme));
     }
 
     &._gestaltung-1 {
-        @include rtf--course-color-scheme(color(5, $colors-scheme));
+        @include richtext-color-scheme(color(5, $colors-scheme));
     }
 
     &._gestaltung-2 {
-        @include rtf--course-color-scheme(color(6, $colors-scheme));
+        @include richtext-color-scheme(color(6, $colors-scheme));
     }
 
     &._kommunikation-1 {
-        @include rtf--course-color-scheme(color(1, $colors-scheme));
+        @include richtext-color-scheme(color(1, $colors-scheme));
     }
 
     &._kommunikation-2 {
-        @include rtf--course-color-scheme(color(2, $colors-scheme));
+        @include richtext-color-scheme(color(2, $colors-scheme));
     }
 
     h2 {
-        @extend %txt-type--3;
+        @extend %text-type--3;
         text-transform: uppercase;
         margin-bottom: baselineMargin(3);
 
@@ -77,7 +77,7 @@
     }
 
     h3 {
-        @extend %txt-type--4;
+        @extend %text-type--4;
         text-transform: uppercase;
         margin-bottom: baselineMargin(4, 1);
 
@@ -87,7 +87,7 @@
     }
 
     p {
-        @extend %txt-type--5;
+        @extend %text-type--5;
         margin-bottom: baselineMargin(5, 1);
     }
 
@@ -125,7 +125,7 @@
     }
 }
 
-.rtf-c {
+.richtext__content {
     @extend %clearfix;
     padding: em(100) em(145) em(80) em(145);
 
@@ -133,26 +133,26 @@
         @include span-columns(9);
     }
 
-    .rtf-badge-w + & {
+    .richtext-badge__wrapper + & {
         margin-left: em(240);
         padding-left: 0;
     }
 }
 
-.rtf-c--sidebar-w {
+.richtext__content__sidebar__wrapper {
     @include span-columns(3);
     margin: em(100) 0 0;
     padding-right: em(20);
 
     dt {
-        @extend %txt-type--7;
+        @extend %text-type--7;
         text-transform: uppercase;
         margin-top: baselineMargin(7, 0, 0.6);
         margin-bottom: baselineMargin(7, 0, 0.4);
     }
 
     dd {
-        @extend %txt-type--5;
+        @extend %text-type--5;
         margin: 0;
         padding-bottom: baselineMargin(5, 1);
         color: color(4);

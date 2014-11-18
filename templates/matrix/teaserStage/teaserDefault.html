@@ -1,7 +1,7 @@
 {% set sectionLabel = entry.teaserStage.type('sectionLabel').nth(loop.index - 1) %}
 {% set sectionLabel = sectionLabel ? sectionLabel.label %}
 
-{% embed "helper/sectionContainer.html" with {classes: 'ftr-stage-w', sectionLabel: sectionLabel} %}
+{% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper', sectionLabel: sectionLabel} %}
 
     {% block content %}
         {% include 'matrix/teaserStage/teaserDefaultUtil' %}

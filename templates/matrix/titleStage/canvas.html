@@ -4,12 +4,12 @@
     {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
 {% endfor %}
 
-<div class="ftr-stage-i">
+<div class="feature-stage__item">
 
     {% include 'matrix/featureStage/imageUtil' %}
 
-    <div class="ftr-stage-c{{ classNameStyle }}">
-        <div class="ftr-stage-t">
+    <div class="feature-stage__content{{ classNameStyle }}">
+        <div class="feature-stage__text">
 
             {% if block.subheadline %}
                 <h2>{{ block.subheadline }}</h2>

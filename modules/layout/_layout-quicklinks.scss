@@ -2,19 +2,19 @@
  * Quicklink section
  */
 
-.lyt-quicklinks-w {
+.layout-quicklinks__wrapper {
     @extend %container;
     margin-bottom: em(20);
     padding: em(60) em(50);
     background-color: color(2);
 }
 
-.lyt-quicklinks-c {
+.layout-quicklinks__content {
     @include span-columns(2.5);
 }
 
-.lyt-quicklinks-h {
-    @extend %txt-type--6;
+.layout-quicklinks__headline {
+    @extend %text-type--6;
     margin-bottom: em(20, size(6));
     font-weight: bold;
     text-transform: uppercase;
@@ -27,12 +27,12 @@
     }
 }
 
-.lyt-quicklinks-l {
+.layout-quicklinks__list {
     @extend %unstyle-list;
 }
 
-.lyt-quicklinks-a {
-    @extend %txt-type--6;
+.layout-quicklinks__link {
+    @extend %text-type--6;
     text-decoration: none;
     color: color(1);
 }

@@ -1,11 +1,11 @@
 /**
  * Downloads in the content area
  */
-.dwn-compact-l {
+.download-compact__list {
     @extend %unstyle-list;
 }
 
-.dwn-compact-i {
+.download-compact__item {
     @extend %unstyle-list-item;
     border-top: 1px solid color(4);
 
@@ -14,10 +14,10 @@
     }
 }
 
-.dwn-compact-a {
+.download-compact__link {
     @include icon(download);
-    @extend %btn-square-icon;
-    @extend %btn-square-right;
+    @extend %button-square__icon;
+    @extend %button-square--right;
     display: block;
     margin-top: em(14);
     margin-bottom: em(14);

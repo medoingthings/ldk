@@ -4,13 +4,13 @@
     {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
 {% endfor %}
 
-{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ classNameStyle, sectionLabel: block.sectionLabel} %}
+{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper' ~ classNameStyle, sectionLabel: block.sectionLabel} %}
 
     {% block content %}
 
-        <div class="rtf-gallery-w">
+        <div class="richtext-gallery__wrapper">
             {% for image in block.image %}
-                <a href="{{ image.url }}" class="rtf-gallery-a">
+                <a href="{{ image.url }}" class="richtext-gallery__link">
                     {% include 'utilities/picturefill' with {
                         imageModel: image,
                         imageSet: [
