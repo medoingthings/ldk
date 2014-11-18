@@ -4,11 +4,11 @@
 {% set shortText  = shortText is defined ? shortText : block.shortText|default(entryModel.teaserText) %}
 {% set headline   = headline is defined ? headline : block.headline|default(entryModel.title) %}
 
-<div class="msc-tiles-c _text {{ '_' ~ entryId }}{{ styleClasses }}">
-    <div class="msc-tiles-t">
+<div class="mosaic-tiles__content _text {{ '_' ~ entryId }}{{ styleClasses }}">
+    <div class="mosaic-tiles__text">
         <h2><a href="{{ entryModel.url }}">{{ headline }}</a></h2>
 
         <p>{{ shortText }}</p>
-        <a href="{{ entryModel.url }}" class="btn-square">{{ buttonText }}</a>
+        <a href="{{ entryModel.url }}" class="button-square">{{ buttonText }}</a>
     </div>
 </div>

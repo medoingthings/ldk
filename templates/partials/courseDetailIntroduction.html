@@ -1,15 +1,15 @@
 {% set courseClassName = entry.courseCategory.first() ? ' _' ~ entry.courseCategory.first().slug : '' %}
 
-{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ courseClassName, sectionLabel: defaultStringCourseDetail.label} %}
+{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper' ~ courseClassName, sectionLabel: defaultStringCourseDetail.label} %}
 
     {% block content %}
 
         {% set badge = entry.courseCategory.first %}
         {% if badge %}
-            <b class="rtf-badge-h" title="{{ badge }}">{{ badge.courseShortname }}</b>
+            <b class="richtext-badge__headline" title="{{ badge }}">{{ badge.courseShortname }}</b>
         {% endif %}
 
-        <div class="rtf-c _has-sidebar">{{ entry.introduction }}</div>
+        <div class="richtext__content _has-sidebar">{{ entry.introduction }}</div>
 
         {% include 'partials/courseDetailSidebar' %}
 

@@ -5,9 +5,9 @@
 {% block content %}
     {% include 'matrix/titleStage/index' %}
 
-    {% embed "helper/sectionContainer.html" with {classes: 'frm-login-w', sectionLabel: 'Login'} %}
+    {% embed "helper/sectionContainer.html" with {classes: 'form-login__wrapper', sectionLabel: 'Login'} %}
         {% block content %}
-                <form method="post" accept-charset="UTF-8" class="frm-c">
+                <form method="post" accept-charset="UTF-8" class="form__content">
                     {{ getCsrfInput() }}
                     <input type="hidden" name="action" value="users/login">
 
@@ -23,7 +23,7 @@
                         Remember me
                     </label>
 
-                    <button class="btn-outline" type="submit">Login</button>
+                    <button class="button-outline" type="submit">Login</button>
                     <p><a href="{{ url('forgotpassword') }}">Forget your password?</a></p>
 
                     {% if errorMessage is defined %}

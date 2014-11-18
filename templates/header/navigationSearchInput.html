@@ -1,5 +1,5 @@
 {% if entry.slug != 'search' %}
-    <li class="nav-main-i">
-        <a href="{{ craft.entries.section('search').first.url }}" class="nav-main-a nav-main--search-a"><span class="nav-main--search-t">{{ craft.entries.section('search').first }}</span></a>
+    <li class="navigation-main__item">
+        <a href="{{ craft.entries.section('search').first.url }}" class="navigation-main__link navigation-main__search__link"><span class="navigation-main__search__text">{{ craft.entries.section('search').first }}</span></a>
     </li>
 {% endif %}

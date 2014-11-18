@@ -2,14 +2,14 @@
  * Feature content in a big stage
  */
 
-.ftr-stage-w {
+.feature-stage__wrapper {
     @extend %container;
     position: relative;
     margin-bottom: em(20);
     z-index: 0;
 }
 
-.ftr-stage-p {
+.feature-stage__image {
     img {
         display: block;
         width: 100%;
@@ -17,37 +17,37 @@
     }
 }
 
-.ftr-stage-c {
+.feature-stage__content {
     padding: em(50) 0;
     background-color: color(1);
 
-    &._text-short .ftr-stage-t {
+    &._text-short .feature-stage__text {
         width: 60%;
     }
 }
 
-.ftr-stage-t {
+.feature-stage__text {
     width: 85%;
     padding-left: em(80);
 
     h1 {
-        @extend %txt-type--3;
+        @extend %text-type--3;
         margin-bottom: baselineMargin(3);
         text-transform: uppercase;
 
         &._xl {
-            @extend %txt-type--2;
+            @extend %text-type--2;
         }
     }
 
     h2 {
-        @extend %txt-type--4;
+        @extend %text-type--4;
         margin-bottom: baselineMargin(4, 1);
         text-transform: uppercase;
     }
 
     > strong {
-        @extend %txt-type--5;
+        @extend %text-type--5;
         padding: em(10, size(5));
         text-transform: uppercase;
     }
@@ -62,7 +62,7 @@
 
 // Different text position on bigger screens
 @include breakpoint(1100) {
-    .ftr-stage-p {
+    .feature-stage__image {
         height: 0;
         padding-top: 100% / 24 * 9;
 
@@ -78,7 +78,7 @@
         }
     }
 
-    .ftr-stage-p + .ftr-stage-c {
+    .feature-stage__image + .feature-stage__content {
         position: absolute;
         top: 0;
         width: 100%;
@@ -94,13 +94,13 @@
             margin-right: -0.25em;
         }
 
-        .ftr-stage-t {
+        .feature-stage__text {
             display: inline-block;
             vertical-align: middle;
         }
     }
 
-    .ftr-stage-c {
+    .feature-stage__content {
         color: color(2);
 
         &._text-bright {
@@ -110,7 +110,7 @@
                 background-color: rgba(color(2), 0.75);
             }
 
-            .btn-outline {
+            .button-outline {
                 &:link,
                 &:visited {
                     color: color(1);
@@ -125,7 +125,7 @@
         }
     }
 
-    .ftr-stage-t {
+    .feature-stage__text {
         > strong {
             background-color: rgba(color(2), 0.75);
         }
@@ -133,8 +133,8 @@
 }
 
 @include breakpoint(false, 800) {
-    .ftr-stage-c._text-short {
-        .ftr-stage-t{
+    .feature-stage__content._text-short {
+        .feature-stage__text {
             width: 90%;
         }
     }

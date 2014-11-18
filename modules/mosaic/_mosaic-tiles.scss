@@ -2,17 +2,17 @@
  * Mosaic of tiles
  */
 
-.msc-tiles-w {
+.mosaic-tiles__wrapper {
     @extend %container;
     margin-bottom: em(20);
 }
 
-.msc-tiles-p img {
+.mosaic-tiles__image img {
     width: 100%;
     height: auto;
 }
 
-.msc-tiles-c {
+.mosaic-tiles__content {
     @include span-columns(3);
     @extend %clearfix;
     position: relative;
@@ -25,12 +25,12 @@
     }
 
     &._image-left {
-        .msc-tiles-t {
+        .mosaic-tiles__text {
             left: 50%;
             width: 50%;
         }
 
-        .msc-tiles-p {
+        .mosaic-tiles__image {
             position: absolute;
             top: 0;
             left: 0;
@@ -148,7 +148,7 @@
     }
 }
 
-.msc-tiles-t {
+.mosaic-tiles__text {
     position: absolute;
     top: 0;
     left: 0;
@@ -156,13 +156,13 @@
     height: 100%;
     padding: em(30) em(20);
 
-    .btn-square {
+    .button-square {
         position: absolute;
         bottom: em(24);
     }
 
     ._date {
-        @extend %txt-type--3;
+        @extend %text-type--3;
         margin-bottom: em(10, size(3));
         display: block;
         font-weight: bold;
@@ -170,13 +170,13 @@
     }
 
     ._subtitle {
-        @extend %txt-type--5;
+        @extend %text-type--5;
         display: block;
         text-transform: uppercase;
     }
 
     h2 {
-        @extend %txt-type--5;
+        @extend %text-type--5;
         font-weight: bold;
         text-transform: uppercase;
         margin-bottom: em(20, size(5));
@@ -191,14 +191,14 @@
     }
 
     p {
-        @extend %txt-type--6;
+        @extend %text-type--6;
     }
 }
 
-.msc-tiles-c {
+.mosaic-tiles__content {
     &._wide._highlight {
         h2 {
-            @extend %txt-type--3;
+            @extend %text-type--3;
             margin-bottom: em(10, size(3));
         }
 
@@ -209,13 +209,13 @@
 }
 
 @include breakpoint (1051) {
-    .msc-tiles-c._shift {
+    .mosaic-tiles__content._shift {
         @include shift(3);
     }
 }
 
 @include breakpoint (false, 1050) {
-    .msc-tiles-c {
+    .mosaic-tiles__content {
         &._text {
             width: 50%;
         }
@@ -223,7 +223,7 @@
 }
 
 @include breakpoint (791, 880) {
-    .msc-tiles-c {
+    .mosaic-tiles__content {
         width: 50%;
     }
 }
@@ -231,21 +231,21 @@
 @include breakpoint (false, 790) {
 
     // High specifity to overwrite double class styles
-    .msc-tiles-c.msc-tiles-c {
+    .mosaic-tiles__content.mosaic-tiles__content {
         width: 100%;
         height: auto;
         padding-top: 0;
         min-height: em(180);
     }
 
-    .msc-tiles-c._image-left .msc-tiles-p {
+    .mosaic-tiles__content._image-left .mosaic-tiles__image {
         position: static;
         float: left;
         width: 40%;
         margin-right: em(20);
     }
 
-    .msc-tiles-t {
+    .mosaic-tiles__text {
         position: static;
     }
 }

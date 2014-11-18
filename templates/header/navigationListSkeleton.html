@@ -5,21 +5,21 @@
 
     {% set level1Segment = segmentList[0]|default('') %}
 
-    <li class="nav-main-i{{ level1.slug == level1Segment or level1.id == entry.id ? ' _is-active' }}">
-        <a href="{{ level1.url }}" class="nav-main-a">{{ level1 }}</a>
+    <li class="navigation-main__item{{ level1.slug == level1Segment or level1.id == entry.id ? ' _is-active' }}">
+        <a href="{{ level1.url }}" class="navigation-main__link">{{ level1 }}</a>
 
         {% set level2Model = level1.getDescendants(1) %}
 
         {% if (level2Model|length and (depth == false or depth >= 2))  %}
 
-            <ul class="nav-main--l2-l">
+            <ul class="navigation-main__l2__list">
 
                 {% for level2 in level2Model %}
 
                     {% set level2Segment = segmentList[1]|default('') %}
 
-                    <li class="nav-main--l2-i{{ level2.slug == level2Segment or level2.id == entry.id ? ' _is-active' }}">
-                        <a href="{{ level2.url }}" class="nav-main--l2-a">{{ level2 }}</a>
+                    <li class="navigation-main__l2__item{{ level2.slug == level2Segment or level2.id == entry.id ? ' _is-active' }}">
+                        <a href="{{ level2.url }}" class="navigation-main__l2__link">{{ level2 }}</a>
                     </li>
 
                 {% endfor %}

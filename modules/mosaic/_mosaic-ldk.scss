@@ -2,18 +2,18 @@
  * Mosaic of all LDK courses
  */
 
-$msc-ldk--dimension: 200;
+$mosaic-ldk--dimension: 200;
 
-.msc-ldk-w {
+.mosaic-ldk__wrapper {
     @extend %container;
     margin-bottom: em(20);
 
-    .lyt-label-h {
-        min-width: em($msc-ldk--dimension, size(7));
+    .lyt-label__headline {
+        min-width: em($mosaic-ldk--dimension, size(7));
     }
 }
 
-.msc-ldk-l {
+.mosaic-ldk__list {
     @extend %unstyle-list;
     @extend %clearfix;
 
@@ -22,12 +22,12 @@ $msc-ldk--dimension: 200;
     z-index: 1;
 }
 
-.msc-ldk-i {
+.mosaic-ldk__item {
     @extend %unstyle-list-item;
     display: block;
     float: left;
-    width: em($msc-ldk--dimension);
-    height: em($msc-ldk--dimension);
+    width: em($mosaic-ldk--dimension);
+    height: em($mosaic-ldk--dimension);
 
     // Compensate rounding issues to prevent moving the last item to the next row
     &:last-child {
@@ -75,7 +75,7 @@ $msc-ldk--dimension: 200;
     }
 }
 
-.msc-ldk-a {
+.mosaic-ldk__link {
     @extend %composited-layer;
     display: block;
     height: 100%;
@@ -102,7 +102,7 @@ $msc-ldk--dimension: 200;
     }
 
     ._id {
-        @extend %txt-type--2;
+        @extend %text-type--2;
         font-weight: bold;
         line-height: 1;
         margin-left: -0.07em;
@@ -110,7 +110,7 @@ $msc-ldk--dimension: 200;
 
     ._title,
     ._prof {
-        @extend %txt-type--6;
+        @extend %text-type--6;
         text-transform: uppercase;
     }
 
@@ -120,12 +120,12 @@ $msc-ldk--dimension: 200;
 }
 
 @include breakpoint (1100) {
-    .msc-ldk-l {
+    .mosaic-ldk__list {
         &._horizontal {
-            .msc-ldk-i {
+            .mosaic-ldk__item {
                 &:nth-child(6) {
                     clear: both;
-                    margin-left: em(2 * $msc-ldk--dimension);
+                    margin-left: em(2 * $mosaic-ldk--dimension);
                 }
             }
         }
@@ -133,19 +133,19 @@ $msc-ldk--dimension: 200;
 }
 
 @include breakpoint (1000) {
-    .msc-ldk-l {
+    .mosaic-ldk__list {
         &._center {
-            margin-left: em($msc-ldk--dimension / 2);
+            margin-left: em($mosaic-ldk--dimension / 2);
 
-            .msc-ldk-i {
+            .mosaic-ldk__item {
                 &:nth-child(5) {
                     clear: both;
-                    margin-left: em(1 * $msc-ldk--dimension);
+                    margin-left: em(1 * $mosaic-ldk--dimension);
                 }
 
                 &:nth-child(9) {
                     clear: both;
-                    margin-left: em(2 * $msc-ldk--dimension);
+                    margin-left: em(2 * $mosaic-ldk--dimension);
                 }
             }
         }
@@ -153,7 +153,7 @@ $msc-ldk--dimension: 200;
 }
 
 @include breakpoint (false, 999) {
-    .msc-ldk-l {
+    .mosaic-ldk__list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -161,21 +161,21 @@ $msc-ldk--dimension: 200;
 }
 
 @include breakpoint (680, 999) {
-    .msc-ldk-l {
+    .mosaic-ldk__list {
         &._center {
-            .msc-ldk-i {
+            .mosaic-ldk__item {
                 &:nth-child(5) {
                     clear: both;
-                    margin-left: em(1 * $msc-ldk--dimension);
+                    margin-left: em(1 * $mosaic-ldk--dimension);
                 }
 
                 &:nth-child(8) {
                     clear: both;
-                    margin-left: em(2 * $msc-ldk--dimension);
+                    margin-left: em(2 * $mosaic-ldk--dimension);
                 }
                 &:nth-child(10) {
                     clear: both;
-                    margin-left: em(3 * $msc-ldk--dimension);
+                    margin-left: em(3 * $mosaic-ldk--dimension);
                 }
             }
         }

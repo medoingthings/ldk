@@ -1,9 +1,9 @@
-<div class="rtf-tags-w">
-    <b class="rtf-tags-h">Tags:</b>
-        <ul class="rtf-tags-l">
+<div class="richtext-tags__wrapper">
+    <b class="richtext-tags__headline">Tags:</b>
+        <ul class="richtext-tags__list">
 
             {% for tag in entry.articleTags %}
-                <li class="rtf-tags-i"><a href="#" class="rtf-tags-a">{{ tag }}</a></li>
+                <li class="richtext-tags__item"><a href="#" class="richtext-tags__link">{{ tag }}</a></li>
             {% endfor %}
 
         </ul>

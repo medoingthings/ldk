@@ -2,8 +2,8 @@
  * Badges that can be next to content
  */
 
-.rtf-badge-h {
-    @extend %txt-type--3;
+.richtext-badge__headline {
+    @extend %text-type--3;
     display: block;
     position: absolute;
     top: em(100, size(3));
@@ -19,13 +19,13 @@
  * Richtext with sidebar
  */
 
-.rtf-badge-w {
+.richtext-badge__wrapper {
     float: left;
     width: em(200);
     margin-top: em(100);
 }
 
-.rtf-badge-p {
+.richtext-badge__image {
     display: block;
 
     img {

@@ -2,13 +2,13 @@
  * Gallery opened within a rich text
  */
 
-.rtf-gallery-w {
+.richtext-gallery__wrapper {
     @extend %clearfix;
     clear: both;
     background-color: color(1);
 }
 
-.rtf-gallery-a {
+.richtext-gallery__link {
     @include span-columns(3);
     position: relative;
     height: 0;

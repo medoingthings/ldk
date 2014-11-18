@@ -5,10 +5,10 @@
     {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
 {% endfor %}
 
-{% embed "helper/sectionContainer.html" with {classes: 'rtf-w' ~ classNameCourse ~ classNameStyle, sectionLabel: block.sectionLabel} %}
+{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper' ~ classNameCourse ~ classNameStyle, sectionLabel: block.sectionLabel} %}
 
     {% block content %}
-        <div class="rtf-c">
+        <div class="richtext__content">
             {{ block.richtext }}
         </div>
     {% endblock %}

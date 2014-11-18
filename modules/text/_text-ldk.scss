@@ -1,11 +1,11 @@
 /**
  * Typography
  */
-.txt-ldk-h {
+.text-ldk__headline {
     display: inline-block;
     color: color(2);
 
-    .lyt-head-w & {
+    .layout-head__wrapper & {
         float: left;
         margin: em(8) 0 0 em(10);
     }
@@ -15,13 +15,13 @@
     }
 
     ._label {
-        @extend %txt-type--7;
+        @extend %text-type--7;
         color: color(4);
         margin-bottom: em(4, size(7));
     }
 
     ._title {
-        @extend %txt-type--6;
+        @extend %text-type--6;
         line-height: 1.2;
         text-transform: uppercase;
     }

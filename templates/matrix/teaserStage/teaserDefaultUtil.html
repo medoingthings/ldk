@@ -2,7 +2,7 @@
 
 {% if backgroundImage | length %}
 
-    <div class="ftr-stage-p _aspect-3to1">
+    <div class="feature-stage__image _aspect-3to1">
         {% include 'utilities/picturefill' with {
             imageModel: backgroundImage,
             imageSet: [
@@ -17,8 +17,8 @@
 
 {% endif %}
 
-<div class="ftr-stage-c _text-short">
-    <div class="ftr-stage-t">
+<div class="feature-stage__content _text-short">
+    <div class="feature-stage__text">
         <h2>{{ block.headline|nl2br }}</h2>
 
         {% if block.shortText %}
@@ -28,7 +28,7 @@
         {% for link in block.entry %}
             {% set buttonText = loop.first ? block.buttonText|default(defaultStringButton.label) : block.buttonTextSecond|default(defaultStringButton.label) %}
 
-            <a href="{{ link.url }}" class="btn-outline{{ block.entry|length > 1 and loop.first ? ' _call-to-action' }}">{{ buttonText }}</a>
+            <a href="{{ link.url }}" class="button-outline{{ block.entry|length > 1 and loop.first ? ' _call-to-action' }}">{{ buttonText }}</a>
         {% endfor %}
     </div>
 </div>
