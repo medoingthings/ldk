@@ -40,7 +40,7 @@ gulp.task('copy', function() {
 gulp.task('javascript', function() {
     gulp.src('modules/app.js')
         .pipe(browserify())
-        .pipe(gulp.dest(gulpconfig.js.dest))
+        .pipe(gulp.dest(gulpconfig.js.dest));
 });
 
 gulp.task('modernizr', function() {
