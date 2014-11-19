@@ -29,7 +29,7 @@
     "transform": [ "browserify-shim" ]
   },
   "browser": {
-      "zeptojs"    :  "./bower_components/zeptojs/dist/zepto.min.js",
+      "zeptojs"    :  "./assets/js/zepto.min.js",
       "magnific-popup" :  "./bower_components/magnific-popup/dist/jquery.magnific-popup.min.js"
     },
   "browserify-shim": {

@@ -1,19 +1,18 @@
 # LDK-Website Dokumentation
 
 ## Coding Guidelines
-.lyt-c = layout content
-.lyt-w = layout wrapper
+BEM Style: https://bem.info/method/definitions/
 
-.lyt-a = layout anchor
-.lyt-f = layout figure
-.lyt-p = layout picture
-.lyt-h = layout headline
-.lyt-t = layout text
+## ZeptoJS dependency
+Needs to be build like described in: https://github.com/madrobby/zepto#building
 
-.lyt-head--home-f = layout figure im Subnamespace "home"
+Do this:
 
-.lyt-head--home-f ._h3 = h3 in private scope
-
+* Go to zeptojs folder `cd bower_components/zeptojs`
+* Run `MODULES="zepto event data ie" ./make dist`, add whatever new module is needed
+* Move it to assets/js `mv dist/zepto.min.js ../../assets/js`
+* Update this Readme with the new module chain
+* Commit the new build and readme.md
 
 ## Redaktionell
 Jedes Jahr muss einmal gepflegt werden, wann die jeweiligen Module stattfinden, damit die automatischen Teaser richtig funktionieren
