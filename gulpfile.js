@@ -15,8 +15,8 @@ var sass         = require('gulp-sass')
  * Gulp Build Tasks
  */
 
-gulp.task('default', ['sass']);
-gulp.task('build', ['modernizr', 'sass', 'assets', 'copy', 'templates']);
+gulp.task('default', ['sass', 'javascript']);
+gulp.task('build', ['modernizr', 'sass', 'assets', 'javascript', 'copy', 'templates']);
 
 /**
  * Gulp Tasks
