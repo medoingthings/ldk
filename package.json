@@ -29,11 +29,11 @@
     "transform": [ "browserify-shim" ]
   },
   "browser": {
-      "jquery"    :  "./bower_components/jquery/dist/jquery.min.js",
+      "zeptojs"    :  "./bower_components/zeptojs/dist/zepto.min.js",
       "magnific-popup" :  "./bower_components/magnific-popup/dist/jquery.magnific-popup.min.js"
     },
   "browserify-shim": {
-    "jquery" : "$",
-    "magnific-popup" :  { "depends": [ "jquery" ] }
+    "zeptojs" : "$",
+    "magnific-popup" :  { "depends": [ "zeptojs" ] }
   }
 }
