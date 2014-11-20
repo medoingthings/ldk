@@ -1,11 +1,16 @@
 {% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper'} %}
 
     {% block content %}
-        {% for block in entry.featureStage %}
 
-            {% include 'matrix/featureStage/' ~ block.type %}
+        {% cache %}
 
-        {% endfor %}
+            {% for block in entry.featureStage %}
+
+                {% include 'matrix/featureStage/' ~ block.type %}
+
+            {% endfor %}
+
+        {% endcache %}
 
     {% endblock %}
 

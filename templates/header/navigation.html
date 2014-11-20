@@ -1,19 +1,22 @@
 <nav class="navigation-main__wrapper">
     <ul class="navigation-main__list">
 
-        {% include 'header/navigationListSkeleton' with {navigationModel: craft.entries.section('mainNavigation')} %}
+        {% cache %}
 
-        {# Only show children of campus navigation if user is logged in #}
-        {% set loggedIn = craft.session.isLoggedIn %}
-        {% embed 'header/navigationListSkeleton' with {navigationModel: craft.entries.section('campus'), depth: loggedIn ? false : 1} %}
+            {% include 'header/navigationListSkeleton' with {navigationModel: craft.entries.section('mainNavigation')} %}
 
-            {% if loggedIn %}
-                {% block level2Append %}<a href="{{ logoutUrl }}" class="navigation-main__l2__link">{{ defaultStringLogoutLink.label }}</a>{% endblock %}
-            {% endif %}
+            {# Only show children of campus navigation if user is logged in #}
+            {% set loggedIn = craft.session.isLoggedIn %}
+            {% embed 'header/navigationListSkeleton' with {navigationModel: craft.entries.section('campus'), depth: loggedIn ? false : 1} %}
 
-        {% endembed %}
+                {% if loggedIn %}
+                    {% block level2Append %}<a href="{{ logoutUrl }}" class="navigation-main__l2__link">{{ defaultStringLogoutLink.label }}</a>{% endblock %}
+                {% endif %}
 
-        {% include 'header/navigationSearchInput' %}
+            {% endembed %}
 
+            {% include 'header/navigationSearchInput' %}
+
+        {% endcache %}
     </ul>
 </nav>

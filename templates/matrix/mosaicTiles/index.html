@@ -4,17 +4,22 @@
 {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: sectionLabel} %}
 
     {% block content %}
-        {% for block in entry.mosaicTiles if block.type != 'sectionLabel' %}
 
-            {% set styleClasses = '' %}
+        {% cache %}
 
-            {% for style in block.style %}
-                {% set styleClasses = styleClasses ~ ' _' ~ style %}
+            {% for block in entry.mosaicTiles if block.type != 'sectionLabel' %}
+
+                {% set styleClasses = '' %}
+
+                {% for style in block.style %}
+                    {% set styleClasses = styleClasses ~ ' _' ~ style %}
+                {% endfor %}
+
+                {% include 'matrix/mosaicTiles/' ~ block.type %}
+
             {% endfor %}
 
-            {% include 'matrix/mosaicTiles/' ~ block.type %}
-
-        {% endfor %}
+        {% endcache %}
 
     {% endblock %}
 

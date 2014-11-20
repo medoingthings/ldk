@@ -1,5 +1,9 @@
-{% for block in entry.richtext %}
+{% cache %}
 
-    {% include 'matrix/richtext/' ~ block.type %}
+    {% for block in entry.richtext %}
 
-{% endfor %}
+        {% include 'matrix/richtext/' ~ block.type %}
+
+    {% endfor %}
+
+{% endcache %}

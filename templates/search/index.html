@@ -18,23 +18,27 @@
         {% block content %}
             {% if results|length %}
 
-                {% for entry in results %}
+                {% cache %}
 
-                    {% if entry.type == 'dates' %}
+                    {% for entry in results %}
 
-                        {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: ''} %}
+                        {% if entry.type == 'dates' %}
 
-                    {% elseif (entry.type == 'courseDetail') %}
+                            {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: ''} %}
 
-                        {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ' _highlight _wide'} %}
+                        {% elseif (entry.type == 'courseDetail') %}
 
-                    {% else %}
+                            {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ' _highlight _wide'} %}
 
-                        {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ''} %}
+                        {% else %}
 
-                    {% endif %}
+                            {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ''} %}
 
-                {% endfor %}
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% endcache %}
 
             {% else %}
 
