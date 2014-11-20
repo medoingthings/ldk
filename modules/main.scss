@@ -23,6 +23,7 @@
 @import "bower_components/normalize-scss/normalize";
 
 // Global styles
+@import "base/base";
 @import "base/fonts";
 @import "base/icons";
 @import "text/text-types";
@@ -39,7 +40,6 @@
 @import "richtext/richtext-badge";
 @import "richtext/richtext-meta";
 @import "richtext/richtext-tags";
-@import "base/base";
 @import "layout/layout-label";
 @import "layout/layout-ldk";
 @import "layout/layout-head";
@@ -51,3 +51,7 @@
 @import "search/search-results";
 @import "social/social";
 @import "navigation/navigation-main";
+
+// Magnific Popup
+@import "gallery/magnific-popup-settings";
+@import "bower_components/magnific-popup/src/css/main";

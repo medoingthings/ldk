@@ -10,7 +10,7 @@
 
         <div class="richtext-gallery__wrapper">
             {% for image in block.image %}
-                <a href="{{ image.url }}" class="richtext-gallery__link">
+                <a href="{{ image.getUrl('galleryLightbox') }}" class="richtext-gallery__link">
                     {% include 'utilities/picturefill' with {
                         imageModel: image,
                         imageSet: [
