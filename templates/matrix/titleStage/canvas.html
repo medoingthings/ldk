@@ -1,25 +1,30 @@
 {% set classNameStyle  = '' %}
 
-{% for style in block.style %}
-    {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
-{% endfor %}
+{% if titleModel.style is defined %}
 
-<div class="feature-stage__item">
+    {% for style in titleModel.style %}
+        {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
+    {% endfor %}
 
-    {% include 'matrix/featureStage/imageUtil' %}
+{% endif %}
 
-    <div class="feature-stage__content{{ classNameStyle }}">
-        <div class="feature-stage__text">
+{% if titleModel.backgroundImage is defined %}
+    {% include 'matrix/featureStage/imageUtil' with {image: titleModel.backgroundImage.first } %}
+{% else %}
+    {% set classNameStyle = classNameStyle ~ ' _text-only' %}
+{% endif %}
 
-            {% if block.subheadline %}
-                <h2>{{ block.subheadline }}</h2>
-            {% endif %}
+<div class="feature-stage__content{{ classNameStyle }}">
+    <div class="feature-stage__text">
 
-            <h1>{{ block.headline ? block.headline : entry.title }}</h1>
+        {% if titleModel.subheadline is defined and titleModel.subheadline %}
+            <h2>{{ titleModel.subheadline }}</h2>
+        {% endif %}
 
-            {% if block.shareButtons | length and block.shareButtons[0] == '1' %}
-                {% include 'partials/shareButtons' %}
-            {% endif %}
-        </div>
+        <h1>{{ titleModel.headline is defined and titleModel.headline ? titleModel.headline : entry.title }}</h1>
+
+        {% if titleModel.shareButtons is defined and titleModel.shareButtons|length and titleModel.shareButtons[0] == '1' %}
+            {% include 'partials/shareButtons' %}
+        {% endif %}
     </div>
 </div>

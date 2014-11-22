@@ -24,6 +24,10 @@
     &._text-short .feature-stage__text {
         width: 60%;
     }
+
+    &._text-only {
+        padding-top: em(120);
+    }
 }
 
 .feature-stage__text {

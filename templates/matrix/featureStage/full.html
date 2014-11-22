@@ -7,7 +7,7 @@
 
 <div class="feature-stage__item">
 
-    {% include 'matrix/featureStage/imageUtil' %}
+    {% include 'matrix/featureStage/imageUtil' with {image: block.backgroundImage.first } %}
 
     <div class="feature-stage__content{{ classNameStyle }}">
         <div class="feature-stage__text">

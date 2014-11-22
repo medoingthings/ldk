@@ -1,10 +1,8 @@
-{% set backgroundImage = block.backgroundImage.first() %}
-
-{% if backgroundImage | length %}
+{% if image is defined and image|length %}
 
     <div class="feature-stage__image">
         {% include 'utilities/picturefill' with {
-            imageModel: backgroundImage,
+            imageModel: image,
             imageSet: [
                 ['featureStageL', '1200px', '1.5x'],
                 ['featureStageM', '1000px'],

@@ -1,12 +1,7 @@
 {% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper'} %}
 
     {% block content %}
-        {% for block in entry.titleStage %}
-
-            {% include 'matrix/titleStage/' ~ block.type %}
-
-        {% endfor %}
-
+        {% include 'matrix/titleStage/canvas' %}
     {% endblock %}
 
 {% endembed %}

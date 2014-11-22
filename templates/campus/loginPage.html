@@ -3,7 +3,7 @@
 {% set entry = craft.entries('loginPage').first %}
 
 {% block content %}
-    {% include 'matrix/titleStage/index' %}
+    {% include 'partials/pageTitle' %}
 
     {% embed "helper/sectionContainer.html" with {classes: 'form-login__wrapper', sectionLabel: 'Login'} %}
         {% block content %}
