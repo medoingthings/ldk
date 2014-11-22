@@ -17,9 +17,29 @@
                 {% for level2 in level2Model %}
 
                     {% set level2Segment = segmentList[1]|default('') %}
+                    {% set level3Model   = level2.getDescendants(1) %}
 
-                    <li class="navigation-main__l2__item{{ level2.slug == level2Segment or level2.id == entry.id ? ' _is-active' }}">
+                    <li class="navigation-main__l2__item{{ level2.slug == level2Segment or level2.id == entry.id ? ' _is-active' }}{{ level3Model|length and (depth == false or depth >= 3) ? ' _has-children'}}">
                         <a href="{{ level2.url }}" class="navigation-main__l2__link">{{ level2 }}</a>
+
+                        {% if (level3Model|length and (depth == false or depth >= 3))  %}
+
+                            <ul class="navigation-main__l3__list">
+
+                                {% for level3 in level3Model %}
+
+                                    {% set level3Segment = segmentList[1]|default('') %}
+
+                                    <li class="navigation-main__l3__item{{ level3.slug == level3Segment or level3.id == entry.id ? ' _is-active' }}">
+                                        <a href="{{ level3.url }}" class="navigation-main__l3__link">{{ level3 }}</a>
+                                    </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        {% endif %}
+
                     </li>
 
                 {% endfor %}

@@ -52,6 +52,7 @@
     }
 }
 
+
 /**
  * Hover state Level 1
  */
@@ -64,14 +65,16 @@
         }
 
         .navigation-main__l2__list {
-            @extend %navigation-main__l2--show;
+            @extend %navigation-level--show;
         }
     }
 }
 
+
 /**
- * Search item in first level navigationigation
+ * Search item in first level navigation
  */
+
 .navigation-main__search__link {
     @include icon(search);
     padding-left: em(26, size(7));
@@ -89,33 +92,55 @@
     @extend %is-visually-hidden;
 }
 
+
 /**
- * Level 2
+ * Level 2 and 3
  */
 
-%navigation-main__l2--hide {
+%navigation-level--hide {
     z-index: -1;
     visibility: hidden;
 }
 
-%navigation-main__l2--show {
+%navigation-level--show {
     z-index: 1;
     visibility: visible;
 }
 
-.navigation-main__l2__list {
-    @extend %navigation-main__l2--hide;
+.navigation-main__l2__list,
+.navigation-main__l3__list {
+    @extend %navigation-level--hide;
     @extend %unstyle-list;
     position: absolute;
+}
+
+.navigation-main__l2__list {
     background-color: color(1);
 }
 
-.navigation-main__l2__item {
-    @extend %unstyle-list-item;
-    @extend %clearfix;
+.navigation-main__l3__list {
+    top: 0;
+    left: 100%;
+    background-color: color(3);
 }
 
-.navigation-main__l2__link {
+.navigation-main__l2__item,
+.navigation-main__l3__item {
+    @extend %unstyle-list-item;
+    @extend %clearfix;
+    position: relative;
+}
+
+.navigation-main__l2__item {
+    &:hover {
+        .navigation-main__l3__list {
+            @extend %navigation-level--show;
+        }
+    }
+}
+
+.navigation-main__l2__link,
+.navigation-main__l3__link {
     @extend %navigation-main__link;
     white-space: nowrap;
 
@@ -124,8 +149,33 @@
         color: color(2);
     }
 
+}
+
+.navigation-main__l2__link {
     .navigation-main__l2__item._is-active &,
     &:hover {
         background-color: color(3);
+    }
+
+    &:hover + .navigation-main__l3__list {
+        @extend %navigation-level--show;
+    }
+
+    .navigation-main__l2__item._has-children & {
+        @include icon(arrow-right, 0.7em, after);
+
+        &:after {
+            display: inline-block;
+            position: absolute;
+            right: em(12, size(7) * 0.7em);
+            top: em(20, size(7) * 0.7em);
+        }
+    }
+}
+
+.navigation-main__l3__link {
+    .navigation-main__l3__item._is-active &,
+    &:hover {
+        background-color: color(5);
     }
 }
