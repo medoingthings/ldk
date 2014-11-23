@@ -20,9 +20,12 @@
                 {# Teaser with images are two columns wide  #}
                 {% set columnCount = entry.teaserImage|length ? columnCount + 2 : columnCount + 1 %}
 
+                {# Automatically set highlight class if the item has a course category attached #}
+                {% set styleClasses  = entry.courseCategory|length ? ' _highlight' : '' %}
+
                 {# Don’t show another date, if it won’t fit into one row #}
                 {% if columnCount <= maxColumns %}
-                    {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: ''} %}
+                    {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: styleClasses} %}
                 {% endif %}
 
             {% endfor %}

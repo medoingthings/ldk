@@ -1,6 +1,5 @@
 {% set entryModel    = entryModel is defined ? entryModel : block.entry.first() %}
 {% set teaserImage   = entryModel.teaserImage is defined ? entryModel.teaserImage.first %}
-{% set styleClasses  = teaserImage|length ? styleClasses ~ ' _image-left _wide' : styleClasses %}
 {% set dateNowYear   = now|date("Y") %}
 {% set dateEndYear   = entryModel.timeFrameStop|date("Y") %}
 {% set dateStart     = entryModel.timeFrameStart|date("M d") %}
@@ -8,6 +7,9 @@
 {% set dateEnd       = dateStart != dateEnd ? ' – ' ~ dateEnd : null %}
 {% set courseId      = entryModel.courseCategory|length ? entryModel.courseCategory.first.slug %}
 {% set buttonText    = buttonText is defined ? buttonText : block.buttonText|default(defaultStringButtonDate.label) %}
+
+{# Set styling classes if the item has an image #}
+{% set styleClasses  = teaserImage|length ? styleClasses ~ ' _image-left _wide' : styleClasses %}
 
 <div class="mosaic-tiles__content{{ courseId ? ' _' ~ courseId : '' }}{{ styleClasses }}">
 
@@ -23,7 +25,6 @@
             } %}
         </div>
     {% endif %}
-
 
     <div class="mosaic-tiles__text">
         <p class="mosaic-tiles__text__date{{ dateEnd ? '--timespan' }}">

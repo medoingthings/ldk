@@ -221,12 +221,17 @@
 .mosaic-tiles__content {
     &._wide._highlight {
         h2 {
-            @extend %text-type--3;
             margin-bottom: em(10, size(3));
         }
 
         ._subtitle {
             margin-bottom: 0;
+        }
+    }
+
+    &._wide._text-size-big {
+        h2 {
+            @extend %text-type--3;
         }
     }
 }
