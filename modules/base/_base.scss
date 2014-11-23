@@ -19,3 +19,7 @@ body {
 .no-js picture img[srcset] {
     display: none;
 }
+
+.is-visually-hidden {
+    @extend %is-visually-hidden;
+}
