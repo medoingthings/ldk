@@ -3,6 +3,12 @@
  */
 
 .form__content {
+    label {
+        display: block;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
     input[type=text],
     input[type=search],
     input[type=password],
