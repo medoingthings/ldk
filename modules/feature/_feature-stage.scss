@@ -27,6 +27,18 @@
 
     &._text-only {
         padding-top: em(120);
+        padding-left: em(50);
+        background-color: transparent;
+
+        .feature-stage__text {
+            padding-left: 0;
+        }
+
+        h1 {
+            display: inline-block;
+            padding: em(20, size(3)) em(30, size(3)) em(10, size(3));
+            background-color: color(1);
+        }
     }
 }
 
