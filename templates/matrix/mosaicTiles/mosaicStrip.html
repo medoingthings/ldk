@@ -1,0 +1,28 @@
+{# Show upcoming dates #}
+{% set maxColumns  = 4 %}
+{% set columnCount = 0 %}
+
+{% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: sectionLabel} %}
+    {% block content %}
+
+        {% for entry in relatedEntries %}
+
+            {# Teaser with images or subtitles are two columns wide  #}
+            {% set columnCount = entry.teaserImage|length or entry.subtitle|length ? columnCount + 2 : columnCount + 1 %}
+
+            {# Automatically set highlight class if the item has a course category attached #}
+            {% set styleClasses  = entry.courseCategory|length ? ' _highlight' : '' %}
+
+            {# Don’t show another date, if it won’t fit into one row #}
+            {% if columnCount <= maxColumns %}
+                {% if entry.type == 'dates' %}
+                    {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: styleClasses} %}
+                {% else %}
+                    {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: styleClasses} %}
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+
+    {% endblock %}
+{% endembed %}

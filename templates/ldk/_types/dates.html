@@ -6,35 +6,9 @@
 
     {% include 'ldk/_types/datesIntroduction' %}
     {% include 'matrix/richtext/index' %}
-
-    {# Show upcoming dates #}
-    {% set maxColumns  = 4 %}
-    {% set relatedDates = craft.entries.section('dates').limit(maxColumns).id('!=' ~ entry.id) %}
-    {% set columnCount = 0 %}
-
-    {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: 'Weitere Termine'} %}
-        {% block content %}
-
-            {% for entry in relatedDates %}
-
-                {# Teaser with images are two columns wide  #}
-                {% set columnCount = entry.teaserImage|length ? columnCount + 2 : columnCount + 1 %}
-
-                {# Automatically set highlight class if the item has a course category attached #}
-                {% set styleClasses  = entry.courseCategory|length ? ' _highlight' : '' %}
-
-                {# Don’t show another date, if it won’t fit into one row #}
-                {% if columnCount <= maxColumns %}
-                    {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: styleClasses} %}
-                {% endif %}
-
-            {% endfor %}
-
-        {% endblock %}
-    {% endembed %}
-
-
-
-
+    {% include 'matrix/mosaicTiles/mosaicStrip' with {
+        relatedEntries: craft.entries.section('dates').limit(4).id('!=' ~ entry.id).order('timeFrameStart'),
+        sectionLabel: 'Weitere Termine'
+    } %}
 
 {% endblock %}
