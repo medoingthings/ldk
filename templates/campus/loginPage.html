@@ -1,30 +1,26 @@
 {% extends '_layout' %}
 
-{% set entry = craft.entries('loginPage').first %}
-
 {% block content %}
     {% include 'partials/pageTitle' %}
 
-    {% embed "helper/sectionContainer.html" with {classes: 'form-login__wrapper', sectionLabel: 'Login'} %}
+    {% embed "helper/sectionContainer.html" with {classes: 'form-login__wrapper', sectionLabel: 'Login für Studenten & Dozenten'} %}
         {% block content %}
                 <form method="post" accept-charset="UTF-8" class="form__content">
                     {{ getCsrfInput() }}
                     <input type="hidden" name="action" value="users/login">
 
-                    <h3><label for="loginName">E-Mail-Adresse</label></h3>
-                    <input id="loginName" type="email" name="loginName"
-                        value="{{ craft.session.rememberedUsername }}">
+                    <div class="form-login__item">
+                        <label for="loginName">E-Mail-Adresse</label>
+                        <input id="loginName" type="email" name="loginName" value="{{ craft.session.rememberedUsername }}" autofocus>
+                    </div>
 
-                    <h3><label for="password">Passwort</label></h3>
-                    <input id="password" type="password" name="password">
+                    <div class="form-login__item">
+                        <label for="password">Passwort</label>
+                        <input id="password" type="password" name="password">
+                    </div>
 
-                    <label>
-                        <input type="checkbox" name="rememberMe" value="1">
-                        Remember me
-                    </label>
-
-                    <button class="button-outline" type="submit">Login</button>
-                    <p><a href="{{ url('forgotpassword') }}">Forget your password?</a></p>
+                    <button class="button-outline _call-to-action" type="submit">Einloggen</button>
+                    <a href="{{ url('forgotpassword') }}" class="form-login__forgot-link">Passwort vergessen?</a>
 
                     {% if errorMessage is defined %}
                         <p>{{ errorMessage }}</p>

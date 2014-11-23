@@ -6,5 +6,40 @@
     @extend %container;
     position: relative;
     background-color: color(1);
-    padding: em(20);
+    padding: em(60) em(80) em(60);
+    margin-bottom: em(20);
+
+    .button-outline {
+        float: left;
+        padding-left: em(60);
+        padding-right: em(60);
+    }
+}
+
+.form-login__item {
+    width: 50%;
+    float: left;
+    margin-bottom: em(20);
+
+    &:first-of-type {
+        padding-right: em(20);
+    }
+
+    input {
+        width: 100%;
+    }
+}
+
+.form-login__forgot-link {
+    @extend %text-type--6;
+    float: left;
+    margin-top: em(18, size(6));
+    margin-left: em(20);
+    display: inline-block;
+
+    &,
+    &:link,
+    &:visited {
+        color: color(4);
+    }
 }
