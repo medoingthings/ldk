@@ -1,6 +1,5 @@
 {% extends '_layout' %}
 
-{% set entry   = craft.entries.section('search').first %}
 {% set query   = craft.request.getParam('q') %}
 {% set results = craft.entries.search(query).order('score') %}
 
@@ -16,41 +15,7 @@
 
     {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: 'Suchergebnisse (' ~ results|length ~ ')'} %}
         {% block content %}
-            {% if results|length %}
-
-                {% cache %}
-
-                    {% for entry in results %}
-
-                        {% if entry.type == 'dates' %}
-
-                            {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: ''} %}
-
-                        {% elseif (entry.type == 'courseDetail') %}
-
-                            {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ' _highlight _wide'} %}
-
-                        {% else %}
-
-                            {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ''} %}
-
-                        {% endif %}
-
-                    {% endfor %}
-
-                {% endcache %}
-
-            {% else %}
-
-                <div class="mosaic-tiles__content _text _wide">
-                    <div class="mosaic-tiles__text">
-                        <h2>Leider gab es keine Treffer zu “{{ query }}”</h2>
-                        <p>Versuchen Sie es bitte mit einem anderen Suchbegriff.</p>
-                    </div>
-                </div>
-
-            {% endif %}
-
+            {% include 'search/searchResults.html' %}
         {% endblock %}
     {% endembed %}
 

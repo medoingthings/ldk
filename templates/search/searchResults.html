@@ -1,0 +1,34 @@
+{% if results|length %}
+
+    {% cache %}
+
+        {% for entry in results %}
+
+            {% if entry.type == 'dates' %}
+
+                {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: ''} %}
+
+            {% elseif (entry.type == 'courseDetail') %}
+
+                {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ' _highlight _wide'} %}
+
+            {% else %}
+
+                {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ''} %}
+
+            {% endif %}
+
+        {% endfor %}
+
+    {% endcache %}
+
+{% else %}
+
+    <div class="mosaic-tiles__content _text _wide">
+        <div class="mosaic-tiles__text">
+            <h2>Leider gab es keine Treffer zu “{{ query }}”</h2>
+            <p>Versuchen Sie es bitte mit einem anderen Suchbegriff.</p>
+        </div>
+    </div>
+
+{% endif %}

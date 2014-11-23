@@ -1,7 +1,11 @@
-{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper'} %}
+{% if entry.introduction %}
 
-    {% block content %}
-        <div class="richtext__content">{{ entry.introduction }}</div>
-    {% endblock %}
+    {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper'} %}
 
-{% endembed %}
+        {% block content %}
+            <div class="richtext__content">{{ entry.introduction }}</div>
+        {% endblock %}
+
+    {% endembed %}
+
+{% endif %}

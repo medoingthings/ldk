@@ -161,14 +161,6 @@
         bottom: em(24);
     }
 
-    ._date {
-        @extend %text-type--3;
-        margin-bottom: em(10, size(3));
-        display: block;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
     ._subtitle {
         @extend %text-type--5;
         display: block;
@@ -192,6 +184,37 @@
 
     p {
         @extend %text-type--6;
+    }
+}
+
+.mosaic-tiles__text__date,
+.mosaic-tiles__text__date--timespan {
+    margin-bottom: em(10);
+
+    ._date {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    ._year {
+        @extend %text-type--5;
+        display: block;
+    }
+}
+
+.mosaic-tiles__text__date {
+    ._date {
+        @extend %text-type--3;
+    }
+}
+
+.mosaic-tiles__text__date--timespan {
+    ._date {
+
+        // Special font size that fits the text into the width of the tile
+        // and aligns it with the vertical baseline grid via line-height
+        font-size: 2em;
+        line-height: 1.25;
     }
 }
 

@@ -1,0 +1,12 @@
+{% set query   = craft.request.getParam('q') %}
+{% set results = craft.entries.search(query).type('dates').order('timeFrameStart') %}
+
+{% block content %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: 'Termine (' ~ results|length ~ ')'} %}
+        {% block content %}
+            {% include 'search/searchResults.html' %}
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}
