@@ -1,7 +1,7 @@
 {% extends '_layout' %}
 
 {% set query   = craft.request.getParam('q') %}
-{% set results = craft.entries.search(query).order('score') %}
+{% set results = craft.entries.search(query).order('score').limit(20) %}
 
 {% block content %}
 

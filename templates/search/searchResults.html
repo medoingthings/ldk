@@ -1,8 +1,8 @@
 {% if results|length %}
 
-    {% cache %}
+    {% paginate results.limit(10) as resultsPerPage %}
 
-        {% for entry in results %}
+        {% for entry in resultsPerPage %}
 
             {% if entry.type == 'dates' %}
 
@@ -20,7 +20,30 @@
 
         {% endfor %}
 
-    {% endcache %}
+        {% if paginate.totalPages > 1 %}
+            <ul class="button-paginate__list">
+            {% if paginate.prevUrl %}
+                <li class="button-paginate__item"><a href="{{ paginate.prevUrl }}" class="button-paginate__link _previous"><span class="is-visually-hidden">Vorherige Seite</span></a></li>
+            {% endif %}
+
+            {% for page, url in paginate.getPrevUrls(5)  %}
+                <li class="button-paginate__item"><a href="{{ url }}" class="button-paginate__link">{{ page }}</a></li>
+            {% endfor %}
+
+                <li class="button-paginate__item"><span class="button-paginate__link _is-active">{{ paginate.currentPage }}</li>
+
+            {% for page, url in paginate.getNextUrls(5)  %}
+                <li class="button-paginate__item"><a href="{{ url }}" class="button-paginate__link">{{ page }}</a></li>
+            {% endfor %}
+
+
+            {% if paginate.nextUrl %}
+                <li class="button-paginate__item"><a href="{{ paginate.nextUrl }}" class="button-paginate__link _next"><span class="is-visually-hidden">Nächste Seite</span></a></li>
+            {% endif %}
+            </ul>
+        {% endif %}
+
+    {% endpaginate %}
 
 {% else %}
 

@@ -1,0 +1,54 @@
+/**
+ * Pagination buttons for multipage list results
+ */
+
+.button-paginate__list {
+    @extend %unstyle-list;
+    padding-top: em(20);
+    display: table; // Make it only as wide as needed, but enforce line-break
+    margin: 0 auto;
+    clear: both;
+}
+
+.button-paginate__item {
+    float: left;
+    margin-right: 1px;
+}
+
+.button-paginate__link {
+    display: block;
+    float: left;
+    width: em(40);
+    height: em(40);
+    padding-top: em(8);
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
+    background-color: color(2);
+    border: 2px solid color(2);
+
+    &,
+    &:link,
+    &:visited {
+        color: color(1);
+        text-decoration: none;
+    }
+
+    &:hover,
+    &._is-active {
+        background-color: color(1);
+        color: color(2);
+    }
+
+    span {
+        @extend %is-visually-hidden;
+    }
+
+    &._previous {
+        @include icon(arrow-left, 0.9em);
+    }
+
+    &._next {
+        @include icon(arrow-right, 0.9em);
+    }
+}
