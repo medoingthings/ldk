@@ -1,14 +1,31 @@
-{% set entryModel = entryModel is defined ? entryModel : block.entry.first() %}
-{% set entryId    = entryModel.courseCategory.first().slug|default('') %}
-{% set buttonText = buttonText is defined ? buttonText : block.buttonText|default(defaultStringButton.label) %}
-{% set shortText  = shortText is defined ? shortText : block.shortText|default(entryModel.teaserText) %}
-{% set headline   = headline is defined ? headline : block.headline|default(entryModel.title) %}
+{% set entryModel   = entryModel is defined ? entryModel : block.entry.first() %}
+{% set entryId      = entryModel.courseCategory.first().slug|default('') %}
+{% set buttonText   = buttonText is defined ? buttonText : block.buttonText|default(defaultStringButton.label) %}
+{% set shortText    = shortText is defined ? shortText : block.shortText|default(entryModel.teaserText) %}
+{% set headline     = headline is defined ? headline : entryModel.title %}
+{% set styleClasses = entryModel.subtitle ? styleClasses ~ ' _wide' : styleClasses %}
 
 <div class="mosaic-tiles__content _text {{ '_' ~ entryId }}{{ styleClasses }}">
     <div class="mosaic-tiles__text">
+
+        {% if entryModel.type == 'news' %}
+            {% set dateFormat = entryModel.postDate|date('Y') != now|date('Y') ? 'd. F Y' : 'd. F' %}
+            <span class="_date">{{ entryModel.postDate|date(dateFormat) }}</span>
+        {% endif %}
+
         <h2><a href="{{ entryModel.url }}">{{ headline }}</a></h2>
 
-        <p>{{ shortText }}</p>
+        {# There is only room for a shortText OR a subheadline – shortText wins #}
+        {% if entryModel.subtitle and (shortText is not defined or shortText == '') %}
+            <span class="_subtitle">
+                {{ entryModel.subtitle }}
+            </span>
+        {% endif %}
+
+        {% if shortText %}
+            <p>{{ shortText }}</p>
+        {% endif %}
+
         <a href="{{ entryModel.url }}" class="button-square">{{ buttonText }}</a>
     </div>
 </div>

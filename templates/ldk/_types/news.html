@@ -1,0 +1,16 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+    {% include 'partials/pageTitle' %}
+    {% include 'matrix/richtext/index' %}
+
+    {% include 'matrix/mosaicTiles/mosaicStrip' with {
+        relatedEntries: craft.entries.section('news').limit(4).id('!=' ~ entry.id).order('postDate'),
+        sectionLabel: 'Weitere Neuigkeiten'
+    } %}
+
+
+
+
+{% endblock %}

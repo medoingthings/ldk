@@ -39,6 +39,13 @@
         }
     }
 
+    &._text {
+        ._date {
+            @extend %text-type--6;
+            color: color(4);
+        }
+    }
+
     &._emphasize {
         background-color: color(3);
     }
