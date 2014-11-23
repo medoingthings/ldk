@@ -54,19 +54,6 @@
 
     {% if entry.venue|length %}
         <dt>{{ craft.fields.getFieldbyHandle('venue') }}</dt>
-        <dd>
-
-            {% for venue in entry.venue %}
-                {% if venue.googleMapsUrl %}
-                    <a href="{{ venue.googleMapsUrl }}" target="_blank">{{ venue.title }}</a><br>
-                {% else %}
-                    {{ venue.title }}
-                {% endif %}
-
-                {{ venue.street ? venue.street }}<br>
-                {{ venue.zipcode ? venue.zipcode}} {{ venue.city ? venue.city}}
-            {% endfor %}
-
-        </dd>
+        <dd>{% include 'partials/venue' %}</dd>
     {% endif %}
 </dl>

@@ -1,0 +1,13 @@
+{% set courseClassName = entry.courseCategory.first() ? ' _' ~ entry.courseCategory.first().slug : '' %}
+
+{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper' ~ courseClassName, sectionLabel: 'Termin-Details'} %}
+
+    {% block content %}
+
+        <div class="richtext__content _has-sidebar">{{ entry.introduction }}</div>
+
+        {% include 'ldk/_types/datesSidebar' %}
+
+    {% endblock %}
+
+{% endembed %}

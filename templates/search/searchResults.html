@@ -1,6 +1,6 @@
 {% if results|length %}
 
-    {% paginate results.limit(10) as resultsPerPage %}
+    {% paginate results.limit(20) as resultsPerPage %}
 
         {% for entry in resultsPerPage %}
 

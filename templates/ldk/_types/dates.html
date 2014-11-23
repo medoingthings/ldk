@@ -1,0 +1,37 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+    {% include 'partials/pageTitle' %}
+
+    {% include 'ldk/_types/datesIntroduction' %}
+    {% include 'matrix/richtext/index' %}
+
+    {# Show upcoming dates #}
+    {% set maxColumns  = 4 %}
+    {% set relatedDates = craft.entries.section('dates').limit(maxColumns).id('!=' ~ entry.id) %}
+    {% set columnCount = 0 %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: 'Weitere Termine'} %}
+        {% block content %}
+
+            {% for entry in relatedDates %}
+
+                {# Teaser with images are two columns wide  #}
+                {% set columnCount = entry.teaserImage|length ? columnCount + 2 : columnCount + 1 %}
+
+                {# Don’t show another date, if it won’t fit into one row #}
+                {% if columnCount <= maxColumns %}
+                    {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: ''} %}
+                {% endif %}
+
+            {% endfor %}
+
+        {% endblock %}
+    {% endembed %}
+
+
+
+
+
+{% endblock %}

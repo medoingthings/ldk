@@ -161,4 +161,9 @@
     ul {
         margin-bottom: 0;
     }
+
+    ._venue-details {
+        @extend %text-type--6;
+        margin-top: baselineMargin(6);
+    }
 }

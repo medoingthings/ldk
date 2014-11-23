@@ -17,6 +17,24 @@
 <div class="feature-stage__content{{ classNameStyle }}">
     <div class="feature-stage__text">
 
+        {# Add the date to the titleStage if we are on a date detail page #}
+        {% if entry.type == 'dates' %}
+
+            {% set dateStart = entry.timeFrameStart|date('D j. M.') %}
+            {% set timeStart = not entry.fullDay ? entry.timeFrameStart|date('H.i') ~ ' Uhr' : '' %}
+            {% set dateEnd   = entry.timeFrameStop|date('D j. M.') %}
+
+            <span class="_date">{{ dateStart }}</span>
+            {% if timeStart %}
+                <span class="_date">{{ timeStart }}</span>
+            {% endif %}
+
+            {% if dateStart != dateEnd and entry.fullDay %}
+                <span class="_date">{{ dateEnd }}</span>
+            {% endif %}
+
+        {% endif %}
+
         {% if titleModel.subheadline is defined and titleModel.subheadline %}
             <h2>{{ titleModel.subheadline }}</h2>
         {% endif %}

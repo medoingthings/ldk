@@ -1,4 +1,4 @@
-{% set sectionLabelModel = entry.mosaicTiles.type('sectionLabel').first() %}
+{% set sectionLabelModel = entry.mosaicTiles.type('sectionLabel').first %}
 {% set sectionLabel      = sectionLabelModel|length ? sectionLabelModel.label %}
 
 {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: sectionLabel} %}
