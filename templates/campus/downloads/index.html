@@ -1,0 +1,17 @@
+{% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper'} %}
+
+    {% block content %}
+
+        {% cache %}
+
+            {% for block in entry.campusDownloads %}
+
+                {% include 'campus/downloads/' ~ block.type %}
+
+            {% endfor %}
+
+        {% endcache %}
+
+    {% endblock %}
+
+{% endembed %}

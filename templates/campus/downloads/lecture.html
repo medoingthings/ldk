@@ -1,0 +1,11 @@
+
+{% if block.teacher|length %}
+    <h2>{{ block.teacher.first.name }}</h2>
+{% endif %}
+<ul>
+    {% for download in block.downloads %}
+
+        <li>[{{ block.courseCategory is defined ? block.courseCategory.first.courseShortname }}] <a href="{{ download.url }}">{{ download }}</a></li>
+
+    {% endfor %}
+</ul>
