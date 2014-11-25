@@ -8,7 +8,7 @@
         <div class="mosaic-tiles__text">
             <span class="_subtitle">{{ defaultStringCurrentCourse.label}}</span>
             <h2><a href="{{currentCourse.url }}">{{currentCourse.title }}</a></h2>
-            <span class="_subtitle">{{currentCourse.courseStartDate|date('d. M') }} – {{currentCourse.courseEndDate|date('d. M') }}</span>
+            <span class="_subtitle">{{ currentCourse.courseStartDate|date('d. M') }} – {{ currentCourse.courseEndDate|date('d. M') }}</span>
             <a href="{{currentCourse.url }}" class="button-square">{{ defaultStringButtonCourse.label }}</a>
         </div>
     </div>
