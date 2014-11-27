@@ -1,0 +1,18 @@
+{% cache %}
+
+    {% for block in downloadsModel %}
+
+        {% embed "helper/sectionContainer.html" with {classes: 'download-area__wrapper'} %}
+
+            {% block content %}
+
+                {% include 'matrix/downloadArea/' ~ block.type %}
+
+            {% endblock %}
+
+        {% endembed %}
+
+
+    {% endfor %}
+
+{% endcache %}

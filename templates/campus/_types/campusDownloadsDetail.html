@@ -1,0 +1,15 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+    {% include 'partials/pageTitle' %}
+    {% include 'campus/campusDownloadsCategories' %}
+
+    {% include 'campus/campusDownloadsHeadline' with {
+        headline: entry.courseCategory.first,
+        className: entry.courseCategory.first.slug
+    } %}
+
+    {% include 'matrix/downloadArea/index' with {downloadsModel: entry.campusDownloads} %}
+
+{% endblock %}

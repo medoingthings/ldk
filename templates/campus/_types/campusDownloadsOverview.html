@@ -1,0 +1,21 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+
+    {% include 'partials/pageTitle' %}
+    {% include 'campus/campusDownloadsCategories' %}
+
+    {# {% cache %} #}
+
+        {% set allDownloads = craft.entries.section('campusDownloads') %}
+
+        {% for entry in allDownloads %}
+            {% include 'campus/campusDownloadsHeadline' with {
+                headline: entry.courseCategory.first,
+                className: entry.courseCategory.first.slug
+            } %}
+        {% endfor %}
+
+    {# {% endcache %} #}
+{% endblock %}

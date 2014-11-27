@@ -1,0 +1,193 @@
+.download-area__wrapper {
+    @extend %container;
+    margin-bottom: em(20);
+    background-color: color(1);
+}
+
+.download-area__headline__wrapper {
+    @extend %container;
+    margin-bottom: em(20);
+    padding: em(10) em(40) em(58) em(14);
+}
+
+.download-area__headline__wrapper,
+.download-area__category__link._is-active,
+.download-area__category__link:hover,
+.download-area__category__link:focus {
+    &._leadership-1 {
+        background-color: color(7, $colors-scheme);
+    }
+
+    &._leadership-2 {
+        background-color: color(8, $colors-scheme);
+    }
+
+    &._gestaltung-1 {
+        background-color: color(5, $colors-scheme);
+    }
+
+    &._gestaltung-2 {
+        background-color: color(6, $colors-scheme);
+    }
+
+    &._management-1 {
+        background-color: color(3, $colors-scheme);
+    }
+
+    &._management-2 {
+        background-color: color(4, $colors-scheme);
+    }
+
+    &._projekt-1 {
+        background-color: color(9, $colors-scheme);
+    }
+
+    &._projekt-2 {
+        background-color: color(10, $colors-scheme);
+    }
+
+    &._kommunikation-1 {
+        background-color: color(1, $colors-scheme);
+    }
+
+    &._kommunikation-2 {
+        background-color: color(2, $colors-scheme);
+    }
+}
+
+
+/**
+ * Download categories
+ */
+
+.download-area__category__list {
+    @extend %unstyle-list;
+    @extend %clearfix;
+    padding: em(25) em(40);
+}
+
+.download-area__category__item {
+    display: inline-block;
+    float: left;
+    margin-right: em(3);
+}
+
+.download-area__category__link {
+    display: inline-block;
+    min-width: em(50);
+    padding: 0 em(20) em(14) em(6);
+    background-color: color(5);
+
+    &,
+    &:link,
+    &:visited {
+        color: color(1);
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    &._is-active,
+    &:hover,
+    &:focus {
+        background-color: color(4);
+    }
+}
+
+/**
+ * Bar that can toggle a list open/close
+ */
+
+.download-area__bar__headline {
+    @extend %text-type--5;
+    text-transform: uppercase;
+}
+
+.download-area__bar__headline__link {
+    @include icon(arrow-right);
+    display: block;
+    padding-top: em(12);
+
+    &,
+    &:link,
+    &:visited {
+        color: color(2);
+        text-decoration: none;
+    }
+}
+
+
+/**
+ * List of downloads
+ */
+
+.download-area__headline {
+    @extend %text-type--4;
+    text-transform: uppercase;
+    color: color(1);
+}
+
+.download-area__list {
+    @extend %unstyle-list;
+    padding: em(8) em(20) em(60) em(280);
+}
+
+.download-area__item {
+    margin: 10px 0 20px;
+    border-bottom: 1px solid color(4);
+}
+
+.download-area__link {
+    @extend %button-square__icon;
+    @extend %button-square--right;
+    @include icon(download, 0.9em);
+    position: relative;
+    display: block;
+    line-height: 1.4;
+    font-weight: bold;
+
+    &,
+    &:link,
+    &:visited {
+        color: color(2);
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    &:before,
+    &:after {
+        left: auto;
+        font-size: 0.8em;
+    }
+
+    &:before {
+        right: em(7);
+    }
+
+    &:after {
+        right: 0;
+    }
+
+    &._pdf {
+        @include icon(file-pdf);
+    }
+
+    &._word {
+        @include icon(file-word);
+    }
+
+    &._excel {
+        @include icon(file-excel);
+    }
+
+    &._compressed {
+        @include icon(file-zip);
+    }
+
+}
+
+.download-area__metadata {
+    display: block;
+    color: color(4);
+    margin-bottom: em(4);
+}

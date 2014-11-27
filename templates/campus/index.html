@@ -1,5 +1,9 @@
 {% requireLogin %}
 
 {% block content %}
-    {% include 'campus/_types/' ~ entry.type %}
+    {% if entry.type == 'downloads' %}
+        {% include 'campus/_types/campusDownloadsOverview' %}
+    {% else %}
+        {% include 'campus/_types/' ~ entry.type %}
+    {% endif %}
 {% endblock %}

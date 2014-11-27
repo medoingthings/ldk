@@ -1,0 +1,26 @@
+    {% embed "helper/sectionContainer.html" with {classes: 'download-area__wrapper', sectionLabel: 'Download-Bereiche'} %}
+
+        {% block content %}
+
+            {# {% cache %} #}
+                {% set allDownloads = craft.entries.section('campusDownloads') %}
+                {% set currentPageSlug = entry.slug %}
+
+                <ul class="download-area__category__list">
+
+                    <li class="download-area__category__item">
+                        <a href="/campus/downloads" class="download-area__category__link {{ currentPageSlug == 'downloads' ? ' _is-active' }}">Alle</a>
+                    </li>
+
+                    {% for entry in allDownloads %}
+                        <li class="download-area__category__item">
+                            <a href="{{ entry.url }}" class="download-area__category__link _{{ entry.courseCategory.first.slug }}{{ currentPageSlug == entry.courseCategory.first.slug ? ' _is-active' }}">{{ entry.courseCategory.first.courseShortname }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            {# {% endcache %} #}
+
+        {% endblock %}
+
+    {% endembed %}
