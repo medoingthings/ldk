@@ -4,11 +4,11 @@
 
 @font-face {
     font-family: 'icons';
-    src:url('/assets/fonts/icomoon.eot?8de8b');
-    src:url('/assets/fonts/icomoon.eot?#iefix8de8b') format('embedded-opentype'),
-        url('/assets/fonts/icomoon.woff?8de8b') format('woff'),
-        url('/assets/fonts/icomoon.ttf?8de8b') format('truetype'),
-        url('/assets/fonts/icomoon.svg?8de8b#icomoon') format('svg');
+    src:url('/assets/fonts/icomoon.eot?fiq2ru');
+    src:url('/assets/fonts/icomoon.eot?#iefixfiq2ru') format('embedded-opentype'),
+        url('/assets/fonts/icomoon.woff?fiq2ru') format('woff'),
+        url('/assets/fonts/icomoon.ttf?fiq2ru') format('truetype'),
+        url('/assets/fonts/icomoon.svg?fiq2ru#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -33,7 +33,11 @@ $base-icons: (
     download    : "\e601",
     twitter     : "\e610",
     facebook    : "\e611",
-    linkedin    : "\e612"
+    linkedin    : "\e612",
+    file-pdf    : "\e620",
+    file-word   : "\e621",
+    file-excel  : "\e622",
+    file-zip    : "\e623"
 );
 
 /**
