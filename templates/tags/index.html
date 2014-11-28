@@ -1,0 +1,27 @@
+{% extends '_layout' %}
+
+{% set entry = craft.entries.section('tags').first %}
+
+{% set tag = tag is defined ? craft.tags.name(tag).first : '' %}
+{% set results = craft.entries.relatedTo(tag).order('title') %}
+
+{% block content %}
+
+    {% include 'partials/pageTitle' %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper'} %}
+        {% block content %}
+            {% include 'partials/articleTags' with {tags: craft.tags.group('articles'), activeTagName: tag, legend: false} %}
+        {% endblock %}
+    {% endembed %}
+
+    {% set label = tag ? tag ~ ' (' ~ results|length ~ ')' : 'Kein Tag ausgewählt' %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: label} %}
+        {% block content %}
+            {% include 'search/searchResults.html' with {query: tag} %}
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}
+

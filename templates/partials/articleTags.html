@@ -1,9 +1,17 @@
-<div class="richtext-tags__wrapper">
+{% set tags = tags is defined ? tags : entry.articleTags %}
+{% set activeTagName = activeTagName is defined ? activeTagName : '' %}
+{% set legend = legend is defined ? legend : true %}
+
+<div class="richtext-tags__wrapper{{ legend == false ? ' _no-legend' }}">
     <b class="richtext-tags__headline">Tags:</b>
         <ul class="richtext-tags__list">
 
-            {% for tag in entry.articleTags %}
-                <li class="richtext-tags__item"><a href="#" class="richtext-tags__link">{{ tag }}</a></li>
+            {% for tag in tags %}
+                <li class="richtext-tags__item">
+                    <a href="/tags/{{ tag.name|url_encode }}" class="richtext-tags__link{{ activeTagName == tag.name ? ' _is-active' }}">
+                        {{ tag.name }}
+                    </a>
+                </li>
             {% endfor %}
 
         </ul>

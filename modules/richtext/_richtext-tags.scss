@@ -4,6 +4,16 @@
 
 .richtext-tags__wrapper {
     @extend %clearfix;
+
+    &._no-legend {
+        .richtext-tags__headline {
+            @extend %is-visually-hidden;
+        }
+
+        .richtext-tags__list {
+            margin-left: 0;
+        }
+    }
 }
 
 .richtext-tags__list {
@@ -69,5 +79,14 @@
         transform: rotate(45deg);
         transform-origin: -100% 0;
         transition: transform-origin 0.2s ease-out;
+    }
+
+    &._is-active {
+        background-color: color(2);
+
+        &:link,
+        &:visited {
+            color: color(1);
+        }
     }
 }
