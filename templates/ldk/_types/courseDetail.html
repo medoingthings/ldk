@@ -6,5 +6,6 @@
     {% include 'partials/courseDetailIntroduction' %}
     {% include 'matrix/richtext/index' %}
     {% include 'partials/articleMeta' %}
+    {% include 'partials/mosaicLdk' with {layout: 'horizontal', skip: entry.courseCategory.first.slug} %}
 
 {% endblock %}

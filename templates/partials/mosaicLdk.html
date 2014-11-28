@@ -1,29 +1,33 @@
-{% if entry.mosaicLdk %}
+{# Available layouts: center, horizontal #}
+{% set layout = layout is defined ? layout : 'center' %}
 
-    <section class="mosaic-ldk__wrapper">
-        <ul class="mosaic-ldk__list _center">
+{# Skip a certain category #}
+{% set skip = skip is defined ? skip : '' %}
 
-            {% cache %}
+<section class="mosaic-ldk__wrapper">
+    <ul class="mosaic-ldk__list _{{ layout }}">
 
-                {% for item in entry.mosaicLdk if entry.mosaicLdk|length  %}
-                    {% set entryModel = item.courseEntry.first() %}
-                    {% set prof       = entryModel.courseMaster.first() %}
+        {% cache %}
 
-                    <li class="mosaic-ldk__item _{{ item.slug }}">
-                        <a href="{{ entryModel.url }}" class="mosaic-ldk__link">
-                            <span class="_id">{{ item.courseShortname }}</span>
-                            <span class="_title">{{ item }}</span>
+            {% for category in craft.categories.group('courses') if category.slug != skip %}
 
-                            {% if prof %}
-                                <span class="_prof">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.lastName }}</span>
-                            {% endif %}
-                        </a>
-                    </li>
-                {% endfor %}
+                {% set entryModel = category.courseEntry.first() %}
+                {% set prof       = entryModel.courseMaster.first() %}
 
-            {% endcache %}
+                <li class="mosaic-ldk__item _{{ category.slug }}">
+                    <a href="{{ entryModel.url }}" class="mosaic-ldk__link">
+                        <span class="_id">{{ category.courseShortname }}</span>
+                        <span class="_title">{{ category }}</span>
 
-        </ul>
-    </section>
+                        {% if prof %}
+                            <span class="_prof">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.lastName }}</span>
+                        {% endif %}
+                    </a>
+                </li>
 
-{% endif %}
+            {% endfor %}
+
+        {% endcache %}
+
+    </ul>
+</section>
