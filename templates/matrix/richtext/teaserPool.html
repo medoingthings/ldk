@@ -1,0 +1,7 @@
+{% if block.teaser|length %}
+
+    {% for entry in block.teaser %}
+        {% include 'matrix/teaserStage/index' %}
+    {% endfor %}
+
+{% endif %}
