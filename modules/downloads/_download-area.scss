@@ -180,6 +180,14 @@
         @include icon(file-excel);
     }
 
+    &._powerpoint {
+        @include icon(file-powerpoint);
+    }
+
+    &._image {
+        @include icon(file-image);
+    }
+
     &._compressed {
         @include icon(file-zip);
     }
