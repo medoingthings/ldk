@@ -2,9 +2,11 @@
 <section class="download-area__content">
     <div class="download-area__bar__wrapper">
         {% if block.teacher|length %}
-            <h2 class="download-area__bar__headline">
-                <a href="#" class="download-area__bar__headline__link">
-                    {{ block.teacher.first.degree ? block.teacher.first.degree ~ ' ' }}{{ block.teacher.first.name }}
+            {% set teacher = block.teacher.first %}
+            {% set teacherAnchor = teacher.lastName|escape('url')|lower %}
+            <h2 class="download-area__bar__headline" id="{{ teacherAnchor }}">
+                <a href="#{{teacherAnchor}}" class="download-area__bar__headline__link">
+                    {{ teacher.degree ? teacher.degree ~ ' ' }}{{ teacher.name }}
                 </a>
             </h2>
         {% endif %}

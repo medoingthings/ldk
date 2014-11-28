@@ -7,7 +7,7 @@
 .download-area__headline__wrapper {
     @extend %container;
     margin-bottom: em(20);
-    padding: em(10) em(40) em(58) em(14);
+    padding: em(10) em(40) em(58) em(20);
 }
 
 .download-area__headline__wrapper,
@@ -63,7 +63,7 @@
 .download-area__category__list {
     @extend %unstyle-list;
     @extend %clearfix;
-    padding: em(25) em(40);
+    padding: em(25) em(20);
 }
 
 .download-area__category__item {
@@ -90,7 +90,7 @@
     &._is-active,
     &:hover,
     &:focus {
-        background-color: color(4);
+        background-color: color(2);
     }
 }
 
@@ -104,9 +104,9 @@
 }
 
 .download-area__bar__headline__link {
-    @include icon(arrow-right);
     display: block;
     padding-top: em(12);
+    padding-left: em(20);
 
     &,
     &:link,
