@@ -1,0 +1,11 @@
+{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Termin-Details'} %}
+
+    {% block content %}
+
+        <div class="richtext__content _has-sidebar">{{ entry.introduction }}</div>
+
+        {% include 'ldk/_types/datesSidebar' %}
+
+    {% endblock %}
+
+{% endembed %}

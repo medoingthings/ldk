@@ -1,0 +1,30 @@
+{% extends "_layout" %}
+
+{% set entry = craft.entries.section('people').first %}
+{% set person = craft.users.first %}
+
+{% block content %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper'} %}
+
+        {% block content %}
+
+            <div class="feature-stage__content _text-only">
+                <div class="feature-stage__text">
+
+                    {# <h2>{{ titleModel.subheadline }}</h2> #}
+
+                    <h1>{{ person.name }}</h1>
+
+                </div>
+            </div>
+
+        {% endblock %}
+
+    {% endembed %}
+
+
+    {# {% include 'people/peopleIntroduction' %} #}
+    {% include 'matrix/richtext/index' with {entry: {richtext: person.richtext }} %}
+
+{% endblock %}

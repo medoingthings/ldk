@@ -19,9 +19,22 @@
     height: 0;
     padding-top: 25%;
     background-color: color(1);
+    overflow: hidden;
 
     &._wide {
         @include span-columns(6);
+    }
+
+    &._third {
+        float: left;
+        width: 33.333% - 0.5%;
+        margin-right: 0.5%;
+        margin-bottom: 0.5%;
+        padding-top: 16.3%;
+
+        &:nth-of-type(1n + 3) {
+            border-right-width: 0;
+        }
     }
 
     &._image-left {
@@ -163,6 +176,14 @@
     height: 100%;
     padding: em(30) em(20);
 
+    .mosaic-tiles__content._third & {
+        padding: em(15);
+
+        h2 {
+            margin-bottom: 0;
+        }
+    }
+
     .button-square {
         position: absolute;
         bottom: em(24);
@@ -172,6 +193,13 @@
         @extend %text-type--5;
         display: block;
         text-transform: uppercase;
+    }
+
+    ._info {
+        @extend %text-type--6;
+        color: color(4);
+        display: inline-block;
+        line-height: 1.2;
     }
 
     h2 {

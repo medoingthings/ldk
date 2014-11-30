@@ -1,0 +1,13 @@
+{% if entry.type == 'dates' %}
+
+    {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: ''} %}
+
+{% elseif (entry.type == 'courseDetail') %}
+
+    {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ' _highlight _wide _text-size-big'} %}
+
+{% else %}
+
+    {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ''} %}
+
+{% endif %}

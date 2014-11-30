@@ -1,3 +1,5 @@
+{% set resultsTemplate = resultsTemplate is defined ? resultsTemplate : 'searchResultsEntries' %}
+
 {% if results|length %}
 
     {% paginate results.limit(20) as resultsPerPage %}
@@ -5,24 +7,13 @@
         {# Output results #}
         {% for entry in resultsPerPage %}
 
-            {% if entry.type == 'dates' %}
-
-                {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: ''} %}
-
-            {% elseif (entry.type == 'courseDetail') %}
-
-                {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ' _highlight _wide _text-size-big'} %}
-
-            {% else %}
-
-                {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: ''} %}
-
-            {% endif %}
+            {% include 'search/' ~ resultsTemplate %}
 
         {% endfor %}
 
         {# Pagination logic #}
         {% if paginate.totalPages > 1 %}
+
             <ul class="button-paginate__list">
             {% if paginate.prevUrl %}
                 <li class="button-paginate__item"><a href="{{ paginate.prevUrl }}" class="button-paginate__link _previous"><span class="is-visually-hidden">Vorherige Seite</span></a></li>
@@ -43,6 +34,7 @@
                 <li class="button-paginate__item"><a href="{{ paginate.nextUrl }}" class="button-paginate__link _next"><span class="is-visually-hidden">Nächste Seite</span></a></li>
             {% endif %}
             </ul>
+
         {% endif %}
 
     {% endpaginate %}

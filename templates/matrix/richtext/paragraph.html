@@ -1,4 +1,4 @@
-{% set classNameCourse = entry.courseCategory.first() ? ' _' ~ entry.courseCategory.first().slug : '' %}
+{% set classNameCourse = entry.courseCategory is defined and entry.courseCategory.first() ? ' _' ~ entry.courseCategory.first().slug : '' %}
 {% set classNameStyle  = '' %}
 
 {% for style in block.style %}

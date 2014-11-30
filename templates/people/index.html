@@ -1,0 +1,26 @@
+{% extends '_layout' %}
+
+{% set query   = craft.request.getParam('q') %}
+{% set results = craft.users.search(query) %}
+
+{% block content %}
+
+    {% include 'partials/pageTitle' %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'search-results__wrapper'} %}
+
+        {% block content %}
+            {% include 'search/searchInput.html' with {placeholder: 'Person suchen'} %}
+        {% endblock %}
+
+    {% endembed %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: 'Suchergebnisse (' ~ results|length ~ ')'} %}
+        {% block content %}
+
+            {% include 'search/searchResults' with {resultsTemplate: 'searchResultsPeople'} %}
+
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}

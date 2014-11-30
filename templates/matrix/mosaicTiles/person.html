@@ -1,0 +1,24 @@
+<div class="mosaic-tiles__content _third{{ entryModel.photoUrl ? ' _image-left' }}">
+
+    {% if entryModel.photoUrl %}
+        <div class="mosaic-tiles__image">
+            <a href="/personen/{{ entryModel.username }}"><img src="{{ entryModel.photoUrl('200') }}"></a>
+        </div>
+    {% endif %}
+
+    <div class="mosaic-tiles__text">
+
+        {% if entryModel.degree != '' %}
+            <span class="_info">
+                {{ entryModel.degree }}
+            </span>
+        {% endif %}
+
+        <h2><a href="/personen/{{ entryModel.username }}">{{ entryModel.name }}</a></h2>
+
+        <span class="_info">
+            {{ entryModel.profession }}
+        </span>
+
+    </div>
+</div>

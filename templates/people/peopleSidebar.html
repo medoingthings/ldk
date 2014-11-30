@@ -1,0 +1,14 @@
+{% set dateStart = entry.timeFrameStart|date('D j. F Y') %}
+{% set timeStart = entry.fullDay ? '' : ' ' ~ entry.timeFrameStart|date('H.i') ~ ' Uhr' %}
+{% set dateEnd   = entry.timeFrameStop|date('D j. F Y') %}
+{% set timeEnd   = entry.fullDay ? '' : ' ' ~ entry.timeFrameStop|date('H.i') ~ ' Uhr' %}
+{% set singleDay = dateStart == dateEnd %}
+
+<dl class="richtext__content__sidebar__wrapper">
+
+    <dt>Datum</dt>
+    <dd>
+        Sidebar
+    </dd>
+
+</dl>
