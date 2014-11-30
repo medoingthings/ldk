@@ -141,8 +141,12 @@
 }
 
 .download-area__item {
-    margin: 10px 0 20px;
-    border-bottom: 1px solid color(4);
+    padding: em(10) 0;
+    border-top: 1px solid color(3);
+
+    &:first-child {
+        border-top: 0;
+    }
 
     &._has-badge {
         position: relative;
@@ -153,7 +157,7 @@
 .download-area__link--badge {
     position: absolute;
     left: 0;
-    top: 0;
+    top: em(10);
     display: block;
     width: em(50);
     height: em(50);
@@ -230,6 +234,7 @@
 .download-area__metadata {
     @extend %text-type--6;
     display: block;
-    color: color(4);
     margin-bottom: em(4);
+    line-height: 1;
+    color: color(4);
 }
