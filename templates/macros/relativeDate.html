@@ -1,0 +1,19 @@
+{% macro relativeDate(dateModel) %}
+
+    {% set dateFormat = dateModel.year() == now.year() ? 'd. M' : 'd. M Y' %}
+    {% set timeFormat = 'H:i' %}
+
+    {# Today? #}
+    {% if dateModel|date('Y-m-d') == now|date('Y-m-d') %}
+        Heute, {{ dateModel|date(timeFormat) }} Uhr
+
+    {# Yesterday? #}
+    {% elseif dateModel|date('Y-m-d') == '-1days'|date('Y-m-d') %}
+        Gestern, {{ dateModel|date(timeFormat) }} Uhr
+
+    {# Everything else #}
+    {% else %}
+        {{ dateModel|date(dateFormat ~ ' ' ~ timeFormat )}} Uhr
+    {% endif %}
+
+{% endmacro %}
