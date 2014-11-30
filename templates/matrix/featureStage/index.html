@@ -1,17 +1,21 @@
-{% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper'} %}
+{% if entry.featureStage|length %}
 
-    {% block content %}
+    {% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper'} %}
 
-        {% cache %}
+        {% block content %}
 
-            {% for block in entry.featureStage %}
+            {% cache %}
 
-                {% include 'matrix/featureStage/' ~ block.type %}
+                {% for block in entry.featureStage %}
 
-            {% endfor %}
+                    {% include 'matrix/featureStage/' ~ block.type %}
 
-        {% endcache %}
+                {% endfor %}
 
-    {% endblock %}
+            {% endcache %}
 
-{% endembed %}
+        {% endblock %}
+
+    {% endembed %}
+
+{% endif %}
