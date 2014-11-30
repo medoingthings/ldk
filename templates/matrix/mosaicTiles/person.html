@@ -1,8 +1,10 @@
+{% set peoplePath = peoplePath|default('/ueber-uns/dozenten/') %}
+
 <div class="mosaic-tiles__content _third{{ entryModel.photoUrl ? ' _image-left' }}">
 
     {% if entryModel.photoUrl %}
         <div class="mosaic-tiles__image">
-            <a href="/personen/{{ entryModel.username }}"><img src="{{ entryModel.photoUrl('200') }}"></a>
+            <a href="{{ peoplePath }}{{ entryModel.username }}"><img src="{{ entryModel.photoUrl('200') }}"></a>
         </div>
     {% endif %}
 
@@ -14,7 +16,7 @@
             </span>
         {% endif %}
 
-        <h2><a href="/personen/{{ entryModel.username }}">{{ entryModel.name }}</a></h2>
+        <h2><a href="{{ peoplePath }}{{ entryModel.username }}">{{ entryModel.name }}</a></h2>
 
         <span class="_info">
             {{ entryModel.profession }}
