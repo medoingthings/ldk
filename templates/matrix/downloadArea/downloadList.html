@@ -1,0 +1,28 @@
+<ul class="download-area__list">
+
+    {% for download in downloads %}
+
+        {% set dateFormat = download.dateUpdated|date('Y') == now|date('Y') ? 'd. M, H:i' : 'd. M Y, H:i' %}
+        {% set showBadge = showBadge is defined and showBadge == true ? true : false %}
+
+        <li class="download-area__item{{ showBadge ? ' _has-badge' }}">
+
+            {% if showBadge %}
+                {% set parentFolder = download.getFolder().path|split('/')[0]|lower %}
+                {% set badgeID = craft.categories.group('courses').slug(parentFolder).first.courseShortname %}
+
+                <a href="/campus/downloads/{{ parentFolder }}" class="download-area__link--badge _{{ parentFolder }}">
+                    {{ badgeID }}
+                </a>
+            {% endif %}
+
+            <a href="{{ download.url }}" class="download-area__link _{{ download.kind }}">{{ download }}</a>
+            <span class="download-area__metadata" title="{{ download.dateUpdated|date(dateFormat) }} Uhr">
+                {{ download.dateUpdated|nicetime(dateFormat) }}
+                |
+                {{ download.size|filesize }}
+            </span>
+        </li>
+
+    {% endfor %}
+</ul>

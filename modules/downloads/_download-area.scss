@@ -13,7 +13,8 @@
 .download-area__headline__wrapper,
 .download-area__category__link._is-active,
 .download-area__category__link:hover,
-.download-area__category__link:focus {
+.download-area__category__link:focus,
+.download-area__link--badge {
     &._leadership-1 {
         background-color: color(7, $colors-scheme);
     }
@@ -129,12 +130,44 @@
 
 .download-area__list {
     @extend %unstyle-list;
-    padding: em(8) em(20) em(60) em(280);
+
+    .download-area__content & {
+        padding: em(30) em(22);
+    }
+
+    .download-area__content--expandable & {
+        padding: em(8) em(20) em(60) em(280);
+    }
 }
 
 .download-area__item {
     margin: 10px 0 20px;
     border-bottom: 1px solid color(4);
+
+    &._has-badge {
+        position: relative;
+        padding-left: em(70);
+    }
+}
+
+.download-area__link--badge {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: em(50);
+    height: em(50);
+    padding: 0 em(3);
+    font-weight: bold;
+    background-color: color(4);
+    text-transform: uppercase;
+
+    &,
+    &:link,
+    &:visited {
+        color: color(1);
+        text-decoration: none;
+    }
 }
 
 .download-area__link {
@@ -195,6 +228,7 @@
 }
 
 .download-area__metadata {
+    @extend %text-type--6;
     display: block;
     color: color(4);
     margin-bottom: em(4);

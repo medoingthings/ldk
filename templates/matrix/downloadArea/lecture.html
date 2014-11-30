@@ -1,6 +1,7 @@
 
-<section class="download-area__content">
+<section class="download-area__content--expandable">
     <div class="download-area__bar__wrapper">
+
         {% if block.teacher|length %}
             {% set teacher = block.teacher.first %}
             {% set teacherAnchor = teacher.lastName|escape('url')|lower %}
@@ -12,21 +13,6 @@
         {% endif %}
 
     </div>
-    <ul class="download-area__list">
 
-        {% for download in block.downloads %}
-
-            {% set dateFormat = download.dateCreated|date('Y') == now|date('Y') ? 'd. M, H:i' : 'd. M Y, H:i' %}
-
-            <li class="download-area__item">
-                <a href="{{ download.url }}" class="download-area__link _{{ download.kind }}">{{ download }}</a>
-                <span class="download-area__metadata">
-                    {{ download.dateCreated|date(dateFormat) ~ ' Uhr ' }}
-                    |
-                    {{ download.size|filesize }}
-                </span>
-            </li>
-
-        {% endfor %}
-    </ul>
+    {% include 'matrix/downloadArea/downloadList' with {downloads: block.downloads} %}
 </section>

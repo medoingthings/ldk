@@ -1,0 +1,13 @@
+{% set showLimit = showLimit|default(5) %}
+
+{% embed "helper/sectionContainer.html" with {classes: 'download-area__wrapper', sectionLabel: 'Neueste ' ~ showLimit ~ ' Downloads'} %}
+
+    {% block content %}
+
+        <section class="download-area__content">
+            {% include 'matrix/downloadArea/downloadList' with {downloads: craft.assets.sourceId(4).order('dateCreated DESC').limit(showLimit), showBadge: true} %}
+        </section>
+
+    {% endblock %}
+
+{% endembed %}

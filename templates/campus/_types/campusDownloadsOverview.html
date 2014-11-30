@@ -5,17 +5,11 @@
 
     {% include 'partials/pageTitle' %}
     {% include 'campus/campusDownloadsCategories' %}
+    {% include 'partials/recentDownloads' with {showLimit: 20} %}
 
     {# {% cache %} #}
 
-        {% set allDownloads = craft.entries.section('campusDownloads') %}
 
-        {% for entry in allDownloads %}
-            {% include 'campus/campusDownloadsHeadline' with {
-                headline: entry.courseCategory.first,
-                className: entry.courseCategory.first.slug
-            } %}
-        {% endfor %}
 
     {# {% endcache %} #}
 {% endblock %}
