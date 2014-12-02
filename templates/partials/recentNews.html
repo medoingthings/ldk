@@ -1,0 +1,18 @@
+{% set showLimit = showLimit|default(3) %}
+{% set wrapperClassAppend = wrapperClassAppend is defined ? wrapperClassAppend : '' %}
+
+{% embed "helper/sectionContainer.html" with {classes: 'download-area__wrapper' ~ wrapperClassAppend, sectionLabel: 'Neuigkeiten'} %}
+
+    {% block content %}
+
+        <section class="download-area__content">
+
+            {% include 'matrix/downloadArea/entryList' with {
+                entries: craft.entries.section('news').order('postDate DESC').limit(showLimit)
+            } %}
+
+        </section>
+
+    {% endblock %}
+
+{% endembed %}

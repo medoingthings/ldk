@@ -1,0 +1,16 @@
+{% import 'macros/relativeDate' as macro %}
+
+<ul class="download-area__list">
+
+    {% for entry in entries %}
+
+        <li class="download-area__item">
+
+            <a href="{{ entry.url }}" class="download-area__link _link">{{ entry }}</a>
+            <span class="download-area__metadata">
+                {{ macro.relativeDate(entry.postDate) }}
+            </span>
+        </li>
+
+    {% endfor %}
+</ul>

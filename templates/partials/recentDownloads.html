@@ -1,6 +1,7 @@
-{% set showLimit = showLimit|default(5) %}
+{% set showLimit = showLimit|default(3) %}
+{% set wrapperClassAppend = wrapperClassAppend is defined ? wrapperClassAppend : '' %}
 
-{% embed "helper/sectionContainer.html" with {classes: 'download-area__wrapper', sectionLabel: 'Neueste ' ~ showLimit ~ ' Downloads'} %}
+{% embed "helper/sectionContainer.html" with {classes: 'download-area__wrapper' ~ wrapperClassAppend, sectionLabel: 'Neue Downloads'} %}
 
     {% block content %}
 

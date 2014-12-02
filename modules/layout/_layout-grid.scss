@@ -1,0 +1,18 @@
+/**
+ * Useful grid classes
+ */
+
+.layout-grid__wrapper {
+    @extend %container;
+
+    // Make the children equally high
+    display: flex;
+    align-items: stretch;
+}
+
+.layout-grid__span-6 {
+    @include span-columns(6);
+
+    // Stretch to 100% height to support the equalheight from above
+    display: flex;
+}

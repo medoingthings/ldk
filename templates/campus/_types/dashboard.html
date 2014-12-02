@@ -1,0 +1,24 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+    {% include 'partials/pageTitle' %}
+
+    <div class="layout-grid__wrapper">
+        <div class="layout-grid__span-6">
+            {% include 'partials/recentDownloads' with {wrapperClassAppend: '--inline'} %}
+        </div>
+
+        <div class="layout-grid__span-6">
+            {% include 'partials/recentNews' with {wrapperClassAppend: '--inline _is-dimmed'} %}
+        </div>
+    </div>
+
+    {% include 'matrix/mosaicTiles/index' %}
+
+    {% include 'matrix/mosaicTiles/mosaicStrip' with {
+        relatedEntries: craft.entries.section('dates').limit(4).id('!=' ~ entry.id).order('timeFrameStart'),
+        sectionLabel: 'Weitere Termine'
+    } %}
+
+{% endblock %}

@@ -1,7 +1,17 @@
 .download-area__wrapper {
     @extend %container;
+}
+
+.download-area__wrapper,
+.download-area__wrapper--inline {
     margin-bottom: em(20);
     background-color: color(1);
+}
+
+.download-area__wrapper--inline {
+    &._is-dimmed {
+        background-color: color(5);
+    }
 }
 
 .download-area__headline__wrapper {
@@ -144,6 +154,7 @@
     padding: em(10) 0;
     border-top: 1px solid color(3);
 
+    .download-area__wrapper--inline._is-dimmed &,
     &:first-child {
         border-top: 0;
     }
@@ -177,7 +188,6 @@
 .download-area__link {
     @extend %button-square__icon;
     @extend %button-square--right;
-    @include icon(download, 0.9em);
     position: relative;
     display: block;
     line-height: 1.4;
@@ -203,6 +213,15 @@
 
     &:after {
         right: 0;
+    }
+
+    &._link {
+        @include icon(plus, 1.22em);
+        line-height: 1.2;
+    }
+
+    &._download {
+        @include icon(download, 0.9em);
     }
 
     &._pdf {
