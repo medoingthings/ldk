@@ -2,10 +2,14 @@
  * Rich Text
  */
 
-@mixin richtext-color-scheme ($color) {
+@mixin richtext-color-scheme ($color, $color-text: false) {
     .richtext-badge__headline,
     &._highlight {
         background-color: $color;
+
+        @if $color-text != false {
+            color: $color-text;
+        }
     }
 
     a:link {
@@ -39,7 +43,7 @@
     }
 
     &._management-2 {
-        @include richtext-color-scheme(color(4, $colors-scheme));
+        @include richtext-color-scheme(color(4, $colors-scheme), color(1));
     }
 
     &._projekt-1 {
