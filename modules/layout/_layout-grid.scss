@@ -8,6 +8,7 @@
     // Make the children equally high
     display: flex;
     align-items: stretch;
+    flex-wrap: wrap;
 }
 
 .layout-grid__span-6 {
