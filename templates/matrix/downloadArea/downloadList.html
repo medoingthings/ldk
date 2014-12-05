@@ -26,4 +26,11 @@
         </li>
 
     {% endfor %}
+
+    {% if showAllLink is defined and showAllLink == true %}
+        <li class="download-area__item">
+            <a href="/campus/downloads/" class="download-area__link--more">Alle Downloads</a>
+        </li>
+    {% endif %}
+
 </ul>

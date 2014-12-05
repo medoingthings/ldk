@@ -151,6 +151,7 @@
 }
 
 .download-area__item {
+    @extend %clearfix;
     padding: em(10) 0;
     border-top: 1px solid color(3);
 
@@ -183,6 +184,12 @@
         color: color(1);
         text-decoration: none;
     }
+}
+
+.download-area__link--more {
+    @extend %button-square--base;
+    @extend %button-square--right;
+    float: right;
 }
 
 .download-area__link {
