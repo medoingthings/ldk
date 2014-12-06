@@ -1,0 +1,9 @@
+{% set coursesParentId = 40 %}
+
+{# Select the course that is happening right now #}
+{% set currentCourse = craft.entries.descendantOf(coursesParentId).type('courseDetail').order('courseStartDate DESC').courseStartDate('<=' ~ now).courseEndDate('>=' ~ now).limit(1).first %}
+
+{% include 'matrix/mosaicTiles/courseEntry' with {
+    courseModel: currentCourse,
+    subtitle: defaultStringCurrentCourse.label
+} %}

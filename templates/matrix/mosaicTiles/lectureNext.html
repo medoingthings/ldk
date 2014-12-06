@@ -1,0 +1,30 @@
+{% import 'macros/relativeDate' as macro %}
+
+{% set coursesParentId = 40 %}
+
+{# Select the course that is happening right now #}
+{% set currentCourse = craft.entries.descendantOf(coursesParentId).type('courseDetail').order('courseStartDate DESC').courseStartDate('<=' ~ now).courseEndDate('>=' ~ now).limit(1).first %}
+
+{# Check which courseDate will be the next to take place #}
+{% set courseAgendaUrl = currentCourse.courseAgenda|length ? currentCourse.courseAgenda.first.url %}
+{% set courseDates = currentCourse.courseDates.order('timeFrameStart') %}
+{% set nextLectureModel = false %}
+
+{# Iterate over each courseDate that has not yet ended #}
+{% for date in courseDates if date(date.timeFrameEnd) > date(now) %}
+
+    {# Only store the first (and therefore next) date #}
+    {% if nextLectureModel == false %}
+        {% set nextLectureModel = date %}
+    {% endif %}
+
+{% endfor %}
+
+{% include 'matrix/mosaicTiles/courseEntry' with {
+    courseModel: currentCourse,
+    subtitle: defaultStringNextLecture.label,
+    courseDate: {start: nextLectureModel.timeFrameStart, end: nextLectureModel.timeFrameEnd},
+    buttonLabel: courseAgendaUrl ? 'Wochenplan herunterladen',
+    buttonTarget: courseAgendaUrl ? courseAgendaUrl,
+    buttonClassAppend: courseAgendaUrl ? '_pdf'
+} %}
