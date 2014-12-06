@@ -7,7 +7,7 @@
             {% if block.type == 'dates' %}
                 {% include 'matrix/mosaicTiles/date' with {entryModel: block, styleClasses: '', buttonText: defaultStringButtonDate.label} %}
             {% else %}
-                {% include 'matrix/mosaicTiles/text' with {entryModel: block, headline: block.title, shortText: block.teaserText, styleClasses: '', buttonText: defaultStringButton.label} %}
+                {% include 'matrix/mosaicTiles/entry' with {entryModel: block, headline: block.title, shortText: block.teaserText, styleClasses: '', buttonText: defaultStringButton.label} %}
             {% endif %}
 
         {% endfor %}

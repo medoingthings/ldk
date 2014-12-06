@@ -18,7 +18,7 @@
                 {% if entry.type == 'dates' %}
                     {% include 'matrix/mosaicTiles/date' with {entryModel: entry, styleClasses: styleClasses} %}
                 {% else %}
-                    {% include 'matrix/mosaicTiles/text' with {entryModel: entry, styleClasses: styleClasses} %}
+                    {% include 'matrix/mosaicTiles/entry' with {entryModel: entry, styleClasses: styleClasses} %}
                 {% endif %}
             {% endif %}
 
