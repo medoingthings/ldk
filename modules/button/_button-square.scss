@@ -89,4 +89,13 @@
 .button-square {
     @extend %button-square--base;
     @extend %button-square--left;
+
+    &._pdf {
+        @include icon(file-pdf, 1.1em);
+
+        &:before {
+            text-indent: em(3);
+            line-height: 0.9;
+        }
+    }
 }
