@@ -59,6 +59,20 @@
         }
     }
 
+    &._richtext {
+        p {
+            @extend %text-type--5;
+        }
+
+        a {
+            &:link,
+            &:visited {
+                color: color(2);
+                text-decoration: underline;
+            }
+        }
+    }
+
     &._emphasize {
         background-color: color(3);
     }
