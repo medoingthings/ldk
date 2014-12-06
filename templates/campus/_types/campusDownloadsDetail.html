@@ -6,8 +6,7 @@
     {% include 'campus/campusDownloadsCategories' %}
 
     {% include 'campus/campusDownloadsHeadline' with {
-        headline: entry.courseCategory.first,
-        className: entry.courseCategory.first.slug
+        courseModel: entry.courseCategory.first.courseEntry.first
     } %}
 
     {% include 'matrix/downloadArea/index' with {downloadsModel: entry.campusDownloads} %}

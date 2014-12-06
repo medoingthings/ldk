@@ -14,12 +14,6 @@
     }
 }
 
-.download-area__headline__wrapper {
-    @extend %container;
-    margin-bottom: em(20);
-    padding: em(10) em(40) em(58) em(20);
-}
-
 .download-area__headline__wrapper,
 .download-area__category__link._is-active,
 .download-area__category__link:hover,
@@ -129,8 +123,14 @@
 
 
 /**
- * List of downloads
+ * Headline block
  */
+.download-area__headline__wrapper {
+    @extend %container;
+    position: relative;
+    margin-bottom: em(20);
+    padding: em(10) em(40) em(58) em(20);
+}
 
 .download-area__headline {
     @extend %text-type--4;
@@ -138,6 +138,18 @@
     color: color(1);
 }
 
+.download-area__headline__link {
+    @extend %button-square--base;
+    @extend %button-square--right;
+    @include icon(file-pdf, 1.05em);
+    position: absolute;
+    right: em(20);
+    bottom: em(20);
+}
+
+/**
+ * List of downloads
+ */
 .download-area__list {
     @extend %unstyle-list;
 
