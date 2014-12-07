@@ -4,24 +4,23 @@
     {% set classNameStyle = classNameStyle ~ ' _' ~ style %}
 {% endfor %}
 
-{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper' ~ classNameStyle, sectionLabel: block.sectionLabel} %}
+{% embed "helper/sectionContainer.html" with {classes: 'richtext-gallery__wrapper' ~ classNameStyle, sectionLabel: block.sectionLabel} %}
 
     {% block content %}
 
-        <div class="richtext-gallery__wrapper">
-            {% for image in block.image %}
-                <a href="{{ image.getUrl('galleryLightbox') }}" class="richtext-gallery__link">
-                    {% include 'utilities/picturefill' with {
-                        imageModel: image,
-                        imageSet: [
-                            ['galleryStripM', '500px', '1.5x'],
-                            ['galleryStripS', 'noscript'],
-                            ['galleryStripS']
-                        ]
-                    } %}
-                </a>
-            {% endfor %}
-        </div>
+        {% for image in block.image %}
+            <a href="{{ image.getUrl('galleryLightbox') }}" class="richtext-gallery__link">
+                {% include 'utilities/picturefill' with {
+                    imageModel: image,
+                    imageSet: [
+                        ['galleryStripM', '500px', '1.5x'],
+                        ['galleryStripS', 'noscript'],
+                        ['galleryStripS']
+                    ]
+                } %}
+            </a>
+        {% endfor %}
+
     {% endblock %}
 
 {% endembed %}

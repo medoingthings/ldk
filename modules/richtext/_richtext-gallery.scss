@@ -3,6 +3,7 @@
  */
 
 .richtext-gallery__wrapper {
+    @extend %container;
     @extend %clearfix;
     clear: both;
     background-color: color(1);
