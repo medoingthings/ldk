@@ -15,7 +15,7 @@ $layout-label--height: 38;
     top: em(-$layout-label--height, size(7));
     left: 0;
     display: inline-block;
-    height: em($layout-label--height, size(7));
+    min-height: em($layout-label--height, size(7));
     padding: em(12, size(7)) em(34, size(7));
     color: color(1);
     font-weight: bold;
