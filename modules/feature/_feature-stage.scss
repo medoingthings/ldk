@@ -22,7 +22,9 @@
     background-color: color(1);
 
     &._text-short .feature-stage__text {
-        width: 60%;
+        h2 {
+            margin-bottom: em(20)
+        }
 
         p {
             width: auto;
@@ -159,6 +161,10 @@
                 }
             }
         }
+
+        &._text-short .feature-stage__text {
+            width: 60%;
+        }
     }
 
     .feature-stage__text {
@@ -171,12 +177,6 @@
 }
 
 @include breakpoint(false, 800) {
-    .feature-stage__content._text-short {
-        .feature-stage__text {
-            width: 90%;
-        }
-    }
-
     .feature-stage__text {
         p {
             width: auto;
@@ -186,7 +186,7 @@
 
 @include breakpoint(false, 500) {
     .feature-stage__text {
-        width: auto;
+        width: auto !important;
         padding-left: em(20);
         padding-right: em(20);
     }
