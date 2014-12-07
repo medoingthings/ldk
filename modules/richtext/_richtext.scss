@@ -101,6 +101,15 @@ $richtext--breakpoint--S: 580;
             left: 0;
         }
     }
+
+    a:link {
+        color: color(2);
+        text-decoration: underline;
+    }
+
+    a:visited {
+        color: color(4);
+    }
 }
 
 .richtext__content {
@@ -139,17 +148,6 @@ $richtext--breakpoint--S: 580;
     p {
         @extend %text-type--5;
         margin-bottom: baselineMargin(5, 1);
-    }
-
-    a {
-        &:link,
-        &:visited {
-            text-decoration: none;
-        }
-
-        &:hover {
-            text-decoration: underline;
-        }
     }
 }
 
