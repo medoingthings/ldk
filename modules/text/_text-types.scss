@@ -14,7 +14,7 @@
     line-height: lineHeight(2);
 
     @include breakpoint(false, 790) {
-        font-size: size(2, $size-breakpoint-tablet);
+        font-size: size(2, $size-breakpoint-M);
     }
 }
 
@@ -24,7 +24,7 @@
     line-height: lineHeight(3);
 
     @include breakpoint(false, 790) {
-        font-size: size(3, $size-breakpoint-tablet);
+        font-size: size(3, $size-breakpoint-M);
     }
 }
 
