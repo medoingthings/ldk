@@ -19,9 +19,9 @@
  */
 
 .richtext-badge__wrapper {
-    float: left;
-    width: em(200);
-    margin-top: em(100);
+    position: absolute;
+    left: 0;
+    width: 17%;
 }
 
 .richtext-badge__image {
@@ -38,6 +38,44 @@
     .richtext-badge__headline {
         width: em(100, size(3));
         height: em(100, size(3));
+    }
+}
+
+@include breakpoint(false, 770) {
+    .richtext-badge__wrapper {
+        position: static;
+        float: left;
+    }
+
+    .richtext-badge__wrapper + .richtext__content {
+        margin-left: 0;
+    }
+}
+
+@include breakpoint(511, 770) {
+    .richtext-badge__wrapper {
+        width: em(210);
+        margin: 0 em(20) em(20) 0;
+    }
+}
+
+@include breakpoint(351, 510) {
+    .richtext-badge__wrapper {
+        width: em(120);
+        margin: 0 em(20) em(20) 0;
+
+        + .richtext__content {
+            p:first-of-type {
+                clear: both;
+            }
+        }
+    }
+}
+
+@include breakpoint(false, 350) {
+    .richtext-badge__wrapper {
+        width: 100%;
+        margin: 0 em(20) em(20) 0;
     }
 }
 

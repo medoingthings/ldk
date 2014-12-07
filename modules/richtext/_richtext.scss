@@ -121,8 +121,7 @@ $richtext--breakpoint--S: 580;
     }
 
     .richtext-badge__wrapper + & {
-        margin-left: em(240);
-        padding-left: 0;
+        margin-left: em(100);
     }
 
     h2 {
@@ -188,7 +187,7 @@ $richtext--breakpoint--S: 580;
 
 @include breakpoint(false, $richtext--breakpoint--M - 1) {
     .richtext__wrapper {
-        padding: em(80) em(80) em(40) em(100)
+        padding: em(80) em(80) em(40) em(100);
     }
 
     .richtext__content__sidebar__wrapper,
@@ -201,6 +200,10 @@ $richtext--breakpoint--S: 580;
     .richtext__content__sidebar__wrapper {
         margin: 0;
         padding: 0;
+    }
+
+    .richtext__content__sidebar__wrapper {
+        margin: 0 -1%;
     }
 
     .richtext__content__sidebar__content {
@@ -235,7 +238,13 @@ $richtext--breakpoint--S: 580;
 
 @include breakpoint(false, $richtext--breakpoint--S - 1) {
     .richtext__wrapper {
-        padding: em(40) em(20);
+        padding: em(20);
+    }
+
+    .richtext__content {
+        h3 {
+            margin-bottom: em(10);
+        }
     }
 
     .richtext__content__sidebar__content {
