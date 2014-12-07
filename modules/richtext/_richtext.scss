@@ -2,6 +2,11 @@
  * Rich Text
  */
 
+// richtext and richtext-badge share those breakpoints
+$richtext--breakpoint--M: 1000;
+$richtext--breakpoint--S: 580;
+
+
 @mixin richtext-color-scheme ($color, $color-text: false) {
     .richtext-badge__headline,
     &._highlight {
@@ -24,6 +29,7 @@
 .richtext__wrapper {
     @extend %container;
     position: relative;
+    padding: em(80) 0 em(40) em(100);
     background-color: color(1);
 
     &:not(._merge-with-next) {
@@ -70,6 +76,46 @@
         @include richtext-color-scheme(color(2, $colors-scheme));
     }
 
+    /**
+     * Lists should look similar a bit more general than headlines and stuff.
+     * Therefore they are scoped to the wrapper and not to the content block.
+     */
+    ul {
+        @extend %unstyle-list;
+        margin-bottom: baselineMargin(5, 1);
+    }
+
+    ol {
+        margin-bottom: baselineMargin(5, 1);
+    }
+
+    ul li {
+        @extend %unstyle-list-item;
+        position: relative;
+        padding-left: em(12);
+
+        &:before {
+            content: '\b7'; // middot
+            position: absolute;
+            color: color(2);
+            left: 0;
+        }
+    }
+}
+
+.richtext__content {
+    @extend %clearfix;
+    padding-right: em(80);
+
+    &._has-sidebar {
+        @include span-columns(9);
+    }
+
+    .richtext-badge__wrapper + & {
+        margin-left: em(240);
+        padding-left: 0;
+    }
+
     h2 {
         @extend %text-type--3;
         text-transform: uppercase;
@@ -95,28 +141,6 @@
         margin-bottom: baselineMargin(5, 1);
     }
 
-    ul {
-        @extend %unstyle-list;
-        margin-bottom: baselineMargin(5, 1);
-    }
-
-    ol {
-        margin-bottom: baselineMargin(5, 1);
-    }
-
-    ul li {
-        @extend %unstyle-list-item;
-        position: relative;
-        padding-left: em(12);
-
-        &:before {
-            content: '\b7'; // middot
-            position: absolute;
-            color: color(2);
-            left: 0;
-        }
-    }
-
     a {
         &:link,
         &:visited {
@@ -129,45 +153,94 @@
     }
 }
 
-.richtext__content {
-    @extend %clearfix;
-    padding: em(100) em(145) em(80) em(145);
-
-    &._has-sidebar {
-        @include span-columns(9);
-    }
-
-    .richtext-badge__wrapper + & {
-        margin-left: em(240);
-        padding-left: 0;
-    }
-}
-
 .richtext__content__sidebar__wrapper {
     @include span-columns(3);
-    margin: em(100) 0 0;
     padding-right: em(20);
 
-    dt {
+    h3 {
         @extend %text-type--7;
         text-transform: uppercase;
+        font-weight: normal;
         margin-top: baselineMargin(7, 0, 0.6);
         margin-bottom: baselineMargin(7, 0, 0.4);
-    }
-
-    dd {
-        @extend %text-type--5;
-        margin: 0;
-        padding-bottom: baselineMargin(5, 1);
-        color: color(4);
-    }
-
-    ul {
-        margin-bottom: 0;
     }
 
     ._venue-details {
         @extend %text-type--6;
         margin-top: baselineMargin(6);
+    }
+}
+
+.richtext__content__sidebar__text {
+    @extend %text-type--5;
+    margin: 0;
+    padding-bottom: baselineMargin(5, 1);
+    color: color(4);
+
+    ul {
+        margin-bottom: 0;
+    }
+}
+
+@include breakpoint($richtext--breakpoint--M) {
+    .richtext__wrapper {
+        padding: em(100) 0 em(80) em(145);
+    }
+}
+
+@include breakpoint(false, $richtext--breakpoint--M - 1) {
+    .richtext__wrapper {
+        padding: em(80) em(80) em(40) em(100)
+    }
+
+    .richtext__content__sidebar__wrapper,
+    .richtext__content._has-sidebar {
+        width: 100%;
+        clear: both;
+    }
+
+    .richtext__content,
+    .richtext__content__sidebar__wrapper {
+        margin: 0;
+        padding: 0;
+    }
+
+    .richtext__content__sidebar__content {
+        float: left;
+        margin: 0 1%;
+    }
+}
+
+@include breakpoint(831, $richtext--breakpoint--M - 1) {
+    .richtext__content__sidebar__wrapper {
+        margin: 0 -1%;
+    }
+
+    .richtext__content__sidebar__content {
+        width: 33.333% - 2 * 1%;
+
+        &:nth-child(4) {
+            clear: both;
+        }
+    }
+}
+
+@include breakpoint($richtext--breakpoint--S, 830) {
+    .richtext__content__sidebar__content {
+        width: 50% - 2 * 1%;
+
+        &:nth-child(3) {
+            clear: both;
+        }
+    }
+}
+
+@include breakpoint(false, $richtext--breakpoint--S - 1) {
+    .richtext__wrapper {
+        padding: em(40) em(20);
+    }
+
+    .richtext__content__sidebar__content {
+        width: 100%;
     }
 }

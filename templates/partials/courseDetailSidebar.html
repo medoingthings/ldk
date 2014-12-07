@@ -1,59 +1,71 @@
-<dl class="richtext__content__sidebar__wrapper">
+<aside class="richtext__content__sidebar__wrapper">
 
     {% if entry.courseTopics %}
-        <dt>{{ craft.fields.getFieldbyHandle('courseTopics') }}</dt>
-        <dd>{{ entry.courseTopics }}</dd>
+        <div class="richtext__content__sidebar__content">
+            <h3>{{ craft.fields.getFieldbyHandle('courseTopics') }}</h3>
+            <div class="richtext__content__sidebar__text">{{ entry.courseTopics }}</div>
+        </div>
     {% endif %}
 
     {% if entry.courseMaster|length %}
-        <dt>{{ craft.fields.getFieldbyHandle('courseMaster') }}</dt>
-        <dd>
+        <div class="richtext__content__sidebar__content">
+            <h3>{{ craft.fields.getFieldbyHandle('courseMaster') }}</h3>
+            <div class="richtext__content__sidebar__text">
 
-            {% for prof in entry.courseMaster %}
-                <a href="prof.url">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.firstName }} {{ prof.lastName }}</a><br>
+                {% for prof in entry.courseMaster %}
+                    <a href="prof.url">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.firstName }} {{ prof.lastName }}</a><br>
 
-                {% if prof.profession %}
-                    {{ prof.profession }}<br>
-                {% endif %}
-            {% endfor %}
+                    {% if prof.profession %}
+                        {{ prof.profession }}<br>
+                    {% endif %}
+                {% endfor %}
 
-        </dd>
+            </div>
+        </div>
     {% endif %}
 
     {% if entry.courseTeacher|length %}
-        <dt>{{ craft.fields.getFieldbyHandle('courseTeacher') }}</dt>
-        <dd>
+        <div class="richtext__content__sidebar__content">
+            <h3>{{ craft.fields.getFieldbyHandle('courseTeacher') }}</h3>
+            <div class="richtext__content__sidebar__text">
 
-            {% for teacher in entry.courseTeacher %}
-                <a href="teacher.url">{{ teacher.degree ? teacher.degree ~ ' ' }}{{ teacher.firstName }} {{ teacher.lastName }}</a><br>
+                {% for teacher in entry.courseTeacher %}
+                    <a href="teacher.url">{{ teacher.degree ? teacher.degree ~ ' ' }}{{ teacher.firstName }} {{ teacher.lastName }}</a><br>
 
-                {% if teacher.profession %}
-                    {{ teacher.profession }}<br>
-                {% endif %}
-            {% endfor %}
+                    {% if teacher.profession %}
+                        {{ teacher.profession }}<br>
+                    {% endif %}
+                {% endfor %}
 
-        </dd>
+            </div>
+        </div>
     {% endif %}
 
 
     {% if entry.courseStartDate and entry.courseEndDate %}
-        <dt>Zeitraum</dt>
-        <dd>
-            {{ entry.courseStartDate|date('d.m.Y') }} – {{ entry.courseEndDate|date('d.m.Y') }}
-        </dd>
+        <div class="richtext__content__sidebar__content">
+            <h3>Zeitraum</h3>
+            <div class="richtext__content__sidebar__text">
+                {{ entry.courseStartDate|date('d.m.Y') }} – {{ entry.courseEndDate|date('d.m.Y') }}
+            </div>
+        </div>
     {% endif %}
 
     {% if entry.courseDates|length %}
-        <dt>{{ craft.fields.getFieldbyHandle('courseDates') }}</dt>
-        <dd>
-            {% for date in entry.courseDates %}
-                {{ date.timeFrameStart|date('d.m.Y') }}{{ date.timeFrameEnd ? ' – ' ~ date.timeFrameEnd|date('d.m.Y') }}<br>
-            {% endfor %}
-        </dd>
+        <div class="richtext__content__sidebar__content">
+            <h3>{{ craft.fields.getFieldbyHandle('courseDates') }}</h3>
+            <div class="richtext__content__sidebar__text">
+                {% for date in entry.courseDates %}
+                    {{ date.timeFrameStart|date('d.m.Y') }}{{ date.timeFrameEnd ? ' – ' ~ date.timeFrameEnd|date('d.m.Y') }}<br>
+                {% endfor %}
+            </div>
+        </div>
     {% endif %}
 
     {% if entry.venue|length %}
-        <dt>{{ craft.fields.getFieldbyHandle('venue') }}</dt>
-        <dd>{% include 'partials/venue' %}</dd>
+        <div class="richtext__content__sidebar__content">
+            <h3>{{ craft.fields.getFieldbyHandle('venue') }}</h3>
+            <div class="richtext__content__sidebar__text">{% include 'partials/venue' %}</div>
+        </div>
     {% endif %}
-</dl>
+</aside>

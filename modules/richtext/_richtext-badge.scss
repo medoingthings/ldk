@@ -6,10 +6,9 @@
     @extend %text-type--3;
     display: block;
     position: absolute;
-    top: em(100, size(3));
     left: 0;
-    width: em(100, size(3));
-    height: em(100, size(3));
+    width: em(80, size(3));
+    height: em(80, size(3));
     padding: em(6, size(3));
     color: color(1);
     background-color: color(3);
@@ -32,5 +31,23 @@
         display: block;
         width: 100%;
         height: auto;
+    }
+}
+
+@include breakpoint($richtext--breakpoint--M) {
+    .richtext-badge__headline {
+        width: em(100, size(3));
+        height: em(100, size(3));
+    }
+}
+
+@include breakpoint(false, $richtext--breakpoint--S - 1) {
+    .richtext-badge__headline {
+        position: static;
+        font-size: size(3, $size-breakpoint-S);
+        width: em(60, size(3, $size-breakpoint-S));
+        height: em(60, size(3, $size-breakpoint-S));
+        float: left;
+        margin: 0 em(10) em(5) 0;
     }
 }

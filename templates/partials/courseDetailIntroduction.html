@@ -4,12 +4,14 @@
 
     {% block content %}
 
-        {% set badge = entry.courseCategory.first %}
-        {% if badge %}
-            <b class="richtext-badge__headline" title="{{ badge }}">{{ badge.courseShortname }}</b>
-        {% endif %}
+        <div class="richtext__content _has-sidebar">
+            {% set badge = entry.courseCategory.first %}
+            {% if badge %}
+                <b class="richtext-badge__headline" title="{{ badge }}">{{ badge.courseShortname }}</b>
+            {% endif %}
 
-        <div class="richtext__content _has-sidebar">{{ entry.introduction }}</div>
+            {{ entry.introduction }}
+        </div>
 
         {% include 'partials/courseDetailSidebar' %}
 

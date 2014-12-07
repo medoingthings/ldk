@@ -4,27 +4,32 @@
 {% set timeEnd   = entry.fullDay ? '' : ' ' ~ entry.timeFrameStop|date('H.i') ~ ' Uhr' %}
 {% set singleDay = dateStart == dateEnd %}
 
-<dl class="richtext__content__sidebar__wrapper">
+<aside class="richtext__content__sidebar__wrapper">
 
-    <dt>Datum</dt>
-    <dd>
-        {{ dateStart }}
-        {{ singleDay ? '<br>' }}
-        {{ timeStart }} –
-        {% if not singleDay %}
-            <br> {{ dateEnd }}
-        {% endif %}
-            {{ timeEnd }}
-    </dd>
+    <div class="richtext__content__sidebar__content">
+        <h3>Datum</h3>
+        <div class="richtext__content__sidebar__text">
+            {{ dateStart }}
+            {{ singleDay ? '<br>' }}
+            {{ timeStart }} –
+            {% if not singleDay %}
+                <br> {{ dateEnd }}
+            {% endif %}
+                {{ timeEnd }}
+        </div>
+    </div>
 
     {% if entry.venue|length or entry.venueDetails %}
-        <dt>{{ craft.fields.getFieldbyHandle('venue') }}</dt>
-        <dd>
-            {% include 'partials/venue' %}
+        <div class="richtext__content__sidebar__content">
+            <h3>{{ craft.fields.getFieldbyHandle('venue') }}</h3>
+            <div class="richtext__content__sidebar__text">
+                {% include 'partials/venue' %}
 
-            <div class="_venue-details">
-                {{ entry.venueDetails }}
+                <div class="_venue-details">
+                    {{ entry.venueDetails }}
+                </div>
             </div>
-        </dd>
+        </div>
     {% endif %}
-</dl>
+
+</aside>
