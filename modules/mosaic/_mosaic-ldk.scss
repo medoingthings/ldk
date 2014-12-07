@@ -132,7 +132,7 @@ $mosaic-ldk--dimension: 200;
     }
 }
 
-@include breakpoint (1000) {
+@include breakpoint (1001) {
     .mosaic-ldk__list {
         &._center {
             margin-left: em($mosaic-ldk--dimension / 2);
@@ -152,7 +152,7 @@ $mosaic-ldk--dimension: 200;
     }
 }
 
-@include breakpoint (false, 999) {
+@include breakpoint (false, 1000) {
     .mosaic-ldk__list {
         display: flex;
         flex-wrap: wrap;
@@ -160,7 +160,7 @@ $mosaic-ldk--dimension: 200;
     }
 }
 
-@include breakpoint (680, 999) {
+@include breakpoint (681, 1000) {
     .mosaic-ldk__list {
         &._center {
             .mosaic-ldk__item {
@@ -179,5 +179,48 @@ $mosaic-ldk--dimension: 200;
                 }
             }
         }
+    }
+}
+
+@include breakpoint (false, 680) {
+    .mosaic-ldk__item {
+        position: relative;
+        width: 25%;
+        padding-top: 25%;
+        height: 0;
+    }
+
+    .mosaic-ldk__link {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+@include breakpoint (631, 679) {
+    .mosaic-ldk__item {
+        width: 25%;
+        padding-top: 25%;
+    }
+}
+
+@include breakpoint (451, 630) {
+    .mosaic-ldk__item {
+        width: 33.333%;
+        padding-top: 33.333%;
+    }
+}
+
+@include breakpoint (301, 450) {
+    .mosaic-ldk__item {
+        width: 50%;
+        padding-top: 50%;
+    }
+}
+
+@include breakpoint (false, 300) {
+    .mosaic-ldk__item {
+        width: 100%;
+        padding-top: 100%;
     }
 }
