@@ -23,8 +23,12 @@
     font-size: size(3);
     line-height: lineHeight(3);
 
-    @include breakpoint(false, 790) {
+    @include breakpoint(451, 790) {
         font-size: size(3, $size-breakpoint-M);
+    }
+
+    @include breakpoint(false, 450) {
+        font-size: size(3, $size-breakpoint-S);
     }
 }
 
