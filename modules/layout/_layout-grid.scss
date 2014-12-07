@@ -17,3 +17,10 @@
     // Stretch to 100% height to support the equalheight from above
     display: flex;
 }
+
+@include breakpoint(false, 640) {
+    .layout-grid__span-6 {
+        width: 100%;
+        clear: both;
+    }
+}
