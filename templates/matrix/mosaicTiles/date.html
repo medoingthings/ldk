@@ -14,7 +14,7 @@
 <div class="mosaic-tiles__content{{ courseId ? ' _' ~ courseId : '' }}{{ styleClasses }}">
 
     {% if teaserImage %}
-        <div class="mosaic-tiles__image">
+        <a href="{{ entryModel.url }}" class="mosaic-tiles__image">
             {% include 'utilities/picturefill' with {
                 imageModel: teaserImage,
                 imageSet: [
@@ -23,7 +23,7 @@
                     ['mosaicCourseM', 'noscript']
                 ]
             } %}
-        </div>
+        </a href="">
     {% endif %}
 
     <div class="mosaic-tiles__text">
