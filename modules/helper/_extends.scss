@@ -48,6 +48,6 @@
 
 @include breakpoint(false, $BP_SMARTPHONE_MAX) {
     %container {
-        padding: 0 em(20);
+        padding: 0;
     }
 }
