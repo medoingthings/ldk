@@ -10,8 +10,12 @@
 {% set courseDates = currentCourse.courseDates.order('timeFrameStart') %}
 {% set nextLectureModel = false %}
 
+{# Set today without the time, to compare days only #}
+{% set dayFormat = 'Y-m-d' %}
+{% set today = now|date(dayFormat) %}
+
 {# Iterate over each courseDate that has not yet ended #}
-{% for date in courseDates if date(date.timeFrameEnd) > date(now) %}
+{% for date in courseDates if date(date.timeFrameEnd|date(dayFormat)) >= date(today) %}
 
     {# Only store the first (and therefore next) date #}
     {% if nextLectureModel == false %}
