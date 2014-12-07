@@ -42,7 +42,7 @@
 
 .feature-stage__text {
     width: 85%;
-    padding-left: em(80);
+    margin: 0 auto;
 
     h1 {
         @extend %text-type--3;
@@ -162,6 +162,8 @@
     }
 
     .feature-stage__text {
+        padding-left: em(80);
+
         > strong {
             background-color: rgba(color(2), 0.75);
         }
@@ -173,5 +175,19 @@
         .feature-stage__text {
             width: 90%;
         }
+    }
+
+    .feature-stage__text {
+        p {
+            width: auto;
+        }
+    }
+}
+
+@include breakpoint(false, 500) {
+    .feature-stage__text {
+        width: auto;
+        padding-left: em(20);
+        padding-right: em(20);
     }
 }
