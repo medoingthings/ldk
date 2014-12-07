@@ -34,10 +34,21 @@ $colors-scheme:
 // Typography
 $font-family-default: "Frutiger Condensed", Helvetica, Arial, sans-serif;
 
+// Default font sizes
 $size-default:
     150, // 1 | ?
     102, // 2 | ?
     50,  // 3 | ?
+    24,  // 4 | ?
+    22,  // 5 | p
+    18,  // 6 | ?
+    16;  // 7 | ?
+
+// Font sizes for the medium sized breakpoints
+$size-breakpoint-M:
+    150, // 1 | ?
+    80,  // 2 | ?
+    40,  // 3 | ?
     24,  // 4 | ?
     22,  // 5 | p
     18,  // 6 | ?

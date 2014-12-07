@@ -12,12 +12,20 @@
     font-weight: bold;
     font-size: size(2);
     line-height: lineHeight(2);
+
+    @include breakpoint(false, 790) {
+        font-size: size(2, $size-breakpoint-tablet);
+    }
 }
 
 %text-type--3 {
     font-weight: bold;
     font-size: size(3);
     line-height: lineHeight(3);
+
+    @include breakpoint(false, 790) {
+        font-size: size(3, $size-breakpoint-tablet);
+    }
 }
 
 %text-type--4 {
