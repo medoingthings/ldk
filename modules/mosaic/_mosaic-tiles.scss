@@ -221,7 +221,7 @@
         @extend %text-type--5;
         font-weight: bold;
         text-transform: uppercase;
-        margin-bottom: em(20, size(5));
+        margin-bottom: em(10, size(5));
         line-height: 1.25;
 
         :link,
@@ -319,9 +319,15 @@
             width: 50%;
         }
     }
+
+    .mosaic-tiles__text {
+        h2 {
+            margin-bottom: 0;
+        }
+    }
 }
 
-@include breakpoint (false, 790) {
+@include breakpoint (false, 761) {
 
     // High specifity to overwrite double class styles like .mosaic-tiles__content._image-left
     .mosaic-tiles__content {
@@ -362,7 +368,7 @@
     }
 }
 
-@include breakpoint (321, 790) {
+@include breakpoint (321, 760) {
     .mosaic-tiles__content {
         &._image-left {
             .mosaic-tiles__image {
