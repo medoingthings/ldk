@@ -169,6 +169,8 @@
 
     .feature-stage__text {
         padding-left: em(80);
+        padding-right: em(80);
+        margin: 0;
 
         > strong {
             background-color: rgba(color(2), 0.75);
