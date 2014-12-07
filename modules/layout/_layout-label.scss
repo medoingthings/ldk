@@ -13,7 +13,7 @@ $layout-label--height: 38;
     @extend %text-type--7;
     display: inline-block;
     position: absolute;
-    top: em(-$layout-label--height, size(7));
+    bottom: 100%;
     left: 0;
     z-index: -1; // Make sure it does not overlay the corresponding wrapper
     min-height: em($layout-label--height, size(7));
