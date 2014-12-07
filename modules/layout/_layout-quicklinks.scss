@@ -36,3 +36,28 @@
     text-decoration: none;
     color: color(1);
 }
+
+@include breakpoint(521, 850) {
+    .layout-quicklinks__content {
+        @include span-columns(4);
+    }
+}
+
+@include breakpoint(false, 520) {
+    .layout-quicklinks__content {
+        margin-bottom: em(20);
+    }
+}
+
+@include breakpoint(361, 520) {
+    .layout-quicklinks__content {
+        @include span-columns(6);
+    }
+}
+
+@include breakpoint(false, 360) {
+    .layout-quicklinks__content {
+        width: 100%;
+        clear: both;
+    }
+}
