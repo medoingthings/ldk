@@ -10,6 +10,7 @@
 .mosaic-tiles__image img {
     width: 100%;
     height: auto;
+    display: block;
 }
 
 .mosaic-tiles__content {
@@ -293,36 +294,117 @@
 
 @include breakpoint (false, 1050) {
     .mosaic-tiles__content {
+        width: 50%;
+
+        &._image-left {
+            width: 100%;
+            height: auto;
+            padding-top: 0;
+            min-height: em(180);
+
+            .mosaic-tiles__image {
+                position: static;
+                float: left;
+                width: 30%;
+            }
+
+            .mosaic-tiles__text {
+                position: static;
+                float: left;
+                width: 70%;
+            }
+        }
+
         &._text {
             width: 50%;
         }
     }
 }
 
-@include breakpoint (791, 880) {
-    .mosaic-tiles__content {
-        width: 50%;
-    }
-}
-
 @include breakpoint (false, 790) {
 
-    // High specifity to overwrite double class styles
-    .mosaic-tiles__content.mosaic-tiles__content {
-        width: 100%;
-        height: auto;
-        padding-top: 0;
-        min-height: em(180);
-    }
+    // High specifity to overwrite double class styles like .mosaic-tiles__content._image-left
+    .mosaic-tiles__content {
 
-    .mosaic-tiles__content._image-left .mosaic-tiles__image {
-        position: static;
-        float: left;
-        width: 40%;
-        margin-right: em(20);
+        &.mosaic-tiles__content {
+            width: 100%;
+            height: auto;
+            padding-top: 0;
+            min-height: em(180);
+            border-top: 1px solid color(5);
+        }
+
+        &:first-of-type,
+        &._highlight,
+        &._emphasize,
+        &._highlight + &,
+        &._emphasize + & {
+            border-top: 0;
+        }
+
+        &._image-left {
+            .mosaic-tiles__image {
+                position: static;
+            }
+        }
     }
 
     .mosaic-tiles__text {
         position: static;
+        float: left;
+
+        .button-square {
+            position: relative;
+            display: block; // Activate margin collapsing
+            margin-top: em(20);
+            bottom: 0;
+        }
+    }
+}
+
+@include breakpoint (321, 790) {
+    .mosaic-tiles__content {
+        &._image-left {
+            .mosaic-tiles__image {
+                float: left;
+                width: 40%;
+                margin-right: em(20);
+            }
+
+            .mosaic-tiles__text {
+                width: 60%;
+                margin-left: em(-20);
+            }
+        }
+    }
+}
+
+@include breakpoint (321, 580) {
+    .mosaic-tiles__content {
+        &._image-left {
+            .mosaic-tiles__image {
+                width: 25%;
+            }
+
+            .mosaic-tiles__text {
+                width: 75%;
+            }
+        }
+    }
+}
+
+@include breakpoint (false, 320) {
+    .mosaic-tiles__content {
+        &._image-left {
+            .mosaic-tiles__image {
+                width: 100%;
+                float: none;
+                margin-right: 0;
+           }
+
+           .mosaic-tiles__text {
+            width: 100%;
+           }
+        }
     }
 }
