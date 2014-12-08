@@ -43,3 +43,19 @@
         color: color(4);
     }
 }
+
+@include breakpoint(false, 600) {
+    .form-login__wrapper {
+        padding: em(40) em(20);
+    }
+
+    .form-login__item {
+        width: 100%;
+        float: none;
+
+
+        &:first-of-type {
+            padding: 0;
+        }
+    }
+}
