@@ -34,6 +34,11 @@
     @extend %clearfix;
     display: inline-block;
     float: left;
+
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
 }
 
 /**
