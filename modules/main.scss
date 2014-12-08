@@ -29,6 +29,11 @@
 @import "text/text-types";
 @import "text/text-ldk";
 @import "text/text";
+
+// Priority Modules need to be imported early due to variable settings
+@import "navigation/navigation-main";
+
+// Modules
 @import "button/button-outline";
 @import "button/button-paginate";
 @import "button/button-square";
@@ -53,7 +58,6 @@
 @import "feature/feature-stage";
 @import "search/search-results";
 @import "social/social";
-@import "navigation/navigation-main";
 
 // Magnific Popup
 @import "gallery/magnific-popup-settings";
