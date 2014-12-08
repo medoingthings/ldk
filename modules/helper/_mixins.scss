@@ -20,7 +20,7 @@
     $query : "";
 
     @if $min-width != false {
-        $query : $query + "(min-width:" + $min-width / 16 + "em)";
+        $query : $query + "(min-width:" + stripUnit($min-width) / 16 + "em)";
 
         @if $max-width != false {
             $query : $query + " and ";
@@ -28,7 +28,7 @@
     }
 
     @if $max-width != false {
-        $query : $query + "(max-width:" + $max-width / 16 + "em)";
+        $query : $query + "(max-width:" + stripUnit($max-width) / 16 + "em)";
     }
 
     @media #{$query} {
