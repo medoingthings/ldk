@@ -76,11 +76,11 @@
         // Calculate pixel base
         $pixel-base: stripUnit($base * $em-base);
 
-        @return $pixel / $pixel-base * 1em;
+        @return stripUnit($pixel) / $pixel-base * 1em;
 
     } @else {
 
-        @return $pixel / $em-base * 1em;
+        @return stripUnit($pixel) / $em-base * 1em;
     }
 }
 
