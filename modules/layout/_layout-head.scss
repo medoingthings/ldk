@@ -157,3 +157,36 @@ $layout-head--logo-shape-home:
         margin-left: em(32);
     }
 }
+
+@include breakpoint(false, $navigation-main--breakpoint--mobile) {
+    .layout-head__home__figure {
+        display: none;
+    }
+
+    .layout-head__wrapper {
+        text-align: center;
+    }
+
+    .layout-head__home__link {
+        text-align: left;
+        float: none;
+    }
+}
+
+@include breakpoint(false, 400) {
+    .layout-head__home__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        margin: 0 em(50);
+        line-height: 1;
+        text-align: center;
+
+        .text-ldk__headline {
+            ._label {
+                display: none;
+            }
+        }
+    }
+}
