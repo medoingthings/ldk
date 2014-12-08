@@ -2,6 +2,9 @@
  * Main navigation in the header
  */
 
+$navigation-main--breakpoint--mobile: 620px;
+$navigation-main--toggle-height: 3px;
+
 .navigation-main__wrapper {
     position: absolute;
     z-index: 1;
@@ -52,6 +55,13 @@
     }
 }
 
+/**
+ * Mobile navigation toggle button
+ */
+
+ .navigation-main__toggle {
+    display: none;
+ }
 
 /**
  * Hover state Level 1
@@ -177,5 +187,54 @@
     .navigation-main__l3__item._is-active &,
     &:hover {
         background-color: color(5);
+    }
+}
+
+@include breakpoint(false, $navigation-main--breakpoint--mobile) {
+    .navigation-main__wrapper {
+        width: 100%;
+        left: -100%;
+    }
+
+    .navigation-main__toggle {
+        display: block;
+        position: absolute;
+        top: em(10);
+        left: em(10);
+        width: em(30);
+        height: em(30);
+        padding: 0; // Reset iOS default padding
+        background-color: color(1);
+        border: none;
+        text-indent: -99em;
+        -webkit-appearance: none;
+    }
+
+    .navigation-main__toggle__icon {
+        top: 50%;
+
+        &,
+        &:before,
+        &:after {
+            display: block;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: $navigation-main--toggle-height;
+            background-color: color(2);
+        }
+
+        &:before,
+        &:after {
+            content: '';
+        }
+
+        &:before {
+            top: -$navigation-main--toggle-height * 3;
+        }
+
+        &:after {
+            top: $navigation-main--toggle-height * 3;
+        }
     }
 }
