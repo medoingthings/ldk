@@ -49,3 +49,27 @@
       clear: both;
     }
 }
+
+/**
+ * Create a composited layer through a little CSS hack
+ * Use the mixin only within media queries. Otherwise use the extend (see extends.scss)
+ */
+
+@mixin composited-layer {
+    backface-visibility: hidden;
+}
+
+/**
+ * Visually hidden, but available for screen readers
+ */
+
+@mixin is-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
