@@ -4,7 +4,7 @@
 
 body {
     font-family: $font-family-default;
-    font-size: $em-base / 16 * 1em; // 30px
+    font-size: stripUnit($em-base) / 16 * 1em; // 30px
     line-height: lineHeight($font-size-base);
     font-weight: 300;
     color: color(2, $colors-default);
@@ -23,13 +23,13 @@ p {
 
 @include breakpoint ($BP_DESKTOP_MIN, $BP_WIDESCREEN_MIN) {
     body {
-        font-size: 1.25em;
+        font-size: stripUnit($em-base-M) / 16 * 1em;
     }
 }
 
 
 @include breakpoint (false, $BP_TABLET_MAX) {
     body {
-        font-size: 1.125em;
+        font-size: stripUnit($em-base-S) / 16 * 1em;
     }
 }

@@ -31,7 +31,7 @@
     $this-height: $this-height * lineHeight($font-index);
 
     // calculate baseline height (see variables.scss for $em-base)
-    $base-height: $em-base;
+    $base-height: stripUnit($em-base);
 
     // base height in px without unit
     $base-height: $base-height * lineHeight($font-size-base);
@@ -74,13 +74,13 @@
     @if ($base != false) {
 
         // Calculate pixel base
-        $pixel-base: stripUnit($base * $em-base);
+        $pixel-base: stripUnit($base) * stripUnit($em-base);
 
         @return stripUnit($pixel) / $pixel-base * 1em;
 
     } @else {
 
-        @return stripUnit($pixel) / $em-base * 1em;
+        @return stripUnit($pixel) / stripUnit($em-base) * 1em;
     }
 }
 
@@ -147,7 +147,7 @@
 @function size($key, $size-scheme: $size-default) {
 
     // convert px to rem
-    $font-size: nth($size-scheme, $key) / $em-base * 1em;
+    $font-size: nth($size-scheme, $key) / stripUnit($em-base) * 1em;
 
     // return value
     @return $font-size;
