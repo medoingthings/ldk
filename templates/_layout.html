@@ -37,14 +37,15 @@
     <section class="layout-ldk__wrapper">
 
         {% include 'header' %}
+        {% include 'header/navigation' %}
 
         <article class="layout-ldk__content">
             {% block content %}
                 This shouldn’t be visible
             {% endblock %}
-        </article>
 
-        {% include 'partials/quicklinks' with {quicklinkModel: footerQuicklinks.quicklinks} %}
+            {% include 'partials/quicklinks' with {quicklinkModel: footerQuicklinks.quicklinks} %}
+        </article>
 
         {% include 'partials/footer' %}
 

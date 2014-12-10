@@ -10,4 +10,35 @@
 
 .layout-ldk__content {
     min-height: 100%;
+    transition: opacity 0.3s;
+
+    .navigation-main--is-open & {
+        opacity: 0.5;
+    }
+}
+
+@include breakpoint(false, $navigation-main--breakpoint--mobile) {
+
+    .layout-ldk__wrapper {
+        overflow-x: hidden;
+    }
+
+    .layout-ldk__content,
+    .layout-head__wrapper,
+    .navigation-main__wrapper {
+        transition: transform 0.3s, opacity 0.3s;
+        backface-visibility: hidden;
+    }
+
+    .layout-ldk__content,
+    .layout-head__wrapper {
+        .layout-ldk__wrapper.navigation-main--is-open & {
+            transform: translateX(85%);
+        }
+    }
+
+    .layout-ldk__content {
+        position: relative;
+        z-index: 2;
+    }
 }

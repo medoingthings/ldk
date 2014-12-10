@@ -6,7 +6,7 @@
     position: relative;
     height: em(50);
     background: color(1);
-    z-index: 1;
+    z-index: 3;
 }
 
 .layout-head__home__figure {
@@ -159,27 +159,33 @@ $layout-head--logo-shape-home:
 }
 
 @include breakpoint(false, $navigation-main--breakpoint--mobile) {
-    .layout-head__home__figure {
-        display: none;
+    .layout-head__wrapper {
+
+        // Compensate the em context from the body
+        font-size: $navigation-main--em-context--mobile;
+
+        height: em(50);
+        text-align: center;
     }
 
-    .layout-head__wrapper {
-        text-align: center;
+    .layout-head__home__figure {
+        display: none;
     }
 
     .layout-head__home__link {
         text-align: left;
         float: none;
+        margin: 0 em(50);
+        font-size: 0.9em;
     }
 }
 
-@include breakpoint(false, 400) {
+@include breakpoint(false, 450) {
     .layout-head__home__link {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
-        margin: 0 em(50);
         line-height: 1;
         text-align: center;
 

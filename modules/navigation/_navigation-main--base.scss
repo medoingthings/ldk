@@ -1,0 +1,137 @@
+/**
+ * Styles that are relevant for mobile and desktop view
+ * See _navigation-main--desktop.scss and _navigation-main--mobile.scss
+ */
+
+/**
+ * Helper Mixins
+ */
+
+@mixin navigation-level--hide {
+    z-index: -1;
+    visibility: hidden;
+}
+
+@mixin navigation-level--show {
+    z-index: 1;
+    visibility: visible;
+}
+
+/**
+ * Navigation Main
+ */
+
+.navigation-main__wrapper {
+    @extend %container;
+    position: relative;
+    z-index: 1;
+}
+
+.navigation-main__list {
+    @extend %unstyle-list;
+    position: absolute;
+}
+
+.navigation-main__item {
+    @extend %unstyle-list-item;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+%navigation-main__link {
+    @extend %text-type--7;
+    position: relative;
+    display: block;
+    padding: em(18, size(7)) em(32, size(7));
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    max-height: em(50, size(7));
+
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+.navigation-main__link {
+    @extend %navigation-main__link;
+    background-color: color(2);
+
+    &:link,
+    &:visited {
+        color: color(1);
+    }
+}
+
+/**
+ * Hide mobile navigation toggle buttons by default
+ */
+
+.navigation-main__toggle,
+.navigation-main__level-toggle {
+    display: none;
+}
+
+/**
+ * Search item in first level navigation
+ */
+
+.navigation-main__search__link {
+    @include icon(search);
+    padding-left: em(26, size(7));
+    padding-right: em(26, size(7));
+
+    &:before {
+        display: block;
+        color: inherit;
+        font-size: 1.1em;
+        width: 1em; // Prevent flicker on iconfont loading
+    }
+}
+
+/**
+ * Level 2 and 3
+ */
+
+.navigation-main__l2__list,
+.navigation-main__l3__list {
+    @include navigation-level--hide;
+    @extend %unstyle-list;
+    position: absolute;
+}
+
+.navigation-main__l2__list {
+    background-color: color(1);
+}
+
+.navigation-main__l3__list {
+    top: 0;
+    left: 100%;
+    background-color: color(3);
+}
+
+.navigation-main__l2__item,
+.navigation-main__l3__item {
+    @extend %unstyle-list-item;
+    @extend %clearfix;
+    position: relative;
+}
+
+.navigation-main__l2__link,
+.navigation-main__l3__link {
+    @extend %navigation-main__link;
+
+    &:link,
+    &:visited {
+        color: color(2);
+    }
+}
+
+.navigation-main__l3__link {
+    .navigation-main__l3__item._is-active &,
+    &:hover {
+        background-color: color(5);
+    }
+}

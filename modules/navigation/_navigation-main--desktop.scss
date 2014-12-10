@@ -1,0 +1,87 @@
+/**
+ * Desktop only styles
+ * The baseline styles are at _navigation-main--base.scss
+ */
+
+@include breakpoint($navigation-main--breakpoint--mobile + 1) {
+    .navigation-main__list {
+        left: em(50)
+    }
+
+    /**
+     * :hover and active states
+     */
+
+    .navigation-main__item {
+        &:hover {
+            .navigation-main__link {
+                background-color: color(1);
+                color: color(2);
+            }
+
+            .navigation-main__l2__list {
+                @include navigation-level--show;
+            }
+        }
+    }
+
+    .navigation-main__link {
+        .navigation-main__item._is-active &,
+        &:hover,
+        &:focus {
+            background-color: color(1);
+            color: color(2);
+        }
+    }
+
+    .navigation-main__l2__item {
+        &:hover {
+            .navigation-main__l3__list {
+                @include navigation-level--show;
+            }
+        }
+    }
+
+    /**
+     * Default styles level 2 and level 3
+     */
+
+    .navigation-main__l2__link,
+    .navigation-main__l3__link {
+        @extend %navigation-main__link;
+        white-space: nowrap;
+    }
+
+    .navigation-main__l2__link {
+
+        // Add click indicator to links with children
+        .navigation-main__l2__item._has-children & {
+            @include icon(arrow-right, 0.7em, after);
+
+            &:after {
+                display: inline-block;
+                position: absolute;
+                right: em(12, size(7) * 0.7em);
+                top: em(20, size(7) * 0.7em);
+            }
+        }
+
+        // :hover and active state
+        .navigation-main__l2__item._is-active &,
+        &:hover {
+            background-color: color(3);
+        }
+
+        &:hover + .navigation-main__l3__list {
+            @include navigation-level--show;
+        }
+    }
+
+    /**
+     * Styling for special search link
+     */
+
+    .navigation-main__search__text {
+        @include is-visually-hidden;
+    }
+}

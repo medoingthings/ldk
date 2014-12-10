@@ -5,12 +5,12 @@
 
     {% set level1Segment = segmentList[0]|default('') %}
 
-    <li class="navigation-main__item{{ level1.slug == level1Segment or level1.id == entry.id ? ' _is-active' }}">
+    <li class="navigation-main__item{{ level1.slug == level1Segment or level1.id == entry.id ? ' _is-active _is-open--mobile' }}">
         <a href="{{ level1.url }}" class="navigation-main__link">{{ level1 }}</a>
-
         {% set level2Model = level1.getDescendants(1) %}
 
         {% if (level2Model|length and (depth == false or depth >= 2))  %}
+            <button class="navigation-main__level-toggle"><span>Ebene ein-/ausblenden</span></button>
 
             <ul class="navigation-main__l2__list">
 
@@ -19,10 +19,11 @@
                     {% set level2Segment = segmentList[1]|default('') %}
                     {% set level3Model   = level2.getDescendants(1) %}
 
-                    <li class="navigation-main__l2__item{{ level2.slug == level2Segment or level2.id == entry.id ? ' _is-active' }}{{ level3Model|length and (depth == false or depth >= 3) ? ' _has-children'}}">
+                    <li class="navigation-main__l2__item{{ level2.slug == level2Segment or level2.id == entry.id ? ' _is-active _is-open--mobile' }}{{ level3Model|length and (depth == false or depth >= 3) ? ' _has-children'}}">
                         <a href="{{ level2.url }}" class="navigation-main__l2__link">{{ level2 }}</a>
 
                         {% if (level3Model|length and (depth == false or depth >= 3))  %}
+                            <button class="navigation-main__level-toggle"><span>Ebene ein-/ausblenden</span></button>
 
                             <ul class="navigation-main__l3__list">
 
@@ -30,7 +31,7 @@
 
                                     {% set level3Segment = segmentList[1]|default('') %}
 
-                                    <li class="navigation-main__l3__item{{ level3.slug == level3Segment or level3.id == entry.id ? ' _is-active' }}">
+                                    <li class="navigation-main__l3__item{{ level3.slug == level3Segment or level3.id == entry.id ? ' _is-active _is-open--mobile' }}">
                                         <a href="{{ level3.url }}" class="navigation-main__l3__link">{{ level3 }}</a>
                                     </li>
 

@@ -1,0 +1,220 @@
+/**
+ * Mobile only styles
+ * The baseline styles are at _navigation-main--base.scss
+ */
+
+@include breakpoint(false, $navigation-main--breakpoint--mobile) {
+    .navigation-main__wrapper {
+
+        // Compensate the em context from the body
+        font-size: $navigation-main--em-context--mobile;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 85%;
+        height: 100%;
+        background-color: color(1);
+        opacity: 0;
+        transform: translateX(-5%) scale(0.9);
+        transform-origin: 0 0%;
+
+        .navigation-main--is-open & {
+            transform: translate(0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    .navigation-main__list {
+        width: 100%;
+    }
+
+    .navigation-main__item {
+        float: none;
+        border-top: 1px solid color(2);
+
+        &:first-child {
+            border-top: none;
+        }
+    }
+
+    .navigation-main__link {
+        .navigation-main__item._is-active & {
+            background-color: lighten(color(2), 15%);
+            color: color(1);
+
+            + .navigation-main__level-toggle:before {
+                color: color(1);
+            }
+        }
+    }
+
+    /**
+     * Default style for level 2 and level 3
+     */
+
+    .navigation-main__l2__item {
+        background-color: color(5);
+
+        > .navigation-main__level-toggle {
+            background-color: transparent;
+
+            &:before {
+                color: color(2);
+            }
+        }
+    }
+
+    .navigation-main__l3__item {
+        padding-left: em(20);
+    }
+
+    .navigation-main__l2__link,
+    .navigation-main__l3__link {
+        max-height: none;
+    }
+
+    /**
+     * Active states for level 2 and level 3
+     */
+
+    .navigation-main__l2__list,
+    .navigation-main__l3__list {
+        display: none;
+    }
+
+    .navigation-main__item._is-open--mobile .navigation-main__l2__list,
+    .navigation-main__l2__item._is-open--mobile .navigation-main__l3__list {
+        @include navigation-level--show;
+        display: block;
+        position: relative;
+        left: 0;
+    }
+
+    .navigation-main__l2__item._is-active .navigation-main__l2__link,
+    .navigation-main__l3__item._is-active .navigation-main__l3__link {
+        background-color: color(1);
+        color: color(2);
+    }
+
+    /**
+     * Toggle button that opens and closes separate levels
+     */
+
+    .navigation-main__level-toggle {
+        @include icon(arrow-left, 0.6em);
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: em(50);
+        height: em(50);
+        padding: 0;
+        border: 0;
+        background-color: lighten(color(2), 15%);
+
+        &:before {
+            display: block;
+            left: 0;
+            color: color(1);
+            transform: rotate(-90deg);
+
+            ._is-open--mobile > & {
+                transform: rotate(90deg);
+            }
+        }
+
+        span {
+            display: none;
+        }
+
+        // Make sure that the toggle is 100% high, if it’s not on an active first level item
+        .navigation-main__item:not(._is-open--mobile) & {
+            height: 100%;
+        }
+
+        .navigation-main__item._is-active & {
+            background-color: transparent;
+
+            &:before {
+                color: color(2);
+            }
+        }
+
+    }
+
+    /**
+     * Adjust special search link
+     */
+    .navigation-main__search__link {
+        &:before {
+            float: left;
+            padding-right: em(40);
+        }
+    }
+
+    /**
+     * Main toggle button that opens and closes the whole navigation
+     */
+
+    .navigation-main__toggle {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: em(10);
+        width: em(35);
+        height: em(35);
+        margin-top: em(-35 / 2);
+        padding: 0; // Reset iOS default padding
+        background-color: color(1);
+        border: none;
+        text-indent: -99em;
+        -webkit-appearance: none;
+    }
+
+    .navigation-main__toggle__icon {
+        top: 50%;
+        margin-top: em($navigation-main--toggle-height / -2);
+        pointer-events: none; // Parent button should be always the target
+
+        &,        // Middle stroke
+        &:before, // Top most stroke
+        &:after { // Bottom stroke
+            @include composited-layer;
+            display: block;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: $navigation-main--toggle-height;
+            background-color: color(2);
+            transition: transform 0.3s, opacity 0.2s;
+        }
+
+        &:before,
+        &:after {
+            content: '';
+        }
+
+        &:before {
+            top: -$navigation-main--toggle-height * 3;
+        }
+
+        &:after {
+            top: $navigation-main--toggle-height * 3;
+        }
+
+        .navigation-main--is-open & {
+            transform: rotate(45deg);
+
+            &:before {
+                transform: translateY($navigation-main--toggle-height * 3) rotate(-90deg);
+            }
+
+            &:after {
+                opacity: 0;
+                transform: translateY(-$navigation-main--toggle-height * 3);
+            }
+        }
+    }
+}
