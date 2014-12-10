@@ -42,6 +42,13 @@
         }
     }
 
+    .navigation-main__l3__link {
+        .navigation-main__l3__item._is-active &,
+        &:hover {
+            background-color: color(5);
+        }
+    }
+
     /**
      * Default styles level 2 and level 3
      */
