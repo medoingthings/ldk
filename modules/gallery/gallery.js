@@ -4,7 +4,13 @@ var $ = require('zeptojs');
 var MagnificPopup = require('magnific-popup');
 
 var init = function () {
-    $('.richtext-gallery__link').magnificPopup({
+    var $galleryTrigger = $('.richtext-gallery__link');
+
+    if (!$galleryTrigger.length) {
+        return;
+    };
+
+    $galleryTrigger.magnificPopup({
       type: 'image',
       mainClass: 'mfp-with-zoom', // this class is for CSS animation below
       gallery:{
