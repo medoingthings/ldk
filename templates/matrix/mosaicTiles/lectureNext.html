@@ -9,6 +9,7 @@
 {% set courseAgendaUrl = currentCourse.courseAgenda|length ? currentCourse.courseAgenda.first.url %}
 {% set courseDates = currentCourse.courseDates.order('timeFrameStart') %}
 {% set nextLectureModel = false %}
+{% set nextCourseDate = null %}
 
 {# Set today without the time, to compare days only #}
 {% set dayFormat = 'Y-m-d' %}
@@ -24,10 +25,14 @@
 
 {% endfor %}
 
+{% if nextLectureModel != false %}
+    {% set nextCourseDate = {start: nextLectureModel.timeFrameStart, end: nextLectureModel.timeFrameEnd} %}
+{% endif %}
+
 {% include 'matrix/mosaicTiles/courseEntry' with {
     courseModel: currentCourse,
     subtitle: defaultStringNextLecture.label,
-    courseDate: {start: nextLectureModel.timeFrameStart, end: nextLectureModel.timeFrameEnd},
+    courseDate: nextCourseDate is defined ? nextCourseDate,
     buttonLabel: courseAgendaUrl ? 'Wochenplan herunterladen',
     buttonTarget: courseAgendaUrl ? courseAgendaUrl,
     buttonClassAppend: courseAgendaUrl ? '_pdf'
