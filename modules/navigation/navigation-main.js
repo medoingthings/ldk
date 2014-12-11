@@ -7,6 +7,9 @@
  * @exports {function} init Module initialization
  */
 
+// Helps removing the 300ms delay for clicks on touch devices
+var Tap = require('tap.js');
+
 // Cache nodes
 var $globalContainer  = document.querySelector('.layout-ldk__wrapper');
 var $navigationToggle = document.querySelector('.navigation-main__toggle');
@@ -29,8 +32,14 @@ var _settings = {
  */
 
 var init = function () {
-    $navigationToggle.addEventListener('click', _toggleNavigation);
-    $navigation.addEventListener('click', _onNavigationClick);
+
+    // Store instances from tap.js to remove 300ms click delay on touch
+    var navigationTap = new Tap($navigation);
+    var navigationToggleTap = new Tap($navigationToggle);
+
+    // Apply previously created tap events
+    $navigation.addEventListener('tap', _onNavigationClick, false);
+    $navigationToggle.addEventListener('tap', _toggleNavigation, false);
 }
 
 /**
