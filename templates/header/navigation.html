@@ -2,8 +2,8 @@
     <ul class="navigation-main__list">
 
         {% cache %}
-
             {% include 'header/navigationListSkeleton' with {navigationModel: craft.entries.section('mainNavigation')} %}
+        {% endcache %}
 
             {# Only show children of campus navigation if user is logged in #}
             {% set loggedIn = craft.session.isLoggedIn %}
@@ -21,6 +21,5 @@
 
             {% include 'header/navigationSearchInput' %}
 
-        {% endcache %}
     </ul>
 </nav>
