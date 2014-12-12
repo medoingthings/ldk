@@ -12,28 +12,20 @@
 .layout-head__home__figure {
     height: em(50);
     margin: 0;
+    float: left;
+    margin-left: em(42);
 
-    &._logo-left {
-        position: absolute;
-        top: em(50);
-        width: em(50);
-        background: color(12, $colors-scheme);
-    }
-
-    &._logo-right {
-        float: right;
-
-        img {
-            width: auto;
-            height: 100%;
-        }
+    img {
+        width: auto;
+        height: 100%;
     }
 }
 
 .layout-head__home__link {
     @extend %clearfix;
     display: inline-block;
-    float: left;
+    float: right;
+    padding-right: em(50); // Align logo text with navigation
 
     &:link,
     &:visited {
@@ -45,114 +37,7 @@
  * Logo
  */
 
-/**
- * Positions dots on a grid
- *
- * @param {integer} $top Vertical postition on the grid
- * @param {integer} $left Horizontal position on the grid
- */
-@mixin layout-head--logo-grid ($top, $left) {
-    $margin-top: 7;
-    $margin-left: 9;
-    $gutter: 1;
-    $width: 4;
-    $height: 4;
-    $position-top: em($top * $width + $top * $gutter + $margin-top);
-    $position-left: em($left * $width + $left * $gutter + $margin-left);
-
-    transform: translateX($position-left) translateY($position-top);
-}
-
-/**
- * Generates a shape by positioning small dots on a grid
- *
- * @param {list} $shape [(top, left), (top, left), ...]
- */
-@mixin layout-head--logo-generator ($shape) {
-    $index: 1;
-
-    @each $coords in $shape {
-
-        &:nth-child(#{$index}) {
-            $top: nth($coords, 1);
-            $left: nth($coords, 2);
-
-            @include layout-head--logo-grid($top, $left);
-        }
-
-        $index: $index + 1;
-    }
-}
-
-// LDK shape
-$layout-head--logo-shape-ldk:
-    (0,0),
-    (1,0),
-    (2,0),
-    (2,1),
-    (2,2),
-    (0,4),
-    (1,4),
-    (2,4),
-    (0,5),
-    (2,5),
-    (1,6),
-    (2,6),
-    (4,0),
-    (5,0),
-    (6,0),
-    (5,1),
-    (4,2),
-    (6,2);
-
-// House shape
-$layout-head--logo-shape-home:
-    (5,1),
-    (5,5),
-    (4,1),
-    (4,5),
-    (2,5),
-    (1,2),
-    (2,4),
-    (5,2),
-    (5,3),
-    (5,4),
-    (0,3),
-    (3,1),
-    (3,5),
-    (1,3),
-    (2,2),
-    (2,3),
-    (1,4),
-    (2,1);
-
-.layout-head__logo__item {
-    @extend %composited-layer;
-    @include layout-head--logo-generator($layout-head--logo-shape-ldk);
-    display: block;
-    position: absolute;
-    width: em(4);
-    height: em(4);
-    border-radius: em(2);
-    background-color: color(1);
-    transition: transform 0.3s ease;
-
-    .layout-head__home__link:hover & {
-        @include layout-head--logo-generator($layout-head--logo-shape-home);
-    }
-
-    // IE doesn’t support css transforms
-    .lt-ie9 & {
-        display: none;
-    }
-}
-
 @include breakpoint($BP_DESKTOP_MIN) {
-    .layout-head__home__figure._logo-left {
-        position: static;
-        float: left;
-    }
-
     .layout-head__wrapper .text-ldk__headline {
         margin-left: em(32);
     }
@@ -176,6 +61,7 @@ $layout-head--logo-shape-home:
         text-align: left;
         float: none;
         margin: 0 em(50);
+        padding: 0;
         font-size: 0.9em;
     }
 }
