@@ -1,5 +1,31 @@
 <nav class="navigation-main__wrapper">
     <ul class="navigation-main__list">
+        <li class="navigation-main__item{{ entry.type == 'homepage' ? ' _is-active' }}">
+            <a href="{{ siteUrl }}" class="navigation-main__link navigation-main__home__link">
+                <span class="navigation-main__home__text">Startseite</span>
+
+                <figure class="navigation-main__home__figure">
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                    <span class="navigation-main__home__figure__item"></span>
+                </figure>
+            </a>
+        </li>
 
         {% cache %}
             {% include 'header/navigationListSkeleton' with {navigationModel: craft.entries.section('mainNavigation')} %}

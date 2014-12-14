@@ -4,9 +4,6 @@
  */
 
 @include breakpoint($navigation-main--breakpoint--mobile + 1) {
-    .navigation-main__list {
-        left: em(50)
-    }
 
     /**
      * :hover and active states
@@ -90,5 +87,131 @@
 
     .navigation-main__search__text {
         @include is-visually-hidden;
+    }
+
+    /**
+     * Styling for special home link figure
+     */
+
+    .navigation-main__home__link {
+        font-size: 1em; // Resets default font-size
+        width: em(50);
+        height: em(50);
+        padding: em(8) em(5);
+        background-color: color(2) !important; // Overwrite :hover color
+    }
+
+    .navigation-main__home__text {
+        @include is-visually-hidden;
+    }
+
+    .navigation-main__home__figure {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /**
+     * Positions dots on a grid
+     *
+     * @param {integer} $top Vertical postition on the grid
+     * @param {integer} $left Horizontal position on the grid
+     */
+
+    @mixin layout-head--logo-grid ($top, $left) {
+        $margin-top: 7;
+        $margin-left: 9;
+        $gutter: 1;
+        $width: 2;
+        $height: 2;
+        $position-top: em($top * $width + $top * $gutter + $margin-top);
+        $position-left: em($left * $width + $left * $gutter + $margin-left);
+
+        transform: translateX($position-left) translateY($position-top);
+    }
+
+    /**
+     * Generates a shape by positioning small dots on a grid
+     *
+     * @param {list} $shape [(top, left), (top, left), ...]
+     */
+    @mixin layout-head--logo-generator ($shape) {
+        $index: 1;
+
+        @each $coords in $shape {
+
+            &:nth-child(#{$index}) {
+                $top: nth($coords, 1);
+                $left: nth($coords, 2);
+
+                @include layout-head--logo-grid($top, $left);
+            }
+
+            $index: $index + 1;
+        }
+    }
+
+    // House shape
+    $layout-head--logo-shape-home:
+        (5,1),
+        (5,5),
+        (4,1),
+        (4,5),
+        (2,5),
+        (1,2),
+        (2,4),
+        (5,2),
+        (5,3),
+        (5,4),
+        (0,3),
+        (3,1),
+        (3,5),
+        (1,3),
+        (2,2),
+        (2,3),
+        (1,4),
+        (2,1);
+
+    // Arrow
+    $layout-head--logo-shape-arrow:
+        (3,1),
+        (2,2),
+        (1,3),
+        (4,2),
+        (5,3),
+        (5,3),
+        (3,3),
+        (3,4),
+        (3,5),
+        (3,6),
+        (3,3),
+        (3,1),
+        (2,2),
+        (1,3),
+        (4,2),
+        (3,4),
+        (3,5),
+        (3,6);
+
+    .navigation-main__home__figure__item {
+        @extend %composited-layer;
+        @include layout-head--logo-generator($layout-head--logo-shape-home);
+        display: block;
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background-color: color(1);
+        transition: transform 0.3s ease;
+
+        .navigation-main__item:not(._is-active) .navigation-main__home__link:hover & {
+            @include layout-head--logo-generator($layout-head--logo-shape-arrow);
+        }
+
+        // IE9 doesn’t support css transforms
+        .lt-ie9 & {
+            display: none;
+        }
     }
 }

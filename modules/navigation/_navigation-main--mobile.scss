@@ -51,6 +51,13 @@
     }
 
     /**
+     * Hide home link figure on mobile
+     */
+    .navigation-main__home__figure {
+        display: none;
+    }
+
+    /**
      * Default style for level 2 and level 3
      */
 
