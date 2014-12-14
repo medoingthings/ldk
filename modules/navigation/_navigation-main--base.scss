@@ -84,8 +84,8 @@
 
 .navigation-main__search__link {
     @include icon(search);
-    padding-left: em(26, size(7));
-    padding-right: em(26, size(7));
+    padding-left: em(20, size(7));
+    padding-right: em(20, size(7));
 
     &:before {
         display: block;
