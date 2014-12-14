@@ -45,7 +45,7 @@
     .navigation-main__l3__link {
         .navigation-main__l3__item._is-active &,
         &:hover {
-            background-color: color(5);
+            background-color: darken(color(5), 20%);
         }
     }
 
@@ -76,7 +76,7 @@
         // :hover and active state
         .navigation-main__l2__item._is-active &,
         &:hover {
-            background-color: color(3);
+            background-color: color(5);
         }
 
         &:hover + .navigation-main__l3__list {

@@ -18,6 +18,26 @@
 }
 
 /**
+ * Helper Extends
+ */
+
+%navigation-main__link {
+    @extend %text-type--7;
+    position: relative;
+    display: block;
+    padding: em(18, size(7)) em(32, size(7));
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    max-height: em(50, size(7));
+
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+/**
  * Navigation Main
  */
 
@@ -37,22 +57,6 @@
     position: relative;
     display: block;
     float: left;
-}
-
-%navigation-main__link {
-    @extend %text-type--7;
-    position: relative;
-    display: block;
-    padding: em(18, size(7)) em(32, size(7));
-    font-weight: bold;
-    text-transform: uppercase;
-    overflow: hidden;
-    max-height: em(50, size(7));
-
-    &:link,
-    &:visited {
-        text-decoration: none;
-    }
 }
 
 .navigation-main__link {
@@ -109,7 +113,7 @@
 .navigation-main__l3__list {
     top: 0;
     left: 100%;
-    background-color: color(3);
+    background-color: color(5);
 }
 
 .navigation-main__l2__item,
