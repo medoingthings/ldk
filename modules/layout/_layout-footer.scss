@@ -2,10 +2,15 @@
  * Layout Skeleton
  */
 
-.layout-footer__wrapper {
+.layout-footer__wrapper,
+.layout-footer__meta {
     @extend %container;
-    background-color: color(1);
+}
+
+.layout-footer__wrapper {
     padding: em(50);
+    background-color: color(1);
+    margin-bottom: em(20);
 }
 
 .layout-footer__item {
@@ -20,5 +25,28 @@
     img {
         width: auto;
         height: em(50);
+    }
+}
+
+
+/**
+ * Meta links at the end of the page
+ */
+.layout-footer__meta {
+    @extend %clearfix;
+    padding: 0 em(50) em(20);
+    text-align: center;
+}
+
+.layout-footer__meta__link {
+    @extend %text-type--6;
+    display: inline;
+    text-transform: uppercase;
+
+    &,
+    &:link,
+    &:active {
+        color: color(2);
+        text-decoration: none;
     }
 }
