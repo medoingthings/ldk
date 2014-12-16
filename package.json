@@ -22,7 +22,7 @@
     "gulp-browserify": "^0.5.0",
     "gulp-livereload": "^2.1.1",
     "gulp-modernizr": "https://github.com/doctyper/gulp-modernizr/tarball/develop",
-    "gulp-sass": "^1.2.0",
+    "gulp-sass": "^1.2.4",
     "magnific-popup": "^0.9.9",
     "zeptojs": "^1.1.4"
   },
