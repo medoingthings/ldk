@@ -8,19 +8,18 @@
 }
 
 .layout-footer__wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: em(20);
     padding: em(50);
     background-color: color(1);
-    margin-bottom: em(20);
 }
 
 .layout-footer__item {
-    display: table-cell;
-    vertical-align: middle;
+    display: block;
     text-decoration: none;
-
-    &:first-child {
-        width: 100%;
-    }
 
     img {
         width: auto;
@@ -48,5 +47,26 @@
     &:active {
         color: color(2);
         text-decoration: none;
+    }
+}
+
+@include breakpoint(451) {
+    .layout-footer__item {
+        flex-basis: 100%;
+
+        img {
+            float: right;
+        }
+    }
+}
+
+@include breakpoint(false, 450) {
+    .layout-footer__wrapper {
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .layout-footer__item:first-child {
+        margin-bottom: em(40);
     }
 }
