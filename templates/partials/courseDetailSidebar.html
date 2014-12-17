@@ -13,7 +13,7 @@
             <div class="richtext__content__sidebar__text">
 
                 {% for prof in entry.courseMaster %}
-                    <a href="prof.url">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.firstName }} {{ prof.lastName }}</a><br>
+                    <a href="/ueber-uns/dozenten/{{ prof.username }}">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.firstName }} {{ prof.lastName }}</a><br>
 
                     {% if prof.profession %}
                         {{ prof.profession }}<br>
