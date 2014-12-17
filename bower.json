@@ -23,6 +23,7 @@
     "picturefill": "~2.1.0",
     "magnific-popup": "~0.9.9",
     "zeptojs": "~1.1.4",
-    "tap.js": "~2.0.0"
+    "tap.js": "~2.0.0",
+    "respond": "~1.4.2"
   }
 }

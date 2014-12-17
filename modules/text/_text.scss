@@ -2,7 +2,7 @@
  * Typography
  */
 
-body {
+html {
     font-family: $font-family-default;
     font-size: stripUnit($em-base) / 16 * 1em; // 30px
     line-height: lineHeight($font-size-base);
@@ -22,14 +22,14 @@ p {
 }
 
 @include breakpoint ($BP_DESKTOP_MIN, $BP_WIDESCREEN_MIN) {
-    body {
+    html {
         font-size: stripUnit($em-base-M) / 16 * 1em;
     }
 }
 
 
 @include breakpoint (false, $BP_TABLET_MAX) {
-    body {
+    html {
         font-size: stripUnit($em-base-S) / 16 * 1em;
     }
 }

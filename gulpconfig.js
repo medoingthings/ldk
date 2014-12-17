@@ -15,7 +15,10 @@ module.exports = {
     },
     copy: {
         js: {
-            src: ['bower_components/picturefill/dist/picturefill.min.js'],
+            src: [
+                'bower_components/picturefill/dist/picturefill.min.js',
+                'bower_components/respond/dest/respond.min.js'
+            ],
             dest: 'www/public/dist/js'
         }
     },
