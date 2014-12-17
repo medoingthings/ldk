@@ -2,6 +2,10 @@
  * Desktop only styles
  * The baseline styles are at _navigation-main--base.scss
  */
+$layout-head--logo-grid--max-rows: 6;
+$layout-head--logo-grid--max-columns: 5;
+$layout-head--logo-grid--gutter: 1px;
+$layout-head--logo-grid--width: 2px;
 
 @include breakpoint($navigation-main--breakpoint--mobile + 1) {
 
@@ -94,11 +98,17 @@
      */
 
     .navigation-main__home__link {
-        font-size: 1em; // Resets default font-size
+        display: flex;
+        align-items: center;
+        font-size: 1em; // Reset inherited font-size
         width: em(50);
         height: em(50);
-        padding: em(8) em(5);
+        padding: 0 em(5);
         background-color: color(2) !important; // Overwrite :hover color
+
+        .no-flexbox & {
+            padding-top: em(16);
+        }
 
         // Users with a legacy browser need to find home another way
         .no-csstransforms,
@@ -112,9 +122,9 @@
     }
 
     .navigation-main__home__figure {
-        margin: 0;
-        width: 100%;
-        height: 100%;
+        margin: -$layout-head--logo-grid--width auto 0;
+        width: $layout-head--logo-grid--max-columns * $layout-head--logo-grid--width + ($layout-head--logo-grid--max-columns - 1) * $layout-head--logo-grid--gutter;
+        height: $layout-head--logo-grid--max-rows * $layout-head--logo-grid--width + ($layout-head--logo-grid--max-rows - 1) * $layout-head--logo-grid--gutter;
     }
 
 
@@ -126,13 +136,8 @@
      */
 
     @mixin layout-head--logo-grid ($top, $left) {
-        $margin-top: 7;
-        $margin-left: 9;
-        $gutter: 1;
-        $width: 2;
-        $height: 2;
-        $position-top: em($top * $width + $top * $gutter + $margin-top);
-        $position-left: em($left * $width + $left * $gutter + $margin-left);
+        $position-top: $top * $layout-head--logo-grid--width + $top * $layout-head--logo-grid--gutter;
+        $position-left: $left * $layout-head--logo-grid--width + $left * $layout-head--logo-grid--gutter;
 
         transform: translateX($position-left) translateY($position-top);
     }
@@ -160,54 +165,54 @@
 
     // House shape
     $layout-head--logo-shape-home:
-        (5,1),
-        (5,5),
-        (4,1),
-        (4,5),
-        (2,5),
-        (1,2),
-        (2,4),
-        (5,2),
-        (5,3),
+        (5,0),
         (5,4),
-        (0,3),
-        (3,1),
-        (3,5),
-        (1,3),
-        (2,2),
+        (4,0),
+        (5,1),
+        (2,4),
+        (4,4),
+        (1,1),
         (2,3),
-        (1,4),
-        (2,1);
+        (5,2),
+        (3,4),
+        (5,3),
+        (3,0),
+        (0,2),
+        (1,2),
+        (2,1),
+        (2,2),
+        (1,3),
+        (2,0);
 
     // Arrow
     $layout-head--logo-shape-arrow:
-        (3,1),
-        (2,2),
-        (1,3),
-        (4,2),
-        (5,3),
-        (5,3),
+        (2,0),
         (3,3),
-        (3,4),
-        (3,5),
-        (3,6),
-        (3,3),
+        (5,1),
+        (3,-1),
+        (4,0),
+        (5,1),
+        (3,2),
+        (4,0),
+        (1,1),
         (3,1),
-        (2,2),
-        (1,3),
-        (4,2),
-        (3,4),
+        (3,1),
+        (2,0),
         (3,5),
-        (3,6);
+        (3,-1),
+        (1,1),
+        (3,2),
+        (3,3),
+        (3,4);
 
     .navigation-main__home__figure__item {
-        @extend %composited-layer;
+        @include composited-layer;
         @include layout-head--logo-generator($layout-head--logo-shape-home);
         display: block;
         position: absolute;
-        width: 2px;
-        height: 2px;
-        border-radius: 50%;
+        width: $layout-head--logo-grid--width;
+        height: $layout-head--logo-grid--width;
+        border-radius: $layout-head--logo-grid--width / 2;
         background-color: color(1);
         transition: transform 0.3s ease;
 
