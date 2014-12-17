@@ -7,7 +7,7 @@ module.exports = {
         dest: './www/public/assets'
     },
     autoprefixer: {
-        browsers: ['last 2 versions'],
+        browsers: ['last 4 versions'],
         cascade: false
     },
     clean: {
