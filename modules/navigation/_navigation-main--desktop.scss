@@ -99,6 +99,12 @@
         height: em(50);
         padding: em(8) em(5);
         background-color: color(2) !important; // Overwrite :hover color
+
+        // Users with a legacy browser need to find home another way
+        .no-csstransforms,
+        .lt-ie9 & {
+            display: none;
+        }
     }
 
     .navigation-main__home__text {
@@ -207,11 +213,6 @@
 
         .navigation-main__item:not(._is-active) .navigation-main__home__link:hover & {
             @include layout-head--logo-generator($layout-head--logo-shape-arrow);
-        }
-
-        // IE9 doesn’t support css transforms
-        .lt-ie9 & {
-            display: none;
         }
     }
 }
