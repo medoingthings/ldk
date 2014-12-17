@@ -24,7 +24,7 @@
     @extend %clearfix;
     display: inline-block;
     float: right;
-    padding-right: em(50); // Align logo text with navigation
+    padding-right: em(20);
     text-align: right;
 
     &:link,
