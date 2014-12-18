@@ -30,7 +30,7 @@
             <div class="richtext__content__sidebar__text">
 
                 {% for teacher in entry.courseTeacher %}
-                    <a href="teacher.url">{{ teacher.degree ? teacher.degree ~ ' ' }}{{ teacher.firstName }} {{ teacher.lastName }}</a><br>
+                    <a href="/ueber-uns/dozenten/{{ teacher.username }}">{{ teacher.degree ? teacher.degree ~ ' ' }}{{ teacher.firstName }} {{ teacher.lastName }}</a><br>
 
                     {% if teacher.profession %}
                         {{ teacher.profession }}<br>
