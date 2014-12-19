@@ -10,10 +10,8 @@
 
     <div class="mosaic-tiles__text">
 
-        {% set salutation = entryModel.degree != '' ? entryModel.degree : entryModel.gender %}
-
-        {% if salutation != '' %}
-            <span class="_info">{{ salutation }}</span>
+        {% if entryModel.degree != '' or entryModel.gender != '' %}
+            <span class="_info">{{ entryModel.gender }} {{ entryModel.degree }}</span>
         {% endif %}
 
         <h2><a href="{{ peoplePath }}{{ entryModel.username }}">{{ entryModel.name }}</a></h2>
