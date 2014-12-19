@@ -2,7 +2,7 @@
 
 {% if results|length %}
 
-    {% paginate results.limit(20) as resultsPerPage %}
+    {% paginate results.limit(21) as resultsPerPage %}
 
         {# Output results #}
         {% for entry in resultsPerPage %}
