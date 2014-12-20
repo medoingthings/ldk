@@ -31,6 +31,11 @@
         &._has-error {
             border-color: color(11, $colors-scheme);
         }
+
+        // Make sure iOS devices don’t zoom in on focus
+        @include breakpoint(false, $BP_TABLET_MAX) {
+            font-size: 16px;
+        }
     }
 
     input[type=search] {
