@@ -163,6 +163,7 @@ $layout-head--logo-grid--width: 2px;
 
         // Fake vertical centering if no flexbox
         .no-flexbox & {
+            display: block;
             padding-top: em(16);
         }
 
