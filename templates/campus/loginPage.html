@@ -9,10 +9,22 @@
     {% embed "helper/sectionContainer.html" with {classes: 'form-login__wrapper', sectionLabel: loginLabel} %}
         {% block content %}
 
-                {% if errorMessage is defined %}
+                {% if errorMessage is defined or errors is defined %}
+
                     <div class="form__row form--error__wrapper">
-                        <p class="form--error__text">{{ errorMessage }}</p>
+
+                        {% if errorMessage is defined %}
+                            <p class="form--error__text">{{ errorMessage }}</p>
+                        {% endif %}
+
+                        {% if errors is defined %}
+                            {% for error in errors %}
+                                <p class="form--error__text">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+
                     </div>
+
                 {% endif %}
 
                 <form method="post" accept-charset="UTF-8" class="form__content">
@@ -37,6 +49,8 @@
                         <a href="{{ url(craft.request.url, 'password=lost') }}" class="form-login__forgot-link">Passwort vergessen?</a>
 
                     {% else %}
+
+                        <input type="hidden" name="redirect" value="{{ craft.entries.section('loginFormResetSuccess').first.url }}">
 
                         <div class="form__row">
                             <button class="button-outline _call-to-action" type="submit">Passwort zurücksetzen</button>
