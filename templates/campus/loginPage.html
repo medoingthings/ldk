@@ -1,30 +1,48 @@
 {% extends '_layout' %}
 
+{% set action = craft.request.getQuery('password') == 'lost' ? 'users/forgotPassword' : 'users/login' %}
+{% set sectionLabel = action == 'users/login' ? 'Login für Studenten & Dozenten' : 'Passwort zurücksetzen' %}
+
 {% block content %}
     {% include 'partials/pageTitle' %}
 
-    {% embed "helper/sectionContainer.html" with {classes: 'form-login__wrapper', sectionLabel: 'Login für Studenten & Dozenten'} %}
+    {% embed "helper/sectionContainer.html" with {classes: 'form-login__wrapper', sectionLabel: sectionLabel} %}
         {% block content %}
+
+                {% if errorMessage is defined %}
+                    <div class="form__row form--error__wrapper">
+                        <p class="form--error__text">{{ errorMessage }}</p>
+                    </div>
+                {% endif %}
+
                 <form method="post" accept-charset="UTF-8" class="form__content">
                     {{ getCsrfInput() }}
-                    <input type="hidden" name="action" value="users/login">
+                    <input type="hidden" name="action" value="{{ action }}">
+
 
                     <div class="form-login__item">
                         <label for="loginName">E-Mail-Adresse</label>
                         <input id="loginName" type="email" name="loginName" value="{{ craft.session.rememberedUsername }}" autofocus>
                     </div>
 
-                    <div class="form-login__item">
-                        <label for="password">Passwort</label>
-                        <input id="password" type="password" name="password">
-                    </div>
+                    {# Skip the password field if the user wants to reset her password #}
+                    {% if action == 'users/login' %}
+                        <div class="form-login__item">
+                            <label for="password">Passwort</label>
+                            <input id="password" type="password" name="password">
+                        </div>
 
-                    <button class="button-outline _call-to-action" type="submit">Einloggen</button>
-                    <a href="{{ url('forgotpassword') }}" class="form-login__forgot-link">Passwort vergessen?</a>
+                        <button class="button-outline _call-to-action" type="submit">Einloggen</button>
+                        <a href="{{ url(craft.request.url, 'password=lost') }}" class="form-login__forgot-link">Passwort vergessen?</a>
 
-                    {% if errorMessage is defined %}
-                        <p>{{ errorMessage }}</p>
+                    {% else %}
+
+                        <div class="form__row">
+                            <button class="button-outline _call-to-action" type="submit">Passwort zurücksetzen</button>
+                        </div>
+
                     {% endif %}
+
                 </form>
 
         {% endblock %}
