@@ -4,10 +4,10 @@
 {% for level1 in navigationModel.level(1) %}
 
     {% set level1Segment = segmentList[0]|default('') %}
+    {% set level2Model = level1.getDescendants(1) %}
 
-    <li class="navigation-main__item{{ level1.slug == level1Segment or level1.id == entry.id ? ' _is-active _is-open--mobile' }}">
+    <li class="navigation-main__item{{ level1.slug == level1Segment or level1.id == entry.id ? ' _is-active _is-open--mobile' }}{{ level2Model|length and (depth == false or depth >= 2) ? ' _has-children'}}">
         <a href="{{ level1.url }}" class="navigation-main__link">{{ level1 }}</a>
-        {% set level2Model = level1.getDescendants(1) %}
 
         {% if (level2Model|length and (depth == false or depth >= 2))  %}
             <button class="navigation-main__level-toggle"><span>Ebene ein-/ausblenden</span></button>

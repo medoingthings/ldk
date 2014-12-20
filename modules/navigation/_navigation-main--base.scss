@@ -38,7 +38,7 @@
 }
 
 /**
- * Navigation Main
+ * Base styles for the main elements
  */
 
 .navigation-main__wrapper {
@@ -70,11 +70,51 @@
 }
 
 /**
+ * Toggle button that opens and closes the navigation levels
+ */
+
+.navigation-main__level-toggle {
+    @include icon(arrow-right, 0.6em);
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: em(50);
+    height: em(50);
+    padding: 0;
+    border: 0;
+    -webkit-tap-highlight-color: transparent;
+
+    &:before {
+        display: block;
+        left: 0;
+        color: color(1);
+        transform: rotate(90deg);
+    }
+
+    span {
+        display: none;
+    }
+
+    // Make sure that the toggle is 100% high, if it’s not on an active first level item
+    .navigation-main__item:not(._is-open--mobile) & {
+        height: 100%;
+    }
+
+    .navigation-main__item._is-active & {
+        background-color: transparent;
+
+        &:before {
+            color: color(2);
+        }
+    }
+}
+
+/**
  * Hide mobile navigation toggle buttons by default
  */
 
-.navigation-main__toggle,
-.navigation-main__level-toggle {
+.navigation-main__toggle {
     display: none;
 }
 

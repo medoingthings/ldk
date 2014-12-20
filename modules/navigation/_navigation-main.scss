@@ -2,7 +2,7 @@
  * Main navigation in the header
  */
 
-$navigation-main--breakpoint--mobile: $BP_TABLET_MAX;
+$navigation-main--breakpoint--mobile: 750px;
 $navigation-main--toggle-height: 3px;
 
 // Compensates the em context from the body

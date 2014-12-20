@@ -22,12 +22,14 @@ var isOpen = false;
 var _settings = {
     classNameOpen: '_is-open',
     classNameOpenMobile: '_is-open--mobile',
+    classNameOpenDesktop: '_is-open--desktop',
     classNameToggleMobile: 'navigation-main__level-toggle',
     classNameOpenGlobal: 'navigation-main--is-open'
 };
 
 /**
  * Initialize the module by adding event listeners and stuff
+ *
  * @return {void}
  */
 
@@ -44,10 +46,12 @@ var init = function () {
 
 /**
  * Toggle the navigation open and close
+ *
  * @return {void}
  */
 
 var _toggleNavigation = function () {
+
     if (isOpen) {
         $globalContainer.classList.remove(_settings.classNameOpenGlobal);
         isOpen = false;
@@ -58,25 +62,43 @@ var _toggleNavigation = function () {
 };
 
 /**
- * Handle clicks on the navigation and delegate them
- * @param {object} event JavaScriot event object
+ * Handle clicks on the navigation
+ *
+ * @param {object} event JavaScript event object
  */
 
 var _onNavigationClick = function (event) {
-    var $button = event.target;
+    var $target = event.target;
 
-    if ($button.classList.contains(_settings.classNameToggleMobile)) {
-        var $target = $button.parentNode;
-
-        $target.classList.toggle(_settings.classNameOpenMobile);
+    // Delegate clicks on toggle buttons
+    if ($target.classList.contains(_settings.classNameToggleMobile)) {
+        _toggleNavigationLevel($target.parentNode);
     }
 };
 
 /**
- * Toggle the mobile navigation
+ * Toggle the navigation levels
+ *
+ * @param {object} $navigationLevelItem Node of the navigation level that should toggle
  */
-var _toggleMovileNavigation = function () {
+var _toggleNavigationLevel = function ($navigationLevelItem) {
 
+    // Desktop only: Other nodes that might be open, but need to be closed before the new level is toggled
+    var $openRelatives = $navigationLevelItem.parentNode.querySelectorAll('.' +  _settings.classNameOpenDesktop);
+
+    // Desktop only: Iterate over each node to remove the given class
+    [].map.call($openRelatives, function ($el) {
+
+        if ($el !== $navigationLevelItem) {
+            $el.classList.remove(_settings.classNameOpenDesktop);
+        }
+    });
+
+    // Toggle class for mobile navigation
+    $navigationLevelItem.classList.toggle(_settings.classNameOpenMobile);
+
+    // Toggle class for desktop navigation
+    $navigationLevelItem.classList.toggle(_settings.classNameOpenDesktop);
 };
 
 exports.init = init;
