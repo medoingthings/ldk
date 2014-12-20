@@ -1,12 +1,12 @@
 {% extends '_layout' %}
 
 {% set action = craft.request.getQuery('password') == 'lost' ? 'users/forgotPassword' : 'users/login' %}
-{% set sectionLabel = action == 'users/login' ? 'Login für Studenten & Dozenten' : 'Passwort zurücksetzen' %}
+{% set loginLabel = action == 'users/login' ? 'Login für Studenten & Dozenten' : 'Passwort zurücksetzen' %}
 
 {% block content %}
     {% include 'partials/pageTitle' %}
 
-    {% embed "helper/sectionContainer.html" with {classes: 'form-login__wrapper', sectionLabel: sectionLabel} %}
+    {% embed "helper/sectionContainer.html" with {classes: 'form-login__wrapper', sectionLabel: loginLabel} %}
         {% block content %}
 
                 {% if errorMessage is defined %}
@@ -17,16 +17,17 @@
 
                 <form method="post" accept-charset="UTF-8" class="form__content">
                     {{ getCsrfInput() }}
-                    <input type="hidden" name="action" value="{{ action }}">
 
+                    <input type="hidden" name="action" value="{{ action }}">
 
                     <div class="form-login__item">
                         <label for="loginName">E-Mail-Adresse</label>
                         <input id="loginName" type="email" name="loginName" value="{{ craft.session.rememberedUsername }}" autofocus>
                     </div>
 
-                    {# Skip the password field if the user wants to reset her password #}
+                    {# Skip the password field if the user wants to reset his password #}
                     {% if action == 'users/login' %}
+
                         <div class="form-login__item">
                             <label for="password">Passwort</label>
                             <input id="password" type="password" name="password">
