@@ -44,6 +44,13 @@
     }
 }
 
+.form__row {
+    @extend %clearfix;
+    float: none;
+    clear: both;
+    margin-bottom: em(20);
+}
+
 .form__item {
     position: relative;
     margin-bottom: em(20);
