@@ -58,31 +58,49 @@
 
 .form--error__wrapper {
     @extend %text-type--5;
-    position: absolute;
-    height: em(50, size(5));
-    top: 0;
-    right: 0;
-    transform: translateX(110%);
+    position: relative;
     background-color: color(11, $colors-scheme);
     display: inline-block;
     padding: em(7, size(5)) em(30, size(5));
 
     // CSS3 arrow
     &:after {
-        content: " ";
+        content: '';
         position: absolute;
-        right: 100%;
-        top: 50%;
+        bottom: em(-20);
+        left: 10%;
         height: 0;
         width: 0;
         border: solid transparent;
-        border-right-color: color(11, $colors-scheme);
+        border-top-color: color(11, $colors-scheme);
         border-width: em(10);
-        margin-top: em(-10);
         pointer-events: none;
     }
 }
 
 .form--error__text {
     color: color(1);
+}
+
+@include breakpoint(1300) {
+    .form--error__wrapper {
+        &._overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: em(50, size(5));
+            transform: translateX(110%);
+
+            // CSS3 arrow pointing left
+            &:after {
+                top: 50%;
+                right: 100%;
+                bottom: auto;
+                left: auto;
+                margin-top: em(-10);
+                border-color: transparent;
+                border-right-color: color(11, $colors-scheme);
+            }
+        }
+    }
 }
