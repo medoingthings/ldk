@@ -9,7 +9,8 @@
 
         {% cache %}
 
-            {% for category in craft.categories.group('courses') if category.slug != skip %}
+            {# Only show entries that have a courseEntry and that should not be skipped #}
+            {% for category in craft.categories.group('courses') if category.slug != skip and category.courseEntry|length %}
 
                 {% set entryModel = category.courseEntry.first() %}
                 {% set prof       = entryModel.courseMaster.first() %}
