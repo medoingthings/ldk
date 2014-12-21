@@ -1,5 +1,5 @@
 {% set query   = craft.request.getParam('q') %}
-{% set results = craft.entries.search(query).type('news').order('postDate') %}
+{% set results = craft.entries.search(query).type('news').order('postDate DESC') %}
 
 {% block content %}
 
