@@ -40,6 +40,9 @@ gulp.task('copy', function () {
 gulp.task('javascript', function () {
     gulp.src('modules/app.js')
         .pipe(browserify())
+        .on('error', function (error) {
+            console.log(error.message);
+        })
         .pipe(gulp.dest(gulpconfig.js.dest));
 });
 
