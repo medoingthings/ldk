@@ -27,9 +27,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{{ pageTitle }}</title>
     <link rel="home" href="{{ siteUrl }}" />
-    <meta name="description" content="">
-    <meta name="robots" content="noindex, nofollow">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ pageTitle }}" />
+    <meta property="og:url" content="{{ craft.request.url }}" />
+    <meta name="twitter:card" value="summary">
+    <meta name="twitter:title" value="{{ pageTitle }}">
+
+    {# Descriptions #}
+    {% if entry.teaserText is defined and entry.teaserText is not empty %}
+
+        <meta name="description" content="{{ entry.teaserText }}">
+
+        {# Twitter Cards #}
+        <meta name="twitter:description" content="{{ entry.teaserText }}">
+
+        {# Facebook #}
+        <meta property="og:description" content="{{ entry.teaserText }}" />
+
+    {% endif %}
+
+    {# Sharing Images #}
+    {% set socialImageUrl = '' %}
+
+    {# Use teaser image by default #}
+    {% if entry.teaserImage is defined and entry.teaserImage|length %}
+        {% set socialImageUrl = entry.teaserImage[0].url %}
+
+    {# Otherwise fall back to the titleStage image, if present  #}
+    {% elseif entry.titleStage is defined and entry.titleStage|length and entry.titleStage[0].backgroundImage|length %}
+        {% set socialImageUrl = entry.titleStage[0].backgroundImage[0].url %}
+    {% endif %}
+
+    {% if socialImageUrl is not empty %}
+        <meta property="og:image" content="{{ socialImageUrl }}" />
+        <meta name="twitter:image" content="{{ socialImageUrl }}">
+    {% endif %}
 
     <link rel="stylesheet" href="{{ craft.bust.er('/dist/css/main.css') }}">
 
