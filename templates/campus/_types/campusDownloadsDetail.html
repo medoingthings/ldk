@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    {% include 'partials/pageTitle' %}
+    {% include 'matrix/titleStage/index' with {titleModel: {headline: 'Downloads'}} %}
     {% include 'campus/campusDownloadsCategories' %}
 
     {% include 'campus/campusDownloadsHeadline' with {
