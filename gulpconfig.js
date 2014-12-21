@@ -45,5 +45,12 @@ module.exports = {
     templates: {
         src: 'templates/**/*.html',
         dest: 'www/craft/templates'
+    },
+    uglify: {
+        src: [
+            'www/public/dist/js/*.js',
+            '!www/public/dist/js/*.min.js'
+        ],
+        dest: 'www/public/dist/js/min'
     }
 }

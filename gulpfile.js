@@ -10,13 +10,14 @@ var del          = require('del');
 var livereload   = require('gulp-livereload');
 var modernizr    = require('gulp-modernizr');
 var sass         = require('gulp-sass')
+var uglify       = require('gulp-uglify');
 
 /**
  * Gulp Build Tasks
  */
 
-gulp.task('default', ['sass', 'javascript']);
-gulp.task('build', ['modernizr', 'sass', 'assets', 'javascript', 'copy', 'templates']);
+gulp.task('default', ['sass', 'javascript', 'uglify']);
+gulp.task('build', ['modernizr', 'sass', 'assets', 'javascript', 'uglify', 'copy', 'templates']);
 
 /**
  * Gulp Tasks
@@ -54,7 +55,10 @@ gulp.task('modernizr', function () {
 
 gulp.task('sass', function () {
     gulp.src(gulpconfig.sass.modules)
-        .pipe(sass({errLogToConsole: true}))
+        .pipe(sass({
+            outputStyle : 'compressed',
+            errLogToConsole: true
+        }))
         .pipe(autoprefixer(gulpconfig.autoprefixer))
         .pipe(gulp.dest(gulpconfig.css.dest));
 });
@@ -62,6 +66,12 @@ gulp.task('sass', function () {
 gulp.task('templates', function () {
   gulp.src(gulpconfig.templates.src)
     .pipe(gulp.dest(gulpconfig.templates.dest))
+});
+
+gulp.task('uglify', function() {
+  gulp.src(gulpconfig.uglify.src)
+    .pipe(uglify())
+    .pipe(gulp.dest(gulpconfig.uglify.dest))
 });
 
 gulp.task('watch', function () {
