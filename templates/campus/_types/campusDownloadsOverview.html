@@ -2,14 +2,8 @@
 
 {% block content %}
 
-
     {% include 'partials/pageTitle' %}
     {% include 'campus/campusDownloadsCategories' %}
     {% include 'partials/recentDownloads' with {showLimit: 20} %}
 
-    {# {% cache %} #}
-
-
-
-    {# {% endcache %} #}
 {% endblock %}
