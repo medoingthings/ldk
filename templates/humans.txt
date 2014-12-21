@@ -3,9 +3,9 @@
 
 # TEAM
 
-    Duc Nguyen -- Designer -- <twitter>
+    Duc Nguyen -- Designer
     Mark Rickert -- Concept Development, Front-End Development -- @medoingthings
-    Michael Weingartner -- Project Management, Concept Development -- <twitter>
+    Michael Weingartner -- Project Management, Concept Development
 
 # THANKS
 
