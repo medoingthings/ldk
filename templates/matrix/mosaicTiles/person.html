@@ -1,10 +1,18 @@
 {% set peoplePath = peoplePath|default('/ueber-uns/dozenten/') %}
+{% set thumbnailTransform = {
+    mode: 'crop',
+    width: 200,
+    height: 200,
+    position: 'center-center'
+} %}
 
-<div class="mosaic-tiles__content _third{{ entryModel.photoUrl ? ' _image-left' }}">
+<div class="mosaic-tiles__content _third{{ entryModel.userImage is defined ? ' _image-left' }}">
 
-    {% if entryModel.photoUrl %}
+    {% if entryModel.userImage is defined and entryModel.userImage|length %}
         <div class="mosaic-tiles__image">
-            <a href="{{ peoplePath }}{{ entryModel.firstName|lower|url_encode }}.{{ entryModel.lastName|lower|url_encode }}"><img src="{{ entryModel.photoUrl('200') }}"></a>
+            <a href="{{ peoplePath }}{{ entryModel.firstName|lower|url_encode }}.{{ entryModel.lastName|lower|url_encode }}">
+                <img src="{{ entryModel.userImage.first.getUrl(thumbnailTransform) }}">
+            </a>
         </div>
     {% endif %}
 
