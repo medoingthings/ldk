@@ -9,6 +9,11 @@
  # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
  #}
 
+{# Preparations for talking with search engine robots #}
+{% set robotsIndex = entry.robots.contains('noindex') ? 'noindex' : 'index' %}
+{% set robotsFollow = entry.robots.contains('nofollow') ? 'nofollow' : 'follow' %}
+
+{# Setup a proper page title #}
 {% set pageTitle = siteName %}
 
 {% if entry.titleStage is defined and entry.titleStage|length and entry.titleStage[0].headline is not empty %}
@@ -30,7 +35,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="{{ robotsIndex }}, {{ robotsFollow }}">
 
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ pageTitle }}" />
