@@ -4,7 +4,7 @@
 
     {% if entryModel.photoUrl %}
         <div class="mosaic-tiles__image">
-            <a href="{{ peoplePath }}{{ entryModel.username }}"><img src="{{ entryModel.photoUrl('200') }}"></a>
+            <a href="{{ peoplePath }}{{ entryModel.firstName|lower|url_encode }}.{{ entryModel.lastName|lower|url_encode }}"><img src="{{ entryModel.photoUrl('200') }}"></a>
         </div>
     {% endif %}
 
@@ -14,7 +14,7 @@
             <span class="_info">{{ entryModel.gender }} {{ entryModel.degree }}</span>
         {% endif %}
 
-        <h2><a href="{{ peoplePath }}{{ entryModel.username }}">{{ entryModel.name }}</a></h2>
+        <h2><a href="{{ peoplePath }}{{ entryModel.firstName|lower|url_encode }}.{{ entryModel.lastName|lower|url_encode }}">{{ entryModel.name }}</a></h2>
 
         <span class="_info">
             {{ entryModel.profession }}
