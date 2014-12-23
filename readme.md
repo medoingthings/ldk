@@ -1,12 +1,20 @@
-# LDK-Website Dokumentation
+# Documentation for www.leadership-digitale-kommunikation.de
+
+## Getting Started
+Make sure [Node](nodejs.org) is installed on your machine.
+
+Then run `npm i`. It will install all the necessary dependencies.
+
+Now run `gulp build` to build all the relevant assets.
 
 ## Coding Guidelines
 BEM Style: https://bem.info/method/definitions/
 
 ## ZeptoJS dependency
-Needs to be build like described in: https://github.com/madrobby/zepto#building
+If new features of ZeptoJS are required, it needs to be build like described
+here: https://github.com/madrobby/zepto#building
 
-Do this:
+### Do this:
 
 * Go to zeptojs folder `cd bower_components/zeptojs`
 * Run `MODULES="zepto event data ie" ./make dist`, add whatever new module is needed
@@ -14,5 +22,6 @@ Do this:
 * Update this Readme with the new module chain
 * Commit the new build and readme.md
 
-## Redaktionell
-Jedes Jahr muss einmal gepflegt werden, wann die jeweiligen Module stattfinden, damit die automatischen Teaser richtig funktionieren
+# Contributing
+We’d be happy if you’d like to contribute front end fixes or features. Just
+give me a shout if you need anything.
