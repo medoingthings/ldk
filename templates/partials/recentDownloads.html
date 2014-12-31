@@ -9,7 +9,7 @@
 
             {# Select only those assets that are actually used within the campusDownloads matrix field within the campusDownloads section #}
             {% set downloadsContext = craft.entries.section('campusDownloads').type('campusDownloadsDetail') %}
-            {% set latestDownloads = craft.assets.sourceId(4).relatedTo({
+            {% set latestDownloads = craft.assets.source('campusDownloads').relatedTo({
                 sourceElement: downloadsContext,
                 field: 'campusDownloads'
             }).order('dateUpdated DESC').limit(showLimit) %}
