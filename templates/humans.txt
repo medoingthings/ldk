@@ -13,6 +13,7 @@
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3, SASS
-    jQuery, Modernizr
+    HTML5, CSS3, SASS, JavaScript
+    Bower, Gulp, Node
+    Magnific Popup, Modernizr, Neat, Normalize-SCSS, Picturefill, Respond.js, Tap.js, ZeptoJS
     Craft (CMS)
