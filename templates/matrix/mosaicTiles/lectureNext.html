@@ -1,39 +1,56 @@
 {% import 'macros/relativeDate' as macro %}
 
+{# Every course that is relevant here is a descendant of this entry #}
 {% set coursesParentId = 40 %}
 
-{# Select the course that is happening right now #}
-{% set currentCourse = craft.entries.descendantOf(coursesParentId).type('courseDetail').order('courseStartDate DESC').courseStartDate('<=' ~ now).courseEndDate('>=' ~ now).limit(1).first %}
+{% cache %}
 
-{# Check which courseDate will be the next to take place #}
-{% set courseAgendaUrl = currentCourse.courseAgenda|length ? currentCourse.courseAgenda.first.url %}
-{% set courseDates = currentCourse.courseDates.order('timeFrameStart') %}
-{% set nextLectureModel = false %}
-{% set nextCourseDate = null %}
+    {# Select the next two upcoming courses #}
+    {% set upcomingCourses = craft.entries.descendantOf(coursesParentId).type('courseDetail').order('courseEndDate ASC').courseEndDate('>=' ~ now).limit(2) %}
 
-{# Set today without the time, to compare days only #}
-{% set dayFormat = 'Y-m-d' %}
-{% set today = now|date(dayFormat) %}
+    {# Set the first one as the one to go with  #}
+    {% set currentCourse = upcomingCourses.nth(0) %}
 
-{# Iterate over each courseDate that has not yet ended #}
-{% for date in courseDates if date(date.timeFrameEnd|date(dayFormat)) >= date(today) %}
+    {# Check when the last lecture happens #}
+    {% set lastCourseLectureDate = currentCourse.courseDates.order('timeFrameStart DESC').first %}
+    {% set lastCourseLectureDateEnd = lastCourseLectureDate.timeFrameEnd is not empty ? lastCourseLectureDate.timeFrameEnd : lastCourseLectureDate.timeFrameStart %}
 
-    {# Only store the first (and therefore next) date #}
-    {% if nextLectureModel == false %}
-        {% set nextLectureModel = date %}
+    {# Check if the last lecture already happened. If so, set the currentCourse to the next upcoming one #}
+    {% if lastCourseLectureDateEnd <= now %}
+        {% set currentCourse = upcomingCourses.nth(1) %}
     {% endif %}
 
-{% endfor %}
+    {# Check which courseDate will be the next to take place #}
+    {% set courseAgendaUrl = currentCourse.courseAgenda|length ? currentCourse.courseAgenda.first.url %}
+    {% set courseDates = currentCourse.courseDates.order('timeFrameStart') %}
+    {% set nextLectureModel = false %}
+    {% set nextLectureDate = null %}
 
-{% if nextLectureModel != false %}
-    {% set nextCourseDate = {start: nextLectureModel.timeFrameStart, end: nextLectureModel.timeFrameEnd} %}
-{% endif %}
+    {# Set today without the time, to compare days only #}
+    {% set dayFormat = 'Y-m-d' %}
+    {% set today = now|date(dayFormat) %}
 
-{% include 'matrix/mosaicTiles/courseEntry' with {
-    courseModel: currentCourse,
-    subtitle: defaultStringNextLecture.label,
-    courseDate: nextCourseDate is defined ? nextCourseDate,
-    buttonLabel: courseAgendaUrl ? 'Wochenplan herunterladen',
-    buttonTarget: courseAgendaUrl ? courseAgendaUrl,
-    buttonClassAppend: courseAgendaUrl ? '_pdf'
-} %}
+    {# Iterate over each courseDate that has not yet ended #}
+    {% for date in courseDates if date(date.timeFrameEnd|date(dayFormat)) >= date(today) %}
+
+        {# Only store the first (and therefore next) date #}
+        {% if nextLectureModel == false %}
+            {% set nextLectureModel = date %}
+        {% endif %}
+
+    {% endfor %}
+
+    {% if nextLectureModel != false %}
+        {% set nextLectureDate = {start: nextLectureModel.timeFrameStart, end: nextLectureModel.timeFrameEnd} %}
+    {% endif %}
+
+    {% include 'matrix/mosaicTiles/courseEntry' with {
+        courseModel: currentCourse,
+        subtitle: 'Nächste Vorlesung',
+        courseDate: nextLectureDate is defined ? nextLectureDate,
+        buttonLabel: courseAgendaUrl ? 'Wochenplan herunterladen',
+        buttonTarget: courseAgendaUrl ? courseAgendaUrl,
+        buttonClassAppend: courseAgendaUrl ? '_pdf'
+    } %}
+
+{% endcache %}
