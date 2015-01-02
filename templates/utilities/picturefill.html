@@ -24,7 +24,7 @@
     <!--[if IE 9]></video><![endif]-->
 
     {% if defaultImageUrl != '' %}
-        <img srcset="{{ noscriptImageUrl }}" alt="{{ altText }}">
+        <img srcset="{{ noscriptImageUrl }}" alt="{{ altText }}" width="{{ imageModel.width }}" height="{{ imageModel.height }}">
     {% endif %}
 
     {% if noscriptImageUrl != '' %}
