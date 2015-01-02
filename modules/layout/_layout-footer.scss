@@ -48,6 +48,10 @@
         color: color(2);
         text-decoration: none;
     }
+
+    &:before {
+        content: ' · ';
+    }
 }
 
 @include breakpoint(451) {
@@ -56,6 +60,12 @@
 
         img {
             float: right;
+        }
+    }
+
+    .layout-footer__meta__link {
+        &:first-child:before {
+            content: none;
         }
     }
 }

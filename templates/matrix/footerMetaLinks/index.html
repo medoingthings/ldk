@@ -2,8 +2,6 @@
 
     {# Coming from the global footerMetaLinks #}
     {% for block in footerMetaLinks.footerMetaLinks %}
-        {% set separator = loop.last ? '' : ' · ' %}
-
         {% include 'matrix/footerMetaLinks/' ~ block.type %}
     {% endfor %}
 
