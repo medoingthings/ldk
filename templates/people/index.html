@@ -1,7 +1,7 @@
 {% extends '_layout' %}
 
 {% set query   = craft.request.getParam('q') %}
-{% set results = craft.users.search(query) %}
+{% set results = craft.users.group('teacher').search(query) %}
 
 {% block content %}
 
