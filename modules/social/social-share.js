@@ -8,8 +8,8 @@
  */
 
 var _settings = {
-    classNameSocialWrapper: 'social__wrapper',
-    classNameSocialLink: 'social__link',
+    classNameSocialWrapper: 'social-share__wrapper',
+    classNameSocialLink: 'social-share__link',
     popupWidth: 600,
     popupHeight: 400
 };

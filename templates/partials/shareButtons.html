@@ -2,8 +2,8 @@
 {% set shareTitle = pageTitle|url_encode %}
 {% set shareText = entry.teaserText is defined ? entry.teaserText|url_encode %}
 
-<div class="social__wrapper">
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}" target="_blank" class="social__link facebook"><span>Facebook</span></a>
-    <a href="https://twitter.com/intent/tweet?status={{ shareTitle }}%20{{ shareUrl }}" target="_blank" class="social__link twitter"><span>Twitter</span></a>
-    <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ shareUrl }}&title={{ shareTitle }}{{ shareText is not empty ? '&summary=' ~ shareText }}" target="_blank" class="social__link linkedin"><span>LinkedIn</span></a>
+<div class="social-share__wrapper">
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}" target="_blank" class="social-share__link _facebook"><span>Facebook</span></a>
+    <a href="https://twitter.com/intent/tweet?status={{ shareTitle }}%20{{ shareUrl }}" target="_blank" class="social-share__link _twitter"><span>Twitter</span></a>
+    <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ shareUrl }}&title={{ shareTitle }}{{ shareText is not empty ? '&summary=' ~ shareText }}" target="_blank" class="social-share__link _linkedin"><span>LinkedIn</span></a>
 </div>
