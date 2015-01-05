@@ -1,0 +1,11 @@
+{% extends '_layout' %}
+
+{# Show a 404 page if the current user doesn’t have the required access rights #}
+{% if entry.limitAccess is not null and entry.limitAccess.userGroups|length and not currentUser.isInGroup(entry.limitAccess.userGroups.first.userGroupHandle) %}
+    {% exit 404 %}
+{% endif %}
+
+{% block content %}
+    {% include 'partials/pageTitle' %}
+    {% include 'matrix/richtext/index' %}
+{% endblock %}
