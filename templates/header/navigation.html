@@ -33,7 +33,7 @@
 
             {# Only show children of campus navigation if user is logged in #}
             {% set loggedIn = craft.session.isLoggedIn %}
-            {% embed 'header/navigationListSkeleton' with {navigationModel: craft.entries.section('campus'), depth: loggedIn ? false : 1} %}
+            {% embed 'header/navigationListSkeleton' with {navigationModel: craft.entries.section('campus')} %}
 
                 {% if loggedIn %}
                     {% block level2Append %}
