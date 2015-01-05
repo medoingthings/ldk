@@ -9,7 +9,7 @@
     z-index: 0;
 }
 
-.feature-stage__image {
+.feature-stage__background {
     img {
         display: block;
         width: 100%;
@@ -31,7 +31,7 @@
         }
     }
 
-    &._text-only {
+    &._blocktext {
         padding-top: em(120);
         padding-left: em(50);
         background-color: transparent;
@@ -39,6 +39,24 @@
         .feature-stage__text {
             padding-left: 0;
         }
+    }
+
+    &._image-left {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+}
+
+.feature-stage__image {
+    flex-basis: em(200);
+    width: em(200);
+    margin-right: 20px;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
     }
 }
 
@@ -58,7 +76,7 @@
     }
 
     // Special headline styling if there is no background image
-    .feature-stage__content._text-only & h1,
+    .feature-stage__content._blocktext & h1,
     ._date {
         display: inline-block;
         padding: em(20, size(3)) em(30, size(3)) em(10, size(3));
@@ -74,7 +92,7 @@
     }
 
     // Remove background color from headlines on date detail pages
-    .feature-stage__content._text-only & ._date + h1 {
+    .feature-stage__content._blocktext & ._date + h1 {
         background-color: transparent;
     }
 
@@ -100,7 +118,7 @@
 
 // Different text position on bigger screens
 @include breakpoint(1100) {
-    .feature-stage__image {
+    .feature-stage__background {
         height: 0;
         padding-top: 100% / 24 * 9;
 
@@ -116,7 +134,7 @@
         }
     }
 
-    .feature-stage__image + .feature-stage__content {
+    .feature-stage__background + .feature-stage__content {
         position: absolute;
         top: 0;
         width: 100%;

@@ -11,7 +11,7 @@
 {% if titleModel.backgroundImage is defined and titleModel.backgroundImage|length %}
     {% include 'matrix/featureStage/imageUtil' with {image: titleModel.backgroundImage.first } %}
 {% else %}
-    {% set classNameStyle = classNameStyle ~ ' _text-only' %}
+    {% set classNameStyle = classNameStyle ~ ' _blocktext' %}
 {% endif %}
 
 <div class="feature-stage__content{{ classNameStyle }}">
