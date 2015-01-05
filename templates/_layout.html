@@ -14,12 +14,16 @@
 {% set robotsFollow = entry.robots.contains('nofollow') ? 'nofollow' : 'follow' %}
 
 {# Setup a proper page title #}
-{% set pageTitle = siteName %}
+{% set pageTitle = '' %}
 
-{% if entry.titleStage is defined and entry.titleStage|length and entry.titleStage[0].headline is not empty %}
+{% if globalPageTitle is defined %}
+    {% set pageTitle = globalPageTitle %}
+{% elseif entry.titleStage is defined and entry.titleStage|length and entry.titleStage[0].headline is not empty %}
     {% set pageTitle = entry.titleStage[0].headline %}
 {% elseif entry.title is defined %}
     {% set pageTitle = entry.title %}
+{% else %}
+    {% set pageTitle = siteName %}
 {% endif %}
 
 <!DOCTYPE html>
