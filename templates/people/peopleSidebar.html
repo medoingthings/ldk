@@ -7,10 +7,70 @@
 <aside class="richtext__content__sidebar__wrapper">
 
     <div class="richtext__content__sidebar__content">
-        <h3>Datum</h3>
+        <h3>Status</h3>
         <div class="richtext__content__sidebar__text">
-            Sidebar
+            {% for group in person.groups %}
+                {{ group }}
+            {% endfor %}
         </div>
     </div>
+
+    {% if craft.session.isLoggedIn or person.website is not empty %}
+    <div class="richtext__content__sidebar__content">
+        <h3>Kontakt</h3>
+        <div class="richtext__content__sidebar__text">
+
+            {% if person.website is not empty %}
+                <a href="{{ person.website }}" target="_blank">{{ person.website|replace({'http://': ''}) }}</a>
+            {% endif %}
+
+            {# Do not expose email addresses to the whole world wide web #}
+            {% if craft.session.isLoggedIn %}
+                <a href="mailto:{{ person.email }}">{{ person.email }}</a>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endif %}
+
+    {% if person.twitter is not empty or
+          person.facebook is not empty or
+          person.linkedin is not empty or
+          person.xing is not empty %}
+    <div class="richtext__content__sidebar__content">
+        <h3>Social Media</h3>
+        <div class="richtext__content__sidebar__text">
+
+            <ul class="social__list">
+
+                {% if person.twitter is not empty %}
+                    <li class="social__item">
+                        <a href="http://twitter.com/{{ person.twitter }}" target="_blank" class="social__link _twitter"><span>{{ person.twitter }}</span></a>
+                    </li>
+                {% endif %}
+
+                {% if person.facebook is not empty %}
+                    <li class="social__item">
+                        <a href="{{ person.facebook }}" target="_blank" class="social__link _facebook"><span>Facebook</span></a></li>
+                    </li>
+                {% endif %}
+
+                {% if person.linkedin is not empty %}
+                    <li class="social__item">
+                        <a href="{{ person.linkedin }}" target="_blank" class="social__link _linkedin"><span>LinkedIn</span></a></li>
+                    </li>
+                {% endif %}
+
+                {% if person.xing is not empty %}
+                    <li class="social__item">
+                        <a href="{{ person.xing }}" target="_blank" class="social__link _xing"><span>XING</span></a></li>
+                    </li>
+                {% endif %}
+
+            </ul>
+
+        </div>
+    </div>
+    {% endif %}
 
 </aside>

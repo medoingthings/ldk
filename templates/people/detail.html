@@ -7,28 +7,39 @@
     {% exit 404 %}
 {% endif %}
 
+{# Set pageTitle in _layout template #}
+{% set globalPageTitle = person.degree is not empty ? person.degree ~ ' ' : '' %}
+{% set globalPageTitle = globalPageTitle ~ person.name %}
+
 {% block content %}
 
     {% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper'} %}
-
         {% block content %}
-
             <div class="feature-stage__content _blocktext _image-left">
                 <div class="feature-stage__text">
-
-                    {# <h2>{{ titleModel.subheadline }}</h2> #}
-
                     <h1>{{ person.name }}</h1>
-
                 </div>
+
+                {% if person.userImage|length %}
+                    <div class="feature-stage__image">
+
+                        {% include 'utilities/picturefill' with {
+                            imageModel: person.userImage.first,
+                            imageSet: [
+                                ['richtextSidebarImageM', '400px', '1.5x'],
+                                ['richtextSidebarImageS', 'noscript'],
+                                ['richtextSidebarImageS']
+                            ]
+                        } %}
+
+                    </div>
+                {% endif %}
+
             </div>
-
         {% endblock %}
-
     {% endembed %}
 
-
-    {# {% include 'people/peopleIntroduction' %} #}
+    {% include 'people/peopleIntroduction' %}
     {% include 'matrix/richtext/index' with {entry: {richtext: person.richtext }} %}
 
 {% endblock %}

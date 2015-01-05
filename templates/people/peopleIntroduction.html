@@ -1,10 +1,12 @@
-{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Termin-Details'} %}
+{% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Zur Person'} %}
 
     {% block content %}
 
-        <div class="richtext__content _has-sidebar">{{ entry.introduction }}</div>
+        <div class="richtext__content _has-sidebar">
+            {{ person.introduction }}
+        </div>
 
-        {% include 'ldk/_types/datesSidebar' %}
+        {% include 'people/peopleSidebar' %}
 
     {% endblock %}
 
