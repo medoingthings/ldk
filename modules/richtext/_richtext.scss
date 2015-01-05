@@ -79,27 +79,32 @@ $richtext--breakpoint--S: 580;
     /**
      * Lists should look similar a bit more general than headlines and stuff.
      * Therefore they are scoped to the wrapper and not to the content block.
+     *
+     * NOTE: We only style lists without a `class` attribute to only select
+     * lists that come from a WYSIWYG editor. This prevents side effects
+     * with other styled lists.
      */
-    ul {
+
+    ul:not([class]) {
         @extend %unstyle-list;
         margin-bottom: baselineMargin(5, 1);
-    }
 
-    ol {
-        margin-bottom: baselineMargin(5, 1);
-    }
+        li {
+            @extend %unstyle-list-item;
+            position: relative;
+            padding-left: em(12);
 
-    ul li {
-        @extend %unstyle-list-item;
-        position: relative;
-        padding-left: em(12);
-
-        &:before {
-            content: '\b7'; // middot
-            position: absolute;
-            color: color(2);
-            left: 0;
+            &:before {
+                content: '\b7'; // middot
+                position: absolute;
+                color: color(2);
+                left: 0;
+            }
         }
+    }
+
+    ol:not([class]) {
+        margin-bottom: baselineMargin(5, 1);
     }
 
     a:link {
