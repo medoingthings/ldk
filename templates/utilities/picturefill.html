@@ -23,13 +23,13 @@
 
     <!--[if IE 9]></video><![endif]-->
 
-    {% if defaultImageUrl != '' %}
-        <img srcset="{{ noscriptImageUrl }}" alt="{{ altText }}" width="{{ imageModel.width }}" height="{{ imageModel.height }}">
+    {% if defaultImageUrl is not empty %}
+        <img srcset="{{ defaultImageUrl }}" alt="{{ altText }}">
     {% endif %}
 
-    {% if noscriptImageUrl != '' %}
+    {% if noscriptImageUrl is not empty %}
     <noscript>
-        <img src="{{ defaultImageUrl }}" alt="{{ altText }}">
+        <img src="{{ noscriptImageUrl }}" alt="{{ altText }}">
     </noscript>
     {% endif %}
 </picture>
