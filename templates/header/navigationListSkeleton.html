@@ -14,7 +14,14 @@
 
             <ul class="navigation-main__l2__list">
 
-                {% for level2 in level2Model %}
+                {# Show level2, but only if its access is not limited to a certain user group #}
+                {% for level2 in level2Model if
+                    level2.limitAccess is not defined or
+                    (level2.limitAccess is defined and level2.limitAccess|length == 0) or
+                    (level2.limitAccess is not null and
+                    level2.limitAccess|length and
+                    currentUser is not null and
+                    currentUser.isInGroup(level2.limitAccess.first.userGroupHandle)) %}
 
                     {% set level2Segment = segmentList[1]|default('') %}
                     {% set level3Model   = level2.getDescendants(1) %}
