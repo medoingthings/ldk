@@ -2,7 +2,6 @@
 
         {% block content %}
 
-            {# {% cache %} #}
                 {% set allDownloads = craft.entries.section('campusDownloads') %}
                 {% set currentPageSlug = entry.slug %}
 
@@ -18,8 +17,6 @@
                         </li>
                     {% endfor %}
                 </ul>
-
-            {# {% endcache %} #}
 
         {% endblock %}
 
