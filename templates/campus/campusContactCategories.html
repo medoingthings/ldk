@@ -1,0 +1,22 @@
+{% embed "helper/sectionContainer.html" with {classes: 'download-area__wrapper', sectionLabel: 'Kontakte'} %}
+
+    {% block content %}
+
+            {% set userGroups = craft.categories.group('userGroups') %}
+
+            <ul class="download-area__category__list">
+
+                <li class="download-area__category__item">
+                    <a href="/campus/kontakte" class="download-area__category__link {{ currentPageSlug == 'kontakte' ? ' _is-active' }}">Alle</a>
+                </li>
+
+                {% for group in userGroups %}
+                    <li class="download-area__category__item">
+                        <a href="/campus/kontakte/{{ group.userGroupHandle }}" class="download-area__category__link{{ currentPageSlug == group.userGroupHandle ? ' _is-active' }}">{{ group }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+    {% endblock %}
+
+{% endembed %}

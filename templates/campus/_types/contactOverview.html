@@ -1,0 +1,32 @@
+{% extends '_layout' %}
+
+{% set entry = craft.entries.section('campus').slug('kontakte').first %}
+{% set currentPageSlug = craft.request.getLastSegment %}
+
+{# True if the slug can be found in the userGroups category #}
+{% set limitSearchToUserGroup = craft.categories.group('userGroups').search('userGroupHandle:' ~ currentPageSlug) %}
+
+{% set query   = craft.request.getParam('q') %}
+{% set results = limitSearchToUserGroup|length ? craft.users.group(currentPageSlug).search(query).limit(null) : craft.users.search(query).limit(null) %}
+
+{% block content %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'search-results__wrapper'} %}
+
+        {% block content %}
+            {% include 'search/searchInput.html' with {placeholder: 'Person suchen'} %}
+        {% endblock %}
+
+    {% endembed %}
+
+    {% include 'campus/campusContactCategories' %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: 'Suchergebnisse (' ~ results|length ~ ')'} %}
+        {% block content %}
+
+            {% include 'search/searchResults' with {resultsTemplate: 'searchResultsPeople', peoplePath: '/campus/kontakt/'} %}
+
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}
