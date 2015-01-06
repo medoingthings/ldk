@@ -10,7 +10,13 @@
         <h3>Status</h3>
         <div class="richtext__content__sidebar__text">
             {% for group in person.groups %}
-                {{ group }}
+                {% set groupCategoryMember = craft.categories.group('userGroups').search('userGroupHandle:' ~ group.handle)|length %}
+
+                {# Limit to groups that are allowed to be shown #}
+                {% if groupCategoryMember %}
+                    {{ group }}<br>
+                {% endif %}
+
             {% endfor %}
         </div>
     </div>
