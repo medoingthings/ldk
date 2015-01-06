@@ -6,7 +6,7 @@
     position: 'center-center'
 } %}
 
-<div class="mosaic-tiles__content _third{{ entryModel.userImage is defined ? ' _image-left' }}">
+<div class="mosaic-tiles__content _third{{ entryModel.userImage is defined and entryModel.userImage|length ? ' _image-left' }}">
 
     {% if entryModel.userImage is defined and entryModel.userImage|length %}
         <div class="mosaic-tiles__image">

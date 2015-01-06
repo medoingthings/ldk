@@ -15,7 +15,7 @@
 
     {% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper'} %}
         {% block content %}
-            <div class="feature-stage__content _blocktext _image-left">
+            <div class="feature-stage__content _blocktext{{ person.userImage|length ? ' _image-left' : '' }}">
                 <div class="feature-stage__text">
                     <h1>{{ person.name }}</h1>
                 </div>
