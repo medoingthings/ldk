@@ -1,0 +1,126 @@
+{% extends "_layout" %}
+
+{% set entry = craft.entries.section('campus').slug('mein-profil').first %}
+{% set currentUser = currentUser %}
+
+{# Set pageTitle in _layout template #}
+{% set globalPageTitle = currentUser.degree is not empty ? currentUser.degree ~ ' ' : '' %}
+{% set globalPageTitle = globalPageTitle ~ currentUser.name %}
+
+{% block content %}
+
+    <form method="post" accept-charset="UTF-8" class="form__content">
+        {{ getCsrfInput() }}
+        <input type="hidden" name="action" value="users/saveUser">
+        <input type="hidden" name="redirect" value="campus/mein-profil">
+        <input type="hidden" name="userId" value="{{ currentUser.id }}">
+
+        {% embed "helper/sectionContainer.html" with {classes: 'feature-stage__wrapper'} %}
+            {% block content %}
+                <div class="feature-stage__content _blocktext{{ currentUser.userImage|length ? ' _image-left' : '' }}">
+                    <div class="feature-stage__text">
+                        <h1>Profil editieren</h1>
+                    </div>
+
+                    {% if currentUser.userImage|length %}
+                        <div class="feature-stage__image">
+
+                            {% include 'utilities/picturefill' with {
+                                imageModel: currentUser.userImage.first,
+                                imageSet: [
+                                    ['richtextSidebarImageM', '400px', '1.5x'],
+                                    ['richtextSidebarImageS', 'noscript'],
+                                    ['richtextSidebarImageS']
+                                ]
+                            } %}
+
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% endblock %}
+        {% endembed %}
+
+        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Persönliche Daten'} %}
+            {% block content %}
+                <div class="form__item">
+                    <label for="gender">Anrede</label>
+                    <select name="fields[gender]" id="gender">
+                        {% for option in craft.fields.getFieldbyHandle('gender').settings.options  %}
+                            <option value="{{ option.value }}"{{ option.value == currentUser.gender ? ' selected' }}>{{ option.label }}</option>
+                        {% endfor %}
+
+                    </select>
+                </div>
+
+                <div class="form__item">
+                    <label for="firstName">Vorname</label>
+                    <input type="text" id="firstName" name="firstName" value="{{ currentUser.firstName }}">
+                </div>
+                <div class="form__item">
+                    <label for="lastName">Nachname</label>
+                    <input type="text" id="lastName" name="lastName" value="{{ currentUser.lastName }}">
+                </div>
+            {% endblock %}
+        {% endembed %}
+
+        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Login-Daten'} %}
+
+            {% block content %}
+                <div class="form__item">
+                    <label for="email">E-Mail-Adresse</label>
+                    <input type="text" id="email" name="email" value="{{ currentUser.email }}">
+                    <label for="newPassword">Neues Passwort</label>
+                    <input type="password" id="newPassword" name="newPassword">
+                    <hr>
+                    <label for="currentPassword">Aktuelles Passwort bestätigen</label>
+                    <input type="password" id="currentPassword" name="password">
+                </div>
+            {% endblock %}
+        {% endembed %}
+
+        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Kontaktdaten ändern'} %}
+
+            {% block content %}
+                <div class="form__item">
+                    <label for="introduction">Hintergrund</label>
+                    <textarea type="text" id="introduction" name="fields[introduction]">
+                        {{ currentUser.introduction }}
+                    </textarea>
+                </div>
+            {% endblock %}
+        {% endembed %}
+
+        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Kontaktdaten ändern'} %}
+
+            {% block content %}
+                <div class="form__item">
+                    <label for="xing">XING</label>
+                    <input type="text" id="xing" name="fields[xing]" value="{{ currentUser.xing }}">
+
+                    <label for="facebook">Facebook</label>
+                    <input type="text" id="facebook" name="fields[facebook]" value="{{ currentUser.facebook }}">
+
+                    <label for="twitter">Twitter</label>
+                    <input type="text" id="twitter" name="fields[twitter]" value="{{ currentUser.twitter }}">
+
+                    <label for="linkedin">LinkedIn</label>
+                    <input type="text" id="linkedin" name="fields[linkedin]" value="{{ currentUser.linkedin }}">
+
+                    <label for="website">Webseite</label>
+                    <input type="text" id="website" name="fields[website]" value="{{ currentUser.website }}">
+                </div>
+            {% endblock %}
+        {% endembed %}
+
+        {# {% include 'people/peopleIntroduction' %} #}
+        {# {% include 'matrix/richtext/index' with {entry: {richtext: currentUser.richtext }} %} #}
+        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper'} %}
+
+            {% block content %}
+
+                <button type="submit" class="button-outline _call-to-action">Änderungen speichern</button>
+            {% endblock %}
+        {% endembed %}
+    </form>
+{% endblock %}
