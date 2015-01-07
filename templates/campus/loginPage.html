@@ -32,10 +32,12 @@
 
                     <input type="hidden" name="action" value="{{ action }}">
 
-                    <div class="form__row__column">
-                        <label for="loginName">E-Mail-Adresse</label>
-                        <input id="loginName" type="email" name="loginName" value="{{ craft.session.rememberedUsername }}" autofocus>
-                    </div>
+                    <div class="form__row">
+
+                        <div class="form__row__column">
+                            <label for="loginName">E-Mail-Adresse</label>
+                            <input id="loginName" type="email" name="loginName" value="{{ craft.session.rememberedUsername }}" autofocus>
+                        </div>
 
                     {# Skip the password field if the user wants to reset his password #}
                     {% if action == 'users/login' %}
@@ -45,16 +47,20 @@
                             <input id="password" type="password" name="password">
                         </div>
 
-                        <button class="button-outline _call-to-action" type="submit">Einloggen</button>
-                        <a href="{{ url(craft.request.url, 'password=lost') }}" class="form-login__forgot-link">Passwort vergessen?</a>
+                    </div> {# End of .form__row #}
+
+                    <button class="button-outline _call-to-action" type="submit">Einloggen</button>
+                    <a href="{{ url(craft.request.url, 'password=lost') }}" class="form-login__forgot-link">Passwort vergessen?</a>
 
                     {% else %}
 
                         <input type="hidden" name="redirect" value="{{ craft.entries.section('loginFormResetSuccess').first.url }}">
 
-                        <div class="form__row">
-                            <button class="button-outline _call-to-action" type="submit">Passwort zurücksetzen</button>
-                        </div>
+                    </div> {# End of .form__row #}
+
+                    <div class="form__row">
+                        <button class="button-outline _call-to-action" type="submit">Passwort zurücksetzen</button>
+                    </div>
 
                     {% endif %}
 

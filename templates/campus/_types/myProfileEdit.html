@@ -1,6 +1,8 @@
 {% requireLogin %}
 {% extends "_layout" %}
 
+{% import 'macros/formErrors' as formErrors %}
+
 {% set entry = craft.entries.section('campus').slug('mein-profil').first %}
 {% set currentUser = currentUser %}
 
@@ -87,11 +89,15 @@
                     <div class="form__row">
                         <div class="form__row__column">
                             <label for="email">E-Mail-Adresse</label>
-                            <input type="text" id="email" name="email" value="{{ currentUser.email }}">
+                            <input type="text" id="email" name="email" value="{{ currentUser.email }}"{{ account is defined and account.getErrors('email')|length ? ' class="_has-error"' }}>
+
+                            {{ account is defined and account.getErrors('email')|length ? formErrors.errorList(account.getErrors('email'), 'point-up') }}
                         </div>
                         <div class="form__row__column">
                             <label for="currentPasswordEmail">Aktuelles Passwort bestätigen</label>
-                            <input type="password" id="currentPasswordEmail" name="password">
+                            <input type="password" id="currentPasswordEmail" name="password"{{ account is defined and account.getErrors('currentPassword')|length ? ' class="_has-error"' }}>
+
+                            {{ account is defined and account.getErrors('currentPassword')|length ? formErrors.errorList(account.getErrors('currentPassword'), 'point-up') }}
                             <span class="form__info">Erforderlich, wenn die E-Mail-Adresse geändert werden soll</span>
                         </div>
                     </div>
