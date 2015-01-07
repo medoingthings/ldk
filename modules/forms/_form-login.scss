@@ -16,20 +16,6 @@
     }
 }
 
-.form-login__item {
-    width: 50%;
-    float: left;
-    margin-bottom: em(20);
-
-    &:first-of-type {
-        padding-right: em(20);
-    }
-
-    input {
-        width: 100%;
-    }
-}
-
 .form-login__forgot-link {
     @extend %text-type--6;
     float: left;
@@ -47,15 +33,5 @@
 @include breakpoint(false, 600) {
     .form-login__wrapper {
         padding: em(40) em(20);
-    }
-
-    .form-login__item {
-        width: 100%;
-        float: none;
-
-
-        &:first-of-type {
-            padding: 0;
-        }
     }
 }

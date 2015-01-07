@@ -49,6 +49,10 @@
     }
 }
 
+/**
+ * The form__row element is used when elements need to be put in columns
+ */
+
 .form__row {
     @extend %clearfix;
     float: none;
@@ -56,9 +60,35 @@
     margin-bottom: em(20);
 }
 
+.form__row__column {
+    width: 50%;
+    float: left;
+    margin-bottom: em(20);
+
+    &:first-of-type {
+        padding-right: em(20);
+    }
+
+    input {
+        width: 100%;
+    }
+}
+
+/**
+ * Basic styles to group label and input fields together
+ *
+ * Don’t use together with .form__row
+ */
+
 .form__item {
     position: relative;
     margin-bottom: em(20);
+
+    input,
+    textarea {
+        width: 100%;
+    }
+}
 }
 
 .form--error__wrapper {
@@ -106,6 +136,17 @@
                 border-color: transparent;
                 border-right-color: color(11, $colors-scheme);
             }
+        }
+    }
+}
+
+@include breakpoint(false, 600) {
+    .form__row__column {
+        width: 100%;
+        float: none;
+
+        &:first-of-type {
+            padding: 0;
         }
     }
 }
