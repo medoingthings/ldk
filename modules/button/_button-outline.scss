@@ -31,6 +31,10 @@
         }
     }
 
+    &._right {
+        float: right;
+    }
+
     &:link,
     &:visited {
         color: color(2);
