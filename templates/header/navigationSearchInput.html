@@ -1,5 +1,11 @@
-{% if entry.slug != 'search' %}
-    <li class="navigation-main__item">
+<li class="navigation-main__item{{ entry.slug == 'search' ? ' _is-active' }}">
+
+    {% if entry.slug == 'search' %}
+        <div class="navigation-main__link navigation-main__search__link">
+            <span class="navigation-main__search__text">{{ craft.entries.section('search').first }}</span>
+        </div>
+    {% else %}
         <a href="{{ craft.entries.section('search').first.url }}" class="navigation-main__link navigation-main__search__link"><span class="navigation-main__search__text">{{ craft.entries.section('search').first }}</span></a>
-    </li>
-{% endif %}
+    {% endif %}
+
+</li>
