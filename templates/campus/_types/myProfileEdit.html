@@ -151,20 +151,31 @@
 
                     <div class="form__row">
                         <div class="form__row__column">
-                            <label for="website">Webseite</label>
-                            <input type="text" id="website" name="fields[website]" value="{{ currentUser.website }}" placeholder="{{ craft.fields.getFieldbyHandle('website').settings.placeholder }}">
+                            <div class="form__item">
+                                <label for="website">Webseite</label>
+                                <input type="text" id="website" name="fields[website]" value="{{ currentUser.website }}" placeholder="{{ craft.fields.getFieldbyHandle('website').settings.placeholder }}">
+                            </div>
 
-                            <label for="twitter">Twitter-Name</label>
-                            <input type="text" id="twitter" name="fields[twitter]" value="{{ currentUser.twitter }}" placeholder="{{ craft.fields.getFieldbyHandle('twitter').settings.placeholder }}">
+                            <div class="form__item">
+                                <label for="twitter">Twitter-Name</label>
+                                <input type="text" id="twitter" name="fields[twitter]" value="{{ currentUser.twitter }}" placeholder="{{ craft.fields.getFieldbyHandle('twitter').settings.placeholder }}">
+                            </div>
 
-                            <label for="xing">XING</label>
-                            <input type="text" id="xing" name="fields[xing]" value="{{ currentUser.xing }}" placeholder="{{ craft.fields.getFieldbyHandle('xing').settings.placeholder }}">
+                            <div class="form__item">
+                                <label for="xing">XING</label>
+                                <input type="text" id="xing" name="fields[xing]" value="{{ currentUser.xing }}" placeholder="{{ craft.fields.getFieldbyHandle('xing').settings.placeholder }}">
+                            </div>
 
-                            <label for="facebook">Facebook</label>
-                            <input type="text" id="facebook" name="fields[facebook]" value="{{ currentUser.facebook }}" placeholder="{{ craft.fields.getFieldbyHandle('facebook').settings.placeholder }}">
+                            <div class="form__item">
 
-                            <label for="linkedin">LinkedIn</label>
-                            <input type="text" id="linkedin" name="fields[linkedin]" value="{{ currentUser.linkedin }}" placeholder="{{ craft.fields.getFieldbyHandle('linkedin').settings.placeholder }}">
+                                <label for="facebook">Facebook</label>
+                                <input type="text" id="facebook" name="fields[facebook]" value="{{ currentUser.facebook }}" placeholder="{{ craft.fields.getFieldbyHandle('facebook').settings.placeholder }}">
+                            </div>
+
+                            <div class="form__item">
+                                <label for="linkedin">LinkedIn</label>
+                                <input type="text" id="linkedin" name="fields[linkedin]" value="{{ currentUser.linkedin }}" placeholder="{{ craft.fields.getFieldbyHandle('linkedin').settings.placeholder }}">
+                            </div>
                         </div>
                     </div>
 
