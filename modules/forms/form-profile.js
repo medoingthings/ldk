@@ -22,11 +22,11 @@ var init = function () {
             updateOnEmptySelection: true,
             staticToolbar: true,
             checkLinkFormat: true,
+            firstHeader: 'h2',
+            secondHeader: 'h3',
             buttonLabels: {
                 'bold': '<b>Fett</b>',
                 'anchor': 'Link einfügen',
-                'firstHeader': 'h2',
-                'secondHeader': 'h3',
                 'unorderedlist': 'Liste'
             },
             buttons: ['bold', 'anchor', 'unorderedlist', 'header1', 'header2']
