@@ -6,20 +6,22 @@
 
 <aside class="richtext__content__sidebar__wrapper">
 
-    <div class="richtext__content__sidebar__content">
-        <h3>Status</h3>
-        <div class="richtext__content__sidebar__text">
-            {% for group in person.groups %}
-                {% set groupCategoryMember = craft.categories.group('userGroups').search('userGroupHandle:' ~ group.handle)|length %}
+    {% if craft.session.isLoggedIn %}
+        <div class="richtext__content__sidebar__content">
+            <h3>Campus-Gruppe</h3>
+            <div class="richtext__content__sidebar__text">
+                {% for group in person.groups %}
+                    {% set groupCategoryMember = craft.categories.group('userGroups').search('userGroupHandle:' ~ group.handle)|length %}
 
-                {# Limit to groups that are allowed to be shown #}
-                {% if groupCategoryMember %}
-                    {{ group }}<br>
-                {% endif %}
+                    {# Limit to groups that are allowed to be shown #}
+                    {% if groupCategoryMember %}
+                        {{ group }}<br>
+                    {% endif %}
 
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
     {% if craft.session.isLoggedIn or person.website is not empty %}
     <div class="richtext__content__sidebar__content">
