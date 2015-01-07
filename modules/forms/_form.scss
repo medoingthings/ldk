@@ -52,7 +52,7 @@
         width: 90%;
         border: 0;
         border-top: 1px solid color(3);
-        margin: em(20) auto em(40);
+        margin: em(40) auto;
     }
 }
 
@@ -70,7 +70,6 @@
 .form__row__column {
     width: 50%;
     float: left;
-    margin-bottom: em(20);
 
     &:first-of-type {
         padding-right: em(20);
@@ -88,25 +87,21 @@
     @extend %text-type--6;
     @include icon(info-circle);
     position: relative;
-
     display: block;
     margin-bottom: em(20);
-    padding: em(10) 0 em(10) em(30);
-    margin-left: em(20);
+    padding: em(10) em(20) em(10) em(50);
     color: color(4);
 
     &:before {
         position: absolute;
         top: em(14);
-        left: 0;
+        left: em(20);
         color: color(3);
     }
 }
 
 /**
- * Basic styles to group label and input fields together
- *
- * Don’t use together with .form__row
+ * Basic styles to group a label and it’s corresponding input field together
  */
 
 .form__item {
@@ -158,6 +153,16 @@
         border-top-color: color(11, $colors-scheme);
         border-width: em(10);
         pointer-events: none;
+    }
+
+    &._point-up {
+
+        // CSS3 arrow pointing up
+        &:after {
+            top: em(-20);
+            border-color: transparent;
+            border-bottom-color: color(11, $colors-scheme);
+        }
     }
 }
 
