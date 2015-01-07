@@ -1,16 +1,5 @@
-{% macro errorList(errors) %}
+{% import 'macros/formErrors' as formErrors %}
 
-    {% if errors %}
-        <div class="form--error__wrapper _overlay">
-            {% for error in errors %}
-                <span class="form--error__text">{{ error }}</span>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-{% endmacro %}
-
-{% from _self import errorList %}
 {% set subject = message is defined and message.subject != '' ? message.subject : prefilledSubject %}
 
 <section class="form-contact__wrapper">
@@ -22,19 +11,19 @@
 
         <label for="fromEmail">Ihre E-Mail-Adresse *</label>
         <div class="form__item">
-            {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+            {{ message is defined and message ? formErrors.errorList(message.getErrors('fromEmail'), 'overlay') }}
             <input id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}"{{ message is defined and message.getErrors('fromEmail')|length ? ' class="_has-error"' }}>
         </div>
 
         <label for="subject">Betreff</label>
         <div class="form__item">
-            {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+            {{ message is defined and message ? formErrors.errorList(message.getErrors('subject'), 'overlay') }}
             <input id="subject" type="text" name="subject" value="{{ subject }}"{{ message is defined and message.getErrors('subject')|length ? ' class="_has-error"' }}>
         </div>
 
         <label for="message">Ihre Nachricht *</label>
         <div class="form__item">
-            {{ message is defined and message ? errorList(message.getErrors('message')) }}
+            {{ message is defined and message ? formErrors.errorList(message.getErrors('message'), 'overlay') }}
             <textarea rows="10" cols="40" id="message" name="message"{{ message is defined and message.getErrors('message')|length ? ' class="_has-error"' }}>{% if message is defined %}{{ message.message }}{% endif %}</textarea>
 
         </div>
