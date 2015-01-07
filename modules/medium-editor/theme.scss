@@ -1,0 +1,10 @@
+/**
+ * Theme basis taken from: https://github.com/daviferreira/medium-editor
+ */
+
+@import "bower_components/medium-editor/src/sass/themes/default";
+
+.medium-editor-placeholder:after {
+    top: em(20) !important;
+    left: em(30) !important;
+}

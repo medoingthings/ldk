@@ -47,6 +47,13 @@
     textarea {
         display: block;
     }
+
+    hr {
+        width: 90%;
+        border: 0;
+        border-top: 1px solid color(3);
+        margin: em(20) auto em(40);
+    }
 }
 
 /**
@@ -75,6 +82,28 @@
 }
 
 /**
+ * Info text to guide the user
+ */
+.form__info {
+    @extend %text-type--6;
+    @include icon(info-circle);
+    position: relative;
+
+    display: block;
+    margin-bottom: em(20);
+    padding: em(10) 0 em(10) em(30);
+    margin-left: em(20);
+    color: color(4);
+
+    &:before {
+        position: absolute;
+        top: em(14);
+        left: 0;
+        color: color(3);
+    }
+}
+
+/**
  * Basic styles to group label and input fields together
  *
  * Don’t use together with .form__row
@@ -89,7 +118,26 @@
         width: 100%;
     }
 }
+
+/**
+ * A class that is added to the Medium-Editor field via JavaScript
+ */
+
+.form__editor {
+    padding: em(20) em(30);
+    border: 1px solid color(3);
+
+    transition: 0.3s border-color;
+
+    &:hover,
+    &:focus {
+        border: 1px solid color(2);
+    }
 }
+
+/**
+ * Error Styles
+ */
 
 .form--error__wrapper {
     @extend %text-type--5;

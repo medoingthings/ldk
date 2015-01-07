@@ -1,5 +1,5 @@
 /**
- * Initialize scripts via browserify
+ * Initialize Core Scripts via Browserify
  */
 
 var gallery = require('./gallery/gallery');

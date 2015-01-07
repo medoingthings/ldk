@@ -1,3 +1,4 @@
+{% requireLogin %}
 {% extends "_layout" %}
 
 {% set entry = craft.entries.section('campus').slug('mein-profil').first %}
@@ -7,9 +8,14 @@
 {% set globalPageTitle = currentUser.degree is not empty ? currentUser.degree ~ ' ' : '' %}
 {% set globalPageTitle = globalPageTitle ~ currentUser.name %}
 
+{# This script is needed to initialize the medium-editor #}
+{% block scriptFooter %}
+    <script src="/dist/js/min/my-profile.js"></script>
+{% endblock %}
+
 {% block content %}
 
-    <form method="post" accept-charset="UTF-8" class="form__content">
+    <form method="post" accept-charset="UTF-8" id="form-profile__form--edit" class="form__content">
         {{ getCsrfInput() }}
         <input type="hidden" name="action" value="users/saveUser">
         <input type="hidden" name="redirect" value="campus/mein-profil">
@@ -43,38 +49,91 @@
 
         {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Persönliche Daten'} %}
             {% block content %}
-                <div class="form__item">
-                    <label for="gender">Anrede</label>
-                    <select name="fields[gender]" id="gender">
-                        {% for option in craft.fields.getFieldbyHandle('gender').settings.options  %}
-                            <option value="{{ option.value }}"{{ option.value == currentUser.gender ? ' selected' }}>{{ option.label }}</option>
-                        {% endfor %}
+                <div class="richtext__content">
 
-                    </select>
-                </div>
+                    <div class="form__item">
+                        <label for="gender">Anrede</label>
+                        <select name="fields[gender]" id="gender">
+                            {% for option in craft.fields.getFieldbyHandle('gender').settings.options  %}
+                                <option value="{{ option.value }}"{{ option.value == currentUser.gender ? ' selected' }}>{{ option.label }}</option>
+                            {% endfor %}
 
-                <div class="form__item">
-                    <label for="firstName">Vorname</label>
-                    <input type="text" id="firstName" name="firstName" value="{{ currentUser.firstName }}">
-                </div>
-                <div class="form__item">
-                    <label for="lastName">Nachname</label>
-                    <input type="text" id="lastName" name="lastName" value="{{ currentUser.lastName }}">
-                </div>
-            {% endblock %}
-        {% endembed %}
+                        </select>
+                    </div>
 
-        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Login-Daten'} %}
+                    <div class="form__row">
+                        <div class="form__row__column">
+                            <label for="firstName">Vorname</label>
+                            <input type="text" id="firstName" name="firstName" value="{{ currentUser.firstName }}">
+                        </div>
+                        <div class="form__row__column">
+                            <label for="lastName">Nachname</label>
+                            <input type="text" id="lastName" name="lastName" value="{{ currentUser.lastName }}">
+                        </div>
+                    </div>
 
-            {% block content %}
-                <div class="form__item">
-                    <label for="email">E-Mail-Adresse</label>
-                    <input type="text" id="email" name="email" value="{{ currentUser.email }}">
-                    <label for="newPassword">Neues Passwort</label>
-                    <input type="password" id="newPassword" name="newPassword">
+                    <div class="form__row">
+                        <div class="form__row__column">
+                            <label for="company">Firma</label>
+                            <input type="text" id="company" name="company" value="{{ currentUser.company }}">
+                        </div>
+                        <div class="form__row__column">
+                            <label for="profession">Berufsbezeichnung</label>
+                            <input type="text" id="profession" name="profession" value="{{ currentUser.profession }}">
+                        </div>
+                    </div>
+
                     <hr>
-                    <label for="currentPassword">Aktuelles Passwort bestätigen</label>
-                    <input type="password" id="currentPassword" name="password">
+                    <div class="form__row">
+                        <div class="form__row__column">
+                            <label for="email">E-Mail-Adresse</label>
+                            <input type="text" id="email" name="email" value="{{ currentUser.email }}">
+                        </div>
+                        <div class="form__row__column">
+                            <label for="currentPasswordEmail">Aktuelles Passwort bestätigen</label>
+                            <input type="password" id="currentPasswordEmail" name="password">
+                            <span class="form__info">Erforderlich, wenn die E-Mail-Adresse geändert werden soll</span>
+                        </div>
+                    </div>
+
+                </div>
+            {% endblock %}
+        {% endembed %}
+
+        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Passwort ändern'} %}
+
+            {% block content %}
+                <div class="richtext__content">
+
+                    <div class="form__row">
+                        <div class="form__row__column">
+                            <label for="newPassword">Neues Passwort</label>
+                            <input type="password" id="newPassword" name="newPassword">
+                        </div>
+                        <div class="form__row__column">
+                            <label for="currentPassword">Altes Passwort bestätigen</label>
+                            <input type="password" id="currentPassword" name="password">
+                        </div>
+                    </div>
+
+                </div>
+            {% endblock %}
+        {% endembed %}
+
+        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Informationen zu Ihrer Person'} %}
+
+            {% block content %}
+                <div class="richtext__content">
+
+                    <span class="form__info">Wie ist Ihr Werdegang? Was machen Sie konkret beruflich? Welche fachlichen Schwerpunkte haben Sie? Wo liegen Ihre Interessen?</span>
+
+                    <div class="form__item">
+                        <label for="introduction" class="is-visually-hidden">Informationen zu Ihrer Person</label>
+                        <textarea type="text" class="js-form-profile--editable" id="introduction" name="fields[introduction]" placeholder="Beschreibung zu Ihrer Person hinzufügen">
+                            {{ currentUser.introduction }}
+                        </textarea>
+                    </div>
+
                 </div>
             {% endblock %}
         {% endembed %}
@@ -82,33 +141,27 @@
         {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Kontaktdaten ändern'} %}
 
             {% block content %}
-                <div class="form__item">
-                    <label for="introduction">Hintergrund</label>
-                    <textarea type="text" id="introduction" name="fields[introduction]">
-                        {{ currentUser.introduction }}
-                    </textarea>
-                </div>
-            {% endblock %}
-        {% endembed %}
+                <div class="richtext__content">
 
-        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Kontaktdaten ändern'} %}
+                    <div class="form__row">
+                        <div class="form__row__column">
+                            <label for="website">Webseite</label>
+                            <input type="text" id="website" name="fields[website]" value="{{ currentUser.website }}" placeholder="{{ craft.fields.getFieldbyHandle('website').settings.placeholder }}">
 
-            {% block content %}
-                <div class="form__item">
-                    <label for="xing">XING</label>
-                    <input type="text" id="xing" name="fields[xing]" value="{{ currentUser.xing }}">
+                            <label for="twitter">Twitter-Name</label>
+                            <input type="text" id="twitter" name="fields[twitter]" value="{{ currentUser.twitter }}" placeholder="{{ craft.fields.getFieldbyHandle('twitter').settings.placeholder }}">
 
-                    <label for="facebook">Facebook</label>
-                    <input type="text" id="facebook" name="fields[facebook]" value="{{ currentUser.facebook }}">
+                            <label for="xing">XING</label>
+                            <input type="text" id="xing" name="fields[xing]" value="{{ currentUser.xing }}" placeholder="{{ craft.fields.getFieldbyHandle('xing').settings.placeholder }}">
 
-                    <label for="twitter">Twitter</label>
-                    <input type="text" id="twitter" name="fields[twitter]" value="{{ currentUser.twitter }}">
+                            <label for="facebook">Facebook</label>
+                            <input type="text" id="facebook" name="fields[facebook]" value="{{ currentUser.facebook }}" placeholder="{{ craft.fields.getFieldbyHandle('facebook').settings.placeholder }}">
 
-                    <label for="linkedin">LinkedIn</label>
-                    <input type="text" id="linkedin" name="fields[linkedin]" value="{{ currentUser.linkedin }}">
+                            <label for="linkedin">LinkedIn</label>
+                            <input type="text" id="linkedin" name="fields[linkedin]" value="{{ currentUser.linkedin }}" placeholder="{{ craft.fields.getFieldbyHandle('linkedin').settings.placeholder }}">
+                        </div>
+                    </div>
 
-                    <label for="website">Webseite</label>
-                    <input type="text" id="website" name="fields[website]" value="{{ currentUser.website }}">
                 </div>
             {% endblock %}
         {% endembed %}

@@ -33,17 +33,19 @@
     ]
   },
   "browser": {
-    "zeptojs": "./assets/js/zepto.min.js",
     "magnific-popup": "./bower_components/magnific-popup/dist/jquery.magnific-popup.min.js",
-    "tap.js": "./bower_components/tap.js/tap.js"
+    "medium-editor": "./bower_components/medium-editor/dist/js/medium-editor.js",
+    "tap.js": "./bower_components/tap.js/tap.js",
+    "zeptojs": "./assets/js/zepto.min.js"
   },
   "browserify-shim": {
-    "zeptojs": "$",
-    "tap.js": "Tap",
     "magnific-popup": {
       "depends": [
         "zeptojs"
       ]
-    }
+    },
+    "medium-editor": "MediumEditor",
+    "tap.js": "Tap",
+    "zeptojs": "$"
   }
 }
