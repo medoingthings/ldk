@@ -15,6 +15,10 @@ body {
     display: none;
 }
 
+.is-hidden {
+    display: none !important;
+}
+
 .is-visually-hidden {
     @extend %is-visually-hidden;
 }
