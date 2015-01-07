@@ -17,7 +17,7 @@
 
 {% block content %}
 
-    <form method="post" accept-charset="UTF-8" id="form-profile__form--edit" class="form__content">
+    <form method="post" accept-charset="UTF-8" enctype="multipart/form-data" id="form-profile__form--edit" class="form__content">
         {{ getCsrfInput() }}
         <input type="hidden" name="action" value="users/saveUser">
         <input type="hidden" name="redirect" value="campus/mein-profil">
@@ -106,19 +106,21 @@
             {% endblock %}
         {% endembed %}
 
-        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Passwort ändern'} %}
+        {% embed "helper/sectionContainer.html" with {classes: 'richtext__wrapper', sectionLabel: 'Nutzerbild ändern'} %}
 
             {% block content %}
                 <div class="richtext__content">
 
-                    <div class="form__row">
+                    <div class="form__item">
                         <div class="form__row__column">
-                            <label for="newPassword">Neues Passwort</label>
-                            <input type="password" id="newPassword" name="newPassword">
+                            <label for="userImage" class="is-visually-hidden">Neues Bild</label>
+                            <input type="file" name="fields[userImage]">
                         </div>
                         <div class="form__row__column">
-                            <label for="currentPassword">Altes Passwort bestätigen</label>
-                            <input type="password" id="currentPassword" name="password">
+                        <span class="form__info">
+                            Optimales Format:<br>
+                            Quadratisch (mindestens 400x400px)
+                        </span>
                         </div>
                     </div>
 
