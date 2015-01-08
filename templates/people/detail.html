@@ -51,6 +51,17 @@
         {% endblock %}
     {% endembed %}
 
+    {# Success message if something was saved #}
+    {% if craft.session.hasFlash('notice') %}
+        {% embed "helper/sectionContainer.html" with {classes: 'form__notice__wrapper'} %}
+            {% block content %}
+                <div class="form__notice__content _success">
+                    <span class="form__notice__text">{{ flashMessageProfileSaved.shortText }}</span>
+                </div>
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
+
     {% include 'people/peopleIntroduction' %}
     {% include 'matrix/richtext/index' with {entry: {richtext: person.richtext }} %}
 
