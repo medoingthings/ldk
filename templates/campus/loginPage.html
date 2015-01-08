@@ -11,15 +11,15 @@
 
                 {% if errorMessage is defined or errors is defined %}
 
-                    <div class="form__row form--error__wrapper">
+                    <div class="form__row form__notice__content _error">
 
                         {% if errorMessage is defined %}
-                            <p class="form--error__text">{{ errorMessage }}</p>
+                            <p class="form__notice__text">{{ errorMessage }}</p>
                         {% endif %}
 
                         {% if errors is defined %}
                             {% for error in errors %}
-                                <p class="form--error__text">{{ error }}</p>
+                                <p class="form__notice__text">{{ error }}</p>
                             {% endfor %}
                         {% endif %}
 

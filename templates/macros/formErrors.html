@@ -1,9 +1,9 @@
 {% macro errorList(errors, style) %}
 
     {% if errors %}
-        <div class="form--error__wrapper{{ style ? ' _' ~ style }}">
+        <div class="form__notice__content _error{{ style ? ' _' ~ style }}">
             {% for error in errors %}
-                <span class="form--error__text">{{ error }}</span><br>
+                <span class="form__notice__text">{{ error }}</span><br>
             {% endfor %}
         </div>
     {% endif %}

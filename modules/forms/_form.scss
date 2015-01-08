@@ -131,15 +131,33 @@
 }
 
 /**
- * Error Styles
+ * Notices with error and success states
  */
 
-.form--error__wrapper {
+ .form__notice__wrapper {
+    @extend %container;
+ }
+
+.form__notice__content {
     @extend %text-type--5;
     position: relative;
-    background-color: color(11, $colors-scheme);
     display: inline-block;
     padding: em(7, size(5)) em(30, size(5));
+    background-color: color(2);
+
+    &._error {
+        background-color: color(2, $colors-system);
+    }
+    &._error:after {
+        border-top-color: color(2, $colors-system);
+    }
+
+    &._success {
+        background-color: color(1, $colors-system);
+    }
+    &._success:after {
+        border-top-color: color(1, $colors-system);
+    }
 
     // CSS3 arrow
     &:after {
@@ -150,7 +168,7 @@
         height: 0;
         width: 0;
         border: solid transparent;
-        border-top-color: color(2, $colors-system);
+        border-top-color: color(2);
         border-width: em(10);
         pointer-events: none;
     }
@@ -161,17 +179,21 @@
         &:after {
             top: em(-20);
             border-color: transparent;
+            border-bottom-color: color(2);
+        }
+
+        &._error:after {
             border-bottom-color: color(2, $colors-system);
         }
     }
 }
 
-.form--error__text {
+.form__notice__text {
     color: color(1);
 }
 
 @include breakpoint(1300) {
-    .form--error__wrapper {
+    .form__notice__content {
         &._overlay {
             position: absolute;
             top: 0;
@@ -187,6 +209,10 @@
                 left: auto;
                 margin-top: em(-10);
                 border-color: transparent;
+                border-right-color: color(2);
+            }
+
+            &._error:after {
                 border-right-color: color(2, $colors-system);
             }
         }
