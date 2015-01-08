@@ -53,23 +53,25 @@
             {% block content %}
                 <div class="richtext__content">
 
-                    <div class="form__item">
-                        <label for="gender">Anrede</label>
-                        <select name="fields[gender]" id="gender">
-                            {% for option in craft.fields.getFieldbyHandle('gender').settings.options  %}
-                                <option value="{{ option.value }}"{{ option.value == currentUser.gender ? ' selected' }}>{{ option.label }}</option>
-                            {% endfor %}
+                    <div class="form__row">
+                        <div class="form__row__column">
+                            <label for="gender">Anrede</label>
+                            <select name="fields[gender]" id="gender">
+                                {% for option in craft.fields.getFieldbyHandle('gender').settings.options  %}
+                                    <option value="{{ option.value }}"{{ option.value == currentUser.gender ? ' selected' }}>{{ option.label }}</option>
+                                {% endfor %}
 
-                        </select>
-                    </div>
+                            </select>
+                        </div>
 
-                    <div class="form__item">
-                        <label for="degree">Titel</label>
-                        <select name="fields[degree]" id="degree">
-                            {% for option in craft.fields.getFieldbyHandle('degree').settings.options  %}
-                                <option value="{{ option.value }}"{{ option.value == currentUser.degree ? ' selected' }}>{{ option.label }}</option>
-                            {% endfor %}
-                        </select>
+                        <div class="form__row__column">
+                            <label for="degree">Titel</label>
+                            <select name="fields[degree]" id="degree">
+                                {% for option in craft.fields.getFieldbyHandle('degree').settings.options  %}
+                                    <option value="{{ option.value }}"{{ option.value == currentUser.degree ? ' selected' }}>{{ option.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                     </div>
 
                     <div class="form__row">
