@@ -178,6 +178,7 @@ $richtext--breakpoint--S: 580;
     margin: 0;
     padding-bottom: baselineMargin(5, 1);
     color: color(4);
+    word-break: break-word;
 
     ul {
         margin-bottom: 0;
