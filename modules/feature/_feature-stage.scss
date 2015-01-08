@@ -116,6 +116,48 @@
     }
 }
 
+/**
+ * A list of Links below the text element
+ */
+
+.feature-stage__text__list {
+    @extend %unstyle-list;
+}
+
+.feature-stage__text__item {
+    @extend %unstyle-list-item;
+    @extend %text-type--6;
+    display: inline-block;
+    float: left;
+    margin-right: em(20);
+}
+
+.feature-stage__text__link {
+
+    &._edit-profile {
+        @include icon(pencil);
+    }
+
+    &._edit-password {
+        @include icon(key);
+    }
+
+    &:before {
+        font-size: 0.8em;
+        padding-right: em(10);
+    }
+
+    &:link,
+    &:visited {
+        color: color(2);
+        text-decoration: none;
+    }
+
+    &:hover span {
+        text-decoration: underline;
+    }
+}
+
 // Different text position on bigger screens
 @include breakpoint(1100) {
     .feature-stage__background {

@@ -1,2 +1,2 @@
-{% include 'people/detail' with {person: craft.users.id(currentUser.id).first} %}
+{% include 'people/detail' with {person: craft.users.id(currentUser.id).first, showEditLinks: true} %}
 

@@ -18,6 +18,18 @@
             <div class="feature-stage__content _blocktext{{ person.userImage|length ? ' _image-left' : '' }}">
                 <div class="feature-stage__text">
                     <h1>{{ person.degree is not empty ? person.degree ~ ' ' }}{{ person.name }}</h1>
+
+                    {% if showEditLinks is defined and showEditLinks == true %}
+                        <ul class="feature-stage__text__list">
+                            <li class="feature-stage__text__item">
+                                <a href="/campus/mein-profil/edit" class="feature-stage__text__link _edit-profile"><span>Profil editieren</span></a>
+                            </li>
+                            <li class="feature-stage__text__item">
+                                <a href="/campus/mein-profil/change-password" class="feature-stage__text__link _edit-password"><span>Passwort ändern</span></a>
+                            </li>
+                        </ul>
+                    {% endif %}
+
                 </div>
 
                 {% if person.userImage|length %}
