@@ -26,7 +26,7 @@
         {% endif %}
 
         {% for link in block.entry %}
-            {% set buttonText = loop.first ? block.buttonText|default(defaultStringButton.label) : block.buttonTextSecond|default(defaultStringButton.label) %}
+            {% set buttonText = loop.first ? block.buttonText|default(defaultStringButton) : block.buttonTextSecond|default(defaultStringButton) %}
 
             <a href="{{ link.url }}" class="button-outline{{ block.entry|length > 1 and loop.first ? ' _call-to-action' }}">{{ buttonText }}</a>
         {% endfor %}

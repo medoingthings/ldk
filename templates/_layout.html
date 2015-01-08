@@ -9,6 +9,14 @@
  # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
  #}
 
+{# Set a few default strings that can be used accross templates #}
+{% set defaultStringButton = 'Mehr erfahren' %}
+{% set defaultStringButtonCourse = 'Zur Modulbeschreibung' %}
+{% set defaultStringButtonDate = 'Termin-Details' %}
+{% set defaultStringCurrentCourse = 'Laufendes Modul' %}
+{% set defaultStringLogoutLink = 'Ausloggen' %}
+{% set defaultStringCourseDetail = 'Modulbeschreibung' %}
+
 {# Preparations for talking with search engine robots #}
 {% set robotsIndex = entry.robots.contains('noindex') ? 'noindex' : 'index' %}
 {% set robotsFollow = entry.robots.contains('nofollow') ? 'nofollow' : 'follow' %}

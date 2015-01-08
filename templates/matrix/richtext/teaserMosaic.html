@@ -5,9 +5,9 @@
         {% for block in block.entries %}
 
             {% if block.type == 'dates' %}
-                {% include 'matrix/mosaicTiles/date' with {entryModel: block, styleClasses: '', buttonText: defaultStringButtonDate.label} %}
+                {% include 'matrix/mosaicTiles/date' with {entryModel: block, styleClasses: '', buttonText: defaultStringButtonDate} %}
             {% else %}
-                {% include 'matrix/mosaicTiles/entry' with {entryModel: block, headline: block.title, shortText: block.teaserText, styleClasses: '', buttonText: defaultStringButton.label} %}
+                {% include 'matrix/mosaicTiles/entry' with {entryModel: block, headline: block.title, shortText: block.teaserText, styleClasses: '', buttonText: defaultStringButton} %}
             {% endif %}
 
         {% endfor %}

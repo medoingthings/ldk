@@ -5,7 +5,7 @@
 {% set subtitle = subtitle is defined ? subtitle : '' %}
 {% set courseDate = courseDate is defined ? courseDate : {start: courseModel.courseStartDate, end: courseModel.courseEndDate} %}
 {% set buttonTarget = buttonTarget is defined and buttonTarget ? buttonTarget : courseModel.url %}
-{% set buttonLabel = buttonLabel is defined and buttonLabel ? buttonLabel : defaultStringButtonCourse.label %}
+{% set buttonLabel = buttonLabel is defined and buttonLabel ? buttonLabel : defaultStringButtonCourse %}
 {% set buttonClassAppend = buttonClassAppend is defined and buttonClassAppend ? ' ' ~ buttonClassAppend : '' %}
 
 {% if courseModel|length %}
