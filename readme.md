@@ -22,6 +22,20 @@ here: https://github.com/madrobby/zepto#building
 * Update this Readme with the new module chain
 * Commit the new build and readme.md
 
+## Add more icons
+Use [IcoMoon](https://icomoon.io/app/) to generate a new icon font. Follow these steps:
+
+* Go to [icomoon.io/app/](https://icomoon.io/app/)
+* Click `Import Icons` at the top left
+* Upload the `selection.json` file – it’s located in the repository in `/assets/fonts`
+* Add all the icons you need. Use reasonable area codes and see if there are other codes that are related to the new icon. E. g. if there was a new file icon, place it at `\e62x`.
+* Generate a new icomoon icon set
+* Unzip it and replace the font files in `/assets/fonts`
+* Edit `/modules/base/_icons.scss`
+    * Update the cache busting hash in the `@font-face` declaration (take the hash from `style.css` out of the icomoon set)
+    * Extend the `$base-icons` map with the new names and codes
+* Run `gulp build` – this copies the new font files to the right place
+
 # Contributing
 We’d be happy if you’d like to contribute front end fixes or features. Just
 give me a shout if you need anything.
