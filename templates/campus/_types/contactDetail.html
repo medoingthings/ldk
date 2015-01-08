@@ -1,3 +1,6 @@
-{% set entry = craft.entries.section('campus').slug('kontakte').first %}
+{% if not craft.session.isLoggedIn %}
+    {% exit 404 %}
+{% endif %}
 
+{% set entry = craft.entries.section('campus').slug('kontakte').first %}
 {% include 'people/detail' with {person: craft.users.search(slug).first} %}
