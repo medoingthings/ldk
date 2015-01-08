@@ -1,7 +1,7 @@
 {% extends "_layout" %}
 
-{% set entry = entry ? entry : craft.entries.section('mainNavigation').slug('dozenten').first %}
-{% set person = person ? person : craft.users.group('teacher').search(slug).first %}
+{% set entry = entry is defined ? entry : craft.entries.section('mainNavigation').slug('dozenten').first %}
+{% set person = person is defined ? person : craft.users.group('teacher').search(slug).first %}
 
 {% if not person|length %}
     {% exit 404 %}
