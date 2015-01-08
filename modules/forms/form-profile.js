@@ -30,8 +30,7 @@ var init = function () {
                 'unorderedlist': 'Liste'
             },
             buttons: ['bold', 'anchor', 'unorderedlist', 'header1', 'header2']
-        },
-        targetBlank: true
+        }
     }
 
     var editor;
