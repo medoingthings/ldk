@@ -63,6 +63,15 @@
                         </select>
                     </div>
 
+                    <div class="form__item">
+                        <label for="degree">Titel</label>
+                        <select name="fields[degree]" id="degree">
+                            {% for option in craft.fields.getFieldbyHandle('degree').settings.options  %}
+                                <option value="{{ option.value }}"{{ option.value == currentUser.degree ? ' selected' }}>{{ option.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
                     <div class="form__row">
                         <div class="form__row__column">
                             <label for="firstName">Vorname</label>
