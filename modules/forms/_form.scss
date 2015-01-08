@@ -29,7 +29,7 @@
         -webkit-appearance: none;
 
         &._has-error {
-            border-color: color(11, $colors-scheme);
+            border-color: color(2, $colors-system);
         }
 
         // Make sure iOS devices don’t zoom in on focus
@@ -150,7 +150,7 @@
         height: 0;
         width: 0;
         border: solid transparent;
-        border-top-color: color(11, $colors-scheme);
+        border-top-color: color(2, $colors-system);
         border-width: em(10);
         pointer-events: none;
     }
@@ -161,7 +161,7 @@
         &:after {
             top: em(-20);
             border-color: transparent;
-            border-bottom-color: color(11, $colors-scheme);
+            border-bottom-color: color(2, $colors-system);
         }
     }
 }
@@ -187,7 +187,7 @@
                 left: auto;
                 margin-top: em(-10);
                 border-color: transparent;
-                border-right-color: color(11, $colors-scheme);
+                border-right-color: color(2, $colors-system);
             }
         }
     }
