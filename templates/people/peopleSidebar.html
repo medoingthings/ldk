@@ -23,6 +23,22 @@
         </div>
     {% endif %}
 
+    {% if person.profession is not empty or person.company is not empty %}
+        <div class="richtext__content__sidebar__content">
+
+            {% if person.company is not empty %}
+                <h3>{{ person.company }}</h3>
+            {% endif %}
+
+            {% if person.profession is not empty %}
+                <div class="richtext__content__sidebar__text">
+                    {{ person.profession }}
+                </div>
+            {% endif %}
+
+        </div>
+    {% endif %}
+
     {% if craft.session.isLoggedIn or person.website is not empty %}
     <div class="richtext__content__sidebar__content">
         <h3>Kontakt</h3>
