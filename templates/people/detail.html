@@ -15,10 +15,10 @@
  # fixed in the Google Index. So let’s redirect those correctly.
  #}
 {% if entry.slug == 'dozenten' %}
-    {% set currentPersonSegment = craft.request.lastSegment|url_encode %}
+    {% set currentPersonSegment = craft.request.lastSegment %}
     {% set correctPersonSegment = createUrl.personUrl(person.name) %}
 
-    {% if currentPersonSegment != correctPersonSegment %}
+    {% if currentPersonSegment|url_encode != correctPersonSegment %}
         {% set correctPersonUrl = craft.request.path|replace({(currentPersonSegment): correctPersonSegment}) %}
 
         {% redirect correctPersonUrl %}
