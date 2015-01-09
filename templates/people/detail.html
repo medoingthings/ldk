@@ -1,10 +1,28 @@
 {% extends "_layout" %}
+{% import 'macros/createUrl' as createUrl %}
 
 {% set entry = entry is defined ? entry : craft.entries.section('mainNavigation').slug('dozenten').first %}
 {% set person = person is defined ? person : craft.users.group('teacher').search(slug).first %}
 
 {% if not person|length %}
     {% exit 404 %}
+{% endif %}
+
+{#
+ # Make sure every teacher has only one unique URL
+ #
+ # Background: There are some malformed teacher URLs out there that need to get
+ # fixed in the Google Index. So let’s redirect those correctly.
+ #}
+{% if entry.slug == 'dozenten' %}
+    {% set currentPersonSegment = craft.request.lastSegment %}
+    {% set correctPersonSegment = createUrl.personUrl(person.name) %}
+
+    {% if currentPersonSegment != correctPersonSegment %}
+        {% set correctPersonUrl = craft.request.path|replace({(currentPersonSegment): correctPersonSegment}) %}
+
+        {% redirect correctPersonUrl %}
+    {% endif %}
 {% endif %}
 
 {# Set pageTitle in _layout template #}
