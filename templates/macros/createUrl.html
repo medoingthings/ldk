@@ -1,0 +1,14 @@
+{% macro personUrl(personName, personPath) %}
+
+    {# Set up the url to the persons detail page #}
+    {% set personUrl =
+        personPath ~
+        personName|lower|trim|url_encode
+    %}
+
+    {# Replace whitespaces with dots (e.g. if the person has a double name) #}
+    {% set personUrl = personUrl|replace({'%20':'.'}) %}
+
+    {{ personUrl }}
+
+{% endmacro %}

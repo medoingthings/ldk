@@ -1,3 +1,7 @@
+{% import 'macros/createUrl' as createUrl %}
+
+{% set peoplePath = peoplePath|default('/ueber-uns/dozenten/') %}
+
 <aside class="richtext__content__sidebar__wrapper">
 
     {% if entry.courseTopics %}
@@ -13,7 +17,7 @@
             <div class="richtext__content__sidebar__text">
 
                 {% for prof in entry.courseMaster %}
-                    <a href="/ueber-uns/dozenten/{{ prof.username }}">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.firstName }} {{ prof.lastName }}</a><br>
+                    <a href="{{ createUrl.personUrl(prof.name, peoplePath) }}">{{ prof.degree ? prof.degree ~ ' ' }}{{ prof.firstName }} {{ prof.lastName }}</a><br>
 
                     {% if prof.profession %}
                         {{ prof.profession }}<br>
@@ -30,7 +34,7 @@
             <div class="richtext__content__sidebar__text">
 
                 {% for teacher in entry.courseTeacher %}
-                    <a href="/ueber-uns/dozenten/{{ teacher.username }}">{{ teacher.degree ? teacher.degree ~ ' ' }}{{ teacher.firstName }} {{ teacher.lastName }}</a><br>
+                    <a href="{{ createUrl.personUrl(teacher.name, peoplePath) }}">{{ teacher.degree ? teacher.degree ~ ' ' }}{{ teacher.firstName }} {{ teacher.lastName }}</a><br>
 
                     {% if teacher.profession %}
                         {{ teacher.profession }}<br>

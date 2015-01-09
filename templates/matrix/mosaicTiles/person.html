@@ -1,4 +1,8 @@
+{% import 'macros/createUrl' as createUrl %}
+
 {% set peoplePath = peoplePath|default('/ueber-uns/dozenten/') %}
+{% set personUrl = createUrl.personUrl(entryModel.name, peoplePath) %}
+
 {% set thumbnailTransform = {
     mode: 'crop',
     width: 200,
@@ -10,7 +14,7 @@
 
     {% if entryModel.userImage is defined and entryModel.userImage|length %}
         <div class="mosaic-tiles__image">
-            <a href="{{ peoplePath }}{{ entryModel.firstName|lower|url_encode }}.{{ entryModel.lastName|lower|url_encode }}">
+            <a href="{{ personUrl }}">
                 <img src="{{ entryModel.userImage.first.getUrl(thumbnailTransform) }}">
             </a>
         </div>
@@ -22,7 +26,7 @@
             <span class="_info">{{ entryModel.gender }} {{ entryModel.degree }}</span>
         {% endif %}
 
-        <h2><a href="{{ peoplePath }}{{ entryModel.firstName|lower|url_encode }}.{{ entryModel.lastName|lower|url_encode }}">{{ entryModel.name }}</a></h2>
+        <h2><a href="{{ personUrl }}">{{ entryModel.name }}</a></h2>
 
         <span class="_info">
             {{ entryModel.profession }}
