@@ -1,5 +1,5 @@
 {% set query   = craft.request.getParam('q') %}
-{% set results = craft.entries.search(query).type('dates').order('timeFrameStart') %}
+{% set results = craft.entries.search(query).type('dates').channelControl('!= feedOnly').order('timeFrameStart') %}
 
 {% block content %}
 

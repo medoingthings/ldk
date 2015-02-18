@@ -19,14 +19,17 @@ X-WR-CALNAME:Leadership in Digitaler Kommunikation
 X-WR-TIMEZONE:Europe/Berlin
 X-WR-CALDESC:Alle Module und Termine auf einen Blick.
 
-{# Output all available courses #}
+{#
+ # Output all available courses
+ #}
+
 {% for course in craft.entries.section('mainNavigation').type('courseDetail') %}
 {% for date in course.courseDates %}
 BEGIN:VEVENT
 
-{# Start/end date, formated as full day events #}
+{# Start/end date, formated as full day events. Full day events need one day to be added due to the spec. #}
 DTSTART;VALUE=DATE:{{ date.timeFrameStart|date('Ymd') }}
-DTEND;VALUE=DATE:{{ date.timeFrameEnd|default(date.timeFrameStart|date("Ymd")) }}
+DTEND;VALUE=DATE:{{ date.timeFrameEnd is not empty ? date.timeFrameEnd|date_modify('+1 day')|date('Ymd') : date.timeFrameStart|date_modify('+1 day')|date('Ymd') }}
 
 {# Meta information #}
 {{ course.title is not empty ? 'SUMMARY:' ~ course.title }}
@@ -45,13 +48,16 @@ END:VEVENT
 {% endfor %}
 {% endfor %}
 
-{# Output all entries from the dates section #}
-{% for date in craft.entries.section('dates') if not date.noFeed %}
+{#
+ # Output all entries from the dates section
+ #}
+
+{% for date in craft.entries.section('dates') if date.channelControl != 'noFeed' %}
 BEGIN:VEVENT
 
-{# Start/end date, check if it’s a full day event #}
+{# Start/end date, check if it’s a full day event. Full day events need one day to be added due to the spec. #}
 DTSTART;VALUE=DATE:{{ date.timeFrameStart|date('Ymd') }}{{ not date.fullDay ? 'T' ~ date.timeFrameStart|date('His') ~ 'Z' : '' }}
-DTEND;VALUE=DATE:{{ date.timeFrameStop|date("Ymd") }}{{ not date.fullDay ? 'T' ~ date.timeFrameStop|date('His') ~ 'Z' : '' }}
+DTEND;VALUE=DATE:{{ not date.fullDay ? date.timeFrameStop|date('Ymd') : date.timeFrameStop|date_modify('+1 day')|date('Ymd') }}{{ not date.fullDay ? 'T' ~ date.timeFrameStop|date('His') ~ 'Z' : '' }}
 
 {# Meta information #}
 {{ date.title is not empty ? 'SUMMARY:' ~ date.title }}
