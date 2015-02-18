@@ -1,0 +1,74 @@
+{% cache globally %}
+
+{% header 'Content-type: text/calendar; charset=utf-8' %}
+{% header 'Content-Disposition: inline; filename=kalender.ics' %}
+
+{# Tell the browser to cache this page for 1 day | borrowed from http://craftcms.stackexchange.com/a/2600/1056 #}
+{% set expiry = now|date_modify('+1 day') %}
+
+{% header "Cache-Control: max-age=" ~ expiry.timestamp %}
+{% header "Pragma: cache" %}
+{% header "Expires: " ~ expiry|date('D, d M Y H:i:s', 'GMT') ~ " GMT" %}
+
+BEGIN:VCALENDAR
+PRODID:LdK-Kalender
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Leadership in Digitaler Kommunikation
+X-WR-TIMEZONE:Europe/Berlin
+X-WR-CALDESC:Alle Module und Termine auf einen Blick.
+
+{# Output all available courses #}
+{% for course in craft.entries.section('mainNavigation').type('courseDetail') %}
+{% for date in course.courseDates %}
+BEGIN:VEVENT
+
+{# Start/end date, formated as full day events #}
+DTSTART;VALUE=DATE:{{ date.timeFrameStart|date('Ymd') }}
+DTEND;VALUE=DATE:{{ date.timeFrameEnd|default(date.timeFrameStart|date("Ymd")) }}
+
+{# Meta information #}
+{{ course.title is not empty ? 'SUMMARY:' ~ course.title }}
+{{ course.url is not empty ? 'URL:' ~ course.url }}
+
+{# Location, if applicable | @TODO make a macro from this for DRYer code (see below) #}
+{% if course.venue is not empty %}
+LOCATION:{{ course.venue.first}}\n{{ course.venue.first.street }}\n{{ course.venue.first.zipcode }} {{ course.venue.first.city }}
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS={{ course.venue.first.street }}\n{{ course.venue.first.zipcode }} {{ course.venue.first.city }};X-APPLE-RADIUS=50;X-TITLE="{{ course.venue.first }}"{{ course.venue.first.latlng is not empty ? ':geo:' ~ course.venue.first.latlng }}
+{% endif %}
+
+{# Teaser text #}
+{{ course.teaserText is not empty ? 'DESCRIPTION:' ~ course.teaserText }}
+
+END:VEVENT
+{% endfor %}
+{% endfor %}
+
+{# Output all entries from the dates section #}
+{% for date in craft.entries.section('dates') if not date.noFeed %}
+BEGIN:VEVENT
+
+{# Start/end date, check if it’s a full day event #}
+DTSTART;VALUE=DATE:{{ date.timeFrameStart|date('Ymd') }}{{ not date.fullDay ? 'T' ~ date.timeFrameStart|date('His') ~ 'Z' : '' }}
+DTEND;VALUE=DATE:{{ date.timeFrameStop|date("Ymd") }}{{ not date.fullDay ? 'T' ~ date.timeFrameStop|date('His') ~ 'Z' : '' }}
+
+{# Meta information #}
+{{ date.title is not empty ? 'SUMMARY:' ~ date.title }}
+{{ date.url is not empty ? 'URL:' ~ date.url }}
+
+{# Location, if applicable #}
+{% if date.venue is not empty %}
+LOCATION:{{ date.venue.first}}\n{{ date.venue.first.street }}\n{{ date.venue.first.zipcode }} {{ date.venue.first.city }}
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS={{ date.venue.first.street }}\n{{ date.venue.first.zipcode }} {{ date.venue.first.city }};X-APPLE-RADIUS=50;X-TITLE="{{ date.venue.first }}"{{ date.venue.first.latlng is not empty ? ':geo:' ~ date.venue.first.latlng }}
+{% endif %}
+
+{# Teaser text and/or location details with a separator, if needed #}
+{{ date.teaserText is not empty or date.venueDetails is not empty ? 'DESCRIPTION:' ~ date.venueDetails|striptags|default('') ~ (date.teaserText is not empty and date.venueDetails is not empty ? '\\n--\\n') ~ date.teaserText|default('') }}
+
+END:VEVENT
+{% endfor %}
+
+END:VCALENDAR
+
+{% endcache %}
