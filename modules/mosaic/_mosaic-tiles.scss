@@ -24,6 +24,22 @@
 
     &._wide {
         @include span-columns(6);
+
+        &._highlight {
+            h2 {
+                margin-bottom: em(10, size(3));
+            }
+
+            ._subtitle {
+                margin-bottom: 0;
+            }
+        }
+
+        &._text-size-big {
+            h2 {
+                @extend %text-type--3;
+            }
+        }
     }
 
     &._third {
@@ -269,21 +285,27 @@
     }
 }
 
-.mosaic-tiles__content {
-    &._wide._highlight {
-        h2 {
-            margin-bottom: em(10, size(3));
-        }
+/**
+ * Meta information, e.g. about the presented information. Used for the dates section.
+ */
 
-        ._subtitle {
-            margin-bottom: 0;
-        }
+.mosaic-tiles__meta__wrapper {
+    margin-bottom: em(20);
+
+    .form__notice__content {
+        width: 100%;
+        padding: em(20);
     }
 
-    &._wide._text-size-big {
-        h2 {
-            @extend %text-type--3;
-        }
+    p,
+    input[type=text] {
+        @extend %text-type--6;
+    }
+
+    input[type=text] {
+        width: 100%;
+        border: 0;
+        background-color: transparent;
     }
 }
 
