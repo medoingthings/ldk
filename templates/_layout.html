@@ -91,7 +91,7 @@
         <script src="/dist/js/respond.min.js"></script>
     <![endif]-->
 
-    <script src="/dist/js/min/modernizr.js"></script>
+    <script src="/dist/js/modernizr.js"></script>
     <script src="/dist/js/picturefill.min.js"></script>
 
     {% if not craft.config.devMode and not craft.request.isLivePreview %}
@@ -148,7 +148,7 @@
 
     </section>
 
-    <script src="{{ craft.bust.er('/dist/js/min/core.js') }}"></script>
+    <script src="{{ craft.bust.er('/dist/js/core.js') }}"></script>
 
     {# A block other templates can put in site specific scripts #}
     {% block scriptFooter %}{% endblock %}
