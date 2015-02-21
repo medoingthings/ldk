@@ -136,9 +136,9 @@
  * Notices with error and success states
  */
 
- .form__notice__wrapper {
+.form__notice__wrapper {
     @extend %container;
- }
+}
 
 .form__notice__content {
     @extend %text-type--5;
@@ -146,6 +146,10 @@
     display: inline-block;
     padding: em(7, size(5)) em(30, size(5));
     background-color: color(2);
+
+    &:not(._point-up) {
+        margin-bottom: em(20);
+    }
 
     &._error {
         background-color: color(2, $colors-system);
@@ -176,6 +180,7 @@
     }
 
     &._point-up {
+        margin-top: em(10);
 
         // CSS3 arrow pointing up
         &:after {
