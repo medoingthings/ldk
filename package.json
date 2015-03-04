@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:medoingthings/ldk-website.git"
+    "url": "git@github.com:medoingthings/ldk.git"
   },
   "author": "Mark Rickert <mark@medoingthings.com>",
   "license": "ISC",
