@@ -223,6 +223,7 @@
     ._subtitle {
         @extend %text-type--5;
         display: block;
+        line-height: lineHeight(4);
         text-transform: uppercase;
     }
 
