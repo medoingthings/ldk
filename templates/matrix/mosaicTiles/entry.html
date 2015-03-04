@@ -3,9 +3,9 @@
 {% set buttonText   = buttonText is defined ? buttonText : block.buttonText|default(defaultStringButton) %}
 {% set shortText    = shortText is defined ? shortText : block.shortText|default(entryModel.teaserText) %}
 {% set headline     = headline is defined ? headline : entryModel.title %}
-{% set styleClasses = entryModel.subtitle ? styleClasses ~ ' _wide' : styleClasses %}
+{% set styleClasses = entryModel.subtitle or entryModel.teaserText|length > 60 ? styleClasses ~ ' _wide' : styleClasses %}
 
-<div class="mosaic-tiles__content _text {{ '_' ~ entryId }}{{ styleClasses }}">
+<div class="mosaic-tiles__content _text {{ entryId is not empty ? '_' ~ entryId }}{{ styleClasses }}">
     <div class="mosaic-tiles__text">
 
         {% if entryModel.type == 'news' %}
