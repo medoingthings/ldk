@@ -6,6 +6,9 @@
 {# Tell the browser to cache this page for 1 day | borrowed from http://craftcms.stackexchange.com/a/2600/1056 #}
 {% set expiry = now|date_modify('+1 day') %}
 
+{# Set the timezone to UTC so that the correct timezone is applied in peoples calendar software #}
+{% set timezone = 'UTC' %}
+
 {% header "Cache-Control: max-age=" ~ expiry.timestamp %}
 {% header "Pragma: cache" %}
 {% header "Expires: " ~ expiry|date('D, d M Y H:i:s', 'GMT') ~ " GMT" %}
@@ -55,9 +58,14 @@ END:VEVENT
 {% for date in craft.entries.section('dates') if date.channelControl != 'noFeed' %}
 BEGIN:VEVENT
 
-{# Start/end date, check if it’s a full day event. Full day events need one day to be added due to the spec. #}
-DTSTART;VALUE=DATE:{{ date.timeFrameStart|date('Ymd') }}{{ not date.fullDay ? 'T' ~ date.timeFrameStart|date('His') ~ 'Z' : '' }}
-DTEND;VALUE=DATE:{{ not date.fullDay ? date.timeFrameStop|date('Ymd') : date.timeFrameStop|date_modify('+1 day')|date('Ymd') }}{{ not date.fullDay ? 'T' ~ date.timeFrameStop|date('His') ~ 'Z' : '' }}
+{#
+ # Start/end date, check if it’s a full day event. Full day events need one day to be added due to the spec.
+ #
+ # Important: Watch out for the .getTimestamp()|date(..., timezone)
+ # This makes sure that the date filter can output the time in UTC timezone, so that the time can adapt to the users timezone
+ #}
+DTSTART;VALUE=DATE:{{ date.timeFrameStart|date('Ymd') }}{{ not date.fullDay ? 'T' ~ date.timeFrameStart.getTimestamp()|date('His', timezone) ~ 'Z' : '' }}
+DTEND;VALUE=DATE:{{ not date.fullDay ? date.timeFrameStop|date('Ymd') : date.timeFrameStop|date_modify('+1 day')|date('Ymd') }}{{ not date.fullDay ? 'T' ~ date.timeFrameStop.getTimestamp()|date('His', timezone) ~ 'Z' : '' }}
 
 {# Meta information #}
 {{ date.title is not empty ? 'SUMMARY:' ~ date.title }}
