@@ -72,6 +72,8 @@ gulp.task('templates', function () {
 
 gulp.task('watch', function () {
     livereload.listen();
-    gulp.watch([gulpconfig.sass.modules, gulpconfig.templates.src, gulpconfig.js.src], ['sass', 'templates', 'javascript'])
-        .on('change', livereload.changed);
+    gulp.watch(gulpconfig.sass.modules, ['sass']).on('change', livereload.changed);
+    gulp.watch(gulpconfig.templates.src, ['templates']).on('change', livereload.changed);
+    gulp.watch(gulpconfig.js.src, ['javascript']).on('change', livereload.changed);
+
 });
