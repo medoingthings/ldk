@@ -1,3 +1,5 @@
+[ ![Codeship Status for medoingthings/ldk](https://codeship.com/projects/25a7f700-7330-0132-e828-668408718eb6/status?branch=master)](https://codeship.com/projects/54897)
+
 # Documentation for www.leadership-digitale-kommunikation.de
 
 ## Getting Started
