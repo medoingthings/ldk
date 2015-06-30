@@ -8,7 +8,7 @@
  */
 
 // Helps removing the 300ms delay for clicks on touch devices
-var Tap = require('tap.js');
+var fastclick = require('fastclick');
 
 // Cache nodes
 var $globalContainer  = document.querySelector('.layout-ldk__wrapper');
@@ -35,13 +35,12 @@ var _settings = {
 
 var init = function () {
 
-    // Store instances from tap.js to remove 300ms click delay on touch
-    var navigationTap = new Tap($navigation);
-    var navigationToggleTap = new Tap($navigationToggle);
+    // Remove 300ms click delay on touch
+    fastclick.FastClick.attach($navigation);
+    fastclick.FastClick.attach($navigationToggle);
 
-    // Apply previously created tap events
-    $navigation.addEventListener('tap', _onNavigationClick, false);
-    $navigationToggle.addEventListener('tap', _toggleNavigation, false);
+    $navigation.addEventListener('click', _onNavigationClick, false);
+    $navigationToggle.addEventListener('click', _toggleNavigation, false);
 }
 
 /**
@@ -50,7 +49,8 @@ var init = function () {
  * @return {void}
  */
 
-var _toggleNavigation = function () {
+var _toggleNavigation = function (event) {
+    event.preventDefault();
 
     if (isOpen) {
         $globalContainer.classList.remove(_settings.classNameOpenGlobal);
