@@ -151,6 +151,12 @@
     &._management-2 {
         &._highlight {
             background-color: color(4, $colors-scheme);
+            color: color(1);
+
+            .button-square,
+            .button-square:hover:before {
+                color: color(1);
+            }
         }
 
         &._emphasize {
