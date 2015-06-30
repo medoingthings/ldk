@@ -1,6 +1,6 @@
 {% set className = entry.slug %}
 {% set headline = entry.title %}
-{% set courseAgendaDownloadUrl = courseModel.courseAgenda|length ? courseModel.courseAgenda.first.url %}
+{% set courseAgendaDownloadUrl = courseModel.courseAgenda is defined and courseModel.courseAgenda|length ? courseModel.courseAgenda.first.url %}
 
 <div class="download-area__headline__wrapper{{ className ? ' _' ~ className }}">
     <h1 class="download-area__headline">{{ headline }}</h1>
