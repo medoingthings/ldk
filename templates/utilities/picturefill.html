@@ -15,7 +15,7 @@
         {% if view == 'noscript' %}
             {% set noscriptImageUrl = imageUrl %}
         {% elseif imageUrl and view %}
-            <source srcset="{{ imageUrl }}{{ retina ? ' ' ~ retina }}" media="(min-width: {{ view }}">
+            <source srcset="{{ imageUrl }}{{ retina ? ' ' ~ retina }}" media="(min-width: {{ view }})">
         {% else %}
             {% set defaultImageUrl = imageUrl %}
         {% endif %}
