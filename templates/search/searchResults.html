@@ -4,40 +4,38 @@
 
     {% paginate results.limit(21) as resultsPerPage %}
 
-        {# Output results #}
-        {% for entry in resultsPerPage %}
+    {# Output results #}
+    {% for entry in resultsPerPage %}
 
-            {% include 'search/' ~ resultsTemplate %}
+        {% include 'search/' ~ resultsTemplate %}
 
-        {% endfor %}
+    {% endfor %}
 
-        {# Pagination logic #}
-        {% if paginate.totalPages > 1 %}
+    {# Pagination logic #}
+    {% if paginate.totalPages > 1 %}
 
-            <ul class="button-paginate__list">
-            {% if paginate.prevUrl %}
-                <li class="button-paginate__item"><a href="{{ paginate.prevUrl }}" class="button-paginate__link _previous"><span class="is-visually-hidden">Vorherige Seite</span></a></li>
-            {% endif %}
-
-            {% for page, url in paginate.getPrevUrls(5)  %}
-                <li class="button-paginate__item"><a href="{{ url }}" class="button-paginate__link">{{ page }}</a></li>
-            {% endfor %}
-
-                <li class="button-paginate__item"><span class="button-paginate__link _is-active">{{ paginate.currentPage }}</li>
-
-            {% for page, url in paginate.getNextUrls(5)  %}
-                <li class="button-paginate__item"><a href="{{ url }}" class="button-paginate__link">{{ page }}</a></li>
-            {% endfor %}
-
-
-            {% if paginate.nextUrl %}
-                <li class="button-paginate__item"><a href="{{ paginate.nextUrl }}" class="button-paginate__link _next"><span class="is-visually-hidden">Nächste Seite</span></a></li>
-            {% endif %}
-            </ul>
-
+        <ul class="button-paginate__list">
+        {% if paginate.prevUrl %}
+            <li class="button-paginate__item"><a href="{{ paginate.prevUrl }}" class="button-paginate__link _previous"><span class="is-visually-hidden">Vorherige Seite</span></a></li>
         {% endif %}
 
-    {% endpaginate %}
+        {% for page, url in paginate.getPrevUrls(5)  %}
+            <li class="button-paginate__item"><a href="{{ url }}" class="button-paginate__link">{{ page }}</a></li>
+        {% endfor %}
+
+            <li class="button-paginate__item"><span class="button-paginate__link _is-active">{{ paginate.currentPage }}</li>
+
+        {% for page, url in paginate.getNextUrls(5)  %}
+            <li class="button-paginate__item"><a href="{{ url }}" class="button-paginate__link">{{ page }}</a></li>
+        {% endfor %}
+
+
+        {% if paginate.nextUrl %}
+            <li class="button-paginate__item"><a href="{{ paginate.nextUrl }}" class="button-paginate__link _next"><span class="is-visually-hidden">Nächste Seite</span></a></li>
+        {% endif %}
+        </ul>
+
+    {% endif %}
 
 {% else %}
 
