@@ -2,7 +2,8 @@
 {% import 'macros/createUrl' as createUrl %}
 
 {% set entry = entry is defined ? entry : craft.entries.section('mainNavigation').slug('dozenten').first %}
-{% set person = person is defined ? person : craft.users.group('teacher').search(slug).first %}
+{% set searchQuery = slug|replace('.', ' ') %}
+{% set person = person is defined ? person : craft.users.group('teacher').search('fullName:' ~ searchQuery).first %}
 
 {% if not person|length %}
     {% exit 404 %}
