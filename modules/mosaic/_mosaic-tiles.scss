@@ -7,20 +7,48 @@
     margin-bottom: em(20);
 }
 
-.mosaic-tiles__image img {
-    width: 100%;
-    height: auto;
-    display: block;
+.mosaic-tiles__image {
+    &._image-background {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        // Avoid clipping image
+        top: -1px;
+        left: -1px;
+        width: 101%;
+        height: 101%;
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 }
 
 .mosaic-tiles__content {
     @include span-columns(3);
     @extend %clearfix;
     position: relative;
-    height: 0;
-    padding-top: 25%;
     background-color: color(1);
     overflow: hidden;
+
+    &._link {
+        &:link,
+        &:active,
+        &:visited,
+        &:hover {
+            color: color(2);
+        }
+    }
 
     &._wide {
         @include span-columns(6);
@@ -205,13 +233,34 @@
     }
 }
 
+.mosaic-tiles__inner,
 .mosaic-tiles__text {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+a.mosaic-tiles__inner {
+    &:link,
+    &:visited,
+    &:hover {
+        color: color(2);
+    }
+}
+
+.mosaic-tiles__text {
     padding: em(30) em(20);
+
+    &._blocktext {
+        display: inline;
+        background-color: color(1);
+        padding-left: 4px;
+        padding-right: 4px;
+        box-decoration-break: clone;
+
+    }
 
     .mosaic-tiles__content._third & {
         padding: em(15);
@@ -357,15 +406,30 @@
     }
 }
 
+@include breakpoint (762) {
+    .mosaic-tiles__content {
+        &:after {
+            content: '';
+            display: block;
+            padding-top: 100% / (16 / 9);
+        }
+    }
+}
+
 @include breakpoint (false, 761) {
+    .mosaic-tiles__content._video {
+        &:after {
+            content: '';
+            display: block;
+            padding-top: 100% / (16 / 9);
+        }
+    }
 
     // High specifity to overwrite double class styles like .mosaic-tiles__content._image-left
     .mosaic-tiles__content {
 
         &.mosaic-tiles__content {
             width: 100%;
-            height: auto;
-            padding-top: 0;
             min-height: em(180);
             border-top: 1px solid color(5);
         }
@@ -389,7 +453,7 @@
         position: static;
         float: left;
 
-        .button-square {
+        .button-square:not(._play) {
             position: relative;
             display: block; // Activate margin collapsing
             margin-top: em(20);

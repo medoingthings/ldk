@@ -11,6 +11,10 @@ body {
     background-color: color(3);
 }
 
+figure {
+    margin: 0;
+}
+
 .no-js picture img[srcset] {
     display: none;
 }

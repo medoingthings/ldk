@@ -98,4 +98,38 @@
             line-height: 0.9;
         }
     }
+
+    &._play {
+        @include icon(play, 1.1em);
+        background-color: white;
+        border: none;
+        padding-top: 0;
+        padding-right: em(10);
+        padding-left: em(80);
+        height: em(60);
+        width: 93%;
+        width: calc(100% - #{em(24 * 2)});
+        display: flex;
+        align-items: center;
+
+        &:before,
+        &:after {
+            height: 100%;
+        }
+
+        &:after {
+            width: em(60);
+            height: em(60);
+            border: 0;
+        }
+
+        &:before {
+            text-indent: em(18);
+            line-height: 1.7;
+        }
+
+        ._label {
+            width: 100%;
+        }
+    }
 }

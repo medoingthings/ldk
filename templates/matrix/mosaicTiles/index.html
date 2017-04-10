@@ -11,9 +11,11 @@
 
                 {% set styleClasses = '' %}
 
-                {% for style in block.style %}
-                    {% set styleClasses = style != '' ? styleClasses ~ ' _' ~ style %}
-                {% endfor %}
+                {% if block['style'] is defined %}
+                    {% for style in block.style %}
+                        {% set styleClasses = style != '' ? styleClasses ~ ' _' ~ style %}
+                    {% endfor %}
+                {% endif %}
 
                 {% include 'matrix/mosaicTiles/' ~ block.type %}
 
