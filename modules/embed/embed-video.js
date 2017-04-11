@@ -44,7 +44,7 @@ var _embedVideo = function (event) {
 
     event.preventDefault();
     $parent.innerHTML = '';
-    $parent.append($iframe);
+    $parent.appendChild($iframe);
 
     $this.removeEventListener('click', _embedVideo);
 }
