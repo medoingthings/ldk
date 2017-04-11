@@ -9,7 +9,7 @@
     <div class="mosaic-tiles__text">
 
         {% if entryModel.type == 'news' %}
-            {% set dateFormat = entryModel.postDate|date('Y') != now|date('Y') ? 'd. F Y' : 'd. F' %}
+            {% set dateFormat = entryModel.postDate|date('Y') != now|date('Y') ? 'F Y' : 'F' %}
             <span class="_date">{{ entryModel.postDate|date(dateFormat) }}</span>
         {% endif %}
 
