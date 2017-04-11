@@ -283,6 +283,9 @@ a.mosaic-tiles__inner {
         @extend %text-type--5;
         display: block;
         line-height: lineHeight(4);
+    }
+
+    ._uppercase {
         text-transform: uppercase;
     }
 
