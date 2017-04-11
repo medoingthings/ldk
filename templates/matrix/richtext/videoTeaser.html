@@ -1,0 +1,14 @@
+{% embed "helper/sectionContainer.html" with {classes: 'mosaic-tiles__wrapper', sectionLabel: block.sectionLabel} %}
+
+    {% block content %}
+        {% for video in block.video %}
+            {% include 'matrix/mosaicTiles/videoTeaser' with {
+                block: {
+                    video: [video]
+                }
+            } %}
+        {% endfor %}
+    {% endblock %}
+
+{% endembed %}
+

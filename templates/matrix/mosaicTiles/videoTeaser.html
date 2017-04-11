@@ -1,15 +1,21 @@
-{% set videoModel = block.video.first %}
+{% set videoModel = block.video[random(block.video|length - 1)] %}
 {% set videoEmbed = craft.embeddedAssets.fromAsset(videoModel) %}
 
 {% if videoEmbed %}
+    {% set posterframeTransform = {
+        mode: 'crop',
+        width: 700,
+        height: 700 / (16 / 9),
+        position: 'center-center'
+    } %}
+    {% set posterframe = videoModel.posterframe|length ? videoModel.posterframe.first.getUrl(posterframeTransform) : videoEmbed.thumbnailUrl %}
+
     <div class="mosaic-tiles__content _wide _link _video embed-video__target">
         <a href="{{ videoEmbed.url }}" class="mosaic-tiles__inner embed-video__link">
             <figure class="mosaic-tiles__image _image-background">
-                <img src="{{ videoEmbed.thumbnailUrl }}">
+                <img src="{{ posterframe }}">
             </figure>
             <div class="mosaic-tiles__text">
-                {# <h2><a href="{{ videoEmbed.url }}"><span>{{ videoEmbed.title }}</span></a></h2> #}
-
                 <p class="button-square _play">
                     <span class="_label">{{ videoEmbed.title }}</span>
                 </p>

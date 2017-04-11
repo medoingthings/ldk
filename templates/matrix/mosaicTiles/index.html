@@ -5,23 +5,19 @@
 
     {% block content %}
 
-        {% cache %}
+        {% for block in entry.mosaicTiles if block.type != 'sectionLabel' %}
 
-            {% for block in entry.mosaicTiles if block.type != 'sectionLabel' %}
+            {% set styleClasses = '' %}
 
-                {% set styleClasses = '' %}
+            {% if block['style'] is defined %}
+                {% for style in block.style %}
+                    {% set styleClasses = style != '' ? styleClasses ~ ' _' ~ style %}
+                {% endfor %}
+            {% endif %}
 
-                {% if block['style'] is defined %}
-                    {% for style in block.style %}
-                        {% set styleClasses = style != '' ? styleClasses ~ ' _' ~ style %}
-                    {% endfor %}
-                {% endif %}
+            {% include 'matrix/mosaicTiles/' ~ block.type %}
 
-                {% include 'matrix/mosaicTiles/' ~ block.type %}
-
-            {% endfor %}
-
-        {% endcache %}
+        {% endfor %}
 
     {% endblock %}
 
