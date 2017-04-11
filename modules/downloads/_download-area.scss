@@ -9,6 +9,8 @@
 }
 
 .download-area__wrapper--inline {
+    width: 100%;
+
     &._is-dimmed {
         background-color: color(5);
     }
