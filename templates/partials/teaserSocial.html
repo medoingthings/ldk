@@ -1,0 +1,58 @@
+{#
+ # Shows facebook and twitter timelines next to each other
+ #}
+
+<div class="feature-stage__split__container feature-stage__wrapper">
+    {% embed "helper/sectionContainer.html" with {classes: 'feature-stage__split__wrapper', sectionLabel: 'Facebook'} %}
+
+        {% block content %}
+            <div class="feature-stage__content _cushion">
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-page" data-href="https://www.facebook.com/UdK.LDK" data-tabs="timeline" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/UdK.LDK" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/UdK.LDK" class="is-visually-hidden-js-only">Leadership in Digitaler Kommunikation</a></blockquote></div>
+            </div>
+        {% endblock %}
+
+    {% endembed %}
+
+    {% embed "helper/sectionContainer.html" with {classes: 'feature-stage__split__wrapper', sectionLabel: 'Twitter'} %}
+
+        {% block content %}
+            <div class="feature-stage__content _cushion">
+                <div class="feature-stage__content__scroll" style="max-height:500px;">
+                    <a class="twitter-timeline is-visually-hidden-js-only"
+                      href="https://twitter.com/TwitterDev"
+                      data-width="500"
+                      data-height="500"
+                      data-tweet-limit="3"
+                      data-aria-polite="assertive">
+                    Tweets by @TwitterDev
+                    </a>
+                    <script>window.twttr = (function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0],
+                        t = window.twttr || {};
+                      if (d.getElementById(id)) return t;
+                      js = d.createElement(s);
+                      js.id = id;
+                      js.src = "https://platform.twitter.com/widgets.js";
+                      fjs.parentNode.insertBefore(js, fjs);
+
+                      t._e = [];
+                      t.ready = function(f) {
+                        t._e.push(f);
+                      };
+
+                      return t;
+                    }(document, "script", "twitter-wjs"));</script>
+                </div>
+            </div>
+        {% endblock %}
+
+    {% endembed %}
+</div>

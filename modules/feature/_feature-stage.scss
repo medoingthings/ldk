@@ -21,6 +21,12 @@
     padding: em(50) 0;
     background-color: color(1);
 
+    &._cushion {
+        padding: em(50);
+        width: 100%;
+        height: 100%;
+    }
+
     &._text-short .feature-stage__text {
         h2 {
             margin-bottom: em(20)
@@ -39,6 +45,13 @@
             padding-left: 0;
         }
     }
+}
+
+.feature-stage__content__scroll {
+
+    // Make scrolling within the container work
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .feature-stage__image {
@@ -231,6 +244,30 @@
 
         > strong {
             background-color: rgba(color(2), 0.75);
+        }
+    }
+}
+
+@include breakpoint($BP_DESKTOP_MIN) {
+    .feature-stage__split__container {
+        display: flex;
+        justify-content: space-between;
+
+        &:after {
+            // Fix added space in the right corner of the container
+            content: none;
+        }
+    }
+
+    .feature-stage__split__wrapper {
+        width: 49%;
+    }
+}
+
+@include breakpoint($BP_TABLET_MAX) {
+    .feature-stage__split__container {
+        .layout-label__wrapper {
+            margin-top: em($layout-label--height);
         }
     }
 }

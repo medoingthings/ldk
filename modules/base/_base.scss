@@ -26,3 +26,7 @@ figure {
 .is-visually-hidden {
     @extend %is-visually-hidden;
 }
+
+.js .is-visually-hidden-js-only {
+    @extend %is-visually-hidden;
+}
