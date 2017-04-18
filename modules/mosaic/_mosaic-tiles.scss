@@ -415,12 +415,12 @@ a.mosaic-tiles__inner {
 
 @include breakpoint (762) {
     .mosaic-tiles__content {
-        &:not(.wide) {
+        &:not(._wide) {
             height: 0;
             padding-top: 25%;
         }
 
-        &.wide:after {
+        &._wide:after {
             content: '';
             display: block;
             padding-top: 100% / (16 / 9);
