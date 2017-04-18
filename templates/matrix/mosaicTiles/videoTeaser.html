@@ -19,7 +19,7 @@
             </figure>
             <div class="mosaic-tiles__text">
                 <p class="button-square _play">
-                    <span class="_label" itemprop="caption name">{{ videoEmbed.title }}</span>
+                    <span class="_label" itemprop="caption name">{{ videoModel.title|default(videoEmbed.title) }}</span>
                 </p>
             </div>
         </a>
