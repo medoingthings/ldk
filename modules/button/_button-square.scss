@@ -100,7 +100,6 @@
     }
 
     &._play {
-        @include icon(play, 1.1em);
         background-color: white;
         border: none;
         padding-top: 0;
@@ -124,8 +123,16 @@
         }
 
         &:before {
-            text-indent: em(18);
-            line-height: 1.7;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: em(17);
+            transform: translateX(0) translateY(-50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: em(9) 0 em(9) em(9);
+            border-color: transparent transparent transparent color(1);
         }
 
         ._label {
