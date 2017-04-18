@@ -10,14 +10,14 @@
     } %}
     {% set posterframe = videoModel.posterframe|length ? videoModel.posterframe.first.getUrl(posterframeTransform) : videoEmbed.thumbnailUrl %}
 
-    <div class="mosaic-tiles__content _wide _link _video embed-video__target">
-        <a href="{{ videoEmbed.url }}" class="mosaic-tiles__inner embed-video__link">
+    <div class="mosaic-tiles__content _wide _link _video embed-video__target" itemscope itemtype="http://schema.org/VideoObject">
+        <a href="{{ videoEmbed.url }}" class="mosaic-tiles__inner embed-video__link" itemprop="embedUrl">
             <figure class="mosaic-tiles__image _image-background">
-                <img src="{{ posterframe }}">
+                <img src="{{ posterframe }}" itemprop="thumbnail">
             </figure>
             <div class="mosaic-tiles__text">
                 <p class="button-square _play">
-                    <span class="_label">{{ videoEmbed.title }}</span>
+                    <span class="_label" itemprop="caption">{{ videoEmbed.title }}</span>
                 </p>
             </div>
         </a>
