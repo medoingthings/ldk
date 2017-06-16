@@ -1,9 +1,5 @@
-{% cache %}
+{% for block in entry.teaserStage if block.type != 'sectionLabel' %}
 
-    {% for block in entry.teaserStage if block.type != 'sectionLabel' %}
+    {% include 'matrix/teaserStage/' ~ block.type %}
 
-        {% include 'matrix/teaserStage/' ~ block.type %}
-
-    {% endfor %}
-
-{% endcache %}
+{% endfor %}
